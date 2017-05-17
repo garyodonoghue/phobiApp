@@ -1,5 +1,6 @@
-package com.gary.spiders;
+package com.gary.spiders.activity;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,9 +13,10 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 
-import com.gary.spiders.com.gary.spiders.util.AlertUtility;
+import com.gary.spiders.R;
+import com.gary.spiders.util.AlertUtility;
 
-public class ImageFocusActivity extends AppCompatActivity {
+public class ImageFocusActivity extends AppCompatActivity implements ISpiderExercise {
 
     private float focusFactor = 0.1f;
     ImageView spiderImageView = null;
@@ -23,6 +25,8 @@ public class ImageFocusActivity extends AppCompatActivity {
     private static volatile Matrix sScaleMatrix;
 
     private static volatile int sDefaultDensity = -1;
+
+    SharedPreferences ratings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,11 +130,15 @@ public class ImageFocusActivity extends AppCompatActivity {
         return b;
     }
 
-    public void onRadioButtonClicked(View view){
+
+    public void ratingClicked(View view){
         RadioButton radioButton = (RadioButton) view;
 
-        // TODO Save text value along with activity number / name
-        // Use radioButton.getText();
+        ratings = getSharedPreferences("Ratings", 0);
+        SharedPreferences.Editor editor = ratings.edit();
+        editor.putString(this.getLocalClassName() + "_" + System.currentTimeMillis(), radioButton.getText().toString());
+
+        editor.commit();
     }
 
     private float getFocusFactor(){

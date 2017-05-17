@@ -1,4 +1,4 @@
-package com.gary.spiders.com.gary.spiders.util;
+package com.gary.spiders.util;
 
 import android.app.Activity;
 import android.content.DialogInterface;
@@ -14,12 +14,13 @@ import com.gary.spiders.R;
 
 public class AlertUtility {
 
-    public static AlertDialog createAlert(Activity activity) {
+    public static AlertDialog createAlert(final Activity activity) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
         alertDialogBuilder.setPositiveButton("Proceed",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+
 
                     }
                 });

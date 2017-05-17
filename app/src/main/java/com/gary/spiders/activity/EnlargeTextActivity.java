@@ -1,5 +1,6 @@
-package com.gary.spiders;
+package com.gary.spiders.activity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,11 +11,14 @@ import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.gary.spiders.com.gary.spiders.util.AlertUtility;
+import com.gary.spiders.R;
+import com.gary.spiders.util.AlertUtility;
 
-public class MainActivity extends AppCompatActivity {
+public class EnlargeTextActivity extends AppCompatActivity implements ISpiderExercise {
 
     private float fontSize = 0.5f;
+
+    SharedPreferences ratings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
                 progressBar.incrementProgressBy(10);
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(MainActivity.this);
+                    AlertDialog alertDialog = AlertUtility.createAlert(EnlargeTextActivity.this);
                     alertDialog.show();
                 }
             }
         });
-    }
-
-    public void onRadioButtonClicked(View view){
-        RadioButton radioButton = (RadioButton) view;
-
-        // TODO Save text value along with activity number / name
-        // Use radioButton.getText();
     }
 
     private float getSize(){
@@ -55,5 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void incrementFontSize(){
         this.fontSize = this.fontSize + 1.0f;
+    }
+
+    @Override
+    public void ratingClicked(View view) {
+        RadioButton radioButton = (RadioButton) view;
+
+        ratings = getSharedPreferences("Ratings", 0);
+        SharedPreferences.Editor editor = ratings.edit();
+        editor.putString(this.getLocalClassName() + "_" + System.currentTimeMillis(), radioButton.getText().toString());
+
+        editor.commit();
     }
 }

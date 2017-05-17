@@ -32,35 +32,35 @@
             android:id="@+id/radio_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="ratingClicked"
             android:text="1" />
 
         <RadioButton
             android:id="@+id/radio_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="ratingClicked"
             android:text="2" />
 
         <RadioButton
             android:id="@+id/radio_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="ratingClicked"
             android:text="3" />
 
         <RadioButton
             android:id="@+id/radio_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="ratingClicked"
             android:text="4" />
 
         <RadioButton
             android:id="@+id/radio_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onRadioButtonClicked"
+            android:onClick="ratingClicked"
             android:text="5" />
 
     </RadioGroup>
