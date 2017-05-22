@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.QuestionnaireActivity">
+        <activity android:name=".activity.PlayStopVideoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,8 @@
 
         <!-- <activity android:name=".EnlargeTextActivity"></activity> -->
         <!-- <activity android:name=".ImageFocusActivity"></activity> -->
-        <!--<activity android:name=".activity.QuestionnaireActivity"></activity> -->
+        <!-- <activity android:name=".activity.QuestionnaireActivity"></activity> -->
+        <!--<activity android:name=".activity.PlayStopVideoActivity"></activity>-->
     </application>
 
 </manifest>
