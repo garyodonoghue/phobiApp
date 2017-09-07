@@ -20,11 +20,12 @@ public class AlertUtility {
         alertDialogBuilder.setPositiveButton("Proceed",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
-
+                        // Track progress
+                        dialog.dismiss();
+                        activity.finish();
                     }
                 });
-        alertDialogBuilder.setNegativeButton("Stay",
+        alertDialogBuilder.setNegativeButton("Try Again",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

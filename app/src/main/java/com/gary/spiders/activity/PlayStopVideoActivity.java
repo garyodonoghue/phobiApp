@@ -79,14 +79,18 @@ public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderE
 
     public void start() {
         started = true;
-        this.progressBar.incrementProgressBy(2);
+        this.progressBar.incrementProgressBy(5);
 
         if(progressBar.getProgress() >= progressBar.getMax()){
+            stop();
+            this.progressBar.setProgress(0);
             AlertDialog alertDialog = AlertUtility.createAlert(PlayStopVideoActivity.this);
             alertDialog.show();
-        }
 
-        handler.postDelayed(runnable, 1);
+        }
+        else{
+            handler.postDelayed(runnable, 1);
+        }
     }
 
     @Override

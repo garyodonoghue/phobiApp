@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_horizontal"
-        android:text="How difficult did you find that on a scale of 1 to 5?"
+        android:text="Difficulty on a scale of 1 to 5?"
         android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         android:textSize="14sp"
         android:layout_alignParentTop="true"
