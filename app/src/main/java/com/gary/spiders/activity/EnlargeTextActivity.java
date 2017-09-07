@@ -23,7 +23,7 @@ public class EnlargeTextActivity extends AppCompatActivity implements ISpiderExe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_enlarge_text);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(100);
