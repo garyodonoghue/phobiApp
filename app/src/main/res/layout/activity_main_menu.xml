@@ -95,7 +95,8 @@
                 android:layout_height="52dp"
                 android:text="My Progress"
                 tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="217dp" />
+                tools:layout_editor_absoluteY="217dp"
+                android:onClick="showProgress"/>
 
             <Button
                 android:id="@+id/button2"

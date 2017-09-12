@@ -8,9 +8,11 @@ import android.widget.TextView;
 
 import com.gary.spiders.R;
 
+import static com.gary.spiders.R.array.ratings;
+
 public class QuestionnaireActivity extends AppCompatActivity {
 
-    SharedPreferences ratings;
+    SharedPreferences questionnaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,8 +21,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
     }
 
     public void submitQuestionnaire(View v){
-        ratings = getSharedPreferences("Ratings", 0);
-        SharedPreferences.Editor editor = ratings.edit();
+        questionnaire = getSharedPreferences("Questionnaire", 0);
+        SharedPreferences.Editor editor = questionnaire.edit();
 
         TextView question1 = (TextView) findViewById(R.id.question_1);
         TextView question2 = (TextView) findViewById(R.id.question_2);

@@ -16,16 +16,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".activity.EnlargeTextActivity"></activity>
-        <activity android:name=".activity.ImageFocusActivity"></activity>
-        <activity android:name=".activity.QuestionnaireActivity"></activity>
-        <activity android:name=".activity.PlayStopVideoActivity"></activity>
+        <activity android:name=".activity.EnlargeTextActivity" />
+        <activity android:name=".activity.ImageFocusActivity" />
+        <activity android:name=".activity.QuestionnaireActivity" />
+        <activity android:name=".activity.PlayStopVideoActivity" />
         <!-- <activity -->
         <!-- android:name=".activity.MainMenuActivity" -->
         <!-- android:label="@string/title_activity_main_menu" -->
         <!-- android:theme="@style/AppTheme.NoActionBar"></activity> -->
-        <activity android:name=".activity.ChooseGameActivity"></activity>
+        <activity android:name=".activity.ChooseGameActivity" />
+        <activity android:name=".activity.MetricsActivity"></activity>
     </application>
 
 </manifest>

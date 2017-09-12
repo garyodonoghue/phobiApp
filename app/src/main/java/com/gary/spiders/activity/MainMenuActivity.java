@@ -17,6 +17,11 @@ public class MainMenuActivity extends AppCompatActivity implements ISpiderExerci
         MainMenuActivity.this.startActivity(myIntent);
     }
 
+    public void showProgress(View view) {
+        Intent myIntent = new Intent(MainMenuActivity.this, MetricsActivity.class);
+        MainMenuActivity.this.startActivity(myIntent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
