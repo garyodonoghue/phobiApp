@@ -13,7 +13,10 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -27,19 +30,18 @@ public class MetricsActivity extends AppCompatActivity {
 
 
         LineChart chart = (LineChart) findViewById(R.id.chart);
-        // TODO parse timestamp values to dates on x-axis as timestamps are too large
-        // set min timestamp to Jul 2017
-        //HourAxisValueFormatter xAxisFormatter = new HourAxisValueFormatter(Long.parseLong("1499814559"));
         XAxis xAxis = chart.getXAxis();
-        //xAxis.setValueFormatter(xAxisFormatter);
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                return new Date(Long.parseLong(""+value)).toString();
+                Double d = Double.valueOf(value);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YY HH:mm");
+                Date date = new Date(d.longValue() * 1000);
+                return sdf.format(date);
             }
         });
-
 
         List<Entry> entries = new ArrayList<Entry>();
 
@@ -60,6 +62,15 @@ public class MetricsActivity extends AppCompatActivity {
                 String ratingValue = rating.getValue();
                 entries.add(new Entry(Float.parseFloat(timestamp), Float.parseFloat(ratingValue)));
             }
+
+            // Sort based on the timestamp (x-value) earliest timestamp to latest
+            Collections.sort(entries, new Comparator<Entry>() {
+                @Override
+                public int compare(Entry lhs, Entry rhs) {
+                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                    return lhs.getX() < rhs.getX() ? -1 : (lhs.getX() > rhs.getX()) ? 1 : 0;
+                }
+            });
 
             // add entries to dataset
             LineDataSet dataSet = new LineDataSet(entries, "Ratings");

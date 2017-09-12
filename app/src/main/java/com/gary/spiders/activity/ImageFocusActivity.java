@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
+import com.gary.spiders.util.EpochUtil;
 
 public class ImageFocusActivity extends AppCompatActivity implements ISpiderExercise {
 
@@ -136,7 +137,7 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
 
         ratings = getSharedPreferences("Ratings", 0);
         SharedPreferences.Editor editor = ratings.edit();
-        editor.putString(this.getLocalClassName() + "_" + System.currentTimeMillis(), radioButton.getText().toString());
+        editor.putString(this.getLocalClassName() + "_" + EpochUtil.getEpochTime(), radioButton.getText().toString());
 
         editor.commit();
     }

@@ -7,8 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
-
-import static com.gary.spiders.R.array.ratings;
+import com.gary.spiders.util.EpochUtil;
 
 public class QuestionnaireActivity extends AppCompatActivity {
 
@@ -43,24 +42,24 @@ public class QuestionnaireActivity extends AppCompatActivity {
         TextView question17 = (TextView) findViewById(R.id.question_17);
         TextView question18 = (TextView) findViewById(R.id.question_18);
 
-        editor.putString("question1" + "_" + System.currentTimeMillis(), question1.getText().toString());
-        editor.putString("question2" + "_" + System.currentTimeMillis(), question2.getText().toString());
-        editor.putString("question3" + "_" + System.currentTimeMillis(), question3.getText().toString());
-        editor.putString("question4" + "_" + System.currentTimeMillis(), question4.getText().toString());
-        editor.putString("question5" + "_" + System.currentTimeMillis(), question5.getText().toString());
-        editor.putString("question6" + "_" + System.currentTimeMillis(), question6.getText().toString());
-        editor.putString("question7" + "_" + System.currentTimeMillis(), question7.getText().toString());
-        editor.putString("question8" + "_" + System.currentTimeMillis(), question8.getText().toString());
-        editor.putString("question10" + "_" + System.currentTimeMillis(), question9.getText().toString());
-        editor.putString("question10" + "_" + System.currentTimeMillis(), question10.getText().toString());
-        editor.putString("question11" + "_" + System.currentTimeMillis(), question11.getText().toString());
-        editor.putString("question12" + "_" + System.currentTimeMillis(), question12.getText().toString());
-        editor.putString("question13" + "_" + System.currentTimeMillis(), question13.getText().toString());
-        editor.putString("question14" + "_" + System.currentTimeMillis(), question14.getText().toString());
-        editor.putString("question15" + "_" + System.currentTimeMillis(), question15.getText().toString());
-        editor.putString("question16" + "_" + System.currentTimeMillis(), question16.getText().toString());
-        editor.putString("question17" + "_" + System.currentTimeMillis(), question17.getText().toString());
-        editor.putString("question18" + "_" + System.currentTimeMillis(), question18.getText().toString());
+        editor.putString("question1" + "_" + EpochUtil.getEpochTime(), question1.getText().toString());
+        editor.putString("question2" + "_" + EpochUtil.getEpochTime(), question2.getText().toString());
+        editor.putString("question3" + "_" + EpochUtil.getEpochTime(), question3.getText().toString());
+        editor.putString("question4" + "_" + EpochUtil.getEpochTime(), question4.getText().toString());
+        editor.putString("question5" + "_" + EpochUtil.getEpochTime(), question5.getText().toString());
+        editor.putString("question6" + "_" + EpochUtil.getEpochTime(), question6.getText().toString());
+        editor.putString("question7" + "_" + EpochUtil.getEpochTime(), question7.getText().toString());
+        editor.putString("question8" + "_" + EpochUtil.getEpochTime(), question8.getText().toString());
+        editor.putString("question10" + "_" + EpochUtil.getEpochTime(), question9.getText().toString());
+        editor.putString("question10" + "_" + EpochUtil.getEpochTime(), question10.getText().toString());
+        editor.putString("question11" + "_" + EpochUtil.getEpochTime(), question11.getText().toString());
+        editor.putString("question12" + "_" + EpochUtil.getEpochTime(), question12.getText().toString());
+        editor.putString("question13" + "_" + EpochUtil.getEpochTime(), question13.getText().toString());
+        editor.putString("question14" + "_" + EpochUtil.getEpochTime(), question14.getText().toString());
+        editor.putString("question15" + "_" + EpochUtil.getEpochTime(), question15.getText().toString());
+        editor.putString("question16" + "_" + EpochUtil.getEpochTime(), question16.getText().toString());
+        editor.putString("question17" + "_" + EpochUtil.getEpochTime(), question17.getText().toString());
+        editor.putString("question18" + "_" + EpochUtil.getEpochTime(), question18.getText().toString());
 
         editor.commit();
     }
