@@ -1,6 +1,5 @@
 package com.gary.spiders.activity;
 
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,20 +10,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
-import com.gary.spiders.util.EpochUtil;
 
-public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderExercise  {
+public class PlayStopVideoActivity extends AppCompatActivity  {
 
     private boolean started = false;
     private Handler handler = new Handler();
     ProgressBar progressBar = null;
-
-    SharedPreferences ratings;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -92,16 +87,5 @@ public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderE
         else{
             handler.postDelayed(runnable, 1);
         }
-    }
-
-    @Override
-    public void ratingClicked(View view) {
-        RadioButton radioButton = (RadioButton) view;
-
-        ratings = getSharedPreferences("Ratings", 0);
-        SharedPreferences.Editor editor = ratings.edit();
-        editor.putString(this.getLocalClassName() + "_" + EpochUtil.getEpochTime(), radioButton.getText().toString());
-
-        editor.commit();
     }
 }

@@ -1,4 +1,5 @@
-package com.gary.spiders.activity;
+package com.gary.spiders.game;
+
 
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -17,7 +18,11 @@ import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
 import com.gary.spiders.util.EpochUtil;
 
-public class ImageFocusActivity extends AppCompatActivity implements ISpiderExercise {
+/**
+ * Created by Gary on 18/09/2017.
+ */
+
+public class FocusImageGame extends AppCompatActivity implements Game {
 
     private float focusFactor = 0.1f;
     ImageView spiderImageView = null;
@@ -28,6 +33,12 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
     private static volatile int sDefaultDensity = -1;
 
     SharedPreferences ratings;
+    int spiderImageResourceId;
+
+    @Override
+    public void setupGame(int userLevel) {
+        spiderImageResourceId = GameResourceLoader.getImageResourceId(userLevel);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +46,13 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
         setContentView(R.layout.activity_image_focus);
 
         spiderImageView = (ImageView) findViewById(R.id.image_spider);
-        spiderImageView.setImageResource(R.mipmap.spider1);
         spiderImageBitmap = ((BitmapDrawable)spiderImageView.getDrawable()).getBitmap();
-        updateImageFocus(focusFactor);
+        spiderImageView.setImageResource(spiderImageResourceId);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
+
+        updateImageFocus(focusFactor);
 
         final Button button = (Button) findViewById(R.id.button_focus);
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +65,7 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
                 updateImageFocus(focusFactor);
 
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(ImageFocusActivity.this);
+                    AlertDialog alertDialog = AlertUtility.createAlert(FocusImageGame.this);
                     alertDialog.show();
                 }
             }
@@ -82,8 +94,8 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
         Bitmap pixelatedBitmap = createScaledBitmap(bitmap, downScaledWidth,
                 downScaledHeight, false);
 
-         Bitmap upscaled = createScaledBitmap(pixelatedBitmap, width, height, false);
-         return new BitmapDrawable(getResources(), upscaled);
+        Bitmap upscaled = createScaledBitmap(pixelatedBitmap, width, height, false);
+        return new BitmapDrawable(getResources(), upscaled);
 
     }
 
@@ -149,4 +161,5 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
     private void incrementFocusFactor(){
         this.focusFactor = this.focusFactor - 0.005f;
     }
+
 }

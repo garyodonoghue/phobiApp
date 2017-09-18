@@ -17,7 +17,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.EnlargeTextActivity" />
-        <activity android:name=".activity.ImageFocusActivity" />
         <activity android:name=".activity.QuestionnaireActivity" />
         <activity android:name=".activity.PlayStopVideoActivity" />
         <!-- <activity -->
