@@ -7,10 +7,10 @@ package com.gary.spiders.game;
 public class GameGenerator {
 
     public Game generateGame(int userLevel){
-        GameCategory category = retrieveGameCategory();
+        GameType category = retrieveGameType();
         Game game = null;
 
-        if(GameCategory.FOCUS == category){
+        if(GameType.FOCUS == category){
             Game focusImageGame = new FocusImageGame();
             focusImageGame.setupGame(userLevel);
         }
@@ -20,12 +20,12 @@ public class GameGenerator {
         return game;
     }
 
-    private GameCategory retrieveGameCategory() {
+    private GameType retrieveGameType() {
         return null;
         // TODO Pick random game mode from enum types
     }
 
-    public enum GameCategory {
+    public enum GameType {
 
         CROSSWORD, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS
     }

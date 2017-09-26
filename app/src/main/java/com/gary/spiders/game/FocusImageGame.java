@@ -25,7 +25,7 @@ import com.gary.spiders.util.EpochUtil;
 public class FocusImageGame extends AppCompatActivity implements Game {
 
     private float focusFactor = 0.1f;
-    ImageView spiderImageView = null;
+    ImageView imageView = null;
     Bitmap spiderImageBitmap = null;
 
     private static volatile Matrix sScaleMatrix;
@@ -33,11 +33,12 @@ public class FocusImageGame extends AppCompatActivity implements Game {
     private static volatile int sDefaultDensity = -1;
 
     SharedPreferences ratings;
-    int spiderImageResourceId;
+    int imageResourceId;
 
     @Override
     public void setupGame(int userLevel) {
-        spiderImageResourceId = GameResourceLoader.getImageResourceId(userLevel);
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        imageResourceId = resourceLoader.getImageResourceId(userLevel);
     }
 
     @Override
@@ -45,9 +46,9 @@ public class FocusImageGame extends AppCompatActivity implements Game {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
 
-        spiderImageView = (ImageView) findViewById(R.id.image_spider);
-        spiderImageBitmap = ((BitmapDrawable)spiderImageView.getDrawable()).getBitmap();
-        spiderImageView.setImageResource(spiderImageResourceId);
+        imageView = (ImageView) findViewById(R.id.image_spider);
+        spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        imageView.setImageResource(imageResourceId);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
@@ -73,7 +74,7 @@ public class FocusImageGame extends AppCompatActivity implements Game {
     }
 
     private void updateImageFocus(float focusFactor) {
-        spiderImageView.setImageDrawable(builtInPixelization(focusFactor, spiderImageBitmap));
+        imageView.setImageDrawable(builtInPixelization(focusFactor, spiderImageBitmap));
     }
 
     /**
