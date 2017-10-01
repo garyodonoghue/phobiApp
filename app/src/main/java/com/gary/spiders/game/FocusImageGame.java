@@ -36,9 +36,9 @@ public class FocusImageGame extends AppCompatActivity implements Game {
     int imageResourceId;
 
     @Override
-    public void setupGame(int userLevel) {
+    public void setupGame(GameGenerator.Category category, boolean initialAssessment) {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        imageResourceId = resourceLoader.getImageResourceId(userLevel);
+        imageResourceId = resourceLoader.getResource(category);
     }
 
     @Override

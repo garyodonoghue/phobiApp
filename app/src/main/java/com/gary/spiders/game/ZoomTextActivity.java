@@ -1,4 +1,4 @@
-package com.gary.spiders.activity;
+package com.gary.spiders.game;
 
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -12,14 +12,21 @@ import android.widget.TextView;
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
 
-public class EnlargeTextActivity extends AppCompatActivity {
+public class ZoomTextActivity extends AppCompatActivity implements Game {
 
     private float fontSize = 0.5f;
+    int textResourceId;
+
+    @Override
+    public void setupGame(GameGenerator.Category category, boolean initialAssessment) {
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        textResourceId = resourceLoader.getResource(category);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enlarge_text);
+        setContentView(R.layout.activity_zoom_text);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(100);
@@ -35,7 +42,7 @@ public class EnlargeTextActivity extends AppCompatActivity {
 
                 progressBar.incrementProgressBy(10);
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(EnlargeTextActivity.this);
+                    AlertDialog alertDialog = AlertUtility.createAlert(ZoomTextActivity.this);
                     alertDialog.show();
                 }
             }
@@ -49,5 +56,4 @@ public class EnlargeTextActivity extends AppCompatActivity {
     private void incrementFontSize(){
         this.fontSize = this.fontSize + 1.0f;
     }
-
 }

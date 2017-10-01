@@ -93,4 +93,10 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_menu">MainMenu</string>
+
+    <string name="linguisticHigh_1">Hairy</string>
+    <string name="linguisticHigh_2">Eyes</string>
+    <string name="linguisticHigh_3">Legs</string>
+    <string name="linguisticHigh_4">Web</string>
+    <string name="linguisticHigh_5">Black</string>
 </resources>
