@@ -24,8 +24,8 @@ public class ZoomTextActivity extends Game {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         String s = getIntent().getStringExtra("category");
-        GameGenerator.Category category = GameGenerator.Category.valueOf(s);
-        textResourceId = resourceLoader.getResource(category);
+        super.category = GameGenerator.Category.valueOf(s);
+        textResourceId = resourceLoader.getResource(super.category);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(100);
@@ -34,15 +34,16 @@ public class ZoomTextActivity extends Game {
         textView.setText(getResources().getString(textResourceId));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, fontSize);
 
+        final boolean initialAssessment = getIntent().getBooleanExtra("initialAssessment", false);
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 incrementFontSize();
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
-
                 progressBar.incrementProgressBy(10);
+
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(ZoomTextActivity.this);
+                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this, category);
                     alertDialog.show();
                 }
             }

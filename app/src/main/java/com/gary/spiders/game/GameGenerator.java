@@ -1,5 +1,7 @@
 package com.gary.spiders.game;
 
+import android.support.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,6 +14,11 @@ public class GameGenerator {
 
     public static Game generateGame(int userLevel, boolean initialAssessment){
         Category category = getCategory(userLevel);
+        return getGame(initialAssessment, category);
+    }
+
+    @NonNull
+    private static Game getGame(boolean initialAssessment, Category category) {
         GameType gameType = retrieveGameType(category);
         Game game = null;
 
@@ -31,6 +38,10 @@ public class GameGenerator {
         return game;
     }
 
+    public static Game generateGame(Category category, boolean initialAssessment){
+        return getGame(initialAssessment, category);
+    }
+
     private static GameType retrieveGameType(Category category) {
         // passing in category here as not all gaem types are applicable to user category, e.g. jigsaw isnt applicable to LINGUISTIC categories,
         // e.g. jigsaw probably doesnt make sense for Linguistic categories, since its just text, but Focusing and Enlarging the text would, so those
@@ -41,12 +52,25 @@ public class GameGenerator {
             applicableGameTypes.add(GameType.ZOOM);
             // TODO applicableGameTypes.add(GameType.FOCUS);
 
+
+            // TODO Randomizer isnt working with single element
             Random randomiser = new Random();
             GameType gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
 
             return gameType;
         }
-        return GameType.ZOOM;
+        else if(category.toString().contains("CARTOON")){
+            List<GameType> applicableGameTypes = new ArrayList<>();
+            applicableGameTypes.add(GameType.FOCUS);
+            // TODO applicableGameTypes.add(GameType.JIGSAW);
+
+            // TODO Randomizer isnt working with single element
+            Random randomiser = new Random();
+            GameType gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
+
+            return gameType;
+        }
+        return GameType.FOCUS;
     }
 
     public enum GameType {

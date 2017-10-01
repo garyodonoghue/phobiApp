@@ -7,4 +7,12 @@
         <item>@string/linguisticHigh_4</item>
         <item>@string/linguisticHigh_5</item>
     </array>
+
+    <array name="CARTOON_HIGH">
+        <item>@mipmap/spider1</item>
+        <item>@mipmap/spider2</item>
+        <item>@mipmap/spider3</item>
+        <item>@mipmap/spider4</item>
+        <item>@mipmap/spider5</item>
+    </array>
 </resources>

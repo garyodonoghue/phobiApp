@@ -33,11 +33,14 @@ public class FocusImageGame extends Game {
         setContentView(R.layout.activity_image_focus);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        String s = getIntent().getStringExtra("category");
+        super.category = GameGenerator.Category.valueOf(s);
+
         imageResourceId = resourceLoader.getResource(category);
 
-        imageView = (ImageView) findViewById(R.id.image_spider);
-        spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
+        imageView = (ImageView) findViewById(R.id.focus_image);
         imageView.setImageResource(imageResourceId);
+        spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
@@ -55,7 +58,7 @@ public class FocusImageGame extends Game {
                 updateImageFocus(focusFactor);
 
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(FocusImageGame.this);
+                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this, category);
                     alertDialog.show();
                 }
             }

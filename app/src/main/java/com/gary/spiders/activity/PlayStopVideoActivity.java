@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.game.GameGenerator;
 import com.gary.spiders.util.AlertUtility;
 
 public class PlayStopVideoActivity extends AppCompatActivity  {
@@ -77,10 +78,13 @@ public class PlayStopVideoActivity extends AppCompatActivity  {
         started = true;
         this.progressBar.incrementProgressBy(5);
 
+        String s = getIntent().getStringExtra("category");
+        final GameGenerator.Category category = GameGenerator.Category.valueOf(s);
+
         if(progressBar.getProgress() >= progressBar.getMax()){
             stop();
             this.progressBar.setProgress(0);
-            AlertDialog alertDialog = AlertUtility.createAlert(PlayStopVideoActivity.this);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoActivity.this, category);
             alertDialog.show();
 
         }

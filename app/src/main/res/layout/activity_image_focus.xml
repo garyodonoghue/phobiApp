@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ImageFocusActivity">
+    tools:context=".game.FocusImageGame">
 
     <ImageView
-        android:id="@+id/image_spider"
+        android:id="@+id/focus_image"
         android:layout_width="357dp"
         android:layout_height="376dp"
         android:layout_marginBottom="2dp"
@@ -31,7 +31,7 @@
         android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/progressBar_focus"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/image_spider" />
+        app:layout_constraintTop_toBottomOf="@+id/focus_image" />
 
     <ProgressBar
         android:id="@+id/progressBar_focus"
