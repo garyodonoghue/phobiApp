@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer-array name="LINGUISTIC_HIGH">
+    <array name="LINGUISTIC_HIGH">
         <item>@string/linguisticHigh_1</item>
         <item>@string/linguisticHigh_2</item>
         <item>@string/linguisticHigh_3</item>
         <item>@string/linguisticHigh_4</item>
         <item>@string/linguisticHigh_5</item>
-    </integer-array>
+    </array>
 </resources>

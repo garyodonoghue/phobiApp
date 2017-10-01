@@ -19,11 +19,11 @@ public class GameResourceLoader {
 
     public int getResource(GameGenerator.Category category){
         // this will retrieve an array of images within a specific category (e.g. CARTOON_LOW)
-        int categoryResourceArray = this.context.getResources().getIdentifier(category.toString(), "id", this.context.getPackageName());
-
+        int categoryResourceArray = this.context.getResources().getIdentifier(category.toString(), "array", this.context.getPackageName());
         // get a random resource within that array of resources (images/text/video) for that specific category
+
         TypedArray resources = this.context.getResources().obtainTypedArray(categoryResourceArray);
-        int imageId = resources.getResourceId(new Random().nextInt(resources.length()), -1);
-        return imageId;
+        int resourceId = resources.getResourceId(new Random().nextInt(resources.length()), -1);
+        return resourceId;
     }
 }

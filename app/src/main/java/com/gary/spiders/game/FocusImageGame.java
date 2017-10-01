@@ -1,50 +1,39 @@
 package com.gary.spiders.game;
 
 
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
-import com.gary.spiders.util.EpochUtil;
 
 /**
  * Created by Gary on 18/09/2017.
  */
 
-public class FocusImageGame extends AppCompatActivity implements Game {
+public class FocusImageGame extends Game {
 
     private float focusFactor = 0.1f;
     ImageView imageView = null;
     Bitmap spiderImageBitmap = null;
-
     private static volatile Matrix sScaleMatrix;
-
     private static volatile int sDefaultDensity = -1;
-
-    SharedPreferences ratings;
     int imageResourceId;
-
-    @Override
-    public void setupGame(GameGenerator.Category category, boolean initialAssessment) {
-        GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        imageResourceId = resourceLoader.getResource(category);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
+
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        imageResourceId = resourceLoader.getResource(category);
 
         imageView = (ImageView) findViewById(R.id.image_spider);
         spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
@@ -142,17 +131,6 @@ public class FocusImageGame extends AppCompatActivity implements Game {
         }
 
         return b;
-    }
-
-
-    public void ratingClicked(View view){
-        RadioButton radioButton = (RadioButton) view;
-
-        ratings = getSharedPreferences("Ratings", 0);
-        SharedPreferences.Editor editor = ratings.edit();
-        editor.putString(this.getLocalClassName() + "_" + EpochUtil.getEpochTime(), radioButton.getText().toString());
-
-        editor.commit();
     }
 
     private float getFocusFactor(){

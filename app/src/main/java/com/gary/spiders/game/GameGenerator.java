@@ -16,19 +16,17 @@ public class GameGenerator {
         Game game = null;
 
         if(GameType.FOCUS == gameType){
-            Game focusImageGame = new FocusImageGame();
-            focusImageGame.setupGame(category, initialAssessment);
+            game = new FocusImageGame();
         }
-        if(GameType.ZOOM == gameType){
-            Game zoomTextActivity = new ZoomTextActivity();
-            zoomTextActivity.setupGame(category, initialAssessment);
+        else if(GameType.ZOOM == gameType){
+            game = new ZoomTextActivity();
         }
-        if(GameType.JIGSAW == gameType){
-            Game jigsawPuzzleGame = new JigsawPuzzleGame();
-            jigsawPuzzleGame.setupGame(category, initialAssessment);
+        else if(GameType.JIGSAW == gameType){
+            game = new JigsawPuzzleGame();
         }
 
-        // TODO for the other game categories
+        game.category = category;
+        game.initialAssessment = initialAssessment;
 
         return game;
     }
@@ -48,7 +46,7 @@ public class GameGenerator {
 
             return gameType;
         }
-        return GameType.JIGSAW;
+        return GameType.ZOOM;
     }
 
     public enum GameType {

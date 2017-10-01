@@ -16,8 +16,10 @@ public class MainMenuActivity extends AppCompatActivity {
         // so LINGUISTIC_HIGH, CARTOON_HIGH, DRAWINGS_BW_HIGH etc, so need to pass the level to retrieve these,
         // e.g. initially set to 5 (LINGUISTIC_HIGH), then 15 (CARTOON_HIGH), then 30 (DRAWINGS_BW_HIGH)
         Game game = GameGenerator.generateGame(5, true);
-        Intent myIntent = new Intent(MainMenuActivity.this, game.getClass());
-        MainMenuActivity.this.startActivity(myIntent);
+        Intent intent = new Intent(MainMenuActivity.this, game.getClass());
+        intent.putExtra("category", game.category.toString());
+        intent.putExtra("initialAssessment", game.initialAssessment);
+        MainMenuActivity.this.startActivity(intent);
     }
 
     public void presentChooseGameScreen(View view) {

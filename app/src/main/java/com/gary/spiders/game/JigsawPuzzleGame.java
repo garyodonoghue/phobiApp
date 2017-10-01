@@ -4,7 +4,6 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JigsawPuzzleGame extends AppCompatActivity implements Game {
+public class JigsawPuzzleGame extends Game {
 
     private int numSelectedTiles = 0;
     private ImageButton imageButton1;
@@ -25,16 +24,16 @@ public class JigsawPuzzleGame extends AppCompatActivity implements Game {
     Bitmap spiderImageBitmap = null;
     int imageResourceId;
 
-    @Override
-    public void setupGame(int userLevel, boolean initialAssessment) {
-        GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        imageResourceId = resourceLoader.getImageResourceId(userLevel);
-    }
+    GameGenerator.Category category;
+    boolean initialAssessment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
+
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        imageResourceId = resourceLoader.getResource(category);
     }
 
     public void tileClicked(View v){
