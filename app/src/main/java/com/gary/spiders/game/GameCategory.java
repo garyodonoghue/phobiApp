@@ -110,4 +110,17 @@ public enum GameCategory {
         return new GameCategory[]{LINGUISTIC_HIGH, CARTOON_HIGH, DRAWINGS_BW_HIGH,
                 DRAWING_COL_HIGH, PHOTOS_SMALL_HIGH, PHOTOS_BIG_HIGH, VIDEOS_HIGH };
     }
+
+    public int getBeginnerLevelForCategory(){
+        switch(this) {
+            case LINGUISTIC_HIGH:return 0;
+            case CARTOON_HIGH:return 6;
+            case DRAWINGS_BW_HIGH: return 16;
+            case DRAWING_COL_HIGH:return 31;
+            case PHOTOS_SMALL_HIGH:return 46;
+            case PHOTOS_BIG_HIGH:return 61;
+            case VIDEOS_HIGH:return 76;
+            default:return 0;
+        }
+    }
 }

@@ -38,7 +38,7 @@ public class PlayStopVideoGame extends Game {
 
         if(initialAssessment){
             ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            giveUpBtn.setVisibility(View.INVISIBLE);
+            giveUpBtn.setVisibility(View.VISIBLE);
         }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);

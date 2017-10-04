@@ -1,6 +1,7 @@
 package com.gary.spiders.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,14 +15,14 @@ import com.gary.spiders.util.AlertUtility;
 
 import java.util.Arrays;
 
-import static com.gary.spiders.game.GameCategory.VIDEOS_HIGH;
+import static com.gary.spiders.game.GameCategory.LINGUISTIC_HIGH;
 
 public class MainMenuActivity extends AppCompatActivity {
 
     int requestCode = 1;
 
     public void startInitialAssessment(View view) {
-        Game linguistic_hard = GameGenerator.generateGame(VIDEOS_HIGH, true);
+        Game linguistic_hard = GameGenerator.generateGame(LINGUISTIC_HIGH, true);
         Intent intent1 = new Intent(MainMenuActivity.this, linguistic_hard.getClass());
         intent1.putExtra("category", linguistic_hard.category.toString());
         intent1.putExtra("initialAssessment", linguistic_hard.initialAssessment);
@@ -70,9 +71,13 @@ public class MainMenuActivity extends AppCompatActivity {
 
                 }
                 else{
-                    // TODO Store boolean indicating the user has completed the initial assessment
-
-                    // user did not complete a level - get the lowest level for that category and set that as their new starting level
+                    // User did not complete a level - get the lowest level for that category and set that as their new starting level
+                    int newUserLevel = category.getBeginnerLevelForCategory();
+                    SharedPreferences userData = getSharedPreferences("UserData", 0);
+                    SharedPreferences.Editor editor = userData.edit();
+                    editor.putString("userLevel", Integer.toString(newUserLevel));
+                    editor.commit();
+                    
                     AlertDialog alert = AlertUtility.createInitialAssessmentCompletedAlert(this);
                     alert.show();
                 }
