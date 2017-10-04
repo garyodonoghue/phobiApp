@@ -6,11 +6,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gary.spiders.R;
+import com.gary.spiders.game.PlayStopVideoGame;
 
 public class ChooseGameActivity extends AppCompatActivity {
 
     public void videoClicked(View view) {
-        Intent myIntent = new Intent(ChooseGameActivity.this, PlayStopVideoActivity.class);
+        Intent myIntent = new Intent(ChooseGameActivity.this, PlayStopVideoGame.class);
         ChooseGameActivity.this.startActivity(myIntent);
     }
 

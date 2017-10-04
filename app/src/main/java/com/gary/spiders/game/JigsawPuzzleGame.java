@@ -20,12 +20,7 @@ public class JigsawPuzzleGame extends Game {
     private ImageButton imageButton1;
     private Drawable buttonImage1;
     private Drawable buttonImage2;
-
-    Bitmap spiderImageBitmap = null;
     int imageResourceId;
-
-    GameGenerator.Category category;
-    boolean initialAssessment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

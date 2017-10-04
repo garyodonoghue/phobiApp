@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,10 +22,12 @@ public class ZoomTextActivity extends Game {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom_text);
 
-        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            giveUpBtn.setVisibility(View.INVISIBLE);
+        }
 
-        String s = getIntent().getStringExtra("category");
-        super.category = GameGenerator.Category.valueOf(s);
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
         textResourceId = resourceLoader.getResource(super.category);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -34,7 +37,6 @@ public class ZoomTextActivity extends Game {
         textView.setText(getResources().getString(textResourceId));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, fontSize);
 
-        final boolean initialAssessment = getIntent().getBooleanExtra("initialAssessment", false);
         final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

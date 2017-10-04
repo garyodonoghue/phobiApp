@@ -18,7 +18,7 @@
         </activity>
         <activity android:name=".game.ZoomTextActivity" />
         <activity android:name=".activity.QuestionnaireActivity" />
-        <activity android:name=".activity.PlayStopVideoActivity" />
+        <activity android:name=".game.PlayStopVideoGame" />
         <activity android:name=".activity.ChooseGameActivity" />
         <activity android:name=".activity.MetricsActivity" />
         <activity android:name=".game.FocusImageGame" />

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.gary.spiders.R;
-import com.gary.spiders.game.GameGenerator;
+import com.gary.spiders.game.GameCategory;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -48,7 +48,7 @@ public class AlertUtility {
         return alertDialog;
     }
 
-    public static AlertDialog createGameCompletedAlert(final Activity activity, final GameGenerator.Category category) {
+    public static AlertDialog createGameCompletedAlert(final Activity activity, final GameCategory category) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
         alertDialogBuilder.setPositiveButton("Proceed",
