@@ -23,31 +23,36 @@ public enum GameMode {
         }
         else if(category.isCartoon()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.FOCUS);
+            //applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsBW()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.FOCUS);
+            //applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsColor()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.FOCUS);
+            //applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosSmall()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.FOCUS);
+            //applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosBig()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.FOCUS);
+            //applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
