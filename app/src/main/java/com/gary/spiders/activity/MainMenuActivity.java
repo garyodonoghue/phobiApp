@@ -30,11 +30,6 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.this.startActivityForResult(intent1, requestCode);
     }
 
-    public void presentChooseGameScreen(View view) {
-        Intent myIntent = new Intent(MainMenuActivity.this, ChooseGameActivity.class);
-        MainMenuActivity.this.startActivity(myIntent);
-    }
-
     public void showProgress(View view) {
         Intent myIntent = new Intent(MainMenuActivity.this, MetricsActivity.class);
         MainMenuActivity.this.startActivity(myIntent);
@@ -77,7 +72,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     SharedPreferences.Editor editor = userData.edit();
                     editor.putString("userLevel", Integer.toString(newUserLevel));
                     editor.commit();
-                    
+
                     AlertDialog alert = AlertUtility.createInitialAssessmentCompletedAlert(this);
                     alert.show();
                 }
