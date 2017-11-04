@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.EnlargeTextActivity">
+    tools:context=".game.ZoomTextActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="spider"
-        android:id="@+id/spider_text"
+        android:id="@+id/zoom_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -49,5 +48,20 @@
         android:id="@+id/guideline"
         app:layout_constraintGuide_begin="20dp"
         android:orientation="horizontal" />
+
+    <ImageButton
+        android:id="@+id/giveUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/white_flag"
+        android:padding="0dp"
+        app:layout_constraintLeft_toRightOf="@id/progressBar"
+        android:paddingLeft="30dp"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="26dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:onClick="giveUp"/>
 
 </android.support.constraint.ConstraintLayout>

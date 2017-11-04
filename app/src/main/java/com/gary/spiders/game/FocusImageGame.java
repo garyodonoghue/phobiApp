@@ -1,46 +1,54 @@
-package com.gary.spiders.activity;
+package com.gary.spiders.game;
 
-import android.content.SharedPreferences;
+
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
-import com.gary.spiders.util.EpochUtil;
 
-public class ImageFocusActivity extends AppCompatActivity implements ISpiderExercise {
+/**
+ * Created by Gary on 18/09/2017.
+ */
+
+public class FocusImageGame extends Game {
 
     private float focusFactor = 0.1f;
-    ImageView spiderImageView = null;
+    ImageView imageView = null;
     Bitmap spiderImageBitmap = null;
-
     private static volatile Matrix sScaleMatrix;
-
     private static volatile int sDefaultDensity = -1;
-
-    SharedPreferences ratings;
+    int imageResourceId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
 
-        spiderImageView = (ImageView) findViewById(R.id.image_spider);
-        spiderImageView.setImageResource(R.mipmap.spider1);
-        spiderImageBitmap = ((BitmapDrawable)spiderImageView.getDrawable()).getBitmap();
-        updateImageFocus(focusFactor);
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            giveUpBtn.setVisibility(View.INVISIBLE);
+        }
+
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        imageResourceId = resourceLoader.getResource(category);
+
+        imageView = (ImageView) findViewById(R.id.focus_image);
+        imageView.setImageResource(imageResourceId);
+        spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
+
+        updateImageFocus(focusFactor);
 
         final Button button = (Button) findViewById(R.id.button_focus);
         button.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +61,7 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
                 updateImageFocus(focusFactor);
 
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createAlert(ImageFocusActivity.this);
+                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this, category);
                     alertDialog.show();
                 }
             }
@@ -61,7 +69,7 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
     }
 
     private void updateImageFocus(float focusFactor) {
-        spiderImageView.setImageDrawable(builtInPixelization(focusFactor, spiderImageBitmap));
+        imageView.setImageDrawable(builtInPixelization(focusFactor, spiderImageBitmap));
     }
 
     /**
@@ -82,8 +90,8 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
         Bitmap pixelatedBitmap = createScaledBitmap(bitmap, downScaledWidth,
                 downScaledHeight, false);
 
-         Bitmap upscaled = createScaledBitmap(pixelatedBitmap, width, height, false);
-         return new BitmapDrawable(getResources(), upscaled);
+        Bitmap upscaled = createScaledBitmap(pixelatedBitmap, width, height, false);
+        return new BitmapDrawable(getResources(), upscaled);
 
     }
 
@@ -131,17 +139,6 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
         return b;
     }
 
-
-    public void ratingClicked(View view){
-        RadioButton radioButton = (RadioButton) view;
-
-        ratings = getSharedPreferences("Ratings", 0);
-        SharedPreferences.Editor editor = ratings.edit();
-        editor.putString(this.getLocalClassName() + "_" + EpochUtil.getEpochTime(), radioButton.getText().toString());
-
-        editor.commit();
-    }
-
     private float getFocusFactor(){
         return this.focusFactor;
     }
@@ -149,4 +146,5 @@ public class ImageFocusActivity extends AppCompatActivity implements ISpiderExer
     private void incrementFocusFactor(){
         this.focusFactor = this.focusFactor - 0.005f;
     }
+
 }

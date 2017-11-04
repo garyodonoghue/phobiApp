@@ -1,30 +1,26 @@
-package com.gary.spiders.activity;
+package com.gary.spiders.game;
 
-import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
-import com.gary.spiders.util.EpochUtil;
 
-public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderExercise  {
+public class PlayStopVideoGame extends Game {
 
     private boolean started = false;
     private Handler handler = new Handler();
     ProgressBar progressBar = null;
-
-    SharedPreferences ratings;
+    int videoResourceId;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -40,14 +36,21 @@ public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderE
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
 
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            giveUpBtn.setVisibility(View.VISIBLE);
+        }
+
+        GameResourceLoader resourceLoader = new GameResourceLoader(this);
+        videoResourceId = resourceLoader.getResource(super.category);
+
         final VideoView videoView = (VideoView) findViewById(R.id.videoView);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar_playVideo);
         progressBar.setMax(1000);
 
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.sp1;
+        String path = "android.resource://" + getPackageName() + "/" + videoResourceId;
         videoView.setVideoURI(Uri.parse(path));
-
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
@@ -82,26 +85,18 @@ public class PlayStopVideoActivity extends AppCompatActivity implements ISpiderE
         started = true;
         this.progressBar.incrementProgressBy(5);
 
+        String s = getIntent().getStringExtra("category");
+        final GameCategory category = GameCategory.valueOf(s);
+
         if(progressBar.getProgress() >= progressBar.getMax()){
             stop();
             this.progressBar.setProgress(0);
-            AlertDialog alertDialog = AlertUtility.createAlert(PlayStopVideoActivity.this);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this, category);
             alertDialog.show();
 
         }
         else{
             handler.postDelayed(runnable, 1);
         }
-    }
-
-    @Override
-    public void ratingClicked(View view) {
-        RadioButton radioButton = (RadioButton) view;
-
-        ratings = getSharedPreferences("Ratings", 0);
-        SharedPreferences.Editor editor = ratings.edit();
-        editor.putString(this.getLocalClassName() + "_" + EpochUtil.getEpochTime(), radioButton.getText().toString());
-
-        editor.commit();
     }
 }
