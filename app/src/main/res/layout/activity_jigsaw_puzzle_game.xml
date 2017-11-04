@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context="com.gary.spiders.game.JigsawPuzzleGame">
 
     <GridLayout
         android:id="@+id/jigsawGrid"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:columnCount="3"
         android:rowCount="3"
-        android:paddingLeft="40dp"
+        android:layout_gravity="center"
         android:paddingTop="50dp">
 
         <ImageButton

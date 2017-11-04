@@ -8,11 +8,13 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +28,19 @@ public class JigsawPuzzleGame extends Game {
     private Drawable buttonImage1;
     private Drawable buttonImage2;
     int imageResourceId;
+    List<Bitmap> correctImageOrder;
+
+    ImageButton topLeft;
+    ImageButton topCenter;
+    ImageButton topRight;
+
+    ImageButton centerLeft;
+    ImageButton centerCenter;
+    ImageButton centerRight;
+
+    ImageButton bottomLeft;
+    ImageButton bottomCenter;
+    ImageButton bottomRight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +50,17 @@ public class JigsawPuzzleGame extends Game {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
 
-        ImageButton topLeft = (ImageButton) findViewById(R.id.top_left);
-        ImageButton topCenter = (ImageButton) findViewById(R.id.top_center);
-        ImageButton topRight = (ImageButton) findViewById(R.id.top_right);
+        topLeft = (ImageButton) findViewById(R.id.top_left);
+        topCenter = (ImageButton) findViewById(R.id.top_center);
+        topRight = (ImageButton) findViewById(R.id.top_right);
 
-        ImageButton centerLeft = (ImageButton) findViewById(R.id.center_left);
-        ImageButton centerCenter = (ImageButton) findViewById(R.id.center_center);
-        ImageButton centerRight = (ImageButton) findViewById(R.id.center_right);
+        centerLeft = (ImageButton) findViewById(R.id.center_left);
+        centerCenter = (ImageButton) findViewById(R.id.center_center);
+        centerRight = (ImageButton) findViewById(R.id.center_right);
 
-        ImageButton bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
-        ImageButton bottomCenter = (ImageButton) findViewById(R.id.bottom_center);
-        ImageButton bottomRight = (ImageButton) findViewById(R.id.bottom_right);
+        bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
+        bottomCenter = (ImageButton) findViewById(R.id.bottom_center);
+        bottomRight = (ImageButton) findViewById(R.id.bottom_right);
 
         // Divide up image into 9 pieces and assign to imageButton segments
         ImageView imageView = new ImageView(this);
@@ -54,17 +69,18 @@ public class JigsawPuzzleGame extends Game {
         imageView.setImageBitmap(resizedImage);
 
         List<Bitmap> splitImages = this.splitImage(imageView, 9);
+        correctImageOrder = splitImages;
 
-        topLeft.setImageBitmap(splitImages.get(0));
-        topCenter.setImageBitmap(splitImages.get(1));
-        topRight.setImageBitmap(splitImages.get(2));
+        topLeft.setImageBitmap(splitImages.get(1));
+        topCenter.setImageBitmap(splitImages.get(3));
+        topRight.setImageBitmap(splitImages.get(5));
 
-        centerLeft.setImageBitmap(splitImages.get(3));
-        centerCenter.setImageBitmap(splitImages.get(4));
-        centerRight.setImageBitmap(splitImages.get(5));
+        centerLeft.setImageBitmap(splitImages.get(7));
+        centerCenter.setImageBitmap(splitImages.get(0));
+        centerRight.setImageBitmap(splitImages.get(4));
 
-        bottomLeft.setImageBitmap(splitImages.get(6));
-        bottomCenter.setImageBitmap(splitImages.get(7));
+        bottomLeft.setImageBitmap(splitImages.get(2));
+        bottomCenter.setImageBitmap(splitImages.get(6));
         bottomRight.setImageBitmap(splitImages.get(8));
     }
 
@@ -85,6 +101,11 @@ public class JigsawPuzzleGame extends Game {
             imageButton2.setImageDrawable(buttonImage1);
 
             //check if each of the tiles contains the correct image - if so, complete the game
+            boolean solved = checkIfSolved();
+            if(solved) {
+                AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this, category);
+                alertDialog.show();
+            }
             
             imageButton1.clearColorFilter();
             imageButton2.clearColorFilter();
@@ -95,6 +116,44 @@ public class JigsawPuzzleGame extends Game {
 
             numSelectedTiles = 0;
         }
+    }
+
+    private boolean checkIfSolved() {
+        Bitmap drawable1 = ((BitmapDrawable) topLeft.getDrawable()).getBitmap();
+        Bitmap drawable2 = ((BitmapDrawable) topCenter.getDrawable()).getBitmap();
+        Bitmap drawable3 = ((BitmapDrawable) topRight.getDrawable()).getBitmap();
+
+        Bitmap drawable4 = ((BitmapDrawable) centerLeft.getDrawable()).getBitmap();
+        Bitmap drawable5 = ((BitmapDrawable) centerCenter.getDrawable()).getBitmap();
+        Bitmap drawable6 = ((BitmapDrawable) centerRight.getDrawable()).getBitmap();
+
+        Bitmap drawable7 = ((BitmapDrawable) bottomLeft.getDrawable()).getBitmap();
+        Bitmap drawable8 = ((BitmapDrawable) bottomCenter.getDrawable()).getBitmap();
+        Bitmap drawable9 = ((BitmapDrawable) bottomRight.getDrawable()).getBitmap();
+
+        boolean solved = false;
+
+        if (drawable1.sameAs(correctImageOrder.get(0))) {
+            if (drawable2.sameAs(correctImageOrder.get(1))) {
+                if (drawable3.sameAs(correctImageOrder.get(2))) {
+                    if (drawable4.sameAs(correctImageOrder.get(3))) {
+                        if (drawable5.sameAs(correctImageOrder.get(4))) {
+                            if (drawable6.sameAs(correctImageOrder.get(5))) {
+                                if (drawable7.sameAs(correctImageOrder.get(6))) {
+                                    if (drawable8.sameAs(correctImageOrder.get(7))) {
+                                        if (drawable9.sameAs(correctImageOrder.get(8))) {
+                                            solved = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return solved;
     }
 
 
