@@ -1,6 +1,7 @@
 package com.gary.spiders.util;
 
-import com.gary.spiders.util.GridCoordinate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Represents the grid of characters that makes up the word search puzzle
@@ -24,8 +25,6 @@ public class Grid
 
     /**
      * Generates our starting grid, filling it with a pre-defined "blank" character.
-     * @param x_dim
-     * @param y_dim
      * @return
      */
     protected void generateBlankGrid()
@@ -40,22 +39,17 @@ public class Grid
         }
     }
 
-    public String toString()
+    public String[] getGridArray()
     {
-        StringBuffer sb = new StringBuffer();
+        List<String> letters = new ArrayList<>();
         for(int i = 0; i < _y_size; i++)
         {
             for(int j = 0; j < _x_size; j++)
             {
-                if(j != 0)
-                {
-                    sb.append(' ');
-                }
-                sb.append(_char_matrix[j][i]);
+                letters.add(String.valueOf(_char_matrix[j][i]));
             }
-            sb.append('\n');
         }
-        return sb.toString();
+        return letters.toArray(new String[0]);
     }
 
     public void setCharAt(GridCoordinate gc, char input)

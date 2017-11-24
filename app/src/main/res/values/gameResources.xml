@@ -6,6 +6,10 @@
         <item>@string/linguisticHigh_3</item>
         <item>@string/linguisticHigh_4</item>
         <item>@string/linguisticHigh_5</item>
+        <item>@string/linguisticHigh_6</item>
+        <item>@string/linguisticHigh_7</item>
+        <item>@string/linguisticHigh_8</item>
+        <item>@string/linguisticHigh_9</item>
     </array>
 
     <array name="CARTOON_HIGH">

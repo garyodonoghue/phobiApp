@@ -15,14 +15,12 @@ import com.gary.spiders.util.AlertUtility;
 
 import java.util.Arrays;
 
-import static com.gary.spiders.game.GameCategory.LINGUISTIC_HIGH;
-
 public class MainMenuActivity extends AppCompatActivity {
 
     int requestCode = 1;
 
     public void startInitialAssessment(View view) {
-        Game linguistic_hard = GameGenerator.generateGame(LINGUISTIC_HIGH, true);
+        Game linguistic_hard = GameGenerator.generateGame(GameCategory.LINGUISTIC_HIGH, true);
         Intent intent1 = new Intent(MainMenuActivity.this, linguistic_hard.getClass());
         intent1.putExtra("category", linguistic_hard.category.toString());
         intent1.putExtra("initialAssessment", linguistic_hard.initialAssessment);

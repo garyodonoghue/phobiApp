@@ -23,6 +23,7 @@
         <activity android:name=".activity.ChooseGameActivity" />
         <activity android:name=".activity.MetricsActivity" />
         <activity android:name=".game.FocusImageGame" />
+        <activity android:name=".game.WordSearchActivity"></activity>
     </application>
 
 </manifest>

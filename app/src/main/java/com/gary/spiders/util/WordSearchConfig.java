@@ -1,6 +1,5 @@
 package com.gary.spiders.util;
 
-import java.io.*;
 import java.util.List;
 
 public class WordSearchConfig
@@ -75,7 +74,7 @@ public class WordSearchConfig
      * @param args
      * @return
      */
-    public static WordSearchConfig buildWordSearchConfigFromArgs(String[] args)
+    public static WordSearchConfig buildWordSearchConfigFromArgs(String[] args, List<String> words)
     {
         if(!validateArgs(args))
         {
@@ -84,20 +83,9 @@ public class WordSearchConfig
         String difficulty = WordSearchConfig.interpretDifficulty(args[0]);
         int x = Integer.parseInt(args[1]);
         int y = Integer.parseInt(args[2]);
-        List<String> wordBank;
-        try
-        {
-            BufferedReader br = new BufferedReader(new FileReader(args[3]));
-            //  TODO: Add support for other types of wordbank readers (XML, SQL, etc)
-            IWordBankReader wbr = new CSVWordBankReader(br);
-            wordBank = wbr.read();
-        }
-        catch (FileNotFoundException e)
-        {
-            throw new RuntimeException("Invalid arguments!  See log for details.");
-        }
 
-        return new WordSearchConfig(difficulty, x, y, wordBank);
+
+        return new WordSearchConfig(difficulty, x, y, words);
     }
 
     public void setDifficulty(String difficulty)
