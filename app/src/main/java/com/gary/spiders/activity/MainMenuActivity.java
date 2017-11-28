@@ -33,6 +33,11 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.this.startActivity(myIntent);
     }
 
+    public void settingsClicked(View view) {
+        Intent myIntent = new Intent(MainMenuActivity.this, SettingsActivity.class);
+        MainMenuActivity.this.startActivity(myIntent);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
