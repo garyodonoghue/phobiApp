@@ -18,6 +18,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class AlertUtility {
 
+    // TODO Can call this every so often throughout the game to determine a user's comfort levels
     public static AlertDialog createRatingAlert(final Activity activity) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
@@ -57,7 +58,7 @@ public class AlertUtility {
                         // Track progress
                         dialog.dismiss();
 
-                        // Mark the level as not completed - user gave up
+                        // Mark the level as not completed
                         Intent data = new Intent();
                         data.putExtra("completed", "true");
                         data.putExtra("category", category.toString());

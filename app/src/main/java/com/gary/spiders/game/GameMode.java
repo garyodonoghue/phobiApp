@@ -25,35 +25,44 @@ public enum GameMode {
         else if(category.isCartoon()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
-            applicableGameModes.add(GameMode.JIGSAW);
+            //applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsBW()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
-            applicableGameModes.add(GameMode.JIGSAW);
+            //applicableGameModes.add(GameMode.JIGSAW);
+
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsColor()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
-            applicableGameModes.add(GameMode.JIGSAW);
+            //applicableGameModes.add(GameMode.JIGSAW);
+
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosSmall()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
-            applicableGameModes.add(GameMode.JIGSAW);
+            //applicableGameModes.add(GameMode.JIGSAW);
+
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosBig()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
-            applicableGameModes.add(GameMode.JIGSAW);
+            //applicableGameModes.add(GameMode.JIGSAW);
+
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -72,7 +81,7 @@ public enum GameMode {
             case FOCUS: return new FocusImageGame();
             case ZOOM: return new ZoomTextActivity();
             case JIGSAW: return new JigsawPuzzleGame();
-            case IMAGE_PICKER: return new JigsawPuzzleGame(); // TODO
+            case IMAGE_PICKER: return new ImagePickerGame();
             case PLAY: return new PlayStopVideoGame();
             case WORDSEARCH: return new WordSearchActivity();
 

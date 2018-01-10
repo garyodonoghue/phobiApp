@@ -25,7 +25,8 @@
         <activity android:name=".game.FocusImageGame" />
         <activity android:name=".game.WordSearchActivity" />
         <activity android:name=".activity.SettingsActivity" />
-        <activity android:name=".activity.UpdateAvatarActivity"></activity>
+        <activity android:name=".activity.UpdateAvatarActivity" />
+        <activity android:name=".game.ImagePickerGame"></activity>
     </application>
 
 </manifest>
