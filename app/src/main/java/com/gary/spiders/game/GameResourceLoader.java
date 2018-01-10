@@ -26,4 +26,10 @@ public class GameResourceLoader {
         int resourceId = resources.getResourceId(new Random().nextInt(resources.length()), -1);
         return resourceId;
     }
+
+    public int getResourceArray(GameCategory category){
+        // this will retrieve an array of images within a specific category (e.g. CARTOON_LOW)
+        int categoryResourceArray = this.context.getResources().getIdentifier(category.toString(), "array", this.context.getPackageName());
+        return categoryResourceArray;
+    }
 }

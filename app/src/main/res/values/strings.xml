@@ -93,10 +93,13 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_menu">MainMenu</string>
-
-    <string name="linguisticHigh_1">Hairy</string>
-    <string name="linguisticHigh_2">Eyes</string>
-    <string name="linguisticHigh_3">Legs</string>
-    <string name="linguisticHigh_4">Web</string>
-    <string name="linguisticHigh_5">Black</string>
+    <string name="linguisticHigh_1">HAIRY</string>
+    <string name="linguisticHigh_2">EYES</string>
+    <string name="linguisticHigh_3">LEGS</string>
+    <string name="linguisticHigh_4">WEB</string>
+    <string name="linguisticHigh_5">BLACK</string>
+    <string name="linguisticHigh_6">ARACHNID</string>
+    <string name="linguisticHigh_7">CRAWL</string>
+    <string name="linguisticHigh_8">VENOM</string>
+    <string name="linguisticHigh_9">CREEPY</string>
 </resources>

@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Gary on 04/10/2017.
  */
 public enum GameMode {
-    CROSSWORD, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS, PLAY;
+    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS, PLAY;
 
 
     public static GameMode retrieveGameMode(GameCategory category) {
@@ -17,7 +17,8 @@ public enum GameMode {
         Random randomiser = new Random();
         if(category.isLinguistic()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            applicableGameModes.add(GameMode.ZOOM);
+            //applicableGameModes.add(GameMode.ZOOM);
+            applicableGameModes.add(GameMode.WORDSEARCH);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -73,7 +74,7 @@ public enum GameMode {
             case JIGSAW: return new JigsawPuzzleGame();
             case IMAGE_PICKER: return new JigsawPuzzleGame(); // TODO
             case PLAY: return new PlayStopVideoGame();
-            case CROSSWORD: return new JigsawPuzzleGame(); // TODO
+            case WORDSEARCH: return new WordSearchActivity();
 
             default: throw new IllegalArgumentException();
         }
