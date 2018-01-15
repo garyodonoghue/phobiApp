@@ -1,10 +1,15 @@
 package com.gary.spiders.game;
 
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
+import android.view.View;
 import android.widget.ImageButton;
 
 import com.gary.spiders.R;
+import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,14 +38,17 @@ public class ImagePickerGame extends Game {
 
     List<ImageButton> spiderButtons = new ArrayList<>();
 
+    int correctSelections;
+    int incorrectSelections;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tappy_game);
+        setContentView(R.layout.activity_image_picker);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        spiderImgsArrayId = resourceLoader.getResourceArray(super.category);
-        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.NON_SPIDER_IMAGES);
+        spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
@@ -90,17 +98,31 @@ public class ImagePickerGame extends Game {
             int spiderImgResId = spiderImages.getResourceId(randomInt, -1);
 
             randomElement.setImageResource(spiderImgResId);
+            imageButtonsList.remove(randomElement);
         }
 
 
         for(ImageButton imageButton : imageButtonsList){
-            if(!spiderButtons.contains(imageButton)){
-                int randomInt = rand.nextInt(nonSpiderImages.length());
-                int nonSpiderImgResId = nonSpiderImages.getResourceId(randomInt, -1);
+            int randomInt = rand.nextInt(nonSpiderImages.length());
+            int nonSpiderImgResId = nonSpiderImages.getResourceId(randomInt, 1);
 
-                imageButton.setImageResource(nonSpiderImgResId);
-            }
+            imageButton.setImageResource(nonSpiderImgResId);
+        }
+    }
 
+    public void tileClicked(View v){
+        ImageButton imageButton = (ImageButton) v;
+        if(spiderButtons.contains(imageButton)) {
+            imageButton.setColorFilter(Color.argb(100, 255, 255, 150), PorterDuff.Mode.LIGHTEN); // White Tint
+            correctSelections++;
+        }
+        else{
+            incorrectSelections++;
+        }
+
+        if(correctSelections == spiderButtons.size()){
+            AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this, GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+            successAlert.show();
         }
     }
 }
