@@ -21,8 +21,10 @@ import com.gary.spiders.util.WordSearchGridAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class WordSearchActivity extends Game {
 
@@ -71,7 +73,10 @@ public class WordSearchActivity extends Game {
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);
 
-        final List<TextView> selectedTiles = new ArrayList<>();
+        final Set<TextView> selectedTiles = new HashSet<>();
+        final Set<TextView> correctTiles = new HashSet<>();
+
+        TextView lastSelectedTextView = null;
 
         gridView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent me) {
@@ -95,6 +100,7 @@ public class WordSearchActivity extends Game {
                     }
                     for(String word : words){
                         if(containsAllChars(word, sb.toString())){
+                            correctTiles.addAll(selectedTiles);
                             selectedTiles.clear();
                             updateNumWordsFound();
                             return true;

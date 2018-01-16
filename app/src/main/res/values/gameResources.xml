@@ -12,45 +12,57 @@
         <item>@string/linguisticHigh_9</item>
     </array>
 
-    <array name="CARTOON_HIGH">
+    <integer-array name="CARTOON_HIGH">
         <item>@mipmap/spider1</item>
         <!--<item>@mipmap/spider2</item>-->
         <!--<item>@mipmap/spider3</item>-->
         <!--<item>@mipmap/spider4</item>-->
         <!--<item>@mipmap/spider5</item>-->
-    </array>
+    </integer-array>
 
-    <array name="DRAWINGS_BW_HIGH">
+    <integer-array name="DRAWINGS_BW_HIGH">
         <item>@mipmap/spider1</item>
         <!--<item>@mipmap/spider2</item>-->
         <!--<item>@mipmap/spider3</item>-->
         <!--<item>@mipmap/spider4</item>-->
         <!--<item>@mipmap/spider5</item>-->
-    </array>
+    </integer-array>
 
-    <array name="DRAWING_COL_HIGH">
+    <integer-array name="DRAWING_COL_HIGH">
         <item>@mipmap/spider1</item>
         <!--<item>@mipmap/spider2</item>-->
         <!--<item>@mipmap/spider3</item>-->
         <!--<item>@mipmap/spider4</item>-->
         <!--<item>@mipmap/spider5</item>-->
-    </array>
+    </integer-array>
 
-    <array name="PHOTOS_SMALL_HIGH">
+    <integer-array name="PHOTOS_SMALL_HIGH">
         <item>@mipmap/spider1</item>
         <!--<item>@mipmap/spider2</item>-->
         <!--<item>@mipmap/spider3</item>-->
         <!--<item>@mipmap/spider4</item>-->
         <!--<item>@mipmap/spider5</item>-->
-    </array>
+    </integer-array>
 
-    <array name="PHOTOS_BIG_HIGH">
+    <integer-array name="PHOTOS_BIG_HIGH">
         <item>@mipmap/spider1</item>
         <!--<item>@mipmap/spider2</item>-->
         <!--<item>@mipmap/spider3</item>-->
         <!--<item>@mipmap/spider4</item>-->
         <!--<item>@mipmap/spider5</item>-->
-    </array>
+    </integer-array>
+
+    <integer-array name="IMAGE_PICKER_SPIDER_IMAGES">
+        <item>@mipmap/sptap1</item>
+        <item>@mipmap/sptap2</item>
+        <item>@mipmap/sptap3</item>
+    </integer-array>
+
+    <integer-array name="IMAGE_PICKER_NON_SPIDER_IMAGES">
+        <item>@mipmap/atap1</item>
+        <item>@mipmap/atap2</item>
+        <item>@mipmap/atap3</item>
+    </integer-array>
 
     <array name="VIDEOS_HIGH">
         <item>@raw/sp1</item>

@@ -20,7 +20,7 @@ public class MainMenuActivity extends AppCompatActivity {
     int requestCode = 1;
 
     public void startInitialAssessment(View view) {
-        Game linguistic_hard = GameGenerator.generateGame(GameCategory.LINGUISTIC_HIGH, true);
+        Game linguistic_hard = GameGenerator.generateGame(GameCategory.CARTOON_HIGH, true);
         Intent intent1 = new Intent(MainMenuActivity.this, linguistic_hard.getClass());
         intent1.putExtra("category", linguistic_hard.category.toString());
         intent1.putExtra("initialAssessment", linguistic_hard.initialAssessment);
