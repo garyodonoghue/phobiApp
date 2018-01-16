@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Gary on 04/10/2017.
  */
 public enum GameMode {
-    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS, PLAY;
+    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS, PLAY, POPUP_IMAGES;
 
 
     public static GameMode retrieveGameMode(GameCategory category) {
@@ -26,7 +26,8 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -34,8 +35,8 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -43,8 +44,8 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -52,8 +53,8 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -61,8 +62,8 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             //applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -84,6 +85,7 @@ public enum GameMode {
             case IMAGE_PICKER: return new ImagePickerGame();
             case PLAY: return new PlayStopVideoGame();
             case WORDSEARCH: return new WordSearchActivity();
+            case POPUP_IMAGES: return new PopupImageGame();
 
             default: throw new IllegalArgumentException();
         }
