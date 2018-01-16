@@ -108,12 +108,15 @@ public class ImagePickerGame extends Game {
 
             imageButton.setImageResource(nonSpiderImgResId);
         }
+
+        spiderImages.recycle();
+        nonSpiderImages.recycle();
     }
 
     public void tileClicked(View v){
         ImageButton imageButton = (ImageButton) v;
         if(spiderButtons.contains(imageButton)) {
-            imageButton.setColorFilter(Color.argb(100, 255, 255, 150), PorterDuff.Mode.LIGHTEN); // White Tint
+            imageButton.setColorFilter(Color.argb(100, 255, 255, 150), PorterDuff.Mode.LIGHTEN);
             correctSelections++;
         }
         else{
