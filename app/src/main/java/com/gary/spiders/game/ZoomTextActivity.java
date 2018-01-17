@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
 
-public class ZoomTextActivity extends Game {
+public class ZoomTextActivity extends BaseGame {
 
     private float fontSize = 0.5f;
     int textResourceId;

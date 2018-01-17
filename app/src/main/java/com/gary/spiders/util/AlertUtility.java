@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.gary.spiders.R;
-import com.gary.spiders.game.GameCategory;
+import com.gary.spiders.enums.GameCategory;
 
 import static android.app.Activity.RESULT_OK;
 

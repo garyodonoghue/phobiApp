@@ -1,4 +1,4 @@
-package com.gary.spiders.game;
+package com.gary.spiders.enums;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,19 +75,5 @@ public enum GameMode {
         }
 
         return gameMode;
-    }
-
-    public Game getGameInstance(){
-        switch(this){
-            case FOCUS: return new FocusImageGame();
-            case ZOOM: return new ZoomTextActivity();
-            case JIGSAW: return new JigsawPuzzleGame();
-            case IMAGE_PICKER: return new ImagePickerGame();
-            case PLAY: return new PlayStopVideoGame();
-            case WORDSEARCH: return new WordSearchActivity();
-            case POPUP_IMAGES: return new PopupImageGame();
-
-            default: throw new IllegalArgumentException();
-        }
     }
 }

@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class JigsawPuzzleGame extends Game {
+public class JigsawPuzzleGame extends BaseGame {
 
     private int numSelectedTiles = 0;
     private ImageButton imageButton1;

@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class WordSearchActivity extends Game {
+public class WordSearchActivity extends BaseGame {
 
     int numWordsFound = 0;
 

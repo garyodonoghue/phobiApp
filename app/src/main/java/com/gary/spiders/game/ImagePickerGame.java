@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ImagePickerGame extends Game {
+public class ImagePickerGame extends BaseGame {
 
     ImageButton topLeft;
     ImageButton topCenter;

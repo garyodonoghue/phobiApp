@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class PopupImageGame extends Game {
+public class PopupImageGame extends BaseGame {
 
     private boolean started = false;
     private Handler handler = new Handler();

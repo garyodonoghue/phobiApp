@@ -6,11 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.gary.spiders.enums.GameCategory;
+
 /**
  * Created by Gary on 01/10/2017.
  */
 
-public abstract class Game extends AppCompatActivity {
+public abstract class BaseGame extends AppCompatActivity {
 
     public GameCategory category;
     public boolean initialAssessment;

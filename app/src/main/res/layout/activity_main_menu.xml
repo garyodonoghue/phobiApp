@@ -78,11 +78,11 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/start_assessment"
+                android:id="@+id/playGame"
                 android:layout_width="209dp"
                 android:layout_height="52dp"
                 android:text="Initial Assessment"
-                android:onClick="startInitialAssessment"
+                android:onClick="playGame"
                 tools:layout_editor_absoluteX="88dp"
                 tools:layout_editor_absoluteY="217dp" />
 

@@ -1,4 +1,4 @@
-package com.gary.spiders.game;
+package com.gary.spiders.enums;
 
 /**
  * Created by Gary on 04/10/2017.

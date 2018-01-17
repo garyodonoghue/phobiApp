@@ -13,9 +13,10 @@ import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
-public class PlayStopVideoGame extends Game {
+public class PlayStopVideoGame extends BaseGame {
 
     private boolean started = false;
     private Handler handler = new Handler();

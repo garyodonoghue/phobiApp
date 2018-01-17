@@ -19,7 +19,7 @@ import com.gary.spiders.util.AlertUtility;
  * Created by Gary on 18/09/2017.
  */
 
-public class FocusImageGame extends Game {
+public class FocusImageGame extends BaseGame {
 
     private float focusFactor = 0.1f;
     ImageView imageView = null;
