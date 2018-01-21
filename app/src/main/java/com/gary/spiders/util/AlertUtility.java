@@ -75,7 +75,7 @@ public class AlertUtility {
         return alertDialog;
     }
 
-    public static AlertDialog createInitialAssessmentCompletedAlert(final Activity activity) {
+    public static AlertDialog createInfoAlertDialog(final Activity activity, final String title, final String message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
         alertDialogBuilder.setPositiveButton("OK",
@@ -87,8 +87,8 @@ public class AlertUtility {
                 });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setTitle("Assessment Completed!");
-        alertDialog.setMessage("Thank you for taking the initial assessment. We will now present you levels based on your results");
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
 
         return alertDialog;
     }

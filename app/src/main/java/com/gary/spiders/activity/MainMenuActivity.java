@@ -1,6 +1,5 @@
 package com.gary.spiders.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,6 +7,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
@@ -28,17 +29,29 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        setupUserProfile();
+    }
 
+    private void setupUserProfile() {
         // Load the user's details:
         // name / avatar resource id / level / num points, see User object for fields available
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
 
-        Button playBtn = (Button) findViewById(R.id.playGame);
         if(user.isInitialAssessmentCompleted()){
+            Button playBtn = (Button) findViewById(R.id.playGame);
             playBtn.setText("Continue Playing");
             this.initialAssessmentCompleted = true;
         }
+
+        if(user.getAvatarResourceId() != -1){
+            ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
+            userAvatar.setImageResource(user.getAvatarResourceId());
+        }
+
+        // no need to validate the username input, as it will default to username anyway
+        TextView usernameTextView = (TextView) findViewById(R.id.username);
+        usernameTextView.setText(user.getName());
     }
 
     public void playGame(View view) {
@@ -79,9 +92,6 @@ public class MainMenuActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
                 String categoryString  = data.getStringExtra("category");
-
-                // TODO are these values coming from the intents set up above or set from the alert dialog utility??
-                // Looks like they're coming from the Alert utility - need to confirm
                 boolean initialAssessment  = Boolean.valueOf(data.getStringExtra("initialAssessment"));
 
                 GameCategory category = GameCategory.valueOf(categoryString);
@@ -95,8 +105,10 @@ public class MainMenuActivity extends AppCompatActivity {
                         int userLevel = category.getBeginnerLevelForCategory();
                         updateUserLevel(userLevel);
                         updateUserPoints(category.getNumPointsForLevel(userLevel));
+                        setInitialAssessmentCompletedFlag();
 
-                        AlertDialog alert = AlertUtility.createInitialAssessmentCompletedAlert(this);
+                        AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Assessment Completed!",
+                                "Thank you for taking the initial assessment. We will now present you levels based on your results");
                         alert.show();
                     }
                 }
@@ -105,17 +117,37 @@ public class MainMenuActivity extends AppCompatActivity {
                         // User completed the level and it is not an initial assessment
                         // Need to award them points and determine what level they are now on,
                         // generating a new game based on that
-                        int userPoints = user.getPoints();
-                        int updatedPoints = userPoints + 1;
+                        int oldPoints = user.getPoints();
+                        int oldLevel = category.getUserLevelFromPoints(oldPoints);
+
+                        int updatedPoints = oldPoints + 1;
                         updateUserPoints(updatedPoints);
 
+
                         // get new level based on new number of points
-                        int userLevel = category.getUserLevelFromPoints(updatedPoints);
-                        updateUserLevel(userLevel);
+                        int newLevel = category.getUserLevelFromPoints(updatedPoints);
+                        updateUserLevel(newLevel);
+
+                        // check if they upped a level, present a congrats dialog box
+                        if(oldLevel != newLevel){
+                            AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to level "+newLevel+"! Well done!");
+                        }
                     }
                 }
             }
         }
+    }
+
+    private void setInitialAssessmentCompletedFlag() {
+        SharedPreferences userData = getSharedPreferences("UserDetails", 0);
+        SharedPreferences.Editor editor = userData.edit();
+        editor.putBoolean("initialAssessmentCompleted", true);
+        editor.commit();
+
+        MainMenuActivity.user.setInitialAssessmentCompleted(true);
+        Button playBtn = (Button) findViewById(R.id.playGame);
+        playBtn.setText("Continue Playing");
+        this.initialAssessmentCompleted = true;
     }
 
     // TODO Should I get rid of storing/updating level, since this can be worked out based on the number of points a user has
@@ -150,21 +182,9 @@ public class MainMenuActivity extends AppCompatActivity {
             MainMenuActivity.this.startActivityForResult(intent, requestCode);
         }
         else{
-            // TODO initial assessment completed, and user finished all categories, what should we do in this scenario?
-            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            setInitialAssessmentCompletedFlag();
 
-            alertDialogBuilder.setPositiveButton("OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-
-                        }
-                    });
-
-            AlertDialog alertDialog = alertDialogBuilder.create();
-            alertDialog.setTitle("Initial Assessment Completed!");
-            alertDialog.setMessage("You completed all levels");
-
+            AlertDialog alertDialog = AlertUtility.createInfoAlertDialog(this, "Initial Assessment Completed!","You completed all levels" );
             alertDialog.show();
         }
     }
