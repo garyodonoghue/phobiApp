@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.gary.spiders.R;
-import com.gary.spiders.enums.GameCategory;
+import com.gary.spiders.game.BaseGame;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,8 +49,8 @@ public class AlertUtility {
         return alertDialog;
     }
 
-    public static AlertDialog createGameCompletedAlert(final Activity activity, final GameCategory category) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+    public static AlertDialog createGameCompletedAlert(final BaseGame game) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
 
         alertDialogBuilder.setPositiveButton("Proceed",
                 new DialogInterface.OnClickListener() {
@@ -61,9 +61,11 @@ public class AlertUtility {
                         // Mark the level as not completed
                         Intent data = new Intent();
                         data.putExtra("completed", "true");
-                        data.putExtra("category", category.toString());
-                        activity.setResult(RESULT_OK, data);
-                        activity.finish();
+                        data.putExtra("category", game.category.toString());
+                        data.putExtra("initialAssessment", game.initialAssessment);
+
+                        game.setResult(RESULT_OK, data);
+                        game.finish();
 
                     }
                 });

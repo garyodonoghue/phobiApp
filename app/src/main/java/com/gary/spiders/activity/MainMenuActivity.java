@@ -58,19 +58,21 @@ public class MainMenuActivity extends AppCompatActivity {
 
         if(!this.initialAssessmentCompleted){
             // LINGUISTIC_HIGH is the first HIGH category
-            BaseGame firstGame = GameFactory.generateGame(GameCategory.LINGUISTIC_HIGH, true);
-            Intent intent1 = new Intent(MainMenuActivity.this, firstGame.getClass());
-            intent1.putExtra("category", firstGame.category.toString());
-            intent1.putExtra("initialAssessment", firstGame.initialAssessment);
+            BaseGame gameType = GameFactory.generateGame(GameCategory.LINGUISTIC_HIGH, true);
+            Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
+
+            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+            // which will in turn be used by the AlertUtility to set the onResult values.
+            intent1.putExtra("category", gameType.category.toString());
+            intent1.putExtra("initialAssessment", gameType.initialAssessment);
 
             MainMenuActivity.this.startActivityForResult(intent1, requestCode);
         }
         else {
-            BaseGame newGame = GameFactory.generateGame(GameCategory.getCategory(user.getLevel()), false);
-            Intent intent1 = new Intent(MainMenuActivity.this, newGame.getClass());
-            intent1.putExtra("category", newGame.category.toString());
-            intent1.putExtra("initialAssessment", newGame.initialAssessment);
-
+            BaseGame newGameType = GameFactory.generateGame(GameCategory.getCategory(user.getLevel()), false);
+            Intent intent1 = new Intent(MainMenuActivity.this, newGameType.getClass());
+            intent1.putExtra("category", newGameType.category.toString());
+            intent1.putExtra("initialAssessment", newGameType.initialAssessment);
             MainMenuActivity.this.startActivityForResult(intent1, requestCode);
         }
     }
@@ -92,7 +94,7 @@ public class MainMenuActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
                 String categoryString  = data.getStringExtra("category");
-                boolean initialAssessment  = Boolean.valueOf(data.getStringExtra("initialAssessment"));
+                boolean initialAssessment  = Boolean.valueOf(data.getBooleanExtra("initialAssessment", false));
 
                 GameCategory category = GameCategory.valueOf(categoryString);
 

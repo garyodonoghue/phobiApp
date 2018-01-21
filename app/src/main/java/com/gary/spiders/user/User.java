@@ -25,7 +25,10 @@ public class User {
 
 
     public User(SharedPreferences preferences){
-       if(preferences != null) {
+
+        setDefaultValues();
+
+       if(preferences != null && preferences.getAll().size() > 0) {
            Map<String, String> userDetails = (Map<String, String>) preferences.getAll();
 
 
@@ -49,6 +52,10 @@ public class User {
                        setPoints(Integer.parseInt(value));
                        break;
 
+                   case "level":
+                       setLevel(Integer.parseInt(value));
+                       break;
+
                    default:
                        throw new IllegalArgumentException("Invalid user detail key returned with value=" + userDetail.getKey());
                }
@@ -56,12 +63,16 @@ public class User {
        }
        else {
            // We don't have any stored info for the user yet, default all the values
-           setName("Username");
-           setPoints(0);
-           setInitialAssessmentCompleted(false);
-           setAvatarResourceId(-1);
-           setCategory(GameCategory.LINGUISTIC_LOW);
+           setDefaultValues();
        }
+    }
+
+    private void setDefaultValues() {
+        setName("Username");
+        setPoints(0);
+        setInitialAssessmentCompleted(false);
+        setAvatarResourceId(-1);
+        setCategory(GameCategory.LINGUISTIC_LOW);
     }
 
     public String getName() {

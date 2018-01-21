@@ -5,6 +5,7 @@ import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -20,6 +21,13 @@ public class ZoomTextActivity extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom_text);
+
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         textResourceId = resourceLoader.getResource(super.category);
@@ -39,7 +47,7 @@ public class ZoomTextActivity extends BaseGame {
                 progressBar.incrementProgressBy(10);
 
                 if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this, category);
+                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this);
                     alertDialog.show();
                 }
             }

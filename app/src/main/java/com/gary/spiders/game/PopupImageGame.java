@@ -43,6 +43,13 @@ public class PopupImageGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_image_game);
 
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
+
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
@@ -92,7 +99,7 @@ public class PopupImageGame extends BaseGame {
             // all spider images have been removed, the game is completed
             if(allImageResourceIds.size() == nonSpiderImageResourceIds.size()){
                 stop();
-                AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this, this.category);
+                AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
                 successAlert.show();
             }
         }

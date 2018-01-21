@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
@@ -35,6 +36,13 @@ public class PlayStopVideoGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
+
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         videoResourceId = resourceLoader.getResource(super.category);
@@ -86,7 +94,7 @@ public class PlayStopVideoGame extends BaseGame {
         if(progressBar.getProgress() >= progressBar.getMax()){
             stop();
             this.progressBar.setProgress(0);
-            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this, category);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this);
             alertDialog.show();
 
         }

@@ -47,6 +47,13 @@ public class JigsawPuzzleGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
 
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
 
@@ -103,7 +110,7 @@ public class JigsawPuzzleGame extends BaseGame {
             //check if each of the tiles contains the correct image - if so, complete the game
             boolean solved = checkIfSolved();
             if(solved) {
-                AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this, category);
+                AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this);
                 alertDialog.show();
             }
             

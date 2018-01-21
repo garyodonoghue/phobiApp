@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,13 @@ public class WordSearchActivity extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wordsearch);
+
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
 
         GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
@@ -122,7 +130,7 @@ public class WordSearchActivity extends BaseGame {
     private void updateNumWordsFound() {
         numWordsFound++;
         if(numWordsFound == 5){
-            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this, category);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this);
             alertDialog.show();
         }
     }

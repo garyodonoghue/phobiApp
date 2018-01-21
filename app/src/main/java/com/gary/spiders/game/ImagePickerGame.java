@@ -47,6 +47,13 @@ public class ImagePickerGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_picker);
 
+        if(initialAssessment){
+            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
+            if(giveUpBtn != null) {
+                giveUpBtn.setVisibility(View.VISIBLE);
+            }
+        }
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
         nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
@@ -125,7 +132,7 @@ public class ImagePickerGame extends BaseGame {
         }
 
         if(correctSelections == spiderButtons.size()){
-            AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this, GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+            AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
             successAlert.show();
         }
     }
