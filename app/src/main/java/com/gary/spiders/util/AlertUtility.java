@@ -88,7 +88,7 @@ public class AlertUtility {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setTitle("Assessment Completed!");
-        alertDialog.setMessage("Thank you for taking the initial assessment. We will now present you levels based on the results of this");
+        alertDialog.setMessage("Thank you for taking the initial assessment. We will now present you levels based on your results");
 
         return alertDialog;
     }

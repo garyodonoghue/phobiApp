@@ -17,8 +17,10 @@ public class User {
 
     private boolean initialAssessmentCompleted;
 
+    // There are 100 levels, 10pts per level
     private int points;
     private int level;
+
     private GameCategory category;
 
 

@@ -123,4 +123,13 @@ public enum GameCategory {
             default:return 0;
         }
     }
+
+    public int getUserLevelFromPoints(int numPoints){
+        return (numPoints / 10); // TODO Confirm this will work as expected, i.e. ronud down to the nearest whole number when returned as an in
+    }
+
+
+    public int getNumPointsForLevel(int level){
+        return level*10;
+    }
 }

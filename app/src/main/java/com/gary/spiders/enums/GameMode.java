@@ -17,52 +17,52 @@ public enum GameMode {
         Random randomiser = new Random();
         if(category.isLinguistic()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.ZOOM);
+            applicableGameModes.add(GameMode.ZOOM);
             applicableGameModes.add(GameMode.WORDSEARCH);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isCartoon()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
             applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsBW()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
             applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsColor()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
             applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosSmall()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
             applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosBig()){
             List<GameMode> applicableGameModes = new ArrayList<>();
-            //applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.FOCUS);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
             applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));

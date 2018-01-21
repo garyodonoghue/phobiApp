@@ -8,7 +8,6 @@ import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
@@ -36,11 +35,6 @@ public class PlayStopVideoGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
-
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            giveUpBtn.setVisibility(View.VISIBLE);
-        }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         videoResourceId = resourceLoader.getResource(super.category);
