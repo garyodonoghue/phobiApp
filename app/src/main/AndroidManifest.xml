@@ -27,7 +27,8 @@
         <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.UpdateAvatarActivity" />
         <activity android:name=".game.ImagePickerGame" />
-        <activity android:name=".game.PopupImageGame"></activity>
+        <activity android:name=".game.PopupImageGame" />
+        <activity android:name=".util.ReminderScreen"></activity>
     </application>
 
 </manifest>
