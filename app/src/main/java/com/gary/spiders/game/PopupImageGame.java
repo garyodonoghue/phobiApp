@@ -72,7 +72,7 @@ public class PopupImageGame extends Game {
         int resourceId = allImageResourceIds.get(rand.nextInt(allImageResourceIds.size()));
         popupImageButton.setImageResource(resourceId);
         popupImageButton.setTag(resourceId);
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 1000);
 
         popupImageButton.clearColorFilter();
     }
