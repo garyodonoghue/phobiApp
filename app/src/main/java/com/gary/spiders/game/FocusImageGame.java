@@ -62,7 +62,7 @@ public class FocusImageGame extends BaseGame {
 
                 updateImageFocus(focusFactor);
 
-                if(progressBar.getProgress() == progressBar.getMax()){
+                if(progressBar.getProgress() == progressBar.getMax()+1){
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
                     alertDialog.show();
                 }

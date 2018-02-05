@@ -91,7 +91,7 @@ public class PlayStopVideoGame extends BaseGame {
         String s = getIntent().getStringExtra("category");
         final GameCategory category = GameCategory.valueOf(s);
 
-        if(progressBar.getProgress() >= progressBar.getMax()){
+        if(progressBar.getProgress() >= progressBar.getMax()+5){
             stop();
             this.progressBar.setProgress(0);
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this);

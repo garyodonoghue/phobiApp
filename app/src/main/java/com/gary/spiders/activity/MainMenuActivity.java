@@ -38,7 +38,7 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
 
-        if(user.isInitialAssessmentCompleted()){
+        if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
             Button playBtn = (Button) findViewById(R.id.playGame);
             playBtn.setText("Continue Playing");
             this.initialAssessmentCompleted = true;
@@ -146,7 +146,7 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.putBoolean("initialAssessmentCompleted", true);
         editor.commit();
 
-        MainMenuActivity.user.setInitialAssessmentCompleted(true);
+        MainMenuActivity.user.setInitialAssessmentCompleted("true");
         Button playBtn = (Button) findViewById(R.id.playGame);
         playBtn.setText("Continue Playing");
         this.initialAssessmentCompleted = true;

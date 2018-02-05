@@ -15,7 +15,7 @@ public class User {
     private String name;
     private int avatarResourceId;
 
-    private boolean initialAssessmentCompleted;
+    private String initialAssessmentCompleted;
 
     // There are 100 levels, 10pts per level
     private int points;
@@ -31,7 +31,6 @@ public class User {
        if(preferences != null && preferences.getAll().size() > 0) {
            Map<String, String> userDetails = (Map<String, String>) preferences.getAll();
 
-
            for (Map.Entry<String, String> userDetail : userDetails.entrySet()) {
                String value = userDetail.getValue();
 
@@ -45,7 +44,7 @@ public class User {
                        break;
 
                    case "initialAssessmentCompleted":
-                       setInitialAssessmentCompleted(Boolean.parseBoolean(value));
+                       setInitialAssessmentCompleted(value);
                        break;
 
                    case "points":
@@ -70,7 +69,7 @@ public class User {
     private void setDefaultValues() {
         setName("Username");
         setPoints(0);
-        setInitialAssessmentCompleted(false);
+        setInitialAssessmentCompleted("false");
         setAvatarResourceId(-1);
         setCategory(GameCategory.LINGUISTIC_LOW);
     }
@@ -115,11 +114,11 @@ public class User {
         this.points = points;
     }
 
-    public boolean isInitialAssessmentCompleted() {
+    public String isInitialAssessmentCompleted() {
         return initialAssessmentCompleted;
     }
 
-    public void setInitialAssessmentCompleted(boolean initialAssessmentCompleted) {
+    public void setInitialAssessmentCompleted(String initialAssessmentCompleted) {
         this.initialAssessmentCompleted = initialAssessmentCompleted;
     }
 }
