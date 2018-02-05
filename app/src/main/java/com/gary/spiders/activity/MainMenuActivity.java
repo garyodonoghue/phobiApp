@@ -150,6 +150,8 @@ public class MainMenuActivity extends AppCompatActivity {
         Button playBtn = (Button) findViewById(R.id.playGame);
         playBtn.setText("Continue Playing");
         this.initialAssessmentCompleted = true;
+
+        //updateUserLevel();
     }
 
     // TODO Should I get rid of storing/updating level, since this can be worked out based on the number of points a user has
