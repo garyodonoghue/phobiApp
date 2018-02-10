@@ -43,13 +43,6 @@ public class PopupImageGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_image_game);
 
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            if(giveUpBtn != null) {
-                giveUpBtn.setVisibility(View.VISIBLE);
-            }
-        }
-
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
@@ -107,4 +100,9 @@ public class PopupImageGame extends BaseGame {
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
         }
     }
+
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
+
 }

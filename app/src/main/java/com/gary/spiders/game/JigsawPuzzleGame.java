@@ -47,13 +47,6 @@ public class JigsawPuzzleGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
 
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            if(giveUpBtn != null) {
-                giveUpBtn.setVisibility(View.VISIBLE);
-            }
-        }
-
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
 
