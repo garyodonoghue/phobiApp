@@ -19,14 +19,14 @@
         android:scaleType="fitXY"
         app:srcCompat="@color/white" />
 
-    <Button
+    <ImageButton
         android:id="@+id/giveUpVideo"
         android:layout_width="101dp"
         android:layout_height="99dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp"
-        android:background="@mipmap/to_safety"
+        android:background="@mipmap/safety_icon"
         android:onClick="giveUp" />
 
 </RelativeLayout>

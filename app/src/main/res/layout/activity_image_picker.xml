@@ -207,13 +207,13 @@
     </GridLayout>
 
 
-    <Button
+    <ImageButton
         android:id="@+id/giveUpVideo"
         android:layout_width="101dp"
         android:layout_height="99dp"
         android:layout_below="@+id/tappyGrid"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/to_safety"
+        android:background="@mipmap/safety_icon"
         android:onClick="giveUp" />
 
 

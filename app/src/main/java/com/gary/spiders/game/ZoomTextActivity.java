@@ -38,7 +38,7 @@ public class ZoomTextActivity extends BaseGame {
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
                 progressBar.incrementProgressBy(10);
 
-                if(progressBar.getProgress() == progressBar.getMax() + 10){
+                if(progressBar.getProgress() >= progressBar.getMax() + 10){
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this);
                     alertDialog.show();
                 }

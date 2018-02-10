@@ -40,7 +40,7 @@ public class WordSearchActivity extends BaseGame {
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 
         String[] args = new String[3];
-        args[0] = WordSearchConfig.HARD_DIFFICULTY;
+        args[0] = WordSearchConfig.NORMAL_DIFFICULTY;
         args[1] = "10";
         args[2] = "10";
 

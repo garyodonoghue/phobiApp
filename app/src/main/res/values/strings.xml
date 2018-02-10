@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spiders</string>
+    <string name="app_name">PhobiApp</string>
     <string name="title_activity_image_focus">ImageFocusActivity</string>
     <string name="title_activity_questionnaire">QuestionnaireActivity</string>
     <string name="large_text">

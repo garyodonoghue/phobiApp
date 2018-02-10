@@ -23,7 +23,7 @@ public abstract class BaseGame extends AppCompatActivity {
 
         String s = getIntent().getStringExtra("category");
         this.category = GameCategory.valueOf(s);
-        this.initialAssessment = getIntent().getBooleanExtra("initialAssessment", false);
+        this.initialAssessment = Boolean.valueOf(getIntent().getStringExtra("initialAssessment"));
     }
 
     public void giveUp(View v){
@@ -31,7 +31,7 @@ public abstract class BaseGame extends AppCompatActivity {
         Intent data = new Intent();
         data.putExtra("completed", "false");
         data.putExtra("category", this.category.toString());
-        data.putExtra("initialAssessment", this.initialAssessment);
+        data.putExtra("initialAssessment", Boolean.valueOf(this.initialAssessment));
         setResult(RESULT_OK, data);
         this.finish();
     }
