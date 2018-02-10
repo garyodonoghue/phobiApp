@@ -143,7 +143,7 @@ public class MainMenuActivity extends AppCompatActivity {
     private void setInitialAssessmentCompletedFlag() {
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         SharedPreferences.Editor editor = userData.edit();
-        editor.putBoolean("initialAssessmentCompleted", true);
+        editor.putString("initialAssessmentCompleted", "true");
         editor.commit();
 
         MainMenuActivity.user.setInitialAssessmentCompleted("true");

@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <array name="LINGUISTIC_LOW">
+        <item>@string/linguisticHigh_1</item>
+        <item>@string/linguisticHigh_2</item>
+        <item>@string/linguisticHigh_3</item>
+        <item>@string/linguisticHigh_4</item>
+        <item>@string/linguisticHigh_5</item>
+        <item>@string/linguisticHigh_6</item>
+        <item>@string/linguisticHigh_7</item>
+        <item>@string/linguisticHigh_8</item>
+        <item>@string/linguisticHigh_9</item>
+    </array>
+    <array name="LINGUISTIC_MED">
+        <item>@string/linguisticHigh_1</item>
+        <item>@string/linguisticHigh_2</item>
+        <item>@string/linguisticHigh_3</item>
+        <item>@string/linguisticHigh_4</item>
+        <item>@string/linguisticHigh_5</item>
+        <item>@string/linguisticHigh_6</item>
+        <item>@string/linguisticHigh_7</item>
+        <item>@string/linguisticHigh_8</item>
+        <item>@string/linguisticHigh_9</item>
+    </array>
+
     <array name="LINGUISTIC_HIGH">
         <item>@string/linguisticHigh_1</item>
         <item>@string/linguisticHigh_2</item>
