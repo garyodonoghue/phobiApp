@@ -94,7 +94,7 @@ public class MainMenuActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
                 String categoryString  = data.getStringExtra("category");
-                boolean initialAssessment  = Boolean.valueOf(data.getBooleanExtra("initialAssessment", false));
+                boolean initialAssessment  = Boolean.valueOf(data.getStringExtra("initialAssessment"));
 
                 GameCategory category = GameCategory.valueOf(categoryString);
 

@@ -15,7 +15,7 @@ import com.gary.spiders.enums.GameCategory;
 public abstract class BaseGame extends AppCompatActivity {
 
     public GameCategory category;
-    public boolean initialAssessment;
+    public Boolean initialAssessment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +23,9 @@ public abstract class BaseGame extends AppCompatActivity {
 
         String s = getIntent().getStringExtra("category");
         this.category = GameCategory.valueOf(s);
-        this.initialAssessment = Boolean.valueOf(getIntent().getStringExtra("initialAssessment"));
+
+        boolean initialAssess = getIntent().getBooleanExtra("initialAssessment", false);
+        this.initialAssessment = initialAssess;
     }
 
     public void giveUp(View v){
@@ -31,7 +33,7 @@ public abstract class BaseGame extends AppCompatActivity {
         Intent data = new Intent();
         data.putExtra("completed", "false");
         data.putExtra("category", this.category.toString());
-        data.putExtra("initialAssessment", Boolean.valueOf(this.initialAssessment));
+        data.putExtra("initialAssessment", this.initialAssessment.toString());
         setResult(RESULT_OK, data);
         this.finish();
     }
