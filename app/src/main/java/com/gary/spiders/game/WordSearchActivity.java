@@ -29,6 +29,7 @@ import java.util.Set;
 public class WordSearchActivity extends BaseGame {
 
     int numWordsFound = 0;
+    List<String> obfuscatedWords = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class WordSearchActivity extends BaseGame {
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 
         String[] args = new String[3];
-        args[0] = WordSearchConfig.EASY_DIFFICULTY;
+        args[0] = WordSearchConfig.HARD_DIFFICULTY;
         args[1] = "10";
         args[2] = "10";
 
@@ -53,13 +54,15 @@ public class WordSearchActivity extends BaseGame {
         final List<String> words = new ArrayList<>();
         while(words.size() < 5){
             int randomIndex = rand.nextInt(8);
-            if(!words.contains(wordsArray[randomIndex])){
-                words.add(wordsArray[randomIndex]);
+            String word = wordsArray[randomIndex];
+            if(!words.contains(word)){
+                words.add(word);
+                obfuscateWord(word);
             }
         }
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, words);
+                this, android.R.layout.simple_list_item_1, obfuscatedWords);
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -100,6 +103,8 @@ public class WordSearchActivity extends BaseGame {
                     }
                     for(String word : words){
                         if(containsAllChars(word, sb.toString())){
+                            // this will avoid being able to progress by selecting the same word 5 times
+                            words.remove(word);
                             correctTiles.addAll(selectedTiles);
                             selectedTiles.clear();
                             updateNumWordsFound();
@@ -117,6 +122,21 @@ public class WordSearchActivity extends BaseGame {
                 return true;
             }
         });
+    }
+
+    private void obfuscateWord(String word) {
+        String firstLetter = String.valueOf(word.charAt(0));
+        String lastLetter = String.valueOf(word.charAt(word.length()-1));
+        int numbMiddleLetters = word.length() - 2;
+
+        String toAdd = "*";
+        StringBuilder s = new StringBuilder();
+        for(int count = 0; count < numbMiddleLetters; count++) {
+            s.append(toAdd);
+        }
+        String replacedMiddle = s.toString();
+        String obfuscatedWord = firstLetter + replacedMiddle + lastLetter;
+        obfuscatedWords.add(obfuscatedWord);
     }
 
     private void updateNumWordsFound() {
