@@ -136,4 +136,8 @@ public class ImagePickerGame extends BaseGame {
             successAlert.show();
         }
     }
+
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
 }

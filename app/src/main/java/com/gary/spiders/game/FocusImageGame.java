@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -32,13 +31,6 @@ public class FocusImageGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
-
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            if(giveUpBtn != null) {
-                giveUpBtn.setVisibility(View.VISIBLE);
-            }
-        }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
@@ -149,4 +141,7 @@ public class FocusImageGame extends BaseGame {
         this.focusFactor = this.focusFactor - 0.005f;
     }
 
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
 }

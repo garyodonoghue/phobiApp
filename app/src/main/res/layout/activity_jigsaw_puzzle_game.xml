@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
     tools:context="com.gary.spiders.game.JigsawPuzzleGame">
 
     <GridLayout
         android:id="@+id/jigsawGrid"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="700dp"
         android:columnCount="3"
         android:rowCount="3"
         android:layout_gravity="center"
@@ -151,5 +152,15 @@
             android:onClick="tileClicked"
             android:padding="0dp"
             android:scaleType="fitCenter"/>
+
     </GridLayout>
+
+    <Button
+        android:id="@+id/giveUpVideo"
+        android:layout_width="101dp"
+        android:layout_height="99dp"
+        android:layout_below="@+id/jigsawGrid"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/to_safety"
+        android:onClick="giveUp" />
 </RelativeLayout>

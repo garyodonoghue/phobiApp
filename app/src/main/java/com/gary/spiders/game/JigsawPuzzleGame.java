@@ -218,4 +218,8 @@ public class JigsawPuzzleGame extends BaseGame {
           canvas.drawBitmap(bmp, borderSize, borderSize, null);
           return bmpWithBorder;
     }
+
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
 }
