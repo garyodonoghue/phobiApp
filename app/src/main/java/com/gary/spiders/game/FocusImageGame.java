@@ -26,6 +26,7 @@ public class FocusImageGame extends BaseGame {
     private static volatile Matrix sScaleMatrix;
     private static volatile int sDefaultDensity = -1;
     int imageResourceId;
+    int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +50,13 @@ public class FocusImageGame extends BaseGame {
             public void onClick(View v) {
 
                 progressBar.incrementProgressBy(1);
+                progress = progress + 1;
                 incrementFocusFactor();
                 focusFactor = getFocusFactor();
 
                 updateImageFocus(focusFactor);
 
-                if(progressBar.getProgress() == progressBar.getMax()+1){
+                if(progress > progressBar.getMax()+1){
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
                     alertDialog.show();
                 }

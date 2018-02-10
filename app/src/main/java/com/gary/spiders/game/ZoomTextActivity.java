@@ -15,6 +15,7 @@ public class ZoomTextActivity extends BaseGame {
 
     private float fontSize = 0.5f;
     int textResourceId;
+    int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,8 @@ public class ZoomTextActivity extends BaseGame {
                 incrementFontSize();
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
                 progressBar.incrementProgressBy(10);
-
-                if(progressBar.getProgress() >= progressBar.getMax() + 10){
+                progress = progress + 10;
+                if(progress > progressBar.getMax() + 1){
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this);
                     alertDialog.show();
                 }
