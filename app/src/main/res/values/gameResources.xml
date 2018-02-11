@@ -36,12 +36,29 @@
         <item>@string/linguisticHigh_9</item>
     </array>
 
+    <integer-array name="CARTOON_LOW">
+        <item>@mipmap/cartoon_low1</item>
+        <item>@mipmap/cartoon_low2</item>
+        <item>@mipmap/cartoon_low3</item>
+        <item>@mipmap/cartoon_low4</item>
+    </integer-array>
+
+    <integer-array name="CARTOON_MED">
+        <item>@mipmap/cartoon_med1</item>
+        <item>@mipmap/cartoon_med2</item>
+        <item>@mipmap/cartoon_med3</item>
+    </integer-array>
+
     <integer-array name="CARTOON_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+        <item>@mipmap/cartoon_high1</item>
+        <item>@mipmap/cartoon_high2</item>>
+        <item>@mipmap/cartoon_high3</item>
+        <item>@mipmap/cartoon_high4</item>
+        <item>@mipmap/cartoon_high5</item>
+        <item>@mipmap/cartoon_high6</item>
+        <item>@mipmap/cartoon_high7</item>
+        <item>@mipmap/cartoon_high8</item>
+        <item>@mipmap/cartoon_high9</item>
     </integer-array>
 
     <integer-array name="DRAWINGS_BW_HIGH">
