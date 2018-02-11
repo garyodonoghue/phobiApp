@@ -75,12 +75,39 @@
         <item>@mipmap/drawing_bw_low1</item>
     </integer-array>
 
+    <integer-array name="DRAWING_COL_LOW">
+        <item>@mipmap/drawing_col_low1</item>
+        <item>@mipmap/drawing_col_low2</item>
+        <item>@mipmap/drawing_col_low3</item>
+        <item>@mipmap/drawing_col_low4</item>
+        <item>@mipmap/drawing_col_low5</item>
+        <item>@mipmap/drawing_col_low6</item>
+        <item>@mipmap/drawing_col_low7</item>
+    </integer-array>
+
+    <integer-array name="DRAWING_COL_MED">
+        <item>@mipmap/drawing_col_med1</item>
+        <item>@mipmap/drawing_col_med2</item>
+        <item>@mipmap/drawing_col_med3</item>
+        <item>@mipmap/drawing_col_med4</item>
+        <item>@mipmap/drawing_col_med5</item>
+        <item>@mipmap/drawing_col_med6</item>
+        <item>@mipmap/drawing_col_med7</item>
+        <item>@mipmap/drawing_col_med8</item>
+        <item>@mipmap/drawing_col_med9</item>
+        <item>@mipmap/drawing_col_med10</item>
+    </integer-array>
+
     <integer-array name="DRAWING_COL_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+        <item>@mipmap/drawing_col_high1</item>
+        <item>@mipmap/drawing_col_high2</item>
+        <item>@mipmap/drawing_col_high3</item>
+        <item>@mipmap/drawing_col_high4</item>
+        <item>@mipmap/drawing_col_high5</item>
+        <item>@mipmap/drawing_col_high6</item>
+        <item>@mipmap/drawing_col_high7</item>
+        <item>@mipmap/drawing_col_high8</item>
+        <item>@mipmap/drawing_col_high9</item>
     </integer-array>
 
     <integer-array name="PHOTOS_SMALL_HIGH">
