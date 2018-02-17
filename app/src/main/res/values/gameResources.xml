@@ -126,16 +126,45 @@
         <!--<item>@mipmap/spider5</item>-->
     </integer-array>
 
-    <integer-array name="IMAGE_PICKER_SPIDER_IMAGES">
-        <item>@mipmap/sptap1</item>
-        <item>@mipmap/sptap2</item>
-        <item>@mipmap/sptap3</item>
+    <integer-array name="IMAGE_PICKER_SPIDER_BW_IMAGES">
+        <item>@mipmap/tappy_bw_spider1</item>
+        <item>@mipmap/tappy_bw_spider2</item>
+        <item>@mipmap/tappy_bw_spider3</item>
+        <item>@mipmap/tappy_bw_spider4</item>
+        <item>@mipmap/tappy_bw_spider5</item>
+        <item>@mipmap/tappy_bw_spider6</item>
+        <item>@mipmap/tappy_bw_spider7</item>
+        <item>@mipmap/tappy_bw_spider8</item>
     </integer-array>
 
-    <integer-array name="IMAGE_PICKER_NON_SPIDER_IMAGES">
-        <item>@mipmap/atap1</item>
-        <item>@mipmap/atap2</item>
-        <item>@mipmap/atap3</item>
+    <integer-array name="IMAGE_PICKER_NON_SPIDER_BW_IMAGES">
+        <item>@mipmap/tappy_bw_non_spider1</item>
+        <item>@mipmap/tappy_bw_non_spider2</item>
+        <item>@mipmap/tappy_bw_non_spider3</item>
+        <item>@mipmap/tappy_bw_non_spider4</item>
+        <item>@mipmap/tappy_bw_non_spider5</item>
+        <item>@mipmap/tappy_bw_non_spider6</item>
+        <item>@mipmap/tappy_bw_non_spider7</item>
+        <item>@mipmap/tappy_bw_non_spider8</item>
+        <item>@mipmap/tappy_bw_non_spider9</item>
+        <item>@mipmap/tappy_bw_non_spider10</item>
+        <item>@mipmap/tappy_bw_non_spider12</item>
+        <item>@mipmap/tappy_bw_non_spider13</item>
+        <item>@mipmap/tappy_bw_non_spider14</item>
+        <item>@mipmap/tappy_bw_non_spider15</item>
+        <item>@mipmap/tappy_bw_non_spider16</item>
+        <item>@mipmap/tappy_bw_non_spider17</item>
+        <item>@mipmap/tappy_bw_non_spider18</item>
+        <item>@mipmap/tappy_bw_non_spider19</item>
+        <item>@mipmap/tappy_bw_non_spider20</item>
+        <item>@mipmap/tappy_bw_non_spider21</item>
+        <item>@mipmap/tappy_bw_non_spider22</item>
+        <item>@mipmap/tappy_bw_non_spider23</item>
+        <item>@mipmap/tappy_bw_non_spider24</item>
+        <item>@mipmap/tappy_bw_non_spider25</item>
+        <item>@mipmap/tappy_bw_non_spider26</item>
+        <item>@mipmap/tappy_bw_non_spider27</item>
+        <item>@mipmap/tappy_bw_non_spider28</item>
     </integer-array>
 
     <array name="VIDEOS_HIGH">
