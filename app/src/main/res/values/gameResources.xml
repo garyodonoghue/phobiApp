@@ -139,15 +139,52 @@
     </integer-array>
 
     <integer-array name="PHOTOS_COL_SMALL_LOW">
-
+        <item>@mipmap/photos_col_small_low1</item>
+        <item>@mipmap/photos_col_small_low2</item>
+        <item>@mipmap/photos_col_small_low3</item>
+        <item>@mipmap/photos_col_small_low4</item>
+        <item>@mipmap/photos_col_small_low5</item>
+        <item>@mipmap/photos_col_small_low6</item>
+        <item>@mipmap/photos_col_small_low7</item>
+        <item>@mipmap/photos_col_small_low8</item>
+        <item>@mipmap/photos_col_small_low9</item>
+        <item>@mipmap/photos_col_small_low10</item>
+        <item>@mipmap/photos_col_small_low11</item>
+        <item>@mipmap/photos_col_small_low12</item>
+        <item>@mipmap/photos_col_small_low13</item>
+        <item>@mipmap/photos_col_small_low14</item>
     </integer-array>
 
     <integer-array name="PHOTOS_COL_SMALL_MED">
-
+        <item>@mipmap/photos_col_small_med1</item>
+        <item>@mipmap/photos_col_small_med2</item>
+        <item>@mipmap/photos_col_small_med3</item>
+        <item>@mipmap/photos_col_small_med4</item>
+        <item>@mipmap/photos_col_small_med5</item>
+        <item>@mipmap/photos_col_small_med6</item>
+        <item>@mipmap/photos_col_small_med7</item>
+        <item>@mipmap/photos_col_small_med8</item>
+        <item>@mipmap/photos_col_small_med9</item>
+        <item>@mipmap/photos_col_small_med10</item>
+        <item>@mipmap/photos_col_small_med11</item>
+        <item>@mipmap/photos_col_small_med12</item>
+        <item>@mipmap/photos_col_small_med13</item>
+        <item>@mipmap/photos_col_small_med14</item>
     </integer-array>
 
     <integer-array name="PHOTOS_COL_SMALL_HIGH">
-
+        <item>@mipmap/photos_col_small_high1</item>
+        <item>@mipmap/photos_col_small_high2</item>
+        <item>@mipmap/photos_col_small_high3</item>
+        <item>@mipmap/photos_col_small_high4</item>
+        <item>@mipmap/photos_col_small_high5</item>
+        <item>@mipmap/photos_col_small_high6</item>
+        <item>@mipmap/photos_col_small_high7</item>
+        <item>@mipmap/photos_col_small_high8</item>
+        <item>@mipmap/photos_col_small_high9</item>
+        <item>@mipmap/photos_col_small_high10</item>
+        <item>@mipmap/photos_col_small_high11</item>
+        <item>@mipmap/photos_col_small_high12</item>
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_LOW">
