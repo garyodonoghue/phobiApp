@@ -1,5 +1,6 @@
 package com.gary.spiders.game;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -69,9 +70,17 @@ public class WordSearchActivity extends BaseGame {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppCompatTextView clickedTextView = (AppCompatTextView) view;
-                clickedTextView.setPaintFlags(clickedTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                // if text view is already striked through, then remove it, else set it
+                if(clickedTextView.getPaintFlags() == Paint.STRIKE_THRU_TEXT_FLAG){
+                    clickedTextView.setPaintFlags( clickedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                }
+                else {
+                    clickedTextView.setPaintFlags(clickedTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }
             }
         });
+        
         Grid grid = WordSearch.generateWordSearch(args, words);
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);
@@ -93,6 +102,7 @@ public class WordSearchActivity extends BaseGame {
 
                 if(tv != null){
                     tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    tv.setTextColor(Color.BLUE);
                     selectedTiles.add(tv);
                 }
 
@@ -115,6 +125,7 @@ public class WordSearchActivity extends BaseGame {
                     // didnt pick a word correctly
                     for(TextView selectedTextView : selectedTiles){
                         selectedTextView.setPaintFlags( selectedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                        selectedTextView.setTextColor(Color.BLACK);
                     }
 
                     selectedTiles.clear();
