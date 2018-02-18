@@ -188,7 +188,21 @@
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_LOW">
-
+        <item>@mipmap/photos_col_big_low1</item>
+        <item>@mipmap/photos_col_big_low2</item>
+        <item>@mipmap/photos_col_big_low3</item>
+        <item>@mipmap/photos_col_big_low4</item>
+        <item>@mipmap/photos_col_big_low5</item>
+        <item>@mipmap/photos_col_big_low6</item>
+        <item>@mipmap/photos_col_big_low7</item>
+        <item>@mipmap/photos_col_big_low8</item>
+        <item>@mipmap/photos_col_big_low9</item>
+        <item>@mipmap/photos_col_big_low10</item>
+        <item>@mipmap/photos_col_big_low11</item>
+        <item>@mipmap/photos_col_big_low12</item>
+        <item>@mipmap/photos_col_big_low13</item>
+        <item>@mipmap/photos_col_big_low14</item>
+        <item>@mipmap/photos_col_big_low15</item>
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_MED">
@@ -196,7 +210,22 @@
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_HIGH">
-
+        <item>@mipmap/photos_col_big_high1</item>
+        <item>@mipmap/photos_col_big_high2</item>
+        <item>@mipmap/photos_col_big_high3</item>
+        <item>@mipmap/photos_col_big_high4</item>
+        <item>@mipmap/photos_col_big_high5</item>
+        <item>@mipmap/photos_col_big_high6</item>
+        <item>@mipmap/photos_col_big_high7</item>
+        <item>@mipmap/photos_col_big_high8</item>
+        <item>@mipmap/photos_col_big_high9</item>
+        <item>@mipmap/photos_col_big_high10</item>
+        <item>@mipmap/photos_col_big_high11</item>
+        <item>@mipmap/photos_col_big_high12</item>
+        <item>@mipmap/photos_col_big_high13</item>
+        <item>@mipmap/photos_col_big_high14</item>
+        <item>@mipmap/photos_col_big_high15</item>
+        <item>@mipmap/photos_col_big_high17</item>
     </integer-array>
 
     <array name="VIDEOS_LOW">
