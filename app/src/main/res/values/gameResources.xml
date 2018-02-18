@@ -206,7 +206,19 @@
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_MED">
-
+        <item>@mipmap/photos_col_big_med1</item>
+        <item>@mipmap/photos_col_big_med2</item>
+        <item>@mipmap/photos_col_big_med3</item>
+        <item>@mipmap/photos_col_big_med4</item>
+        <item>@mipmap/photos_col_big_med5</item>
+        <item>@mipmap/photos_col_big_med6</item>
+        <item>@mipmap/photos_col_big_med7</item>
+        <item>@mipmap/photos_col_big_med8</item>
+        <item>@mipmap/photos_col_big_med9</item>
+        <item>@mipmap/photos_col_big_med10</item>
+        <item>@mipmap/photos_col_big_med11</item>
+        <item>@mipmap/photos_col_big_med12</item>
+        <item>@mipmap/photos_col_big_med13</item>
     </integer-array>
 
     <integer-array name="PHOTOS_COL_BIG_HIGH">
