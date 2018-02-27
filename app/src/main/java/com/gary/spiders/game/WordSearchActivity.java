@@ -80,7 +80,7 @@ public class WordSearchActivity extends BaseGame {
                 }
             }
         });
-        
+
         Grid grid = WordSearch.generateWordSearch(args, words);
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);

@@ -49,7 +49,7 @@ public class ImagePickerGame extends BaseGame {
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
-        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
+        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);

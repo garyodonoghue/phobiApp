@@ -47,7 +47,7 @@ public class PopupImageGame extends BaseGame {
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
-        int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
+        int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
