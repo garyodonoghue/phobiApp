@@ -125,7 +125,14 @@ public class MainMenuActivity extends AppCompatActivity {
                         updateUserLevel(newLevel);
 
                         GameCategory oldCategory = GameCategory.getCategory(oldLevel);
-                        GameCategory newCategory = GameCategory.getCategory(newLevel);
+                        final GameCategory newCategory = GameCategory.getCategory(newLevel);
+
+                        final BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
+                        final Intent intent1 = new Intent(MainMenuActivity.this, game.getClass());
+                        // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+                        // which will in turn be used by the AlertUtility to set the onResult values.
+                        intent1.putExtra("category", game.category.toString());
+                        intent1.putExtra("initialAssessment", game.initialAssessment);
 
                         // check if they upped a level, present a congrats dialog box
                         if(oldCategory != newCategory){
@@ -134,18 +141,8 @@ public class MainMenuActivity extends AppCompatActivity {
                             alertDialogBuilder.setPositiveButton("Thanks!",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int which) {
-                                            BaseGame game = GameFactory.generateGameFromUserLevel(newLevel, false);
-                                            Intent intent1 = new Intent(game, game.getClass());
-
-                                            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
-                                            // which will in turn be used by the AlertUtility to set the onResult values.
-                                            intent1.putExtra("category", game.category.toString());
-                                            intent1.putExtra("initialAssessment", game.initialAssessment);
-
-                                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
-
                                             dialog.dismiss();
-
+                                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
                                         }
                                     });
 
@@ -153,9 +150,7 @@ public class MainMenuActivity extends AppCompatActivity {
                             alertDialog.setTitle("Congratulations!");
                             alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
                             alertDialog.setCancelable(false);
-
-                            AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to a new category of games! Well done!");
-                            alert.show();
+                            alertDialog.show();
                         }
                     }
                     else {

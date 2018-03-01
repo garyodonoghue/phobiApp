@@ -45,7 +45,7 @@ public abstract class BaseGame extends AppCompatActivity {
         this.finish();
     }
 
-    public AlertDialog levelFailed(final BaseGame game){
+    public void levelFailed(final BaseGame game){
         // Mark the level as not failed - user ran out of time
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
         final int bonusPoints = this.bonusPoints;
@@ -72,7 +72,7 @@ public abstract class BaseGame extends AppCompatActivity {
         alertDialog.setTitle("Time up!");
         alertDialog.setCancelable(true);
 
-        return alertDialog;
+        alertDialog.show();
     }
 
     public void setBonusPoints(int bonusPoints){
