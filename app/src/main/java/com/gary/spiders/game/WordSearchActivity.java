@@ -38,6 +38,9 @@ public class WordSearchActivity extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wordsearch);
 
+        final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
+        super.setupGameTimer(textView, this);
+
         GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 

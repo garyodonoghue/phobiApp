@@ -22,6 +22,9 @@ public class ZoomTextActivity extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom_text);
 
+        final TextView timer = (TextView) findViewById(R.id.zoomTextTimer);
+        super.setupGameTimer(timer, this);
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         textResourceId = resourceLoader.getResource(super.category);
 

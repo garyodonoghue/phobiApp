@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
@@ -46,6 +47,9 @@ public class ImagePickerGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_picker);
+
+        final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
+        super.setupGameTimer(textView, this);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
@@ -123,6 +127,12 @@ public class ImagePickerGame extends BaseGame {
         else{
             incorrectSelections++;
         }
+
+        int bonusPoints = correctSelections - incorrectSelections;
+        if(bonusPoints < 0){
+            bonusPoints = 0;
+        }
+        this.setBonusPoints(bonusPoints);
 
         if(correctSelections == spiderButtons.size()){
             AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);

@@ -63,7 +63,7 @@ public class AlertUtility {
                         data.putExtra("completed", "true");
                         data.putExtra("category", game.category.toString());
                         data.putExtra("initialAssessment", game.initialAssessment.toString());
-
+                        data.putExtra("bonusPoints", String.valueOf(game.bonusPoints));
                         game.setResult(RESULT_OK, data);
                         game.finish();
 

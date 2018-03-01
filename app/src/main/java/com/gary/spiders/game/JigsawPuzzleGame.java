@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.util.AlertUtility;
@@ -30,6 +31,8 @@ public class JigsawPuzzleGame extends BaseGame {
     int imageResourceId;
     List<Bitmap> correctImageOrder;
 
+    int bonusPoints = 10;
+
     ImageButton topLeft;
     ImageButton topCenter;
     ImageButton topRight;
@@ -46,6 +49,9 @@ public class JigsawPuzzleGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
+
+        final TextView textView = (TextView) findViewById(R.id.jigsawCountdownTimer);
+        super.setupGameTimer(textView, this);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
@@ -99,6 +105,12 @@ public class JigsawPuzzleGame extends BaseGame {
 
             imageButton1.setImageDrawable(buttonImage2);
             imageButton2.setImageDrawable(buttonImage1);
+
+            this.bonusPoints = bonusPoints - 1;
+            if(this.bonusPoints < 0){
+                this.bonusPoints = 0;
+            }
+            super.setBonusPoints(this.bonusPoints);
 
             //check if each of the tiles contains the correct image - if so, complete the game
             boolean solved = checkIfSolved();

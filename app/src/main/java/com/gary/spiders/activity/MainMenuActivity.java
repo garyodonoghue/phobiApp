@@ -1,5 +1,6 @@
 package com.gary.spiders.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -86,13 +87,15 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.this.startActivity(myIntent);
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(final int requestCode, int resultCode, Intent data) {
         GameCategory[] categoriesArray = GameCategory.getInitialAssessmentCategories();
 
         if (this.requestCode == requestCode) {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
+                boolean tryAgain = Boolean.valueOf(data.getStringExtra("tryAgain"));
                 String categoryString  = data.getStringExtra("category");
+                int bonusPoints = Integer.parseInt(data.getStringExtra("bonusPoints"));
                 boolean initialAssessment  = Boolean.valueOf(data.getStringExtra("initialAssessment"));
 
                 GameCategory category = GameCategory.valueOf(categoryString);
@@ -105,7 +108,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         // User did not complete a level - get the lowest level for that category and set that as their new starting level
                         int userLevel = category.getBeginnerLevelForCategory();
                         updateUserLevel(userLevel);
-                        updateUserPoints(category.getNumPointsForLevel(userLevel));
                         setInitialAssessmentCompletedFlag();
 
                         AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Assessment Completed!",
@@ -116,36 +118,71 @@ public class MainMenuActivity extends AppCompatActivity {
                 else {
                     if(levelCompleted){
                         // User completed the level and it is not an initial assessment
-                        // Need to award them points and determine what level they are now on,
-                        // generating a new game based on that
-                        int oldPoints = user.getPoints();
-                        int oldLevel = category.getUserLevelFromPoints(oldPoints);
-
-                        int updatedPoints = oldPoints + 1;
-                        updateUserPoints(updatedPoints);
-
-
-                        // get new level based on new number of points
-                        int newLevel = category.getUserLevelFromPoints(updatedPoints);
+                        // Need to bump their level by 1
+                        // generating a new game based on that new level value
+                        final int oldLevel = user.getLevel();
+                        final int newLevel = oldLevel + 1 + bonusPoints;
                         updateUserLevel(newLevel);
 
+                        GameCategory oldCategory = GameCategory.getCategory(oldLevel);
+                        GameCategory newCategory = GameCategory.getCategory(newLevel);
+
                         // check if they upped a level, present a congrats dialog box
-                        if(oldLevel != newLevel){
-                            AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to level "+newLevel+"! Well done!");
+                        if(oldCategory != newCategory){
+                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
+
+                            alertDialogBuilder.setPositiveButton("Thanks!",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            BaseGame game = GameFactory.generateGameFromUserLevel(newLevel, false);
+                                            Intent intent1 = new Intent(game, game.getClass());
+
+                                            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+                                            // which will in turn be used by the AlertUtility to set the onResult values.
+                                            intent1.putExtra("category", game.category.toString());
+                                            intent1.putExtra("initialAssessment", game.initialAssessment);
+
+                                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+
+                                            dialog.dismiss();
+
+                                        }
+                                    });
+
+                            AlertDialog alertDialog = alertDialogBuilder.create();
+                            alertDialog.setTitle("Congratulations!");
+                            alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
+                            alertDialog.setCancelable(false);
+
+                            AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to a new category of games! Well done!");
+                            alert.show();
                         }
-
-                        BaseGame game = GameFactory.generateGameFromUserLevel(newLevel, false);
-                        Intent intent1 = new Intent(MainMenuActivity.this, game.getClass());
-
-                        // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
-                        // which will in turn be used by the AlertUtility to set the onResult values.
-                        intent1.putExtra("category", game.category.toString());
-                        intent1.putExtra("initialAssessment", game.initialAssessment);
-
-                        MainMenuActivity.this.startActivityForResult(intent1, requestCode);
                     }
+                    else {
+                        // User ran out of time, gave up etc, deduct them a point
+                        int userLevel = user.getLevel();
+                        if (userLevel > 0) {
+                            userLevel = userLevel - 1 + bonusPoints;
+                        }
+                        user.setLevel(userLevel);
 
-                    user.getPoints()
+                        // User failed to complete the level (ran out of time),
+                        // let them try again with a new level
+                        if(tryAgain){
+                            BaseGame game = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
+                            Intent intent1 = new Intent(game, game.getClass());
+
+                            intent1.putExtra("category", game.category.toString());
+                            intent1.putExtra("initialAssessment", game.initialAssessment);
+
+                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+
+                        }
+                        else {
+                            // User gave up - levelCompleted is false,
+                            // so just bring them back to the main menu
+                        }
+                    }
                 }
             }
         }
@@ -161,25 +198,14 @@ public class MainMenuActivity extends AppCompatActivity {
         Button playBtn = (Button) findViewById(R.id.playGame);
         playBtn.setText("Continue Playing");
         this.initialAssessmentCompleted = true;
-
-        //updateUserLevel();
     }
 
-    // TODO Should I get rid of storing/updating level, since this can be worked out based on the number of points a user has
     private void updateUserLevel(int newUserLevel) {
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("level", Integer.toString(newUserLevel));
         editor.commit();
         MainMenuActivity.user.setLevel(newUserLevel);
-    }
-
-    private void updateUserPoints(int numPoints) {
-        SharedPreferences userData = getSharedPreferences("UserDetails", 0);
-        SharedPreferences.Editor editor = userData.edit();
-        editor.putString("points", Integer.toString(numPoints));
-        editor.commit();
-        MainMenuActivity.user.setPoints(numPoints);
     }
 
     private void getNextInitialAssessmentGame(int requestCode, GameCategory[] categoriesArray, GameCategory category) {

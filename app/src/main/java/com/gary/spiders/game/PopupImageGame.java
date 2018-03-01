@@ -29,6 +29,8 @@ public class PopupImageGame extends BaseGame {
     ImageButton popupImageButton;
     Random rand = new Random();
 
+    int bonusPoints = 10;
+
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
@@ -97,6 +99,12 @@ public class PopupImageGame extends BaseGame {
             }
         }
         else {
+            this.bonusPoints = this.bonusPoints - 1;
+            if(this.bonusPoints < 0){
+                this.bonusPoints = 0;
+            }
+            super.setBonusPoints(this.bonusPoints);
+
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
         }
     }

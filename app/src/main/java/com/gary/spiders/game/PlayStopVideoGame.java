@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
@@ -36,6 +37,9 @@ public class PlayStopVideoGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
+
+        final TextView textView = (TextView) findViewById(R.id.videoTimer);
+        super.setupGameTimer(textView, this);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         videoResourceId = resourceLoader.getResource(super.category);

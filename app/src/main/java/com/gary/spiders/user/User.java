@@ -17,8 +17,7 @@ public class User {
 
     private String initialAssessmentCompleted;
 
-    // There are 100 levels, 10pts per level
-    private int points;
+    // There are 140 levels
     private int level;
 
     private GameCategory category;
@@ -47,10 +46,6 @@ public class User {
                        setInitialAssessmentCompleted(value);
                        break;
 
-                   case "points":
-                       setPoints(Integer.parseInt(value));
-                       break;
-
                    case "level":
                        setLevel(Integer.parseInt(value));
                        break;
@@ -68,7 +63,7 @@ public class User {
 
     private void setDefaultValues() {
         setName("Username");
-        setPoints(0);
+        setLevel(0);
         setInitialAssessmentCompleted("false");
         setAvatarResourceId(-1);
         setCategory(GameCategory.LINGUISTIC_LOW);
@@ -104,14 +99,6 @@ public class User {
 
     public void setLevel(int level) {
         this.level = level;
-    }
-
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 
     public String isInitialAssessmentCompleted() {

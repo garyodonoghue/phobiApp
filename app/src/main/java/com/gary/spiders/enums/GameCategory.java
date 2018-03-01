@@ -5,7 +5,6 @@ import android.util.Log;
 /**
  * Created by Gary on 04/10/2017.
  */
-
 public enum GameCategory {
     LINGUISTIC_LOW, LINGUISTIC_MED, LINGUISTIC_HIGH, CARTOON_LOW, CARTOON_MED, CARTOON_HIGH,
     DRAWINGS_BW_LOW, DRAWINGS_BW_MED, DRAWINGS_BW_HIGH, DRAWING_COL_LOW, DRAWING_COL_MED, DRAWING_COL_HIGH,
@@ -21,7 +20,9 @@ public enum GameCategory {
         return this.toString().contains("CARTOON");
     }
 
-    public boolean isDrawingsBW(){return this.toString().contains("DRAWINGS_BW");}
+    public boolean isDrawingsBW(){
+        return this.toString().contains("DRAWINGS_BW");
+    }
 
     public boolean isDrawingsColor(){
         return this.toString().contains("DRAWING_COL");
@@ -31,7 +32,9 @@ public enum GameCategory {
         return this.toString().contains("PHOTOS_BW");
     }
 
-    public boolean isPhotosColSmall(){ return this.toString().contains("PHOTOS_COL_SMALL"); }
+    public boolean isPhotosColSmall(){
+        return this.toString().contains("PHOTOS_COL_SMALL");
+    }
 
     public boolean isPhotosColBig(){
         return this.toString().contains("PHOTOS_COL_BIG");
@@ -45,28 +48,28 @@ public enum GameCategory {
         Log.d("GameCategory","Getting category for user level="+userLevel);
         GameCategory gameCategory = null;
 
-        if(userLevel <= 1){
+        if(userLevel <= 4){
             gameCategory = GameCategory.LINGUISTIC_LOW;
         }
-        else if(userLevel > 1 && userLevel <= 3){
+        else if(userLevel > 4 && userLevel <= 6){
             gameCategory = GameCategory.LINGUISTIC_MED;
         }
-        else if(userLevel > 3 && userLevel <= 5){
+        else if(userLevel > 6 && userLevel <= 8){
             gameCategory = GameCategory.LINGUISTIC_HIGH;
         }
-        else if(userLevel > 5 && userLevel <= 7){
+        else if(userLevel > 8 && userLevel <= 10){
             gameCategory = GameCategory.CARTOON_LOW;
         }
-        else if(userLevel > 7 && userLevel <= 11){
+        else if(userLevel > 10 && userLevel <= 15){
             gameCategory = GameCategory.CARTOON_MED;
         }
-        else if(userLevel > 11 && userLevel <= 15){
+        else if(userLevel > 15 && userLevel <= 20){
             gameCategory = GameCategory.CARTOON_HIGH;
         }
-        else if(userLevel > 15 && userLevel <= 18){
+        else if(userLevel > 20 && userLevel <= 25){
             gameCategory = GameCategory.DRAWINGS_BW_LOW;
         }
-        else if(userLevel > 18 && userLevel <= 24){
+        else if(userLevel > 25 && userLevel <= 30){
             gameCategory = GameCategory.DRAWINGS_BW_MED;
         }
         else if(userLevel > 30 && userLevel <= 33){
@@ -139,14 +142,5 @@ public enum GameCategory {
             case VIDEOS_HIGH:return 133;
             default:return 0;
         }
-    }
-
-    public int getUserLevelFromPoints(int numPoints){
-        return (numPoints / 2); // TODO Confirm this will work as expected, i.e. ronud down to the nearest whole number when returned as an in
-    }
-
-
-    public int getNumPointsForLevel(int level){
-        return level*10;
     }
 }
