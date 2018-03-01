@@ -62,7 +62,7 @@ public class AlertUtility {
                         Intent data = new Intent();
                         data.putExtra("completed", "true");
                         data.putExtra("category", game.category.toString());
-                        data.putExtra("initialAssessment", game.initialAssessment);
+                        data.putExtra("initialAssessment", game.initialAssessment.toString());
 
                         game.setResult(RESULT_OK, data);
                         game.finish();

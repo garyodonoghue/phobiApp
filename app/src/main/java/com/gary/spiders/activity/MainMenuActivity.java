@@ -55,10 +55,9 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void playGame(View view) {
-
         if(!this.initialAssessmentCompleted){
             // LINGUISTIC_HIGH is the first HIGH category
-            BaseGame gameType = GameFactory.generateGame(GameCategory.LINGUISTIC_HIGH, true);
+            BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
             Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
 
             // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
@@ -69,7 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
             MainMenuActivity.this.startActivityForResult(intent1, requestCode);
         }
         else {
-            BaseGame newGameType = GameFactory.generateGame(GameCategory.getCategory(user.getLevel()), false);
+            BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
             Intent intent1 = new Intent(MainMenuActivity.this, newGameType.getClass());
             intent1.putExtra("category", newGameType.category.toString());
             intent1.putExtra("initialAssessment", newGameType.initialAssessment);
@@ -135,8 +134,15 @@ public class MainMenuActivity extends AppCompatActivity {
                             AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to level "+newLevel+"! Well done!");
                         }
 
+                        BaseGame game = GameFactory.generateGameFromUserLevel(newLevel, false);
+                        Intent intent1 = new Intent(MainMenuActivity.this, game.getClass());
 
-                        // TODO Start a new game based on the new points
+                        // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+                        // which will in turn be used by the AlertUtility to set the onResult values.
+                        intent1.putExtra("category", game.category.toString());
+                        intent1.putExtra("initialAssessment", game.initialAssessment);
+
+                        MainMenuActivity.this.startActivityForResult(intent1, requestCode);
                     }
                 }
             }
@@ -181,7 +187,7 @@ public class MainMenuActivity extends AppCompatActivity {
             GameCategory nextCategory = categoriesArray[nextCategoryIndex];
 
 
-            BaseGame game = GameFactory.generateGame(nextCategory, true);
+            BaseGame game = GameFactory.generateGameFromUserCategory(nextCategory, true);
             Intent intent = new Intent(MainMenuActivity.this, game.getClass());
             intent.putExtra("category", game.category.toString());
             intent.putExtra("initialAssessment", game.initialAssessment);

@@ -1,7 +1,5 @@
 package com.gary.spiders.game;
 
-import android.support.annotation.NonNull;
-
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.enums.GameMode;
 
@@ -13,13 +11,12 @@ import static com.gary.spiders.enums.GameCategory.getCategory;
 
 public class GameFactory {
 
-    public static BaseGame generateGame(int userLevel, boolean initialAssessment){
+    public static BaseGame generateGameFromUserLevel(int userLevel, boolean initialAssessment){
         GameCategory category = getCategory(userLevel);
-        return getGame(initialAssessment, category);
+        return generateGameFromUserCategory(category, initialAssessment);
     }
 
-    @NonNull
-    private static BaseGame getGame(boolean initialAssessment, GameCategory category) {
+    public static BaseGame generateGameFromUserCategory(GameCategory category, boolean initialAssessment) {
         GameMode gameMode = GameMode.retrieveGameMode(category);
         BaseGame game = getGameInstance(gameMode);
         game.category = category;
@@ -40,9 +37,5 @@ public class GameFactory {
 
             default: throw new IllegalArgumentException();
         }
-    }
-
-    public static BaseGame generateGame(GameCategory category, boolean initialAssessment){
-        return getGame(initialAssessment, category);
     }
 }

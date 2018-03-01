@@ -8,7 +8,7 @@ public enum GameCategory {
     LINGUISTIC_LOW, LINGUISTIC_MED, LINGUISTIC_HIGH, CARTOON_LOW, CARTOON_MED, CARTOON_HIGH,
     DRAWINGS_BW_LOW, DRAWINGS_BW_MED, DRAWINGS_BW_HIGH, DRAWING_COL_LOW, DRAWING_COL_MED, DRAWING_COL_HIGH,
     PHOTOS_BW_LOW, PHOTOS_BW_MED, PHOTOS_BW_HIGH, PHOTOS_COL_SMALL_LOW, PHOTOS_COL_SMALL_MED, PHOTOS_COL_SMALL_HIGH,
-    PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH, IMAGE_PICKER_SPIDER_IMAGES,
+    PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH,
     IMAGE_PICKER_NON_SPIDER_BW_IMAGES, IMAGE_PICKER_SPIDER_BW_IMAGES;
 
     public boolean isLinguistic(){
@@ -135,7 +135,7 @@ public enum GameCategory {
     }
 
     public int getUserLevelFromPoints(int numPoints){
-        return (numPoints / 10); // TODO Confirm this will work as expected, i.e. ronud down to the nearest whole number when returned as an in
+        return (numPoints / 2); // TODO Confirm this will work as expected, i.e. ronud down to the nearest whole number when returned as an in
     }
 
 

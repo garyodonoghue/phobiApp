@@ -48,7 +48,7 @@ public class ImagePickerGame extends BaseGame {
         setContentView(R.layout.activity_image_picker);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+        spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
         nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);

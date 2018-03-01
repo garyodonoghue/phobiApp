@@ -18,7 +18,7 @@ public enum GameMode {
         if(category.isLinguistic()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.ZOOM);
-            applicableGameModes.add(GameMode.WORDSEARCH);
+            // TODO applicableGameModes.add(GameMode.WORDSEARCH);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }

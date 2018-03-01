@@ -46,7 +46,7 @@ public class PopupImageGame extends BaseGame {
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+        int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
         int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
