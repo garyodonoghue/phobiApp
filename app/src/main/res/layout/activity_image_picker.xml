@@ -9,7 +9,7 @@
     <GridLayout
         android:id="@+id/tappyGrid"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="700dp"
         android:columnCount="3"
         android:rowCount="4"
         android:layout_gravity="center"
@@ -205,4 +205,16 @@
             android:scaleType="fitCenter"/>
 
     </GridLayout>
+
+
+    <ImageButton
+        android:id="@+id/giveUpVideo"
+        android:layout_width="101dp"
+        android:layout_height="99dp"
+        android:layout_below="@+id/tappyGrid"
+        android:layout_centerHorizontal="true"
+        android:background="@mipmap/safety_icon"
+        android:onClick="giveUp" />
+
+
 </RelativeLayout>

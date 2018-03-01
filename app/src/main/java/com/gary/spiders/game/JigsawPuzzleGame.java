@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class JigsawPuzzleGame extends Game {
+public class JigsawPuzzleGame extends BaseGame {
 
     private int numSelectedTiles = 0;
     private ImageButton imageButton1;
@@ -103,7 +103,7 @@ public class JigsawPuzzleGame extends Game {
             //check if each of the tiles contains the correct image - if so, complete the game
             boolean solved = checkIfSolved();
             if(solved) {
-                AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this, category);
+                AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this);
                 alertDialog.show();
             }
             
@@ -210,5 +210,9 @@ public class JigsawPuzzleGame extends Game {
           canvas.drawColor(Color.BLACK);
           canvas.drawBitmap(bmp, borderSize, borderSize, null);
           return bmpWithBorder;
+    }
+
+    public void giveUp(View v){
+        super.giveUp(v);
     }
 }

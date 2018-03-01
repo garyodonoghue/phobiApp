@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="fill_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_gravity="center"
     tools:context="com.gary.spiders.game.PopupImageGame">
 
     <ImageButton
         android:id="@+id/popupImageView"
-        android:layout_width="282dp"
-        android:layout_height="378dp"
-        android:scaleType="fitXY"
-        app:srcCompat="@color/white"
+        android:layout_width="450dp"
+        android:layout_height="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:gravity="center_horizontal"
-        android:onClick="imageTapped" />
-</LinearLayout>
+        android:onClick="imageTapped"
+        android:scaleType="fitXY"
+        app:srcCompat="@color/white" />
+
+    <ImageButton
+        android:id="@+id/giveUpVideo"
+        android:layout_width="101dp"
+        android:layout_height="99dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="93dp"
+        android:background="@mipmap/safety_icon"
+        android:onClick="giveUp" />
+
+</RelativeLayout>

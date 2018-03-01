@@ -1,5 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <array name="LINGUISTIC_LOW">
+        <item>@string/linguisticHigh_1</item>
+        <item>@string/linguisticHigh_2</item>
+        <item>@string/linguisticHigh_3</item>
+        <item>@string/linguisticHigh_4</item>
+        <item>@string/linguisticHigh_5</item>
+        <item>@string/linguisticHigh_6</item>
+        <item>@string/linguisticHigh_7</item>
+        <item>@string/linguisticHigh_8</item>
+        <item>@string/linguisticHigh_9</item>
+    </array>
+    <array name="LINGUISTIC_MED">
+        <item>@string/linguisticHigh_1</item>
+        <item>@string/linguisticHigh_2</item>
+        <item>@string/linguisticHigh_3</item>
+        <item>@string/linguisticHigh_4</item>
+        <item>@string/linguisticHigh_5</item>
+        <item>@string/linguisticHigh_6</item>
+        <item>@string/linguisticHigh_7</item>
+        <item>@string/linguisticHigh_8</item>
+        <item>@string/linguisticHigh_9</item>
+    </array>
+
     <array name="LINGUISTIC_HIGH">
         <item>@string/linguisticHigh_1</item>
         <item>@string/linguisticHigh_2</item>
@@ -12,57 +36,225 @@
         <item>@string/linguisticHigh_9</item>
     </array>
 
+    <integer-array name="CARTOON_LOW">
+        <item>@mipmap/cartoon_low1</item>
+        <item>@mipmap/cartoon_low2</item>
+        <item>@mipmap/cartoon_low3</item>
+        <item>@mipmap/cartoon_low4</item>
+    </integer-array>
+
+    <integer-array name="CARTOON_MED">
+        <item>@mipmap/cartoon_med1</item>
+        <item>@mipmap/cartoon_med2</item>
+        <item>@mipmap/cartoon_med3</item>
+    </integer-array>
+
     <integer-array name="CARTOON_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+        <item>@mipmap/cartoon_high1</item>
+        <item>@mipmap/cartoon_high2</item>>
+        <item>@mipmap/cartoon_high3</item>
+        <item>@mipmap/cartoon_high4</item>
+        <item>@mipmap/cartoon_high5</item>
+        <item>@mipmap/cartoon_high6</item>
+        <item>@mipmap/cartoon_high7</item>
+        <item>@mipmap/cartoon_high8</item>
+        <item>@mipmap/cartoon_high9</item>
+    </integer-array>
+
+    <integer-array name="DRAWINGS_BW_LOW">
+        <item>@mipmap/drawing_bw_low1</item>
+    </integer-array>
+
+    <integer-array name="DRAWINGS_BW_MED">
+        <item>@mipmap/drawing_bw_med1</item>
     </integer-array>
 
     <integer-array name="DRAWINGS_BW_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+        <item>@mipmap/drawing_bw_high1</item>
+        <item>@mipmap/drawing_bw_high2</item>
+        <item>@mipmap/drawing_bw_high3</item>
+    </integer-array>
+
+    <integer-array name="DRAWING_COL_LOW">
+        <item>@mipmap/drawing_col_low1</item>
+        <item>@mipmap/drawing_col_low2</item>
+        <item>@mipmap/drawing_col_low3</item>
+        <item>@mipmap/drawing_col_low4</item>
+        <item>@mipmap/drawing_col_low5</item>
+        <item>@mipmap/drawing_col_low6</item>
+        <item>@mipmap/drawing_col_low7</item>
+    </integer-array>
+
+    <integer-array name="DRAWING_COL_MED">
+        <item>@mipmap/drawing_col_med1</item>
+        <item>@mipmap/drawing_col_med2</item>
+        <item>@mipmap/drawing_col_med3</item>
+        <item>@mipmap/drawing_col_med4</item>
+        <item>@mipmap/drawing_col_med5</item>
+        <item>@mipmap/drawing_col_med6</item>
+        <item>@mipmap/drawing_col_med7</item>
+        <item>@mipmap/drawing_col_med8</item>
+        <item>@mipmap/drawing_col_med9</item>
+        <item>@mipmap/drawing_col_med10</item>
     </integer-array>
 
     <integer-array name="DRAWING_COL_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+        <item>@mipmap/drawing_col_high1</item>
+        <item>@mipmap/drawing_col_high2</item>
+        <item>@mipmap/drawing_col_high3</item>
+        <item>@mipmap/drawing_col_high4</item>
+        <item>@mipmap/drawing_col_high5</item>
+        <item>@mipmap/drawing_col_high6</item>
+        <item>@mipmap/drawing_col_high7</item>
+        <item>@mipmap/drawing_col_high8</item>
+        <item>@mipmap/drawing_col_high9</item>
     </integer-array>
 
-    <integer-array name="PHOTOS_SMALL_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+    <integer-array name="PHOTOS_BW_LOW">
+        <item>@mipmap/photos_bw_low1</item>
+        <item>@mipmap/photos_bw_low2</item>
+        <item>@mipmap/photos_bw_low3</item>
+        <item>@mipmap/photos_bw_low4</item>
+        <item>@mipmap/photos_bw_low5</item>
+        <item>@mipmap/photos_bw_low6</item>
+        <item>@mipmap/photos_bw_low7</item>
     </integer-array>
 
-    <integer-array name="PHOTOS_BIG_HIGH">
-        <item>@mipmap/spider1</item>
-        <!--<item>@mipmap/spider2</item>-->
-        <!--<item>@mipmap/spider3</item>-->
-        <!--<item>@mipmap/spider4</item>-->
-        <!--<item>@mipmap/spider5</item>-->
+    <integer-array name="PHOTOS_BW_MED">
+        <item>@mipmap/photos_bw_med1</item>
+        <item>@mipmap/photos_bw_med2</item>
+        <item>@mipmap/photos_bw_med3</item>
+        <item>@mipmap/photos_bw_med4</item>
+        <item>@mipmap/photos_bw_med5</item>
     </integer-array>
 
-    <integer-array name="IMAGE_PICKER_SPIDER_IMAGES">
-        <item>@mipmap/sptap1</item>
-        <item>@mipmap/sptap2</item>
-        <item>@mipmap/sptap3</item>
+    <integer-array name="PHOTOS_BW_HIGH">
+        <item>@mipmap/photos_bw_high1</item>
+        <item>@mipmap/photos_bw_high2</item>
+        <item>@mipmap/photos_bw_high3</item>
+        <item>@mipmap/photos_bw_high4</item>
+        <item>@mipmap/photos_bw_high5</item>
+        <item>@mipmap/photos_bw_high6</item>
+        <item>@mipmap/photos_bw_high7</item>
     </integer-array>
 
-    <integer-array name="IMAGE_PICKER_NON_SPIDER_IMAGES">
-        <item>@mipmap/atap1</item>
-        <item>@mipmap/atap2</item>
-        <item>@mipmap/atap3</item>
+    <integer-array name="PHOTOS_COL_SMALL_LOW">
+        <item>@mipmap/photos_col_small_low1</item>
+        <item>@mipmap/photos_col_small_low2</item>
+        <item>@mipmap/photos_col_small_low3</item>
+        <item>@mipmap/photos_col_small_low4</item>
+        <item>@mipmap/photos_col_small_low5</item>
+        <item>@mipmap/photos_col_small_low6</item>
+        <item>@mipmap/photos_col_small_low7</item>
+        <item>@mipmap/photos_col_small_low8</item>
+        <item>@mipmap/photos_col_small_low9</item>
+        <item>@mipmap/photos_col_small_low10</item>
+        <item>@mipmap/photos_col_small_low11</item>
+        <item>@mipmap/photos_col_small_low12</item>
+        <item>@mipmap/photos_col_small_low13</item>
+        <item>@mipmap/photos_col_small_low14</item>
     </integer-array>
+
+    <integer-array name="PHOTOS_COL_SMALL_MED">
+        <item>@mipmap/photos_col_small_med1</item>
+        <item>@mipmap/photos_col_small_med2</item>
+        <item>@mipmap/photos_col_small_med3</item>
+        <item>@mipmap/photos_col_small_med4</item>
+        <item>@mipmap/photos_col_small_med5</item>
+        <item>@mipmap/photos_col_small_med6</item>
+        <item>@mipmap/photos_col_small_med7</item>
+        <item>@mipmap/photos_col_small_med8</item>
+        <item>@mipmap/photos_col_small_med9</item>
+        <item>@mipmap/photos_col_small_med10</item>
+        <item>@mipmap/photos_col_small_med11</item>
+        <item>@mipmap/photos_col_small_med12</item>
+        <item>@mipmap/photos_col_small_med13</item>
+        <item>@mipmap/photos_col_small_med14</item>
+    </integer-array>
+
+    <integer-array name="PHOTOS_COL_SMALL_HIGH">
+        <item>@mipmap/photos_col_small_high1</item>
+        <item>@mipmap/photos_col_small_high2</item>
+        <item>@mipmap/photos_col_small_high3</item>
+        <item>@mipmap/photos_col_small_high4</item>
+        <item>@mipmap/photos_col_small_high5</item>
+        <item>@mipmap/photos_col_small_high6</item>
+        <item>@mipmap/photos_col_small_high7</item>
+        <item>@mipmap/photos_col_small_high8</item>
+        <item>@mipmap/photos_col_small_high9</item>
+        <item>@mipmap/photos_col_small_high10</item>
+        <item>@mipmap/photos_col_small_high11</item>
+        <item>@mipmap/photos_col_small_high12</item>
+    </integer-array>
+
+    <integer-array name="PHOTOS_COL_BIG_LOW">
+        <item>@mipmap/photos_col_big_low1</item>
+        <item>@mipmap/photos_col_big_low2</item>
+        <item>@mipmap/photos_col_big_low3</item>
+        <item>@mipmap/photos_col_big_low4</item>
+        <item>@mipmap/photos_col_big_low5</item>
+        <item>@mipmap/photos_col_big_low6</item>
+        <item>@mipmap/photos_col_big_low7</item>
+        <item>@mipmap/photos_col_big_low8</item>
+        <item>@mipmap/photos_col_big_low9</item>
+        <item>@mipmap/photos_col_big_low10</item>
+        <item>@mipmap/photos_col_big_low11</item>
+        <item>@mipmap/photos_col_big_low12</item>
+        <item>@mipmap/photos_col_big_low13</item>
+        <item>@mipmap/photos_col_big_low14</item>
+        <item>@mipmap/photos_col_big_low15</item>
+    </integer-array>
+
+    <integer-array name="PHOTOS_COL_BIG_MED">
+        <item>@mipmap/photos_col_big_med1</item>
+        <item>@mipmap/photos_col_big_med2</item>
+        <item>@mipmap/photos_col_big_med3</item>
+        <item>@mipmap/photos_col_big_med4</item>
+        <item>@mipmap/photos_col_big_med5</item>
+        <item>@mipmap/photos_col_big_med6</item>
+        <item>@mipmap/photos_col_big_med7</item>
+        <item>@mipmap/photos_col_big_med8</item>
+        <item>@mipmap/photos_col_big_med9</item>
+        <item>@mipmap/photos_col_big_med10</item>
+        <item>@mipmap/photos_col_big_med11</item>
+        <item>@mipmap/photos_col_big_med12</item>
+        <item>@mipmap/photos_col_big_med13</item>
+    </integer-array>
+
+    <integer-array name="PHOTOS_COL_BIG_HIGH">
+        <item>@mipmap/photos_col_big_high1</item>
+        <item>@mipmap/photos_col_big_high2</item>
+        <item>@mipmap/photos_col_big_high3</item>
+        <item>@mipmap/photos_col_big_high4</item>
+        <item>@mipmap/photos_col_big_high5</item>
+        <item>@mipmap/photos_col_big_high6</item>
+        <item>@mipmap/photos_col_big_high7</item>
+        <item>@mipmap/photos_col_big_high8</item>
+        <item>@mipmap/photos_col_big_high9</item>
+        <item>@mipmap/photos_col_big_high10</item>
+        <item>@mipmap/photos_col_big_high11</item>
+        <item>@mipmap/photos_col_big_high12</item>
+        <item>@mipmap/photos_col_big_high13</item>
+        <item>@mipmap/photos_col_big_high14</item>
+        <item>@mipmap/photos_col_big_high15</item>
+        <item>@mipmap/photos_col_big_high17</item>
+    </integer-array>
+
+    <array name="VIDEOS_LOW">
+        <item>@raw/sp1</item>
+        <item>@raw/sp2</item>
+        <item>@raw/sp3</item>
+        <item>@raw/sp4</item>
+        <item>@raw/sp5</item>
+    </array>
+
+    <array name="VIDEOS_MED">
+        <item>@raw/sp1</item>
+        <item>@raw/sp2</item>
+        <item>@raw/sp3</item>
+        <item>@raw/sp4</item>
+        <item>@raw/sp5</item>
+    </array>
 
     <array name="VIDEOS_HIGH">
         <item>@raw/sp1</item>
@@ -71,5 +263,45 @@
         <item>@raw/sp4</item>
         <item>@raw/sp5</item>
     </array>
+    <integer-array name="IMAGE_PICKER_SPIDER_BW_IMAGES">
+        <item>@mipmap/tappy_bw_spider1</item>
+        <item>@mipmap/tappy_bw_spider2</item>
+        <item>@mipmap/tappy_bw_spider3</item>
+        <item>@mipmap/tappy_bw_spider4</item>
+        <item>@mipmap/tappy_bw_spider5</item>
+        <item>@mipmap/tappy_bw_spider6</item>
+        <item>@mipmap/tappy_bw_spider7</item>
+        <item>@mipmap/tappy_bw_spider8</item>
+    </integer-array>
+
+    <integer-array name="IMAGE_PICKER_NON_SPIDER_BW_IMAGES">
+        <item>@mipmap/tappy_bw_non_spider1</item>
+        <item>@mipmap/tappy_bw_non_spider2</item>
+        <item>@mipmap/tappy_bw_non_spider3</item>
+        <item>@mipmap/tappy_bw_non_spider4</item>
+        <item>@mipmap/tappy_bw_non_spider5</item>
+        <item>@mipmap/tappy_bw_non_spider6</item>
+        <item>@mipmap/tappy_bw_non_spider7</item>
+        <item>@mipmap/tappy_bw_non_spider8</item>
+        <item>@mipmap/tappy_bw_non_spider9</item>
+        <item>@mipmap/tappy_bw_non_spider10</item>
+        <item>@mipmap/tappy_bw_non_spider12</item>
+        <item>@mipmap/tappy_bw_non_spider13</item>
+        <item>@mipmap/tappy_bw_non_spider14</item>
+        <item>@mipmap/tappy_bw_non_spider15</item>
+        <item>@mipmap/tappy_bw_non_spider16</item>
+        <item>@mipmap/tappy_bw_non_spider17</item>
+        <item>@mipmap/tappy_bw_non_spider18</item>
+        <item>@mipmap/tappy_bw_non_spider19</item>
+        <item>@mipmap/tappy_bw_non_spider20</item>
+        <item>@mipmap/tappy_bw_non_spider21</item>
+        <item>@mipmap/tappy_bw_non_spider22</item>
+        <item>@mipmap/tappy_bw_non_spider23</item>
+        <item>@mipmap/tappy_bw_non_spider24</item>
+        <item>@mipmap/tappy_bw_non_spider25</item>
+        <item>@mipmap/tappy_bw_non_spider26</item>
+        <item>@mipmap/tappy_bw_non_spider27</item>
+        <item>@mipmap/tappy_bw_non_spider28</item>
+    </integer-array>
 
 </resources>

@@ -8,19 +8,20 @@ import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
-public class PlayStopVideoGame extends Game {
+public class PlayStopVideoGame extends BaseGame {
 
     private boolean started = false;
     private Handler handler = new Handler();
     ProgressBar progressBar = null;
     int videoResourceId;
+    int progress = 0;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -36,18 +37,13 @@ public class PlayStopVideoGame extends Game {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
 
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            giveUpBtn.setVisibility(View.VISIBLE);
-        }
-
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         videoResourceId = resourceLoader.getResource(super.category);
 
         final VideoView videoView = (VideoView) findViewById(R.id.videoView);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar_playVideo);
-        progressBar.setMax(1000);
+        progressBar.setMax(200);
 
         String path = "android.resource://" + getPackageName() + "/" + videoResourceId;
         videoView.setVideoURI(Uri.parse(path));
@@ -83,20 +79,22 @@ public class PlayStopVideoGame extends Game {
 
     public void start() {
         started = true;
-        this.progressBar.incrementProgressBy(5);
-
+        this.progressBar.incrementProgressBy(1);
+        progress = progress + 1;
         String s = getIntent().getStringExtra("category");
         final GameCategory category = GameCategory.valueOf(s);
 
-        if(progressBar.getProgress() >= progressBar.getMax()){
+        if(progress > progressBar.getMax()+1){
             stop();
-            this.progressBar.setProgress(0);
-            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this, category);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this);
             alertDialog.show();
-
         }
         else{
             handler.postDelayed(runnable, 1);
         }
+    }
+
+    public void giveUp(View v){
+        super.giveUp(v);
     }
 }

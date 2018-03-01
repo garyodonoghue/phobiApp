@@ -3,6 +3,8 @@ package com.gary.spiders.game;
 import android.content.Context;
 import android.content.res.TypedArray;
 
+import com.gary.spiders.enums.GameCategory;
+
 import java.util.Random;
 
 /**

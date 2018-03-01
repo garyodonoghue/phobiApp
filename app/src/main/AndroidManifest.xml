@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher1"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -27,7 +27,9 @@
         <activity android:name=".activity.SettingsActivity" />
         <activity android:name=".activity.UpdateAvatarActivity" />
         <activity android:name=".game.ImagePickerGame" />
-        <activity android:name=".game.PopupImageGame"></activity>
+        <activity android:name=".game.PopupImageGame" />
+        <activity android:name=".util.ReminderScreen" />
+        <activity android:name=".util.NotificationReceiverActivity"></activity>
     </application>
 
 </manifest>

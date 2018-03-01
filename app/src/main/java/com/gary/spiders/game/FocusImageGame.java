@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -19,7 +18,7 @@ import com.gary.spiders.util.AlertUtility;
  * Created by Gary on 18/09/2017.
  */
 
-public class FocusImageGame extends Game {
+public class FocusImageGame extends BaseGame {
 
     private float focusFactor = 0.1f;
     ImageView imageView = null;
@@ -27,16 +26,12 @@ public class FocusImageGame extends Game {
     private static volatile Matrix sScaleMatrix;
     private static volatile int sDefaultDensity = -1;
     int imageResourceId;
+    int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
-
-        if(initialAssessment){
-            ImageButton giveUpBtn = (ImageButton) findViewById(R.id.giveUpButton);
-            giveUpBtn.setVisibility(View.INVISIBLE);
-        }
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         imageResourceId = resourceLoader.getResource(category);
@@ -55,13 +50,14 @@ public class FocusImageGame extends Game {
             public void onClick(View v) {
 
                 progressBar.incrementProgressBy(1);
+                progress = progress + 1;
                 incrementFocusFactor();
                 focusFactor = getFocusFactor();
 
                 updateImageFocus(focusFactor);
 
-                if(progressBar.getProgress() == progressBar.getMax()){
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this, category);
+                if(progress > progressBar.getMax()){
+                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
                     alertDialog.show();
                 }
             }
@@ -143,8 +139,17 @@ public class FocusImageGame extends Game {
         return this.focusFactor;
     }
 
+    float decrement = 0.02f;
+
     private void incrementFocusFactor(){
-        this.focusFactor = this.focusFactor - 0.005f;
+        this.focusFactor = this.focusFactor - decrement;
+        this.decrement = decrement - 0.003f;
+        if(this.decrement < 0.01){
+            this.decrement = 0.01f;
+        }
     }
 
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
 }

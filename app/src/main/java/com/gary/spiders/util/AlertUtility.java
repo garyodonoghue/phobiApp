@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.gary.spiders.R;
-import com.gary.spiders.game.GameCategory;
+import com.gary.spiders.game.BaseGame;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,8 +49,8 @@ public class AlertUtility {
         return alertDialog;
     }
 
-    public static AlertDialog createGameCompletedAlert(final Activity activity, final GameCategory category) {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
+    public static AlertDialog createGameCompletedAlert(final BaseGame game) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
 
         alertDialogBuilder.setPositiveButton("Proceed",
                 new DialogInterface.OnClickListener() {
@@ -61,9 +61,11 @@ public class AlertUtility {
                         // Mark the level as not completed
                         Intent data = new Intent();
                         data.putExtra("completed", "true");
-                        data.putExtra("category", category.toString());
-                        activity.setResult(RESULT_OK, data);
-                        activity.finish();
+                        data.putExtra("category", game.category.toString());
+                        data.putExtra("initialAssessment", game.initialAssessment.toString());
+
+                        game.setResult(RESULT_OK, data);
+                        game.finish();
 
                     }
                 });
@@ -75,7 +77,7 @@ public class AlertUtility {
         return alertDialog;
     }
 
-    public static AlertDialog createInitialAssessmentCompletedAlert(final Activity activity) {
+    public static AlertDialog createInfoAlertDialog(final Activity activity, final String title, final String message) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(activity);
 
         alertDialogBuilder.setPositiveButton("OK",
@@ -87,8 +89,8 @@ public class AlertUtility {
                 });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setTitle("Assessment Completed!");
-        alertDialog.setMessage("Thank you for taking the initial assessment. We will now present you levels based on the results of this");
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(message);
 
         return alertDialog;
     }

@@ -10,13 +10,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class PopupImageGame extends Game {
+public class PopupImageGame extends BaseGame {
 
     private boolean started = false;
     private Handler handler = new Handler();
@@ -45,20 +46,20 @@ public class PopupImageGame extends Game {
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
-        int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
+        int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
+        int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
 
         allImageResourceIds = new ArrayList<>();
-        for(int i = 0; i<spiderImages.length(); i++){
+        for(int i = 0; i<5; i++){
             int spiderImageId = spiderImages.getResourceId(i, -1);
             allImageResourceIds.add(spiderImageId);
             spiderImageResourceIds.add(spiderImageId);
         }
 
-        for(int j = 0; j<nonSpiderImages.length(); j++){
+        for(int j = 0; j< 10; j++){
             int nonSpiderImageId = nonSpiderImages.getResourceId(j, -1);
             allImageResourceIds.add(nonSpiderImageId);
             nonSpiderImageResourceIds.add(nonSpiderImageId);
@@ -91,7 +92,7 @@ public class PopupImageGame extends Game {
             // all spider images have been removed, the game is completed
             if(allImageResourceIds.size() == nonSpiderImageResourceIds.size()){
                 stop();
-                AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this, this.category);
+                AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
                 successAlert.show();
             }
         }
@@ -99,4 +100,9 @@ public class PopupImageGame extends Game {
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
         }
     }
+
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
+
 }

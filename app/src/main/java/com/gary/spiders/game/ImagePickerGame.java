@@ -9,13 +9,14 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class ImagePickerGame extends Game {
+public class ImagePickerGame extends BaseGame {
 
     ImageButton topLeft;
     ImageButton topCenter;
@@ -47,8 +48,8 @@ public class ImagePickerGame extends Game {
         setContentView(R.layout.activity_image_picker);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
-        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_IMAGES);
+        spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
+        nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
@@ -116,7 +117,7 @@ public class ImagePickerGame extends Game {
     public void tileClicked(View v){
         ImageButton imageButton = (ImageButton) v;
         if(spiderButtons.contains(imageButton)) {
-            imageButton.setColorFilter(Color.argb(100, 255, 255, 150), PorterDuff.Mode.LIGHTEN);
+            imageButton.setColorFilter(Color.argb(100, 0, 255, 0), PorterDuff.Mode.DARKEN);
             correctSelections++;
         }
         else{
@@ -124,8 +125,12 @@ public class ImagePickerGame extends Game {
         }
 
         if(correctSelections == spiderButtons.size()){
-            AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this, GameCategory.IMAGE_PICKER_SPIDER_IMAGES);
+            AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
             successAlert.show();
         }
+    }
+
+    public void giveUp(View v){
+        super.giveUp(v);
     }
 }

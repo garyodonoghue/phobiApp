@@ -1,5 +1,7 @@
 package com.gary.spiders.game;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -26,9 +28,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class WordSearchActivity extends Game {
+public class WordSearchActivity extends BaseGame {
 
     int numWordsFound = 0;
+    List<String> obfuscatedWords = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class WordSearchActivity extends Game {
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 
         String[] args = new String[3];
-        args[0] = WordSearchConfig.EASY_DIFFICULTY;
+        args[0] = WordSearchConfig.NORMAL_DIFFICULTY;
         args[1] = "10";
         args[2] = "10";
 
@@ -53,22 +56,32 @@ public class WordSearchActivity extends Game {
         final List<String> words = new ArrayList<>();
         while(words.size() < 5){
             int randomIndex = rand.nextInt(8);
-            if(!words.contains(wordsArray[randomIndex])){
-                words.add(wordsArray[randomIndex]);
+            String word = wordsArray[randomIndex];
+            if(!words.contains(word)){
+                words.add(word);
+                obfuscateWord(word);
             }
         }
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_list_item_1, words);
+                this, android.R.layout.simple_list_item_1, obfuscatedWords);
 
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppCompatTextView clickedTextView = (AppCompatTextView) view;
-                clickedTextView.setPaintFlags(clickedTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+                // if text view is already striked through, then remove it, else set it
+                if(clickedTextView.getPaintFlags() == Paint.STRIKE_THRU_TEXT_FLAG){
+                    clickedTextView.setPaintFlags( clickedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                }
+                else {
+                    clickedTextView.setPaintFlags(clickedTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                }
             }
         });
+
         Grid grid = WordSearch.generateWordSearch(args, words);
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);
@@ -77,6 +90,7 @@ public class WordSearchActivity extends Game {
         final Set<TextView> correctTiles = new HashSet<>();
 
         TextView lastSelectedTextView = null;
+        final ColorStateList[] oldColors = {null};
 
         gridView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent me) {
@@ -88,8 +102,11 @@ public class WordSearchActivity extends Game {
                 // Change the color of the key pressed
                 TextView tv = (TextView) view.getChildAt(position);
 
+
                 if(tv != null){
+                    oldColors[0] = oldColors[0] == null ? tv.getTextColors() : oldColors[0];
                     tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    tv.setTextColor(Color.BLUE);
                     selectedTiles.add(tv);
                 }
 
@@ -100,6 +117,8 @@ public class WordSearchActivity extends Game {
                     }
                     for(String word : words){
                         if(containsAllChars(word, sb.toString())){
+                            // this will avoid being able to progress by selecting the same word 5 times
+                            words.remove(word);
                             correctTiles.addAll(selectedTiles);
                             selectedTiles.clear();
                             updateNumWordsFound();
@@ -110,6 +129,7 @@ public class WordSearchActivity extends Game {
                     // didnt pick a word correctly
                     for(TextView selectedTextView : selectedTiles){
                         selectedTextView.setPaintFlags( selectedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                        selectedTextView.setTextColor(oldColors[0]);
                     }
 
                     selectedTiles.clear();
@@ -119,10 +139,25 @@ public class WordSearchActivity extends Game {
         });
     }
 
+    private void obfuscateWord(String word) {
+        String firstLetter = String.valueOf(word.charAt(0));
+        String lastLetter = String.valueOf(word.charAt(word.length()-1));
+        int numbMiddleLetters = word.length() - 2;
+
+        String toAdd = "*";
+        StringBuilder s = new StringBuilder();
+        for(int count = 0; count < numbMiddleLetters; count++) {
+            s.append(toAdd);
+        }
+        String replacedMiddle = s.toString();
+        String obfuscatedWord = firstLetter + replacedMiddle + lastLetter;
+        obfuscatedWords.add(obfuscatedWord);
+    }
+
     private void updateNumWordsFound() {
         numWordsFound++;
         if(numWordsFound == 5){
-            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this, category);
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this);
             alertDialog.show();
         }
     }
@@ -137,4 +172,7 @@ public class WordSearchActivity extends Game {
         return Arrays.equals(first, second);
     }
 
+    public void giveUp(View v){
+        super.giveUp(v);
+    }
 }
