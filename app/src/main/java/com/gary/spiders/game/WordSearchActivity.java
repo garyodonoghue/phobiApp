@@ -1,5 +1,6 @@
 package com.gary.spiders.game;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
@@ -89,6 +90,7 @@ public class WordSearchActivity extends BaseGame {
         final Set<TextView> correctTiles = new HashSet<>();
 
         TextView lastSelectedTextView = null;
+        final ColorStateList[] oldColors = {null};
 
         gridView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent me) {
@@ -100,7 +102,9 @@ public class WordSearchActivity extends BaseGame {
                 // Change the color of the key pressed
                 TextView tv = (TextView) view.getChildAt(position);
 
+
                 if(tv != null){
+                    oldColors[0] = oldColors[0] == null ? tv.getTextColors() : oldColors[0];
                     tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
                     tv.setTextColor(Color.BLUE);
                     selectedTiles.add(tv);
@@ -125,7 +129,7 @@ public class WordSearchActivity extends BaseGame {
                     // didnt pick a word correctly
                     for(TextView selectedTextView : selectedTiles){
                         selectedTextView.setPaintFlags( selectedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-                        selectedTextView.setTextColor(Color.BLACK);
+                        selectedTextView.setTextColor(oldColors[0]);
                     }
 
                     selectedTiles.clear();

@@ -134,6 +134,9 @@ public class MainMenuActivity extends AppCompatActivity {
                         if(oldLevel != newLevel){
                             AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Congratulations!", "You've just levelled up to level "+newLevel+"! Well done!");
                         }
+
+
+                        // TODO Start a new game based on the new points
                     }
                 }
             }
