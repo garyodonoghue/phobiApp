@@ -21,6 +21,7 @@ public class PlayStopVideoGame extends BaseGame {
     private Handler handler = new Handler();
     ProgressBar progressBar = null;
     int videoResourceId;
+    int progress = 0;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -42,7 +43,7 @@ public class PlayStopVideoGame extends BaseGame {
         final VideoView videoView = (VideoView) findViewById(R.id.videoView);
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar_playVideo);
-        progressBar.setMax(1000);
+        progressBar.setMax(200);
 
         String path = "android.resource://" + getPackageName() + "/" + videoResourceId;
         videoView.setVideoURI(Uri.parse(path));
@@ -78,17 +79,15 @@ public class PlayStopVideoGame extends BaseGame {
 
     public void start() {
         started = true;
-        this.progressBar.incrementProgressBy(5);
-
+        this.progressBar.incrementProgressBy(1);
+        progress = progress + 1;
         String s = getIntent().getStringExtra("category");
         final GameCategory category = GameCategory.valueOf(s);
 
-        if(progressBar.getProgress() >= progressBar.getMax()+5){
+        if(progress > progressBar.getMax()+1){
             stop();
-            this.progressBar.setProgress(0);
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this);
             alertDialog.show();
-
         }
         else{
             handler.postDelayed(runnable, 1);

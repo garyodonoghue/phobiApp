@@ -144,6 +144,8 @@ public class MainMenuActivity extends AppCompatActivity {
 
                         MainMenuActivity.this.startActivityForResult(intent1, requestCode);
                     }
+
+                    user.getPoints()
                 }
             }
         }

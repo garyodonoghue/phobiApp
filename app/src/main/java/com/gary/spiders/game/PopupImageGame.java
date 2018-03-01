@@ -53,13 +53,13 @@ public class PopupImageGame extends BaseGame {
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
 
         allImageResourceIds = new ArrayList<>();
-        for(int i = 0; i<spiderImages.length(); i++){
+        for(int i = 0; i<5; i++){
             int spiderImageId = spiderImages.getResourceId(i, -1);
             allImageResourceIds.add(spiderImageId);
             spiderImageResourceIds.add(spiderImageId);
         }
 
-        for(int j = 0; j<nonSpiderImages.length(); j++){
+        for(int j = 0; j< 10; j++){
             int nonSpiderImageId = nonSpiderImages.getResourceId(j, -1);
             allImageResourceIds.add(nonSpiderImageId);
             nonSpiderImageResourceIds.add(nonSpiderImageId);

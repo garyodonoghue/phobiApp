@@ -25,7 +25,7 @@ public abstract class BaseGame extends AppCompatActivity {
         this.category = GameCategory.valueOf(s);
 
         boolean initialAssess = getIntent().getBooleanExtra("initialAssessment", false);
-        this.initialAssessment = initialAssess;
+        this.initialAssessment = Boolean.valueOf(initialAssess);
     }
 
     public void giveUp(View v){

@@ -1,5 +1,7 @@
 package com.gary.spiders.enums;
 
+import android.util.Log;
+
 /**
  * Created by Gary on 04/10/2017.
  */
@@ -19,18 +21,20 @@ public enum GameCategory {
         return this.toString().contains("CARTOON");
     }
 
-    public boolean isDrawingsBW(){
-        return this.toString().contains("DRAWINGS_BW");
-    }
+    public boolean isDrawingsBW(){return this.toString().contains("DRAWINGS_BW");}
 
     public boolean isDrawingsColor(){
         return this.toString().contains("DRAWING_COL");
     }
 
-    public boolean isPhotosSmall(){ return this.toString().contains("PHOTOS_SMALL"); }
+    public boolean isPhotosBW(){
+        return this.toString().contains("PHOTOS_BW");
+    }
 
-    public boolean isPhotosBig(){
-        return this.toString().contains("PHOTOS_BIG");
+    public boolean isPhotosColSmall(){ return this.toString().contains("PHOTOS_COL_SMALL"); }
+
+    public boolean isPhotosColBig(){
+        return this.toString().contains("PHOTOS_COL_BIG");
     }
 
     public boolean isVideo(){
@@ -38,81 +42,84 @@ public enum GameCategory {
     }
 
     public static GameCategory getCategory(int userLevel){
-        GameCategory gameLevel = null;
+        Log.d("GameCategory","Getting category for user level="+userLevel);
+        GameCategory gameCategory = null;
 
         if(userLevel <= 1){
-            gameLevel = GameCategory.LINGUISTIC_LOW;
+            gameCategory = GameCategory.LINGUISTIC_LOW;
         }
         else if(userLevel > 1 && userLevel <= 3){
-            gameLevel = GameCategory.LINGUISTIC_MED;
+            gameCategory = GameCategory.LINGUISTIC_MED;
         }
         else if(userLevel > 3 && userLevel <= 5){
-            gameLevel = GameCategory.LINGUISTIC_HIGH;
+            gameCategory = GameCategory.LINGUISTIC_HIGH;
         }
         else if(userLevel > 5 && userLevel <= 7){
-            gameLevel = GameCategory.CARTOON_LOW;
+            gameCategory = GameCategory.CARTOON_LOW;
         }
         else if(userLevel > 7 && userLevel <= 11){
-            gameLevel = GameCategory.CARTOON_MED;
+            gameCategory = GameCategory.CARTOON_MED;
         }
         else if(userLevel > 11 && userLevel <= 15){
-            gameLevel = GameCategory.CARTOON_HIGH;
+            gameCategory = GameCategory.CARTOON_HIGH;
         }
         else if(userLevel > 15 && userLevel <= 18){
-            gameLevel = GameCategory.DRAWINGS_BW_LOW;
+            gameCategory = GameCategory.DRAWINGS_BW_LOW;
         }
         else if(userLevel > 18 && userLevel <= 24){
-            gameLevel = GameCategory.DRAWINGS_BW_MED;
+            gameCategory = GameCategory.DRAWINGS_BW_MED;
         }
         else if(userLevel > 30 && userLevel <= 33){
-            gameLevel = GameCategory.DRAWINGS_BW_HIGH;
+            gameCategory = GameCategory.DRAWINGS_BW_HIGH;
         }
         else if(userLevel > 33 && userLevel <= 39){
-            gameLevel = GameCategory.DRAWING_COL_LOW;
+            gameCategory = GameCategory.DRAWING_COL_LOW;
         }
         else if(userLevel > 39 && userLevel <= 45){
-            gameLevel = GameCategory.DRAWING_COL_MED;
+            gameCategory = GameCategory.DRAWING_COL_MED;
         }
         else if(userLevel > 45 && userLevel <= 48){
-            gameLevel = GameCategory.DRAWING_COL_HIGH;
+            gameCategory = GameCategory.DRAWING_COL_HIGH;
         }
         else if(userLevel > 48 && userLevel <= 54){
-            gameLevel = GameCategory.PHOTOS_BW_LOW;
+            gameCategory = GameCategory.PHOTOS_BW_LOW;
         }
         else if(userLevel > 54 && userLevel <= 60){
-            gameLevel = GameCategory.PHOTOS_BW_MED;
+            gameCategory = GameCategory.PHOTOS_BW_MED;
         }
         else if(userLevel > 60 && userLevel <= 63){
-            gameLevel = GameCategory.PHOTOS_BW_HIGH;
+            gameCategory = GameCategory.PHOTOS_BW_HIGH;
         }
         else if(userLevel > 63 && userLevel <= 69){
-            gameLevel = GameCategory.PHOTOS_COL_SMALL_LOW;
+            gameCategory = GameCategory.PHOTOS_COL_SMALL_LOW;
         }
         else if(userLevel > 69 && userLevel <= 75){
-            gameLevel = GameCategory.PHOTOS_COL_SMALL_MED;
+            gameCategory = GameCategory.PHOTOS_COL_SMALL_MED;
         }
         else if(userLevel > 75 && userLevel <= 82){
-            gameLevel = GameCategory.PHOTOS_COL_SMALL_HIGH;
+            gameCategory = GameCategory.PHOTOS_COL_SMALL_HIGH;
         }
         else if(userLevel > 82 && userLevel <= 90){
-            gameLevel = GameCategory.PHOTOS_COL_BIG_LOW;
+            gameCategory = GameCategory.PHOTOS_COL_BIG_LOW;
         }
         else if(userLevel > 90 && userLevel <= 108){
-            gameLevel = GameCategory.PHOTOS_COL_BIG_MED;
+            gameCategory = GameCategory.PHOTOS_COL_BIG_MED;
         }
         else if(userLevel > 108 && userLevel <= 116){
-            gameLevel = GameCategory.PHOTOS_COL_BIG_HIGH;
+            gameCategory = GameCategory.PHOTOS_COL_BIG_HIGH;
         }
         else if(userLevel > 116 && userLevel <= 124){
-            gameLevel = GameCategory.VIDEOS_LOW;
+            gameCategory = GameCategory.VIDEOS_LOW;
         }
         else if(userLevel > 124 && userLevel <= 132){
-            gameLevel = GameCategory.VIDEOS_MED;
+            gameCategory = GameCategory.VIDEOS_MED;
         }
         else if(userLevel > 132 && userLevel <= 140){
-            gameLevel = GameCategory.VIDEOS_HIGH;
+            gameCategory = GameCategory.VIDEOS_HIGH;
         }
-        return gameLevel;
+
+        Log.d("GameCategory","Category="+gameCategory);
+        return gameCategory;
     }
 
     public static GameCategory[] getInitialAssessmentCategories(){

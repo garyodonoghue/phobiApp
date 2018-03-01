@@ -117,7 +117,7 @@ public class ImagePickerGame extends BaseGame {
     public void tileClicked(View v){
         ImageButton imageButton = (ImageButton) v;
         if(spiderButtons.contains(imageButton)) {
-            imageButton.setColorFilter(Color.argb(100, 255, 255, 150), PorterDuff.Mode.LIGHTEN);
+            imageButton.setColorFilter(Color.argb(100, 0, 255, 0), PorterDuff.Mode.DARKEN);
             correctSelections++;
         }
         else{

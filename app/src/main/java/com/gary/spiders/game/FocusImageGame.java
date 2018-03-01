@@ -139,8 +139,14 @@ public class FocusImageGame extends BaseGame {
         return this.focusFactor;
     }
 
+    float decrement = 0.02f;
+
     private void incrementFocusFactor(){
-        this.focusFactor = this.focusFactor - 0.005f;
+        this.focusFactor = this.focusFactor - decrement;
+        this.decrement = decrement - 0.003f;
+        if(this.decrement < 0.01){
+            this.decrement = 0.01f;
+        }
     }
 
     public void giveUp(View v){
