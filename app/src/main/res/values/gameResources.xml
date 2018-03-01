@@ -2,26 +2,24 @@
 <resources>
 
     <array name="LINGUISTIC_LOW">
-        <item>@string/linguisticHigh_1</item>
-        <item>@string/linguisticHigh_2</item>
-        <item>@string/linguisticHigh_3</item>
-        <item>@string/linguisticHigh_4</item>
-        <item>@string/linguisticHigh_5</item>
-        <item>@string/linguisticHigh_6</item>
-        <item>@string/linguisticHigh_7</item>
-        <item>@string/linguisticHigh_8</item>
-        <item>@string/linguisticHigh_9</item>
+        <item>@string/linguisticLow_1</item>
+        <item>@string/linguisticLow_2</item>
+        <item>@string/linguisticLow_3</item>
+        <item>@string/linguisticLow_4</item>
+        <item>@string/linguisticLow_5</item>
+        <item>@string/linguisticLow_6</item>
+        <item>@string/linguisticLow_7</item>
+        <item>@string/linguisticLow_8</item>
     </array>
     <array name="LINGUISTIC_MED">
-        <item>@string/linguisticHigh_1</item>
-        <item>@string/linguisticHigh_2</item>
-        <item>@string/linguisticHigh_3</item>
-        <item>@string/linguisticHigh_4</item>
-        <item>@string/linguisticHigh_5</item>
-        <item>@string/linguisticHigh_6</item>
-        <item>@string/linguisticHigh_7</item>
-        <item>@string/linguisticHigh_8</item>
-        <item>@string/linguisticHigh_9</item>
+        <item>@string/linguisticMed_1</item>
+        <item>@string/linguisticMed_2</item>
+        <item>@string/linguisticMed_3</item>
+        <item>@string/linguisticMed_4</item>
+        <item>@string/linguisticMed_5</item>
+        <item>@string/linguisticMed_6</item>
+        <item>@string/linguisticMed_7</item>
+        <item>@string/linguisticMed_8</item>
     </array>
 
     <array name="LINGUISTIC_HIGH">
@@ -33,7 +31,6 @@
         <item>@string/linguisticHigh_6</item>
         <item>@string/linguisticHigh_7</item>
         <item>@string/linguisticHigh_8</item>
-        <item>@string/linguisticHigh_9</item>
     </array>
 
     <integer-array name="CARTOON_LOW">

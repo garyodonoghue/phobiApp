@@ -93,13 +93,32 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main_menu">MainMenu</string>
-    <string name="linguisticHigh_1">HAIRY</string>
-    <string name="linguisticHigh_2">EYES</string>
-    <string name="linguisticHigh_3">LEGS</string>
-    <string name="linguisticHigh_4">WEB</string>
-    <string name="linguisticHigh_5">BLACK</string>
-    <string name="linguisticHigh_6">ARACHNID</string>
-    <string name="linguisticHigh_7">CRAWL</string>
-    <string name="linguisticHigh_8">VENOM</string>
-    <string name="linguisticHigh_9">CREEPY</string>
+
+
+    <string name="linguisticLow_1">BURROW</string>
+    <string name="linguisticLow_2">EGGS</string>
+    <string name="linguisticLow_3">FEAR</string>
+    <string name="linguisticLow_4">FURRY</string>
+    <string name="linguisticLow_5">FANGS</string>
+    <string name="linguisticLow_6">INVERTEBRATE</string>
+    <string name="linguisticLow_7">UGLY</string>
+    <string name="linguisticLow_8">POISONOUS</string>
+
+    <string name="linguisticMed_1">CRAWLER</string>
+    <string name="linguisticMed_2">INSECT</string>
+    <string name="linguisticMed_3">MITES</string>
+    <string name="linguisticMed_4">NEST</string>
+    <string name="linguisticMed_5">SILK</string>
+    <string name="linguisticMed_6">BITE</string>
+    <string name="linguisticMed_7">PHOBIA</string>
+    <string name="linguisticMed_8">STICKY</string>
+
+    <string name="linguisticHigh_1">ARACHNID</string>
+    <string name="linguisticHigh_2">HAIRY</string>
+    <string name="linguisticHigh_3">MANDIBLE</string>
+    <string name="linguisticHigh_4">MOLT</string>
+    <string name="linguisticHigh_5">WEB</string>
+    <string name="linguisticHigh_6">VENOM</string>
+    <string name="linguisticHigh_7">TARANTULA</string>
+    <string name="linguisticHigh_8">BLACKWIDOW</string>
 </resources>
