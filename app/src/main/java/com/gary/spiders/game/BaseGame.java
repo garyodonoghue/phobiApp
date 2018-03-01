@@ -21,6 +21,7 @@ public abstract class BaseGame extends AppCompatActivity {
     public GameCategory category;
     public Boolean initialAssessment;
     public int bonusPoints;
+    public CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -80,7 +81,7 @@ public abstract class BaseGame extends AppCompatActivity {
     }
 
     public void setupGameTimer(final TextView textView, final BaseGame game){
-        new CountDownTimer(15000, 1000) {
+        countDownTimer = new CountDownTimer(15000, 1000) {
             public void onTick(long millisUntilFinished) {
                 textView.setText("Time Remaining: "+millisUntilFinished / 1000);
             }
@@ -89,6 +90,9 @@ public abstract class BaseGame extends AppCompatActivity {
                 levelFailed(game);
             }
         }.start();
+    }
 
+    public void stopTimer(){
+        this.countDownTimer.cancel();
     }
 }

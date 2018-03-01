@@ -94,6 +94,7 @@ public class PopupImageGame extends BaseGame {
             // all spider images have been removed, the game is completed
             if(allImageResourceIds.size() == nonSpiderImageResourceIds.size()){
                 stop();
+                super.stopTimer();
                 AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
                 successAlert.show();
             }

@@ -116,6 +116,7 @@ public class JigsawPuzzleGame extends BaseGame {
             boolean solved = checkIfSolved();
             if(solved) {
                 AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(JigsawPuzzleGame.this);
+                super.stopTimer();
                 alertDialog.show();
             }
             

@@ -152,6 +152,10 @@ public class MainMenuActivity extends AppCompatActivity {
                             alertDialog.setCancelable(false);
                             alertDialog.show();
                         }
+                        else{
+                            // User completed the level without levelling up
+                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+                        }
                     }
                     else {
                         // User ran out of time, gave up etc, deduct them a point
@@ -165,13 +169,12 @@ public class MainMenuActivity extends AppCompatActivity {
                         // let them try again with a new level
                         if(tryAgain){
                             BaseGame game = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
-                            Intent intent1 = new Intent(game, game.getClass());
+                            Intent intent1 = new Intent(MainMenuActivity.this, game.getClass());
 
                             intent1.putExtra("category", game.category.toString());
                             intent1.putExtra("initialAssessment", game.initialAssessment);
 
                             MainMenuActivity.this.startActivityForResult(intent1, requestCode);
-
                         }
                         else {
                             // User gave up - levelCompleted is false,

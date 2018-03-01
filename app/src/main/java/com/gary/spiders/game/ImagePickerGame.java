@@ -74,7 +74,6 @@ public class ImagePickerGame extends BaseGame {
         bottommostCenter = (ImageButton) findViewById(R.id.bottommost_center);
         bottommostRight = (ImageButton) findViewById(R.id.bottommost_right);
 
-
         // Pick a random selection of 4 image buttons which will contain images of spiders
         List<ImageButton> imageButtonsList = new ArrayList<>();
 
@@ -135,6 +134,7 @@ public class ImagePickerGame extends BaseGame {
         this.setBonusPoints(bonusPoints);
 
         if(correctSelections == spiderButtons.size()){
+            super.stopTimer();
             AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
             successAlert.show();
         }
