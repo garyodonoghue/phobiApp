@@ -25,6 +25,7 @@ public class User {
 
     public User(SharedPreferences preferences){
 
+        // default all values and then set any values which are available in Shared Preferences
         setDefaultValues();
 
        if(preferences != null && preferences.getAll().size() > 0) {

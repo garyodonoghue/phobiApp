@@ -19,4 +19,9 @@ public class SettingsActivity extends AppCompatActivity {
         Intent myIntent = new Intent(SettingsActivity.this, UpdateAvatarActivity.class);
         SettingsActivity.this.startActivity(myIntent);
     }
+
+    public void updateUsername(View v){
+        Intent myIntent = new Intent(SettingsActivity.this, UpdateUsernameActivity.class);
+        SettingsActivity.this.startActivity(myIntent);
+    }
 }

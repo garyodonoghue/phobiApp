@@ -35,6 +35,31 @@ public class MainMenuActivity extends AppCompatActivity {
         setupUserProfile();
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        // Load the user's details:
+        // name / avatar resource id / level / num points, see User object for fields available
+        SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
+        MainMenuActivity.user = new User(preferences);
+
+        if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
+            Button playBtn = (Button) findViewById(R.id.playGame);
+            playBtn.setText("Continue Playing");
+            this.initialAssessmentCompleted = true;
+        }
+
+        if(!user.getAvatarResource().isEmpty()){
+            ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
+            int resId = getResources().getIdentifier(user.getAvatarResource(), "mipmap", this.getPackageName());
+            userAvatar.setImageResource(resId);
+        }
+
+        TextView textView = (TextView) findViewById(R.id.username);
+        textView.setText(user.getName());
+    }
+
     private void setupUserProfile() {
         // Load the user's details:
         // name / avatar resource id / level / num points, see User object for fields available

@@ -30,7 +30,7 @@ public class UpdateAvatarActivity extends AppCompatActivity {
         String avatarResId = MainMenuActivity.user.getAvatarResource();
         if(!avatarResId.isEmpty()){
             int resId = getResources().getIdentifier(avatarResId, "mipmap", this.getPackageName());
-            selectedAvatar.setImageResource(resId);
+            selectedAvatar.setBackgroundResource(resId);
         }
     }
 
