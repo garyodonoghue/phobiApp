@@ -33,13 +33,13 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setupUserProfile();
+        this.logUserProgress();
     }
 
     @Override
     protected void onResume(){
         super.onResume();
         this.setupUserProfile();
-        this.logUserProgress();
     }
 
     private void setupUserProfile() {
