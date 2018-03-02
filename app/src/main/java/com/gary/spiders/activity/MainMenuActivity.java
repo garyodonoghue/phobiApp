@@ -38,26 +38,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-
-        // Load the user's details:
-        // name / avatar resource id / level / num points, see User object for fields available
-        SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
-        MainMenuActivity.user = new User(preferences);
-
-        if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
-            Button playBtn = (Button) findViewById(R.id.playGame);
-            playBtn.setText("Continue Playing");
-            this.initialAssessmentCompleted = true;
-        }
-
-        if(!user.getAvatarResource().isEmpty()){
-            ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
-            int resId = getResources().getIdentifier(user.getAvatarResource(), "mipmap", this.getPackageName());
-            userAvatar.setImageResource(resId);
-        }
-
-        TextView textView = (TextView) findViewById(R.id.username);
-        textView.setText(user.getName());
+        this.setupUserProfile();
     }
 
     private void setupUserProfile() {
@@ -81,6 +62,9 @@ public class MainMenuActivity extends AppCompatActivity {
         // no need to validate the username input, as it will default to username anyway
         TextView usernameTextView = (TextView) findViewById(R.id.username);
         usernameTextView.setText(user.getName());
+
+        TextView userLevel = (TextView) findViewById(R.id.userLevel);
+        userLevel.setText(String.valueOf(user.getLevel()));
     }
 
     public void playGame(View view) {
