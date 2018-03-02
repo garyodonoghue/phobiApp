@@ -156,7 +156,7 @@ public class FocusImageGame extends BaseGame {
             this.focusFactor = this.focusFactor - this.decrement;
         }
 
-        if(round > 14){
+        if(round > 12){
             this.bonusPoints++;
             super.bonusPoints = this.bonusPoints;
         }

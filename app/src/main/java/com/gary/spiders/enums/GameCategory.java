@@ -12,6 +12,31 @@ public enum GameCategory {
     PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH,
     IMAGE_PICKER_NON_SPIDER_BW_IMAGES, IMAGE_PICKER_SPIDER_BW_IMAGES;
 
+    public static final int LINGUISTIC_LOWEST_LEVEL = 4;
+    public static final int LINGUISTIC_MID_LEVEL = 6;
+    public static final int LINGUISTIC_HIGHEST_LEVEL = 8;
+    public static final int CARTOON_LOWEST_LEVEL = 20;
+    public static final int CARTOON_MEDIUM_LEVEL = 25;
+    public static final int CARTOON_HIGHEST_LEVEL = 30;
+    public static final int DRAWINGS_BW_LOWEST_LEVEL = 40;
+    public static final int DRAWINGS_BW_MEDIUM_LEVEL = 50;
+    public static final int DRAWINGS_BW_HIGHEST_LEVEL = 70;
+    public static final int DRAWING_COL_LOWEST_LEVEL = 90;
+    public static final int DRAWING_COL_MEDIUM_LEVEL = 110;
+    public static final int DRAWING_COL_HIGHEST_LEVEL = 140;
+    public static final int PHOTOS_BW_LOWEST_LEVEL = 170;
+    public static final int PHOTOS_BW_MEDIUM_LEVEL = 200;
+    public static final int PHOTOS_BW_HIGHEST_LEVEL = 250;
+    public static final int PHOTOS_COL_SMALL_LOWEST_LEVEL = 290;
+    public static final int PHOTOS_COL_SMALL_MEDIUM_LEVEL = 330;
+    public static final int PHOTOS_COL_SMALL_HIGHEST_LEVEL = 360;
+    public static final int PHOTOS_COL_BIG_LOWEST_LEVEL = 400;
+    public static final int PHOTOS_COL_BIG_MEDIUM_LEVEL = 450;
+    public static final int PHOTOS_COL_BIG_HIGHEST_LEVEL = 500;
+    public static final int VIDEOS_LOWEST_LEVEL = 530;
+    public static final int VIDEOS_MEDIUM_LEVEL = 550;
+    public static final int VIDEOS_HIGHEST_LEVEL = 600;
+
     public boolean isLinguistic(){
         return this.toString().contains("LINGUISTIC");
     }
@@ -48,76 +73,76 @@ public enum GameCategory {
         Log.d("GameCategory","Getting category for user level="+userLevel);
         GameCategory gameCategory = null;
 
-        if(userLevel <= 4){
+        if(userLevel <= LINGUISTIC_LOWEST_LEVEL){
             gameCategory = GameCategory.LINGUISTIC_LOW;
         }
-        else if(userLevel > 4 && userLevel <= 6){
+        else if(userLevel > LINGUISTIC_LOWEST_LEVEL && userLevel <= LINGUISTIC_MID_LEVEL){
             gameCategory = GameCategory.LINGUISTIC_MED;
         }
-        else if(userLevel > 6 && userLevel <= 8){
+        else if(userLevel > LINGUISTIC_MID_LEVEL && userLevel <= LINGUISTIC_HIGHEST_LEVEL){
             gameCategory = GameCategory.LINGUISTIC_HIGH;
         }
-        else if(userLevel > 8 && userLevel <= 10){
+        else if(userLevel > LINGUISTIC_HIGHEST_LEVEL && userLevel <= CARTOON_LOWEST_LEVEL){
             gameCategory = GameCategory.CARTOON_LOW;
         }
-        else if(userLevel > 10 && userLevel <= 15){
+        else if(userLevel > CARTOON_LOWEST_LEVEL && userLevel <= CARTOON_MEDIUM_LEVEL){
             gameCategory = GameCategory.CARTOON_MED;
         }
-        else if(userLevel > 15 && userLevel <= 20){
+        else if(userLevel > CARTOON_MEDIUM_LEVEL && userLevel <= CARTOON_HIGHEST_LEVEL){
             gameCategory = GameCategory.CARTOON_HIGH;
         }
-        else if(userLevel > 20 && userLevel <= 25){
+        else if(userLevel > CARTOON_HIGHEST_LEVEL && userLevel <= DRAWINGS_BW_LOWEST_LEVEL){
             gameCategory = GameCategory.DRAWINGS_BW_LOW;
         }
-        else if(userLevel > 25 && userLevel <= 30){
+        else if(userLevel > DRAWINGS_BW_LOWEST_LEVEL && userLevel <= DRAWINGS_BW_MEDIUM_LEVEL){
             gameCategory = GameCategory.DRAWINGS_BW_MED;
         }
-        else if(userLevel > 30 && userLevel <= 33){
+        else if(userLevel > DRAWINGS_BW_MEDIUM_LEVEL && userLevel <= DRAWINGS_BW_HIGHEST_LEVEL){
             gameCategory = GameCategory.DRAWINGS_BW_HIGH;
         }
-        else if(userLevel > 33 && userLevel <= 39){
+        else if(userLevel > DRAWINGS_BW_HIGHEST_LEVEL && userLevel <= DRAWING_COL_LOWEST_LEVEL){
             gameCategory = GameCategory.DRAWING_COL_LOW;
         }
-        else if(userLevel > 39 && userLevel <= 45){
+        else if(userLevel > DRAWING_COL_LOWEST_LEVEL && userLevel <= DRAWING_COL_MEDIUM_LEVEL){
             gameCategory = GameCategory.DRAWING_COL_MED;
         }
-        else if(userLevel > 45 && userLevel <= 48){
+        else if(userLevel > DRAWING_COL_MEDIUM_LEVEL && userLevel <= DRAWING_COL_HIGHEST_LEVEL){
             gameCategory = GameCategory.DRAWING_COL_HIGH;
         }
-        else if(userLevel > 48 && userLevel <= 54){
+        else if(userLevel > DRAWING_COL_HIGHEST_LEVEL && userLevel <= PHOTOS_BW_LOWEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_BW_LOW;
         }
-        else if(userLevel > 54 && userLevel <= 60){
+        else if(userLevel > PHOTOS_BW_LOWEST_LEVEL && userLevel <= PHOTOS_BW_MEDIUM_LEVEL){
             gameCategory = GameCategory.PHOTOS_BW_MED;
         }
-        else if(userLevel > 60 && userLevel <= 63){
+        else if(userLevel > PHOTOS_BW_MEDIUM_LEVEL && userLevel <= PHOTOS_BW_HIGHEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_BW_HIGH;
         }
-        else if(userLevel > 63 && userLevel <= 69){
+        else if(userLevel > PHOTOS_BW_HIGHEST_LEVEL && userLevel <= PHOTOS_COL_SMALL_LOWEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_SMALL_LOW;
         }
-        else if(userLevel > 69 && userLevel <= 75){
+        else if(userLevel > PHOTOS_COL_SMALL_LOWEST_LEVEL && userLevel <= PHOTOS_COL_SMALL_MEDIUM_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_SMALL_MED;
         }
-        else if(userLevel > 75 && userLevel <= 82){
+        else if(userLevel > PHOTOS_COL_SMALL_MEDIUM_LEVEL && userLevel <= PHOTOS_COL_SMALL_HIGHEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_SMALL_HIGH;
         }
-        else if(userLevel > 82 && userLevel <= 90){
+        else if(userLevel > PHOTOS_COL_SMALL_HIGHEST_LEVEL && userLevel <= PHOTOS_COL_BIG_LOWEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_BIG_LOW;
         }
-        else if(userLevel > 90 && userLevel <= 108){
+        else if(userLevel > PHOTOS_COL_BIG_LOWEST_LEVEL && userLevel <= PHOTOS_COL_BIG_MEDIUM_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_BIG_MED;
         }
-        else if(userLevel > 108 && userLevel <= 116){
+        else if(userLevel > PHOTOS_COL_BIG_MEDIUM_LEVEL && userLevel <= PHOTOS_COL_BIG_HIGHEST_LEVEL){
             gameCategory = GameCategory.PHOTOS_COL_BIG_HIGH;
         }
-        else if(userLevel > 116 && userLevel <= 124){
+        else if(userLevel > PHOTOS_COL_BIG_HIGHEST_LEVEL && userLevel <= VIDEOS_LOWEST_LEVEL){
             gameCategory = GameCategory.VIDEOS_LOW;
         }
-        else if(userLevel > 124 && userLevel <= 132){
+        else if(userLevel > VIDEOS_LOWEST_LEVEL && userLevel <= VIDEOS_MEDIUM_LEVEL){
             gameCategory = GameCategory.VIDEOS_MED;
         }
-        else if(userLevel > 132 && userLevel <= 140){
+        else if(userLevel > VIDEOS_MEDIUM_LEVEL && userLevel <= VIDEOS_HIGHEST_LEVEL){
             gameCategory = GameCategory.VIDEOS_HIGH;
         }
 
@@ -132,14 +157,14 @@ public enum GameCategory {
 
     public int getBeginnerLevelForCategory(){
         switch(this) {
-            case LINGUISTIC_HIGH:return 4;
-            case CARTOON_HIGH:return 12;
-            case DRAWINGS_BW_HIGH: return 31;
-            case DRAWING_COL_HIGH:return 46;
-            case PHOTOS_BW_HIGH:return 61;
-            case PHOTOS_COL_SMALL_HIGH:return 76;
-            case PHOTOS_COL_BIG_HIGH:return 109;
-            case VIDEOS_HIGH:return 133;
+            case LINGUISTIC_HIGH:return LINGUISTIC_LOWEST_LEVEL;
+            case CARTOON_HIGH:return CARTOON_LOWEST_LEVEL;
+            case DRAWINGS_BW_HIGH: return DRAWINGS_BW_LOWEST_LEVEL;
+            case DRAWING_COL_HIGH:return DRAWING_COL_LOWEST_LEVEL;
+            case PHOTOS_BW_HIGH:return PHOTOS_BW_LOWEST_LEVEL;
+            case PHOTOS_COL_SMALL_HIGH:return PHOTOS_COL_SMALL_LOWEST_LEVEL;
+            case PHOTOS_COL_BIG_HIGH:return PHOTOS_COL_BIG_LOWEST_LEVEL;
+            case VIDEOS_HIGH:return VIDEOS_LOWEST_LEVEL;
             default:return 0;
         }
     }

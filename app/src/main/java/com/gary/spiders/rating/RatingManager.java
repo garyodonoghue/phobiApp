@@ -22,5 +22,4 @@ public class RatingManager extends AppCompatActivity  {
 
         editor.commit();
     }
-
 }

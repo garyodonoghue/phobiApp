@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
 import com.gary.spiders.user.User;
 import com.gary.spiders.util.AlertUtility;
+import com.gary.spiders.util.EpochUtil;
 
 import java.util.Arrays;
 
@@ -153,7 +155,7 @@ public class MainMenuActivity extends AppCompatActivity {
                             alertDialog.show();
                         }
                         else{
-                            // User completed the level without levelling up
+                            // User completed the level without levelling up to the next category
                             MainMenuActivity.this.startActivityForResult(intent1, requestCode);
                         }
                     }
@@ -204,8 +206,18 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.putString("level", Integer.toString(newUserLevel));
         editor.commit();
         MainMenuActivity.user.setLevel(newUserLevel);
+        Log.d("UpdateUserLevel", "level="+newUserLevel);
+
+        this.logUserProgress(newUserLevel);
     }
 
+    // Log the date with the user level, so it can be graphed later
+    private void logUserProgress(int newUserLevel){
+        SharedPreferences userData = getSharedPreferences("Progress", 0);
+        SharedPreferences.Editor editor = userData.edit();
+        editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(newUserLevel));
+        editor.commit();
+    }
     private void getNextInitialAssessmentGame(int requestCode, GameCategory[] categoriesArray, GameCategory category) {
         int nextCategoryIndex = Arrays.asList(categoriesArray).indexOf(category) + 1;
 

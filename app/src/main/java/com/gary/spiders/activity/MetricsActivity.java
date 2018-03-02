@@ -21,6 +21,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class used to display charts displaying the user levels over time,
+ * as well as the difficulty ratings a user gave each game type over time
+ */
 public class MetricsActivity extends AppCompatActivity {
 
     @Override
@@ -28,8 +32,12 @@ public class MetricsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metrics);
 
+        setupRatingsChart();
+        setupUserProgressChart();
+    }
 
-        LineChart chart = (LineChart) findViewById(R.id.chart);
+    private void setupUserProgressChart() {
+        LineChart chart = (LineChart) findViewById(R.id.userProgressChart);
         XAxis xAxis = chart.getXAxis();
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
@@ -37,7 +45,55 @@ public class MetricsActivity extends AppCompatActivity {
             public String getFormattedValue(float value, AxisBase axis) {
                 Double d = Double.valueOf(value);
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/YY HH:mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+                Date date = new Date(d.longValue() * 1000);
+                return sdf.format(date);
+            }
+        });
+
+        List<Entry> entries = new ArrayList<Entry>();
+
+        SharedPreferences preferences = getSharedPreferences("Progress", 0);
+
+        // add a channel per activity ? Show line per type of exercise with the ratings for each
+        Map<String, String> levels = (Map<String, String>) preferences.getAll();
+        if (levels.size() > 0) {
+            for (Map.Entry<String, String> level : levels.entrySet()) {
+
+                // Each key in the shared preferences is an epoch timestamp, the with associated value then being the user level at that time
+                String timestamp = level.getKey();
+                String levelValue = level.getValue();
+
+                entries.add(new Entry(Float.parseFloat(timestamp), Float.parseFloat(levelValue)));
+            }
+
+            // Sort based on the timestamp (x-value) earliest timestamp to latest
+            Collections.sort(entries, new Comparator<Entry>() {
+                @Override
+                public int compare(Entry lhs, Entry rhs) {
+                    // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                    return lhs.getX() < rhs.getX() ? -1 : (lhs.getX() > rhs.getX()) ? 1 : 0;
+                }
+            });
+
+            // add entries to dataset
+            LineDataSet dataSet = new LineDataSet(entries, "User Level");
+            LineData lineData = new LineData(dataSet);
+            chart.setData(lineData);
+            chart.invalidate(); // refresh
+        }
+    }
+
+    private void setupRatingsChart() {
+        LineChart chart = (LineChart) findViewById(R.id.ratingsChart);
+        XAxis xAxis = chart.getXAxis();
+
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                Double d = Double.valueOf(value);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
                 Date date = new Date(d.longValue() * 1000);
                 return sdf.format(date);
             }
