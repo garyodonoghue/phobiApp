@@ -39,6 +39,7 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         this.setupUserProfile();
+        this.logUserProgress();
     }
 
     private void setupUserProfile() {
@@ -218,14 +219,14 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.user.setLevel(newUserLevel);
         Log.d("UpdateUserLevel", "level="+newUserLevel);
 
-        this.logUserProgress(newUserLevel);
+        this.logUserProgress();
     }
 
     // Log the date with the user level, so it can be graphed later
-    private void logUserProgress(int newUserLevel){
+    private void logUserProgress(){
         SharedPreferences userData = getSharedPreferences("Progress", 0);
         SharedPreferences.Editor editor = userData.edit();
-        editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(newUserLevel));
+        editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(user.getLevel()));
         editor.commit();
     }
     private void getNextInitialAssessmentGame(int requestCode, GameCategory[] categoriesArray, GameCategory category) {
