@@ -13,7 +13,7 @@ import java.util.Map;
 public class User {
 
     private String name;
-    private int avatarResourceId;
+    private String avatarResource;
 
     private String initialAssessmentCompleted;
 
@@ -38,8 +38,8 @@ public class User {
                        setName(value);
                        break;
 
-                   case "avatarResourceId":
-                       setAvatarResourceId(Integer.parseInt(value));
+                   case "avatarResource":
+                       setAvatarResource(value);
                        break;
 
                    case "initialAssessmentCompleted":
@@ -65,7 +65,7 @@ public class User {
         setName("Username");
         setLevel(0);
         setInitialAssessmentCompleted("false");
-        setAvatarResourceId(-1);
+        setAvatarResource("");
         setCategory(GameCategory.LINGUISTIC_LOW);
     }
 
@@ -77,12 +77,12 @@ public class User {
         this.name = name;
     }
 
-    public int getAvatarResourceId() {
-        return avatarResourceId;
+    public String getAvatarResource() {
+        return avatarResource;
     }
 
-    public void setAvatarResourceId(int avatarResourceId) {
-        this.avatarResourceId = avatarResourceId;
+    public void setAvatarResource(String avatarResource) {
+        this.avatarResource = avatarResource;
     }
 
     public GameCategory getCategory() {

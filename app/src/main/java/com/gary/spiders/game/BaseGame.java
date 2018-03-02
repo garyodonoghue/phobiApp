@@ -24,6 +24,14 @@ public abstract class BaseGame extends AppCompatActivity {
     public CountDownTimer countDownTimer;
 
     @Override
+    protected  void onDestroy(){
+        super.onDestroy();
+        if(this.countDownTimer != null){
+            this.countDownTimer.cancel();
+        }
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.gary.spiders.activity.UpdateAvatarActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,12 +17,14 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Choose your avatar"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/selectedAvatar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.428" />
 
     <GridLayout
         android:id="@+id/avatars_grid"
@@ -199,26 +201,31 @@
 
     <ImageView
         android:id="@+id/selectedAvatar"
-        android:layout_width="118dp"
+        android:layout_width="119dp"
         android:layout_height="100dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="160dp"
+        android:background="@mipmap/ic_launcher_round"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="106dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="179dp"
+        android:layout_height="48dp"
         android:layout_marginBottom="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Update"
+        android:text="Update Avatar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/avatars_grid" />
+        app:layout_constraintTop_toBottomOf="@+id/avatars_grid"
+        app:layout_constraintVertical_bias="0.156"
+        android:onClick="setAvatar"/>
 </android.support.constraint.ConstraintLayout>

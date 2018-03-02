@@ -1,5 +1,6 @@
 package com.gary.spiders.activity;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,16 +24,34 @@ public class UpdateAvatarActivity extends AppCompatActivity {
 
         gv.setPadding(2, 2, 2,    2);
 
-        // TODO get the user's current from preferences and set here
-        //currentAvatar.
+        // Set the current user's avatar
+        ImageView selectedAvatar = (ImageView) findViewById(R.id.selectedAvatar);
 
+        String avatarResId = MainMenuActivity.user.getAvatarResource();
+        if(!avatarResId.isEmpty()){
+            int resId = getResources().getIdentifier(avatarResId, "mipmap", this.getPackageName());
+            selectedAvatar.setImageResource(resId);
+        }
     }
 
     public void tileClicked(View v){
         String imageTag = (String) v.getTag();
-        int resId = getResources().getIdentifier(imageTag, "mipmap", this.getPackageName());
 
         ImageView imageView = (ImageView) findViewById(R.id.selectedAvatar);
+        imageView.setTag(imageTag);
+
+        int resId = getResources().getIdentifier(imageTag, "mipmap", this.getPackageName());
         imageView.setBackgroundResource(resId);
     }
+
+    public void setAvatar(View v){
+        ImageView selectedAvatar = (ImageView) findViewById(R.id.selectedAvatar);
+        String avatarImageId = (String) selectedAvatar.getTag();
+
+        SharedPreferences userData = getSharedPreferences("UserDetails", 0);
+        SharedPreferences.Editor editor = userData.edit();
+        editor.putString("avatarResource", ""+avatarImageId);
+        editor.commit();
+    }
 }
+

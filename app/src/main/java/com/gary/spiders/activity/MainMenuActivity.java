@@ -47,9 +47,10 @@ public class MainMenuActivity extends AppCompatActivity {
             this.initialAssessmentCompleted = true;
         }
 
-        if(user.getAvatarResourceId() != -1){
+        if(!user.getAvatarResource().isEmpty()){
             ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
-            userAvatar.setImageResource(user.getAvatarResourceId());
+            int resId = getResources().getIdentifier(user.getAvatarResource(), "mipmap", this.getPackageName());
+            userAvatar.setImageResource(resId);
         }
 
         // no need to validate the username input, as it will default to username anyway
