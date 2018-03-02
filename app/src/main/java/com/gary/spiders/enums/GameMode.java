@@ -18,7 +18,7 @@ public enum GameMode {
         if(category.isLinguistic()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.ZOOM);
-            // TODO applicableGameModes.add(GameMode.WORDSEARCH);
+            // applicableGameModes.add(GameMode.WORDSEARCH);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
@@ -26,7 +26,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
@@ -35,7 +35,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
@@ -44,7 +44,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
@@ -53,7 +53,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //pplicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
@@ -62,7 +62,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
@@ -71,7 +71,7 @@ public enum GameMode {
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
             //applicableGameModes.add(GameMode.JIGSAW);
-            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            //applicableGameModes.add(GameMode.IMAGE_PICKER);
             //applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));

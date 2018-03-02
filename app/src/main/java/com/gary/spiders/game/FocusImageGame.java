@@ -27,6 +27,7 @@ public class FocusImageGame extends BaseGame {
     private static volatile int sDefaultDensity = -1;
     int imageResourceId;
     int progress;
+    int bonusPoints = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,13 +142,27 @@ public class FocusImageGame extends BaseGame {
 
     float decrement = 0.02f;
 
+    int round = 0;
     private void incrementFocusFactor(){
-        this.focusFactor = this.focusFactor - decrement;
-        this.decrement = decrement - 0.003f;
-        if(this.decrement < 0.01){
-            this.decrement = 0.01f;
+        if(round <= 5) {
+            // round 1 to 5 should focus the image a lot,
+            // then 6 to 10 should be minor increments, where the image is sharper
+            // and the user is awarded more points
+            this.decrement = 0.012f;
+            this.focusFactor = this.focusFactor - this.decrement;
         }
+        else {
+            this.decrement = 0.00185f;
+            this.focusFactor = this.focusFactor - this.decrement;
+        }
+
+        if(round > 14){
+            this.bonusPoints++;
+            super.bonusPoints = this.bonusPoints;
+        }
+        round++;
     }
+
 
     public void giveUp(View v){
         super.giveUp(v);

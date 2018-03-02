@@ -45,10 +45,13 @@ public class ZoomTextActivity extends BaseGame {
                 if(progress > progressBar.getMax() + 1){
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextActivity.this);
                     alertDialog.show();
+                    stopTimer();
                 }
             }
         });
     }
+
+    public void stopTimer(){ super.stopTimer(); }
 
     private float getSize(){
         return this.fontSize;

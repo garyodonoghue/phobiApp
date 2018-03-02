@@ -35,6 +35,10 @@ public abstract class BaseGame extends AppCompatActivity {
     }
 
     public void giveUp(View v){
+        if(this.countDownTimer != null){
+            this.countDownTimer.cancel();
+        }
+
         // Mark the level as not completed - user gave up
         Intent data = new Intent();
         data.putExtra("completed", "false");

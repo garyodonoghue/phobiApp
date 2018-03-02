@@ -90,6 +90,7 @@ public class PlayStopVideoGame extends BaseGame {
 
         if(progress > progressBar.getMax()+1){
             stop();
+            super.stopTimer();
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(PlayStopVideoGame.this);
             alertDialog.show();
         }
