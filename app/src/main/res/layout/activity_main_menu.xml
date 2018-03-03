@@ -133,7 +133,6 @@
         android:id="@+id/textView7"
         android:layout_width="94dp"
         android:layout_height="47dp"
-        android:layout_marginStart="44dp"
         android:layout_marginTop="32dp"
         android:text="Level:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
@@ -142,15 +141,12 @@
 
     <TextView
         android:id="@+id/userLevel"
-        android:layout_width="78dp"
-        android:layout_height="46dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="67dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginTop="32dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="parent" />
 
 

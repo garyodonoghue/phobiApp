@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.gary.spiders.R;
+import com.gary.spiders.util.ReminderScreen;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -22,6 +23,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void updateUsername(View v){
         Intent myIntent = new Intent(SettingsActivity.this, UpdateUsernameActivity.class);
+        SettingsActivity.this.startActivity(myIntent);
+    }
+
+    public void configureReminders(View v){
+        Intent myIntent = new Intent(SettingsActivity.this, ReminderScreen.class);
         SettingsActivity.this.startActivity(myIntent);
     }
 }
