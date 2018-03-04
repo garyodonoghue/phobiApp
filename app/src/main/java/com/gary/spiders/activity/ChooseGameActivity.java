@@ -1,5 +1,6 @@
 package com.gary.spiders.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ToggleButton;
 
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameMode;
+import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
 
 public class ChooseGameActivity extends AppCompatActivity {
@@ -59,7 +61,13 @@ public class ChooseGameActivity extends AppCompatActivity {
 
     public void generateGame(View v){
         String level = levelValue.getText().toString();
-        GameFactory.generateSpecificGame(Integer.parseInt(level), GameMode.valueOf(selectedGameMode));
+        BaseGame gameType = GameFactory.generateSpecificGame(Integer.parseInt(level), GameMode.valueOf(selectedGameMode));
+
+        Intent intent1 = new Intent(ChooseGameActivity.this, gameType.getClass());
+        intent1.putExtra("category", gameType.category.toString());
+        intent1.putExtra("initialAssessment", gameType.initialAssessment);
+
+        ChooseGameActivity.this.startActivity(intent1);
     }
 
     private void clearAllToggles(){
