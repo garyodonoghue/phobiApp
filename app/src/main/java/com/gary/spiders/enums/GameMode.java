@@ -18,68 +18,67 @@ public enum GameMode {
         if(category.isLinguistic()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.ZOOM);
-            // applicableGameModes.add(GameMode.WORDSEARCH);
+            applicableGameModes.add(GameMode.WORDSEARCH);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isCartoon()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //applicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsBW()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //applicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isDrawingsColor()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //applicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosBW()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //pplicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosColSmall()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //applicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isPhotosColBig()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.FOCUS);
-            //applicableGameModes.add(GameMode.JIGSAW);
-            //applicableGameModes.add(GameMode.IMAGE_PICKER);
-            //applicableGameModes.add(GameMode.POPUP_IMAGES);
+            applicableGameModes.add(GameMode.JIGSAW);
+            applicableGameModes.add(GameMode.IMAGE_PICKER);
+            applicableGameModes.add(GameMode.POPUP_IMAGES);
 
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
         else if(category.isVideo()){
             List<GameMode> applicableGameModes = new ArrayList<>();
             applicableGameModes.add(GameMode.PLAY);
-
             gameMode = applicableGameModes.get(randomiser.nextInt(applicableGameModes.size()));
         }
 

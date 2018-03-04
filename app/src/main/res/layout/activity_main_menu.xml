@@ -77,6 +77,15 @@
                 tools:layout_editor_absoluteY="217dp" />
 
             <Button
+                android:id="@+id/button2"
+                android:layout_width="209dp"
+                android:layout_height="52dp"
+                android:text="Choose Game"
+                android:onClick="chooseGame"
+                tools:layout_editor_absoluteX="88dp"
+                tools:layout_editor_absoluteY="294dp" />
+
+            <Button
                 android:id="@+id/button1"
                 android:layout_width="209dp"
                 android:layout_height="52dp"
@@ -84,30 +93,6 @@
                 android:text="My Progress"
                 tools:layout_editor_absoluteX="88dp"
                 tools:layout_editor_absoluteY="217dp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="209dp"
-                android:layout_height="52dp"
-                android:text="Goals"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="294dp" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="209dp"
-                android:layout_height="52dp"
-                android:text="Chat"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="456dp" />
-
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="209dp"
-                android:layout_height="52dp"
-                android:text="Challenges"
-                tools:layout_editor_absoluteX="88dp"
-                tools:layout_editor_absoluteY="145dp" />
 
             <Button
                 android:id="@+id/button6"

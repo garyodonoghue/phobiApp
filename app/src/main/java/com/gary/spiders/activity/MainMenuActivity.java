@@ -100,6 +100,12 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.this.startActivity(myIntent);
     }
 
+    public void chooseGame(View v){
+        Intent myIntent = new Intent(MainMenuActivity.this, ChooseGameActivity.class);
+        MainMenuActivity.this.startActivity(myIntent);
+    }
+
+
     public void onActivityResult(final int requestCode, int resultCode, Intent data) {
         GameCategory[] categoriesArray = GameCategory.getInitialAssessmentCategories();
 

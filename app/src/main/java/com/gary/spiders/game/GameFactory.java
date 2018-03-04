@@ -25,6 +25,15 @@ public class GameFactory {
         return game;
     }
 
+    public static BaseGame generateSpecificGame(int userLevel, GameMode gameMode){
+        GameCategory category = getCategory(userLevel);
+        BaseGame game = getGameInstance(gameMode);
+        game.category = category;
+        game.initialAssessment = false;
+
+        return game;
+    }
+
     private static BaseGame getGameInstance(GameMode gameMode){
         switch(gameMode){
             case FOCUS: return new FocusImageGame();
