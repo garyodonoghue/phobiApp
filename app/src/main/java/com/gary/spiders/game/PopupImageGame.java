@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
@@ -47,7 +48,14 @@ public class PopupImageGame extends BaseGame {
 
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
 
+        final TextView textView = (TextView) findViewById(R.id.popupImageTimer);
+        super.setupGameTimer(textView, this, 60000);
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        if(super.category == null){
+            super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
+        }
         int spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
         int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 

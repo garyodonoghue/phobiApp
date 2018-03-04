@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 public class ZoomTextActivity extends BaseGame {
@@ -23,9 +24,13 @@ public class ZoomTextActivity extends BaseGame {
         setContentView(R.layout.activity_zoom_text);
 
         final TextView timer = (TextView) findViewById(R.id.zoomTextTimer);
-        super.setupGameTimer(timer, this);
+        super.setupGameTimer(timer, this, 15000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        if(super.category == null){
+            super.category = GameCategory.LINGUISTIC_HIGH;
+        }
         textResourceId = resourceLoader.getResource(super.category);
 
         final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);

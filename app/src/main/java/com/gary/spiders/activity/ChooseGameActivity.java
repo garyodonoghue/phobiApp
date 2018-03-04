@@ -5,11 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ToggleButton;
 
 import com.gary.spiders.R;
-import com.gary.spiders.enums.GameMode;
+import com.gary.spiders.enums.GameType;
 import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
 
@@ -22,8 +21,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     private ToggleButton focusGameSelected;
     private ToggleButton playVideoGameSelected;
     private ToggleButton popupImagesGameSelected;
-
-    private EditText levelValue;
 
     private String selectedGameMode;
 
@@ -39,8 +36,6 @@ public class ChooseGameActivity extends AppCompatActivity {
         focusGameSelected = (ToggleButton) findViewById(R.id.focusGameSelected);
         playVideoGameSelected = (ToggleButton) findViewById(R.id.playVideoGameSelected);
         popupImagesGameSelected = (ToggleButton) findViewById(R.id.popupImagesGameSelected);
-
-        levelValue = (EditText) findViewById(R.id.levelValue);
 
         CompoundButton.OnCheckedChangeListener onToggleListener = new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -60,12 +55,10 @@ public class ChooseGameActivity extends AppCompatActivity {
     }
 
     public void generateGame(View v){
-        String level = levelValue.getText().toString();
-        BaseGame gameType = GameFactory.generateSpecificGame(Integer.parseInt(level), GameMode.valueOf(selectedGameMode));
+        BaseGame gameType = GameFactory.generateSpecificGame(GameType.valueOf(selectedGameMode));
 
         Intent intent1 = new Intent(ChooseGameActivity.this, gameType.getClass());
-        intent1.putExtra("category", gameType.category.toString());
-        intent1.putExtra("initialAssessment", gameType.initialAssessment);
+        intent1.putExtra("initialAssessment", "false");
 
         ChooseGameActivity.this.startActivity(intent1);
     }

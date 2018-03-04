@@ -1,7 +1,7 @@
 package com.gary.spiders.game;
 
 import com.gary.spiders.enums.GameCategory;
-import com.gary.spiders.enums.GameMode;
+import com.gary.spiders.enums.GameType;
 
 import static com.gary.spiders.enums.GameCategory.getCategory;
 
@@ -17,25 +17,23 @@ public class GameFactory {
     }
 
     public static BaseGame generateGameFromUserCategory(GameCategory category, boolean initialAssessment) {
-        GameMode gameMode = GameMode.retrieveGameMode(category);
-        BaseGame game = getGameInstance(gameMode);
+        GameType gameType = GameType.retrieveGameMode(category);
+        BaseGame game = getGameInstance(gameType);
         game.category = category;
         game.initialAssessment = initialAssessment;
 
         return game;
     }
 
-    public static BaseGame generateSpecificGame(int userLevel, GameMode gameMode){
-        GameCategory category = getCategory(userLevel);
-        BaseGame game = getGameInstance(gameMode);
-        game.category = category;
+    public static BaseGame generateSpecificGame(GameType gameType){
+        BaseGame game = getGameInstance(gameType);
         game.initialAssessment = false;
 
         return game;
     }
 
-    private static BaseGame getGameInstance(GameMode gameMode){
-        switch(gameMode){
+    private static BaseGame getGameInstance(GameType gameType){
+        switch(gameType){
             case FOCUS: return new FocusImageGame();
             case ZOOM: return new ZoomTextActivity();
             case JIGSAW: return new JigsawPuzzleGame();

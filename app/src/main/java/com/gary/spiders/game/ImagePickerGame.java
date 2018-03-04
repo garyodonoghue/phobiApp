@@ -49,9 +49,13 @@ public class ImagePickerGame extends BaseGame {
         setContentView(R.layout.activity_image_picker);
 
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        super.setupGameTimer(textView, this);
+        super.setupGameTimer(textView, this, 60000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        if(super.category == null){
+            super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
+        }
         spiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES);
         nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
 

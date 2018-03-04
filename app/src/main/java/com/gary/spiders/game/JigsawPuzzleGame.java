@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import java.util.ArrayList;
@@ -51,10 +52,14 @@ public class JigsawPuzzleGame extends BaseGame {
         setContentView(R.layout.activity_jigsaw_puzzle_game);
 
         final TextView textView = (TextView) findViewById(R.id.jigsawCountdownTimer);
-        super.setupGameTimer(textView, this);
+        super.setupGameTimer(textView, this, 15000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        imageResourceId = resourceLoader.getResource(category);
+
+        if(super.category == null){
+            super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
+        }
+        imageResourceId = resourceLoader.getResource(super.category);
 
         topLeft = (ImageButton) findViewById(R.id.top_left);
         topCenter = (ImageButton) findViewById(R.id.top_center);

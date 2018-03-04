@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 /**
@@ -35,7 +36,11 @@ public class FocusImageGame extends BaseGame {
         setContentView(R.layout.activity_image_focus);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-        imageResourceId = resourceLoader.getResource(category);
+
+        if(super.category == null){
+            super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
+        }
+        imageResourceId = resourceLoader.getResource(super.category);
 
         imageView = (ImageView) findViewById(R.id.focus_image);
         imageView.setImageResource(imageResourceId);

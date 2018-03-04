@@ -26,7 +26,7 @@
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="132dp"
         android:gravity="center_vertical"
         android:orientation="vertical"
         app:layout_constraintHorizontal_bias="0.501"
@@ -36,56 +36,57 @@
 
         <ToggleButton
             android:id="@+id/wordsearchGameSelected"
-            android:tag="WORDSEARCH"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="WORDSEARCH"
             android:textOff="Wordsearch"
             android:textOn="Wordsearch" />
 
         <ToggleButton
             android:id="@+id/jigsawGameSelected"
-            android:tag="JIGSAW"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="JIGSAW"
             android:textOff="Jigsaw"
             android:textOn="Jigsaw" />
 
 
         <ToggleButton
             android:id="@+id/imagePickerGameSelected"
-            android:tag="IMAGE_PICKER"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="IMAGE_PICKER"
             android:textOff="Image Picker"
             android:textOn="Image Picker" />
 
         <ToggleButton
             android:id="@+id/zoomGameSelected"
-            android:tag="ZOOM"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="ZOOM"
             android:textOff="Enlarge Text"
             android:textOn="Enlarge Text" />
 
         <ToggleButton
             android:id="@+id/focusGameSelected"
-            android:tag="FOCUS"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="FOCUS"
             android:textOff="Focus Image"
             android:textOn="Focus Image" />
 
         <ToggleButton
             android:id="@+id/playVideoGameSelected"
-            android:tag="PLAY"
             android:layout_width="233dp"
             android:layout_height="63dp"
+            android:tag="PLAY"
             android:textOff="Play Video"
             android:textOn="Play Video" />
 
         <ToggleButton
             android:id="@+id/popupImagesGameSelected"
             android:layout_width="233dp"
+            android:tag="POPUP_IMAGES"
             android:layout_height="63dp"
             android:textOff="Popup Images"
             android:textOn="Popup Images" />
@@ -96,53 +97,25 @@
         android:id="@+id/textView10"
         android:layout_width="210dp"
         android:layout_height="38dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:text="Choose Category"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="195dp"
-        tools:layout_editor_absoluteY="153dp" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="136dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="28dp"
-        android:text="Enter Level:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.317"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <EditText
-        android:id="@+id/levelValue"
-        android:layout_width="117dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="180dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/textView10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.655"
+        tools:layout_editor_absoluteX="195dp" />
 
     <Button
         android:id="@+id/button4"
-        android:onClick="generateGame"
-        android:layout_width="152dp"
-        android:layout_height="44dp"
+        android:layout_width="211dp"
+        android:layout_height="75dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:onClick="generateGame"
         android:text="Create Game"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

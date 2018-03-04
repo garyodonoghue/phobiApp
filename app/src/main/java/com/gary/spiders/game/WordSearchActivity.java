@@ -15,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 import com.gary.spiders.util.Grid;
 import com.gary.spiders.util.WordSearch;
@@ -39,7 +40,7 @@ public class WordSearchActivity extends BaseGame {
         setContentView(R.layout.activity_wordsearch);
 
         final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
-        super.setupGameTimer(textView, this);
+        super.setupGameTimer(textView, this, 30000);
 
         GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
@@ -50,6 +51,10 @@ public class WordSearchActivity extends BaseGame {
         args[2] = "10";
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        if(super.category == null){
+            super.category = GameCategory.LINGUISTIC_HIGH;
+        }
         String[] wordsArray = getResources().getStringArray(resourceLoader.getResourceArray(super.category));
 
         Random rand = new Random();
@@ -58,7 +63,7 @@ public class WordSearchActivity extends BaseGame {
         // choose 5 words from the list at random
         final List<String> words = new ArrayList<>();
         while(words.size() < 5){
-            int randomIndex = rand.nextInt(8);
+            int randomIndex = rand.nextInt(5);
             String word = wordsArray[randomIndex];
             if(!words.contains(word)){
                 words.add(word);

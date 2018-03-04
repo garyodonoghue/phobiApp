@@ -31,14 +31,14 @@
         android:layout_height="48dp"
         android:layout_alignBottom="@+id/user_avatar"
         android:layout_marginBottom="28dp"
-        android:layout_marginEnd="184dp"
+        android:layout_marginEnd="152dp"
         android:layout_marginTop="8dp"
         android:layout_toEndOf="@+id/user_avatar"
         android:layout_toRightOf="@+id/user_avatar"
         android:paddingBottom="0dp"
         android:paddingLeft="10dp"
         android:text="Username"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toTopOf="@+id/scrollView7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +121,7 @@
         android:layout_marginTop="32dp"
         android:text="Level:"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/username"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -131,6 +132,7 @@
         android:layout_marginEnd="24dp"
         android:layout_marginTop="32dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

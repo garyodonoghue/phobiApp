@@ -39,9 +39,13 @@ public class PlayStopVideoGame extends BaseGame {
         setContentView(R.layout.activity_play_stop_video);
 
         final TextView textView = (TextView) findViewById(R.id.videoTimer);
-        super.setupGameTimer(textView, this);
+        super.setupGameTimer(textView, this, 15000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        if(super.category == null){
+            super.category = GameCategory.VIDEOS_HIGH;
+        }
         videoResourceId = resourceLoader.getResource(super.category);
 
         final VideoView videoView = (VideoView) findViewById(R.id.videoView);

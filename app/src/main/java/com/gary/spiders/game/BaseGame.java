@@ -36,8 +36,9 @@ public abstract class BaseGame extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         String s = getIntent().getStringExtra("category");
-        this.category = GameCategory.valueOf(s);
-
+        if(s != null) {
+            this.category = GameCategory.valueOf(s);
+        }
         boolean initialAssess = getIntent().getBooleanExtra("initialAssessment", false);
         this.initialAssessment = Boolean.valueOf(initialAssess);
     }
@@ -92,8 +93,8 @@ public abstract class BaseGame extends AppCompatActivity {
         this.bonusPoints = bonusPoints;
     }
 
-    public void setupGameTimer(final TextView textView, final BaseGame game){
-        countDownTimer = new CountDownTimer(15000, 1000) {
+    public void setupGameTimer(final TextView textView, final BaseGame game, final long time){
+        countDownTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 textView.setText("Time Remaining: "+millisUntilFinished / 1000);
             }
