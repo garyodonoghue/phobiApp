@@ -36,7 +36,7 @@ public class ReminderScreen extends AppCompatActivity {
 
     }
 
-    public void setReminders(View v){
+    public void setReminder(View v){
         // Use AlarmManager with Notifications to schedule a notification to be executed
         // https://stackoverflow.com/questions/23836699/how-to-show-a-notification-even-app-is-not-running
 

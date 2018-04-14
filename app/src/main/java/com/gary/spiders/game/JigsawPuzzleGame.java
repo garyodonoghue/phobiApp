@@ -52,7 +52,7 @@ public class JigsawPuzzleGame extends BaseGame {
         setContentView(R.layout.activity_jigsaw_puzzle_game);
 
         final TextView textView = (TextView) findViewById(R.id.jigsawCountdownTimer);
-        super.setupGameTimer(textView, this, 15000);
+        super.setupGameTimer(textView, this, 30000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 

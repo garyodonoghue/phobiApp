@@ -49,7 +49,7 @@ public class ImagePickerGame extends BaseGame {
         setContentView(R.layout.activity_image_picker);
 
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        super.setupGameTimer(textView, this, 60000);
+        super.setupGameTimer(textView, this, 30000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
