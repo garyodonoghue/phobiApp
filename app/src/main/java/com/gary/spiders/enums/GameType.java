@@ -53,8 +53,6 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -62,8 +60,6 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -71,8 +67,6 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
