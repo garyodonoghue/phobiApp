@@ -128,6 +128,7 @@ public class ImagePickerGame extends BaseGame {
             correctSelections++;
         }
         else{
+            imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
             incorrectSelections++;
         }
 

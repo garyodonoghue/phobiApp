@@ -55,10 +55,9 @@ public class WordSearchActivity extends BaseGame {
         if(super.category == null){
             super.category = GameCategory.LINGUISTIC_HIGH;
         }
+
         String[] wordsArray = getResources().getStringArray(resourceLoader.getResourceArray(super.category));
-
         Random rand = new Random();
-
 
         // choose 5 words from the list at random
         final List<String> words = new ArrayList<>();
@@ -80,12 +79,14 @@ public class WordSearchActivity extends BaseGame {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppCompatTextView clickedTextView = (AppCompatTextView) view;
 
-                // if text view is already striked through, then remove it, else set it
-                if(clickedTextView.getPaintFlags() == Paint.STRIKE_THRU_TEXT_FLAG){
-                    clickedTextView.setPaintFlags( clickedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                // check if its hidden, if so, reveal the word
+                if(clickedTextView.getText().toString().contains("*")) {
+                    String clearText = words.get(obfuscatedWords.indexOf(clickedTextView.getText()));
+                    ((AppCompatTextView) view).setText(clearText);
                 }
                 else {
-                    clickedTextView.setPaintFlags(clickedTextView.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                    String obfuscatedText = obfuscatedWords.get(words.indexOf(clickedTextView.getText()));
+                    ((AppCompatTextView) view).setText(obfuscatedText);
                 }
             }
         });

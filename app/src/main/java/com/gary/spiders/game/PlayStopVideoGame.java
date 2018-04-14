@@ -89,8 +89,6 @@ public class PlayStopVideoGame extends BaseGame {
         started = true;
         this.progressBar.incrementProgressBy(1);
         progress = progress + 1;
-        String s = getIntent().getStringExtra("category");
-        final GameCategory category = GameCategory.valueOf(s);
 
         if(progress > progressBar.getMax()+1){
             stop();
