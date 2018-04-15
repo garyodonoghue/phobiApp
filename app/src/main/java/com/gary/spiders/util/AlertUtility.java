@@ -72,8 +72,8 @@ public class AlertUtility {
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setTitle("Well done!");
-        alertDialog.setCancelable(true);
-
+        alertDialog.setCancelable(false);
+        alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
         return alertDialog;
     }
 

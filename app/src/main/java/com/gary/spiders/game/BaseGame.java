@@ -105,6 +105,7 @@ public abstract class BaseGame extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.setTitle("Time up!");
         alertDialog.setCancelable(true);
+        alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
 
         alertDialog.show();
     }
