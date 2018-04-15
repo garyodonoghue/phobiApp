@@ -59,7 +59,7 @@ public abstract class BaseGame extends AppCompatActivity {
         this.finish();
     }
 
-    public void presentGameInfoPopup(final BaseGame game, String gameDescription){
+    public void presentGameInfoPopup(final BaseGame game, String gameDescription, final CountDownTimer timer){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
 
         alertDialogBuilder.setPositiveButton("Got it!",
@@ -67,6 +67,7 @@ public abstract class BaseGame extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Track progress
                         dialog.dismiss();
+                        timer.start();
                     }
                 });
 
@@ -112,7 +113,7 @@ public abstract class BaseGame extends AppCompatActivity {
         this.bonusPoints = bonusPoints;
     }
 
-    public void setupGameTimer(final TextView textView, final BaseGame game, final long time){
+    public CountDownTimer setupGameTimer(final TextView textView, final BaseGame game, final long time){
         countDownTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
                 textView.setText("Time Remaining: "+millisUntilFinished / 1000);
@@ -121,7 +122,10 @@ public abstract class BaseGame extends AppCompatActivity {
                 textView.setText("Times Up!");
                 levelFailed(game);
             }
-        }.start();
+        };
+
+        return countDownTimer;
+
     }
 
     public void stopTimer(){

@@ -8,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
@@ -52,7 +53,10 @@ public class JigsawPuzzleGame extends BaseGame {
         setContentView(R.layout.activity_jigsaw_puzzle_game);
 
         final TextView textView = (TextView) findViewById(R.id.jigsawCountdownTimer);
-        super.setupGameTimer(textView, this, 30000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+
+        super.presentGameInfoPopup(this, "For this game, click a tile and then " +
+                "click another to swap their positions and solve the jigsaw within the allowed time", timer);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 

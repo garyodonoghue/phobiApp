@@ -1,6 +1,7 @@
 package com.gary.spiders.game;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.View;
@@ -23,8 +24,11 @@ public class ZoomTextActivity extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom_text);
 
-        final TextView timer = (TextView) findViewById(R.id.zoomTextTimer);
-        super.setupGameTimer(timer, this, 15000);
+        final TextView timerTextView = (TextView) findViewById(R.id.zoomTextTimer);
+        CountDownTimer timer = super.setupGameTimer(timerTextView, this, 15000);
+
+        super.presentGameInfoPopup(this, "Click zoom button to zoom into the text. " +
+                "If the progresss bar reaches the end before the time runs out you successfully complete the level", timer);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 

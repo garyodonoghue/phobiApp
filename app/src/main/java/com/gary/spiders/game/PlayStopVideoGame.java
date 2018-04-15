@@ -3,6 +3,7 @@ package com.gary.spiders.game;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
@@ -39,7 +40,10 @@ public class PlayStopVideoGame extends BaseGame {
         setContentView(R.layout.activity_play_stop_video);
 
         final TextView textView = (TextView) findViewById(R.id.videoTimer);
-        super.setupGameTimer(textView, this, 15000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
+
+        super.presentGameInfoPopup(this, "For this game, " +
+                "hold down the Play Video button until the progress bar reaches the end", timer);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 

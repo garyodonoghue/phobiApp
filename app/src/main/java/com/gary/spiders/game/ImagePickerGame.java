@@ -4,6 +4,7 @@ import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.ImageButton;
@@ -48,11 +49,12 @@ public class ImagePickerGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_picker);
 
-        super.presentGameInfoPopup(this, "For this game you need to pick all " +
-                "the images which contain a spider");
-
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        super.setupGameTimer(textView, this, 30000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+
+        super.presentGameInfoPopup(this, "For this game you need to pick all " +
+                "the images which contain a spider", timer);
+
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 

@@ -4,6 +4,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.MotionEvent;
@@ -41,7 +42,10 @@ public class WordSearchActivity extends BaseGame {
         setContentView(R.layout.activity_wordsearch);
 
         final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
-        super.setupGameTimer(textView, this, 30000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+
+        super.presentGameInfoPopup(this, "Find all the words in the wordsearch within the allowed time to progress to the next level. " +
+                "Tapping a word in the list will reveal it for 3 seconds.", timer);
 
         GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
         final ListView listView = (ListView) findViewById(R.id.wordsearch_words);

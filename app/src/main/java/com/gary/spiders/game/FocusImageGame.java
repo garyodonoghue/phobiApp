@@ -5,11 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
@@ -36,6 +38,13 @@ public class FocusImageGame extends BaseGame {
         setContentView(R.layout.activity_image_focus);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
+
+        final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
+        CountDownTimer timer = super.setupGameTimer(timerTextView, this, 30000);
+
+        super.presentGameInfoPopup(this, "For this game, click the Focus Image button to increase " +
+                "the focus of the image and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
+
 
         if(super.category == null){
             super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
