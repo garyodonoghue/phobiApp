@@ -50,7 +50,7 @@ public class ImagePickerGame extends BaseGame {
         setContentView(R.layout.activity_image_picker);
 
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+        final CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
 
         super.presentGameInfoPopup(this, "For this game you need to pick all " +
                 "the images which contain a spider", timer);

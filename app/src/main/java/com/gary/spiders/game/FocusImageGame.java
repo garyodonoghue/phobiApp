@@ -40,7 +40,7 @@ public class FocusImageGame extends BaseGame {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
-        CountDownTimer timer = super.setupGameTimer(timerTextView, this, 30000);
+        final CountDownTimer timer = super.setupGameTimer(timerTextView, this, 30000);
 
         super.presentGameInfoPopup(this, "For this game, click the Focus Image button to increase " +
                 "the focus of the image and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
@@ -72,12 +72,15 @@ public class FocusImageGame extends BaseGame {
                 updateImageFocus(focusFactor);
 
                 if(progress > progressBar.getMax()){
+                    stopTimer();
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
                     alertDialog.show();
                 }
             }
         });
     }
+
+    public void stopTimer(){ super.stopTimer(); }
 
     private void updateImageFocus(float focusFactor) {
         imageView.setImageDrawable(builtInPixelization(focusFactor, spiderImageBitmap));

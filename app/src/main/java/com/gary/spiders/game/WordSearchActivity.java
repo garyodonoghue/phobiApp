@@ -189,6 +189,7 @@ public class WordSearchActivity extends BaseGame {
     private void updateNumWordsFound() {
         numWordsFound++;
         if(numWordsFound == 5){
+            super.stopTimer();
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this);
             alertDialog.show();
         }
