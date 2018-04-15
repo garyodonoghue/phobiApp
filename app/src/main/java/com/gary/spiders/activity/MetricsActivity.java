@@ -3,6 +3,7 @@ package com.gary.spiders.activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
 
 import com.gary.spiders.R;
 import com.github.mikephil.charting.charts.LineChart;
@@ -31,6 +32,10 @@ public class MetricsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metrics);
+
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.myOverallProgress);
+        progressBar.setMax(600);
+        progressBar.setProgress(MainMenuActivity.user.getLevel());
 
         setupRatingsChart();
         setupUserProgressChart();
@@ -78,8 +83,14 @@ public class MetricsActivity extends AppCompatActivity {
 
             // add entries to dataset
             LineDataSet dataSet = new LineDataSet(entries, "User Level");
+            dataSet.setDrawCircles(false);
             LineData lineData = new LineData(dataSet);
+            lineData.setDrawValues(false);
+
             chart.setData(lineData);
+            chart.setDragEnabled(false);
+            chart.getAxisLeft().setDrawGridLines(false);
+            chart.getXAxis().setDrawGridLines(true);
             chart.invalidate(); // refresh
         }
     }
@@ -130,9 +141,16 @@ public class MetricsActivity extends AppCompatActivity {
 
             // add entries to dataset
             LineDataSet dataSet = new LineDataSet(entries, "Ratings");
+            dataSet.setDrawValues(false);
+            dataSet.setDrawCircles(false);
+
             LineData lineData = new LineData(dataSet);
+            lineData.setDrawValues(false);
+
             chart.setData(lineData);
-            chart.invalidate(); // refresh
+            chart.setDragEnabled(false);
+
+            chart.invalidate();
         }
     }
 }
