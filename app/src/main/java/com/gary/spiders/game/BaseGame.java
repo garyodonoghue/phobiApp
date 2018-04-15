@@ -59,6 +59,25 @@ public abstract class BaseGame extends AppCompatActivity {
         this.finish();
     }
 
+    public void presentGameInfoPopup(final BaseGame game, String gameDescription){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
+
+        alertDialogBuilder.setPositiveButton("Got it!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Track progress
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setTitle("Game Info");
+        alertDialog.setMessage(gameDescription);
+        alertDialog.setCancelable(false);
+
+        alertDialog.show();
+    }
+
     public void levelFailed(final BaseGame game){
         // Mark the level as not failed - user ran out of time
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);

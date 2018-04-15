@@ -28,6 +28,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.Timer;
 
 public class WordSearchActivity extends BaseGame {
 
@@ -76,17 +77,29 @@ public class WordSearchActivity extends BaseGame {
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AppCompatTextView clickedTextView = (AppCompatTextView) view;
+            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+                final AppCompatTextView clickedTextView = (AppCompatTextView) view;
 
-                // check if its hidden, if so, reveal the word
+                // check if its hidden, if so, reveal the word for 3 seconds and then hide it again
                 if(clickedTextView.getText().toString().contains("*")) {
-                    String clearText = words.get(obfuscatedWords.indexOf(clickedTextView.getText()));
-                    ((AppCompatTextView) view).setText(clearText);
-                }
-                else {
-                    String obfuscatedText = obfuscatedWords.get(words.indexOf(clickedTextView.getText()));
-                    ((AppCompatTextView) view).setText(obfuscatedText);
+                    revealWord((AppCompatTextView) view, clickedTextView, words);
+
+                    final Timer t = new java.util.Timer();
+                    t.schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            hideWord((AppCompatTextView) view, clickedTextView, words);
+                                            t.cancel();
+                                        }
+                                    });
+                                }
+                            },
+                            3000
+                    );
                 }
             }
         });
@@ -110,7 +123,6 @@ public class WordSearchActivity extends BaseGame {
 
                 // Change the color of the key pressed
                 TextView tv = (TextView) view.getChildAt(position);
-
 
                 if(tv != null){
                     oldColors[0] = oldColors[0] == null ? tv.getTextColors() : oldColors[0];
@@ -148,18 +160,25 @@ public class WordSearchActivity extends BaseGame {
         });
     }
 
+    private void hideWord(AppCompatTextView view, AppCompatTextView clickedTextView, List<String> words) {
+        String obfuscatedText = obfuscatedWords.get(words.indexOf(clickedTextView.getText()));
+        view.setText(obfuscatedText);
+    }
+
+    private void revealWord(AppCompatTextView view, AppCompatTextView clickedTextView, List<String> words) {
+        String clearText = words.get(obfuscatedWords.indexOf(clickedTextView.getText()));
+        view.setText(clearText);
+    }
+
     private void obfuscateWord(String word) {
-        String firstLetter = String.valueOf(word.charAt(0));
-        String lastLetter = String.valueOf(word.charAt(word.length()-1));
-        int numbMiddleLetters = word.length() - 2;
+        int numLetters = word.length();
 
         String toAdd = "*";
         StringBuilder s = new StringBuilder();
-        for(int count = 0; count < numbMiddleLetters; count++) {
+        for(int count = 0; count < numLetters; count++) {
             s.append(toAdd);
         }
-        String replacedMiddle = s.toString();
-        String obfuscatedWord = firstLetter + replacedMiddle + lastLetter;
+        String obfuscatedWord = s.toString();
         obfuscatedWords.add(obfuscatedWord);
     }
 
