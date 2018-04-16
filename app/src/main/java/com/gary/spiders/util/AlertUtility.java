@@ -3,6 +3,7 @@ package com.gary.spiders.util;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +75,10 @@ public class AlertUtility {
         alertDialog.setTitle("Well done!");
         alertDialog.setCancelable(false);
         alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
+
+        final MediaPlayer mp = MediaPlayer.create(game, R.raw.cheer);
+        mp.start();
+
         return alertDialog;
     }
 

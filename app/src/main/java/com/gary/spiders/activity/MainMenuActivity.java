@@ -3,6 +3,7 @@ package com.gary.spiders.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -170,6 +171,9 @@ public class MainMenuActivity extends AppCompatActivity {
                             alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
                             alertDialog.setCancelable(false);
                             alertDialog.show();
+
+                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
+                            mp.start();
                         }
                         else{
                             // User completed the level without levelling up to the next category
