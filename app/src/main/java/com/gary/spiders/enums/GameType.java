@@ -26,8 +26,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
+            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO For this level we should load the ins/sps coloured images
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO For this level we should load the ins/sps coloured images
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -44,8 +44,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
+            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO For this use drawings coloured images already in project
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO For this use drawings coloured images already in project
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -53,6 +53,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
+            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO Use photos black/white already in project
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO Use photos black/white already in project
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
