@@ -26,8 +26,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO For this level we should load the ins/sps coloured images
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO For this level we should load the ins/sps coloured images
+            applicableGameTypes.add(GameType.IMAGE_PICKER);
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // uses insects_col series of images for non-spider images
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -36,7 +36,7 @@ public enum GameType {
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
             applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES);
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // loads DRAWINGS_BW_ low/med/high and NON_SPIDER_DRAWINGS_BW_ ...
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -44,8 +44,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO For this use drawings coloured images already in project
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO For this use drawings coloured images already in project
+            applicableGameTypes.add(GameType.IMAGE_PICKER);
+            applicableGameTypes.add(GameType.POPUP_IMAGES); // uses insects_col series of images for non-spider images
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }

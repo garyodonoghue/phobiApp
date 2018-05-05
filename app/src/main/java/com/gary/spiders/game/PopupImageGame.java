@@ -57,7 +57,7 @@ public class PopupImageGame extends BaseGame {
             super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
         }
         int spiderImgsArrayId = resourceLoader.getResourceArray(super.category);
-        int nonSpiderImgsArrayId = resourceLoader.getResourceArray(GameCategory.IMAGE_PICKER_NON_SPIDER_BW_IMAGES);
+        int nonSpiderImgsArrayId = resourceLoader.getNonSpiderResourceArray(super.category);
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);

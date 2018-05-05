@@ -34,4 +34,10 @@ public class GameResourceLoader {
         int categoryResourceArray = this.context.getResources().getIdentifier(category.toString(), "array", this.context.getPackageName());
         return categoryResourceArray;
     }
+
+    public int getNonSpiderResourceArray(GameCategory category){
+        // this will retrieve an array of images within a specific category (e.g. CARTOON_LOW)
+        int categoryResourceArray = this.context.getResources().getIdentifier("NON_SPIDER_"+category.toString(), "array", this.context.getPackageName());
+        return categoryResourceArray;
+    }
 }
