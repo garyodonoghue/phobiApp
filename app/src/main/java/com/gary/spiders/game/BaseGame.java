@@ -24,12 +24,17 @@ public abstract class BaseGame extends AppCompatActivity {
     public Boolean initialAssessment;
     public int bonusPoints;
     public CountDownTimer countDownTimer;
+    MediaPlayer mp;
 
     @Override
     protected  void onDestroy(){
         super.onDestroy();
         if(this.countDownTimer != null){
             this.countDownTimer.cancel();
+        }
+
+        if(mp != null){
+            mp.release();
         }
     }
 
@@ -165,7 +170,7 @@ public abstract class BaseGame extends AppCompatActivity {
                 textView.setText("Time Remaining: "+ remainingTime);
 
                 if(remainingTime == 10){
-                    MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.timingout);
+                    mp = MediaPlayer.create(getBaseContext(), R.raw.timingout);
                     mp.start();
                 }
             }
