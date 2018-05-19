@@ -161,7 +161,13 @@ public abstract class BaseGame extends AppCompatActivity {
     public CountDownTimer setupGameTimer(final TextView textView, final BaseGame game, final long time){
         countDownTimer = new CountDownTimer(time, 1000) {
             public void onTick(long millisUntilFinished) {
-                textView.setText("Time Remaining: "+millisUntilFinished / 1000);
+                long remainingTime = millisUntilFinished / 1000;
+                textView.setText("Time Remaining: "+ remainingTime);
+
+                if(remainingTime == 10){
+                    MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.timingout);
+                    mp.start();
+                }
             }
             public void onFinish() {
                 textView.setText("Times Up!");
