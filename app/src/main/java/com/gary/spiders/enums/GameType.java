@@ -53,8 +53,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS);
             applicableGameTypes.add(GameType.JIGSAW);
-            applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO Use photos black/white already in project
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // TODO Use photos black/white already in project
+            //applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO Use photos black/white already in project
+            //applicableGameTypes.add(GameType.POPUP_IMAGES); // Right for these not to be included in image picker/popup??
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }

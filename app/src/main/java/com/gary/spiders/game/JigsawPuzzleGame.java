@@ -61,7 +61,7 @@ public class JigsawPuzzleGame extends BaseGame {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         if(super.category == null){
-            super.category = GameCategory.IMAGE_PICKER_SPIDER_BW_IMAGES;
+            super.category = GameCategory.DRAWING_COL_HIGH;
         }
         imageResourceId = resourceLoader.getResource(super.category);
 

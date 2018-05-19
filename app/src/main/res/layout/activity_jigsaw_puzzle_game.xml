@@ -18,8 +18,8 @@
 
         <ImageButton
             android:id="@+id/top_center"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="1"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -33,6 +33,8 @@
 
         <ImageButton
             android:id="@+id/center_center"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_marginLeft="0dip"
             android:layout_marginRight="0dip"
             android:layout_marginTop="0dip"
@@ -41,15 +43,13 @@
             android:scaleType="fitCenter"
             android:layout_column="1"
             android:layout_row="1"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
             android:onClick="tileClicked"
             android:adjustViewBounds="true"/>
 
         <ImageButton
             android:id="@+id/bottom_center"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="1"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -63,8 +63,8 @@
 
         <ImageButton
             android:id="@+id/top_right"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="2"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -78,8 +78,8 @@
 
         <ImageButton
             android:id="@+id/center_right"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="2"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -93,8 +93,8 @@
 
         <ImageButton
             android:id="@+id/bottom_right"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="2"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -108,8 +108,8 @@
 
         <ImageButton
             android:id="@+id/top_left"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="0"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -123,8 +123,8 @@
 
         <ImageButton
             android:id="@+id/center_left"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="0"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -138,8 +138,8 @@
 
         <ImageButton
             android:id="@+id/bottom_left"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
             android:layout_column="0"
             android:layout_marginBottom="0dip"
             android:layout_marginLeft="0dip"
@@ -159,18 +159,19 @@
         android:id="@+id/giveUpVideo"
         android:layout_width="101dp"
         android:layout_height="99dp"
-        android:layout_below="@+id/jigsawGrid"
-        android:background="@mipmap/safety_icon"
+        android:layout_above="@+id/jigsawCountdownTimer"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp"
+        android:background="@mipmap/safety_icon"
         android:onClick="giveUp" />
 
     <TextView
         android:id="@+id/jigsawCountdownTimer"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/giveUpVideo"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="58dp"
         android:text="Time Remaining:"
         android:textAlignment="center" />
 </RelativeLayout>

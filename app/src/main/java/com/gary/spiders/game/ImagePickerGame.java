@@ -64,7 +64,7 @@ public class ImagePickerGame extends BaseGame {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         if(super.category == null){
-            super.category = GameCategory.DRAWINGS_BW_HIGH;
+            super.category = GameCategory.DRAWING_COL_HIGH;
         }
         spiderImgsArrayId = resourceLoader.getResourceArray(super.category);
         nonSpiderImgsArrayId = resourceLoader.getNonSpiderResourceArray(super.category);
