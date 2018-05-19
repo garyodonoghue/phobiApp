@@ -81,30 +81,27 @@ public class WordSearchActivity extends BaseGame {
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-                final AppCompatTextView clickedTextView = (AppCompatTextView) view;
+            public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
 
                 // check if its hidden, if so, reveal the word for 3 seconds and then hide it again
-                if(clickedTextView.getText().toString().contains("*")) {
-                    revealWord((AppCompatTextView) view, clickedTextView, words);
+                revealWord((AppCompatTextView) view, position, words);
 
-                    final Timer t = new java.util.Timer();
-                    t.schedule(
-                            new java.util.TimerTask() {
-                                @Override
-                                public void run() {
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            hideWord((AppCompatTextView) view, clickedTextView, words);
-                                            t.cancel();
-                                        }
-                                    });
-                                }
-                            },
-                            3000
-                    );
-                }
+                final Timer t = new java.util.Timer();
+                t.schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideWord((AppCompatTextView) view, position, words);
+                                        t.cancel();
+                                    }
+                                });
+                            }
+                        },
+                        2000
+                );
             }
         });
 
@@ -164,13 +161,13 @@ public class WordSearchActivity extends BaseGame {
         });
     }
 
-    private void hideWord(AppCompatTextView view, AppCompatTextView clickedTextView, List<String> words) {
-        String obfuscatedText = obfuscatedWords.get(words.indexOf(clickedTextView.getText()));
+    private void hideWord(AppCompatTextView view, int position, List<String> words) {
+        String obfuscatedText = obfuscatedWords.get(position);
         view.setText(obfuscatedText);
     }
 
-    private void revealWord(AppCompatTextView view, AppCompatTextView clickedTextView, List<String> words) {
-        String clearText = words.get(obfuscatedWords.indexOf(clickedTextView.getText()));
+    private void revealWord(AppCompatTextView view, int position, List<String> words) {
+        String clearText = words.get(position);
         view.setText(clearText);
     }
 
