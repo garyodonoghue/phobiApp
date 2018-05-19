@@ -4,6 +4,7 @@ package com.gary.spiders.game;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
@@ -37,6 +38,8 @@ public class FocusImageGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
 
+        final MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.focusing1);
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
@@ -63,6 +66,7 @@ public class FocusImageGame extends BaseGame {
         final Button button = (Button) findViewById(R.id.button_focus);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                mp.start();
 
                 progressBar.incrementProgressBy(1);
                 progress = progress + 1;
@@ -73,6 +77,7 @@ public class FocusImageGame extends BaseGame {
 
                 if(progress > progressBar.getMax()){
                     stopTimer();
+                    mp.release();
                     AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
                     alertDialog.show();
                 }
