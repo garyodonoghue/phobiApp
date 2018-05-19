@@ -2,6 +2,7 @@ package com.gary.spiders.game;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 
 /**
@@ -34,6 +36,8 @@ public abstract class BaseGame extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
 
         String s = getIntent().getStringExtra("category");
         if(s != null) {
@@ -121,6 +125,8 @@ public abstract class BaseGame extends AppCompatActivity {
             }
             public void onFinish() {
                 textView.setText("Times Up!");
+                MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.fail1);
+                mp.start();
                 levelFailed(game);
             }
         };

@@ -3,6 +3,7 @@ package com.gary.spiders.game;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
@@ -44,6 +45,8 @@ public class ImagePickerGame extends BaseGame {
     int correctSelections;
     int incorrectSelections;
 
+    MediaPlayer mp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +54,8 @@ public class ImagePickerGame extends BaseGame {
 
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
         final CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+
+        mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
         super.presentGameInfoPopup(this, "For this game you need to pick all " +
                 "the images which contain a spider", timer);
@@ -133,6 +138,7 @@ public class ImagePickerGame extends BaseGame {
             correctSelections++;
         }
         else{
+            mp.start();
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
             incorrectSelections++;
         }

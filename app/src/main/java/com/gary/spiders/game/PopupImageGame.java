@@ -3,6 +3,7 @@ package com.gary.spiders.game;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
@@ -29,6 +30,7 @@ public class PopupImageGame extends BaseGame {
 
     ImageButton popupImageButton;
     Random rand = new Random();
+    MediaPlayer mp;
 
     int bonusPoints = 10;
 
@@ -47,6 +49,7 @@ public class PopupImageGame extends BaseGame {
         setContentView(R.layout.activity_popup_image_game);
 
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
+        mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
         final TextView textView = (TextView) findViewById(R.id.popupImageTimer);
         super.setupGameTimer(textView, this, 60000);
@@ -108,6 +111,7 @@ public class PopupImageGame extends BaseGame {
             }
         }
         else {
+            mp.start();
             this.bonusPoints = this.bonusPoints - 1;
             if(this.bonusPoints < 0){
                 this.bonusPoints = 0;

@@ -76,7 +76,7 @@ public class AlertUtility {
         alertDialog.setCancelable(false);
         alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
 
-        final MediaPlayer mp = MediaPlayer.create(game, R.raw.cheer);
+        final MediaPlayer mp = MediaPlayer.create(game, R.raw.coinsuccess);
         mp.start();
 
         return alertDialog;
