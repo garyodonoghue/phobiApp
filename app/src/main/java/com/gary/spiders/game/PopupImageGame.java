@@ -32,6 +32,7 @@ public class PopupImageGame extends BaseGame {
     Random rand = new Random();
     MediaPlayer mp;
 
+    int incorrectSelections = 0;
     int bonusPoints = 10;
 
     private Runnable runnable = new Runnable() {
@@ -113,6 +114,7 @@ public class PopupImageGame extends BaseGame {
             }
         }
         else {
+            incorrectSelections++;
             mp.start();
             this.bonusPoints = this.bonusPoints - 1;
             if(this.bonusPoints < 0){
@@ -121,6 +123,11 @@ public class PopupImageGame extends BaseGame {
             super.setBonusPoints(this.bonusPoints);
 
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
+
+            if(incorrectSelections >= 3){
+                super.failedDueToIncorrectAttempts(this);
+            }
+
         }
     }
 

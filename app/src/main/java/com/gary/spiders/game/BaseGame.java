@@ -85,11 +85,42 @@ public abstract class BaseGame extends AppCompatActivity {
 //        tv.setText("Game Info");
 //        tv.setTextSize(30);
 //        alertDialog.setCustomTitle(tv);
-        
+
         alertDialog.show();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
         textView.setTextSize(25);
+    }
+
+    public void failedDueToIncorrectAttempts(final BaseGame game){
+        // Mark the level as not failed - user ran out of time
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
+        final int bonusPoints = this.bonusPoints;
+
+        alertDialogBuilder.setPositiveButton("Let's try again!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Track progress
+                        dialog.dismiss();
+
+                        Intent data = new Intent();
+                        data.putExtra("completed", "false");
+                        data.putExtra("category", category.toString());
+                        data.putExtra("initialAssessment", initialAssessment.toString());
+                        data.putExtra("bonusPoints", String.valueOf(bonusPoints));
+                        data.putExtra("tryAgain", "true");
+                        setResult(RESULT_OK, data);
+                        game.finish();
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setTitle("Too many incorrect attempts");
+        alertDialog.setCancelable(true);
+        alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
+
+        alertDialog.show();
     }
 
     public void levelFailed(final BaseGame game){

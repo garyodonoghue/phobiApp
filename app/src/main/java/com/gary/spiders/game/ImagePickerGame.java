@@ -53,13 +53,12 @@ public class ImagePickerGame extends BaseGame {
         setContentView(R.layout.activity_image_picker);
 
         final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        final CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+        final CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
 
         mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
         super.presentGameInfoPopup(this, "For this game you need to pick all " +
                 "the images which contain a spider", timer);
-
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
@@ -119,7 +118,6 @@ public class ImagePickerGame extends BaseGame {
             imageButtonsList.remove(randomElement);
         }
 
-
         for(ImageButton imageButton : imageButtonsList){
             int randomInt = rand.nextInt(nonSpiderImages.length());
             int nonSpiderImgResId = nonSpiderImages.getResourceId(randomInt, 1);
@@ -141,6 +139,10 @@ public class ImagePickerGame extends BaseGame {
             mp.start();
             imageButton.setColorFilter(Color.argb(100, 255, 0, 0), PorterDuff.Mode.DARKEN);
             incorrectSelections++;
+
+            if(incorrectSelections >= 3){
+                super.failedDueToIncorrectAttempts(this);
+            }
         }
 
         int bonusPoints = correctSelections - incorrectSelections;

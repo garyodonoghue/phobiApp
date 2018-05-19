@@ -594,6 +594,8 @@
         <item>@raw/sp3</item>
         <item>@raw/sp4</item>
         <item>@raw/sp5</item>
+        <item>@raw/sp6</item>
+        <item>@raw/sp7</item>
     </array>
 
     <array name="VIDEOS_MED">
@@ -602,6 +604,8 @@
         <item>@raw/sp3</item>
         <item>@raw/sp4</item>
         <item>@raw/sp5</item>
+        <item>@raw/sp6</item>
+        <item>@raw/sp7</item>
     </array>
 
     <array name="VIDEOS_HIGH">
@@ -610,6 +614,8 @@
         <item>@raw/sp3</item>
         <item>@raw/sp4</item>
         <item>@raw/sp5</item>
+        <item>@raw/sp6</item>
+        <item>@raw/sp7</item>
     </array>
 
 </resources>
