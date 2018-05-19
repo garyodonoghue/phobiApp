@@ -51,6 +51,8 @@ public class PopupImageGame extends BaseGame {
         popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
         mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
+        super.presentGameInfoPopup(this, "Tap all images which contain a spider", null);
+
         final TextView textView = (TextView) findViewById(R.id.popupImageTimer);
         super.setupGameTimer(textView, this, 60000);
 

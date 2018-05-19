@@ -71,16 +71,25 @@ public abstract class BaseGame extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // Track progress
                         dialog.dismiss();
-                        timer.start();
+                        if(timer != null){
+                            timer.start();
+                        }
                     }
                 });
 
         AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setTitle("Game Info");
         alertDialog.setMessage(gameDescription);
         alertDialog.setCancelable(false);
 
+//        TextView tv = new TextView(game);
+//        tv.setText("Game Info");
+//        tv.setTextSize(30);
+//        alertDialog.setCustomTitle(tv);
+        
         alertDialog.show();
+
+        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+        textView.setTextSize(25);
     }
 
     public void levelFailed(final BaseGame game){
