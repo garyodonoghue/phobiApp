@@ -35,6 +35,7 @@ public class WordSearchActivity extends BaseGame {
 
     int numWordsFound = 0;
     List<String> obfuscatedWords = new ArrayList<>();
+    List<String> allWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,9 @@ public class WordSearchActivity extends BaseGame {
         setContentView(R.layout.activity_wordsearch);
 
         final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
-        CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 60000);
 
-        super.presentGameInfoPopup(this, "Find all the words in the wordsearch within the allowed time to progress to the next level. " +
+        super.presentGameInfoPopup(this, "Find all the remainingWords in the wordsearch within the allowed time to progress to the next level. " +
                 "Tapping a word in the list will reveal it for 3 seconds.", timer);
 
         GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
@@ -64,16 +65,19 @@ public class WordSearchActivity extends BaseGame {
         String[] wordsArray = getResources().getStringArray(resourceLoader.getResourceArray(super.category));
         Random rand = new Random();
 
-        // choose 5 words from the list at random
-        final List<String> words = new ArrayList<>();
-        while(words.size() < 5){
+        // choose 5 remainingWords from the list at random
+        final List<String> remainingWords = new ArrayList<>();
+        while(remainingWords.size() < 5){
             int randomIndex = rand.nextInt(5);
             String word = wordsArray[randomIndex];
-            if(!words.contains(word)){
-                words.add(word);
+            if(!remainingWords.contains(word)){
+                remainingWords.add(word);
                 obfuscateWord(word);
             }
         }
+
+        allWords = new ArrayList<>();
+        allWords.addAll(remainingWords);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, obfuscatedWords);
@@ -82,30 +86,33 @@ public class WordSearchActivity extends BaseGame {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
+                final AppCompatTextView clickedTextView = (AppCompatTextView) view;
 
                 // check if its hidden, if so, reveal the word for 3 seconds and then hide it again
-                revealWord((AppCompatTextView) view, position, words);
+                if(clickedTextView.getText().toString().contains("*")) {
+                    revealWord((AppCompatTextView) view, position);
 
-                final Timer t = new java.util.Timer();
-                t.schedule(
-                        new java.util.TimerTask() {
-                            @Override
-                            public void run() {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        hideWord((AppCompatTextView) view, position, words);
-                                        t.cancel();
-                                    }
-                                });
-                            }
-                        },
-                        2000
-                );
+                    final Timer t = new java.util.Timer();
+                    t.schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            hideWord((AppCompatTextView) view, position);
+                                            t.cancel();
+                                        }
+                                    });
+                                }
+                            },
+                            2000
+                    );
+                }
             }
         });
 
-        Grid grid = WordSearch.generateWordSearch(args, words);
+        Grid grid = WordSearch.generateWordSearch(args, remainingWords);
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);
 
@@ -137,13 +144,15 @@ public class WordSearchActivity extends BaseGame {
                     for(TextView textV : selectedTiles){
                         sb.append(textV.getText());
                     }
-                    for(String word : words){
+                    for(String word : remainingWords){
                         if(containsAllChars(word, sb.toString())){
                             // this will avoid being able to progress by selecting the same word 5 times
-                            words.remove(word);
+                            remainingWords.remove(word);
                             correctTiles.addAll(selectedTiles);
                             selectedTiles.clear();
                             updateNumWordsFound();
+                            obfuscatedWords.set(allWords.indexOf(word), word);
+                            arrayAdapter.notifyDataSetChanged();
                             return true;
                         }
                     }
@@ -161,13 +170,13 @@ public class WordSearchActivity extends BaseGame {
         });
     }
 
-    private void hideWord(AppCompatTextView view, int position, List<String> words) {
+    private void hideWord(AppCompatTextView view, int position) {
         String obfuscatedText = obfuscatedWords.get(position);
         view.setText(obfuscatedText);
     }
 
-    private void revealWord(AppCompatTextView view, int position, List<String> words) {
-        String clearText = words.get(position);
+    private void revealWord(AppCompatTextView view, int position) {
+        String clearText = allWords.get(position);
         view.setText(clearText);
     }
 
