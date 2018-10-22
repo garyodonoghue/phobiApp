@@ -30,5 +30,6 @@ public class UpdateUsernameActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("name", usernameText.getText().toString());
         editor.commit();
+        finish();
     }
 }

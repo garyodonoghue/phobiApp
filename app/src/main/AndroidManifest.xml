@@ -33,6 +33,7 @@
 
         <receiver android:name=".util.NotificationPublisher" />
 
+        <activity android:name=".activity.UpdateLevelActivity"></activity>
     </application>
 
 </manifest>

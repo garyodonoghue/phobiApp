@@ -86,11 +86,6 @@ public abstract class BaseGame extends AppCompatActivity {
         alertDialog.setMessage(gameDescription);
         alertDialog.setCancelable(false);
 
-//        TextView tv = new TextView(game);
-//        tv.setText("Game Info");
-//        tv.setTextSize(30);
-//        alertDialog.setCustomTitle(tv);
-
         alertDialog.show();
 
         TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
@@ -98,7 +93,6 @@ public abstract class BaseGame extends AppCompatActivity {
     }
 
     public void failedDueToIncorrectAttempts(final BaseGame game){
-        // Mark the level as not failed - user ran out of time
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
         final int bonusPoints = this.bonusPoints;
 

@@ -16,17 +16,22 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
     }
 
-    public void updateAvatar(View v){
+    public void updateAvatar(View v) {
         Intent myIntent = new Intent(SettingsActivity.this, UpdateAvatarActivity.class);
         SettingsActivity.this.startActivity(myIntent);
     }
 
-    public void updateUsername(View v){
+    public void updateUsername(View v) {
         Intent myIntent = new Intent(SettingsActivity.this, UpdateUsernameActivity.class);
         SettingsActivity.this.startActivity(myIntent);
     }
 
-    public void configureReminders(View v){
+    public void setUserLevel(View v){
+        Intent myIntent = new Intent(SettingsActivity.this, UpdateLevelActivity.class);
+        SettingsActivity.this.startActivity(myIntent);
+    }
+
+    public void configureReminders(View v) {
         Intent myIntent = new Intent(SettingsActivity.this, ReminderScreen.class);
         SettingsActivity.this.startActivity(myIntent);
     }
