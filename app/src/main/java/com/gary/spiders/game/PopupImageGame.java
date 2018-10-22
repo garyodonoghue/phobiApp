@@ -34,6 +34,7 @@ public class PopupImageGame extends BaseGame {
 
     int incorrectSelections = 0;
     int bonusPoints = 10;
+    int foundImages = 0;
 
     private Runnable runnable = new Runnable() {
         @Override
@@ -102,11 +103,19 @@ public class PopupImageGame extends BaseGame {
     public void imageTapped(View v){
         ImageButton imageButton = (ImageButton) v;
         if(spiderImageResourceIds.contains(imageButton.getTag())){
+            foundImages++;
+
             imageButton.setColorFilter(Color.argb(100, 0, 255, 0), PorterDuff.Mode.DARKEN);
             allImageResourceIds.remove(imageButton.getTag());
 
+            // remove a corresponding spider image so that the wait isnt too long
+            Random random = new Random();
+            int nonSpiderImageId = nonSpiderImageResourceIds.get(random.nextInt(nonSpiderImageResourceIds.size()));
+            allImageResourceIds.remove(allImageResourceIds.indexOf(nonSpiderImageId));
+            nonSpiderImageResourceIds.remove(nonSpiderImageResourceIds.indexOf(nonSpiderImageId));
+
             // all spider images have been removed, the game is completed
-            if(allImageResourceIds.size() == nonSpiderImageResourceIds.size()){
+            if(spiderImageResourceIds.size() == foundImages){
                 stop();
                 super.stopTimer();
                 AlertDialog successAlert = AlertUtility.createGameCompletedAlert(this);
