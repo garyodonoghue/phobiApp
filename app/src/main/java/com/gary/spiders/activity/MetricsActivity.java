@@ -6,13 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 
 import com.gary.spiders.R;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,21 +47,21 @@ public class MetricsActivity extends AppCompatActivity {
     }
 
     private void setupUserProgressChart() {
-        LineChart chart = (LineChart) findViewById(R.id.userProgressChart);
+        BarChart chart = (BarChart) findViewById(R.id.userProgressChart);
         XAxis xAxis = chart.getXAxis();
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
-                Double d = Double.valueOf(value);
+                Double d = Double.valueOf(value*60000);
 
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy HH:mm");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy");
                 Date date = new Date(d.longValue() * 1000);
                 return sdf.format(date);
             }
         });
 
-        List<Entry> entries = new ArrayList<Entry>();
+        ArrayList<BarEntry> entries = new ArrayList<>();
 
         SharedPreferences preferences = getSharedPreferences("Progress", 0);
 
@@ -69,7 +74,7 @@ public class MetricsActivity extends AppCompatActivity {
                 String timestamp = level.getKey();
                 String levelValue = level.getValue();
 
-                entries.add(new Entry(Float.parseFloat(timestamp), Float.parseFloat(levelValue)));
+                entries.add(new BarEntry(Float.parseFloat(timestamp)/60000, Float.parseFloat(levelValue)));
             }
 
             // Sort based on the timestamp (x-value) earliest timestamp to latest
@@ -82,15 +87,17 @@ public class MetricsActivity extends AppCompatActivity {
             });
 
             // add entries to dataset
-            LineDataSet dataSet = new LineDataSet(entries, "User Level");
-            dataSet.setDrawCircles(false);
-            LineData lineData = new LineData(dataSet);
-            lineData.setDrawValues(false);
+            BarDataSet barDataSet = new BarDataSet(entries, "");
+            barDataSet.setDrawValues(false);
+            barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
-            chart.setData(lineData);
+            BarData data = new BarData(barDataSet);
+            data.setBarWidth(0.4f);
+            chart.setData(data);
+            chart.setFitBars(true);
             chart.setDragEnabled(false);
             chart.getAxisLeft().setDrawGridLines(false);
-            chart.getXAxis().setDrawGridLines(true);
+            chart.getXAxis().setDrawGridLines(false);
             chart.invalidate(); // refresh
         }
     }

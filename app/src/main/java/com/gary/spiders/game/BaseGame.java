@@ -9,6 +9,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
@@ -25,6 +27,8 @@ public abstract class BaseGame extends AppCompatActivity {
     public int bonusPoints;
     public CountDownTimer countDownTimer;
     MediaPlayer mp;
+
+    static boolean showDescriptions = true;
 
     @Override
     protected  void onDestroy(){
@@ -69,27 +73,48 @@ public abstract class BaseGame extends AppCompatActivity {
     }
 
     public void presentGameInfoPopup(final BaseGame game, String gameDescription, final CountDownTimer timer){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
+        if(BaseGame.showDescriptions) {
+            View checkBoxView = View.inflate(this, R.layout.checkbox, null);
 
-        alertDialogBuilder.setPositiveButton("Got it!",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Track progress
-                        dialog.dismiss();
-                        if(timer != null){
-                            timer.start();
+            CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.disableDescriptionsCheckbox);
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    BaseGame.showDescriptions = false;
+                }
+            });
+            checkBox.setText("Don't show again");
+
+
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
+
+            alertDialogBuilder.setPositiveButton("Got it!",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Track progress
+                            dialog.dismiss();
+                            if (timer != null) {
+                                timer.start();
+                            }
                         }
-                    }
-                });
+                    });
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setMessage(gameDescription);
-        alertDialog.setCancelable(false);
+            alertDialogBuilder.setView(checkBoxView);
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.setMessage(gameDescription);
+            alertDialog.setCancelable(false);
 
-        alertDialog.show();
+            alertDialog.show();
 
-        TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
-        textView.setTextSize(25);
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
+            textView.setTextSize(25);
+        }
+        else {
+            if (timer != null) {
+                timer.start();
+            }
+        }
     }
 
     public void failedDueToIncorrectAttempts(final BaseGame game){
@@ -182,5 +207,8 @@ public abstract class BaseGame extends AppCompatActivity {
 
     public void stopTimer(){
         this.countDownTimer.cancel();
+        if(mp != null){
+            mp.stop();
+        }
     }
 }
