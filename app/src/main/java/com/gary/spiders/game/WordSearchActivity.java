@@ -37,6 +37,8 @@ public class WordSearchActivity extends BaseGame {
     List<String> obfuscatedWords = new ArrayList<>();
     List<String> allWords;
 
+    int numWords;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,13 +64,15 @@ public class WordSearchActivity extends BaseGame {
             super.category = GameCategory.LINGUISTIC_HIGH;
         }
 
+        setNumWordsToBeFound();
+
         String[] wordsArray = getResources().getStringArray(resourceLoader.getResourceArray(super.category));
         Random rand = new Random();
 
-        // choose 5 remainingWords from the list at random
+        // choose 'numWords' remainingWords from the list at random
         final List<String> remainingWords = new ArrayList<>();
-        while(remainingWords.size() < 5){
-            int randomIndex = rand.nextInt(5);
+        while(remainingWords.size() < numWords){
+            int randomIndex = rand.nextInt(numWords);
             String word = wordsArray[randomIndex];
             if(!remainingWords.contains(word)){
                 remainingWords.add(word);
@@ -146,7 +150,7 @@ public class WordSearchActivity extends BaseGame {
                     }
                     for(String word : remainingWords){
                         if(containsAllChars(word, sb.toString())){
-                            // this will avoid being able to progress by selecting the same word 5 times
+                            // this will avoid being able to progress by selecting the same word 'numWords' times
                             remainingWords.remove(word);
                             correctTiles.addAll(selectedTiles);
                             selectedTiles.clear();
@@ -168,6 +172,18 @@ public class WordSearchActivity extends BaseGame {
                 return true;
             }
         });
+    }
+
+    private void setNumWordsToBeFound() {
+        if(super.category == GameCategory.LINGUISTIC_LOW){
+            numWords = 3;
+        }
+        else if((super.category == GameCategory.LINGUISTIC_MED)){
+            numWords = 4;
+        }
+        else if(super.category == GameCategory.LINGUISTIC_HIGH){
+            numWords = 5;
+        }
     }
 
     private void hideWord(AppCompatTextView view, int position) {
@@ -194,7 +210,7 @@ public class WordSearchActivity extends BaseGame {
 
     private void updateNumWordsFound() {
         numWordsFound++;
-        if(numWordsFound == 5){
+        if(numWordsFound == numWords){
             super.stopTimer();
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(WordSearchActivity.this);
             alertDialog.show();
