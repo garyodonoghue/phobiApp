@@ -21,6 +21,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     private ToggleButton focusGameSelected;
     private ToggleButton playVideoGameSelected;
     private ToggleButton popupImagesGameSelected;
+    private ToggleButton sharpenTextGameSelected;
 
     private String selectedGameMode;
 
@@ -36,6 +37,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         focusGameSelected = (ToggleButton) findViewById(R.id.focusGameSelected);
         playVideoGameSelected = (ToggleButton) findViewById(R.id.playVideoGameSelected);
         popupImagesGameSelected = (ToggleButton) findViewById(R.id.popupImagesGameSelected);
+        sharpenTextGameSelected = (ToggleButton) findViewById(R.id.sharpenTextGameSelected);
 
         CompoundButton.OnCheckedChangeListener onToggleListener = new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,6 +54,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         focusGameSelected.setOnCheckedChangeListener(onToggleListener);
         playVideoGameSelected.setOnCheckedChangeListener(onToggleListener);
         popupImagesGameSelected.setOnCheckedChangeListener(onToggleListener);
+        sharpenTextGameSelected.setOnCheckedChangeListener(onToggleListener);
     }
 
     public void generateGame(View v){
@@ -71,5 +74,6 @@ public class ChooseGameActivity extends AppCompatActivity {
         focusGameSelected.setChecked(false);
         playVideoGameSelected.setChecked(false);
         popupImagesGameSelected.setChecked(false);
+        sharpenTextGameSelected.setChecked(false);
     }
 }

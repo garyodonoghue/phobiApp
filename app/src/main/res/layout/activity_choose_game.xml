@@ -91,6 +91,14 @@
             android:textOff="Popup Images"
             android:textOn="Popup Images" />
 
+        <ToggleButton
+            android:id="@+id/sharpenTextGameSelected"
+            android:layout_width="233dp"
+            android:tag="SHARPEN_TEXT"
+            android:layout_height="63dp"
+            android:textOff="Sharpen Text"
+            android:textOn="Sharpen Text" />
+
     </LinearLayout>
 
     <TextView

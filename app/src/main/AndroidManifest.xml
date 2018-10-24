@@ -33,7 +33,8 @@
 
         <receiver android:name=".util.NotificationPublisher" />
 
-        <activity android:name=".activity.UpdateLevelActivity"></activity>
+        <activity android:name=".activity.UpdateLevelActivity" />
+        <activity android:name=".game.SharpenTextGame"></activity>
     </application>
 
 </manifest>
