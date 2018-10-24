@@ -71,7 +71,7 @@
             android:id="@+id/focusGameSelected"
             android:layout_width="233dp"
             android:layout_height="63dp"
-            android:tag="FOCUS"
+            android:tag="FOCUS_IMAGE"
             android:textOff="Focus Image"
             android:textOn="Focus Image" />
 

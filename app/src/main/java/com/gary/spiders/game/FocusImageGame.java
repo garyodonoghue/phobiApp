@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -32,21 +31,22 @@ public class FocusImageGame extends BaseGame {
     int imageResourceId;
     int progress;
     int bonusPoints = 0;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
 
-        final MediaPlayer mp = MediaPlayer.create(getBaseContext(), R.raw.focusing1);
+        mp = MediaPlayer.create(getBaseContext(), R.raw.focusing1);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
         final CountDownTimer timer = super.setupGameTimer(timerTextView, this, 30000);
 
-        super.presentGameInfoPopup(this, "For this game, click the Focus Image button to increase " +
-                "the focus of the image and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
+        super.presentGameInfoPopup(this, "Tap the 'Focus Image' button or on the image itself to increase " +
+                "its focus and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
 
 
         if(super.category == null){
@@ -58,31 +58,28 @@ public class FocusImageGame extends BaseGame {
         imageView.setImageResource(imageResourceId);
         spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
 
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
 
         updateImageFocus(focusFactor);
+    }
 
-        final Button button = (Button) findViewById(R.id.button_focus);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                mp.start();
+    public void focusImage(View v){
+        mp.start();
 
-                progressBar.incrementProgressBy(1);
-                progress = progress + 1;
-                incrementFocusFactor();
-                focusFactor = getFocusFactor();
+        progressBar.incrementProgressBy(1);
+        progress = progress + 1;
+        incrementFocusFactor();
+        focusFactor = getFocusFactor();
 
-                updateImageFocus(focusFactor);
+        updateImageFocus(focusFactor);
 
-                if(progress > progressBar.getMax()){
-                    stopTimer();
-                    mp.release();
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
-                    alertDialog.show();
-                }
-            }
-        });
+        if(progress > progressBar.getMax()){
+            stopTimer();
+            mp.release();
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(FocusImageGame.this);
+            alertDialog.show();
+        }
     }
 
     public void stopTimer(){ super.stopTimer(); }

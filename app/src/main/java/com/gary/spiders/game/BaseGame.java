@@ -46,8 +46,6 @@ public abstract class BaseGame extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
         String s = getIntent().getStringExtra("category");
         if(s != null) {
             this.category = GameCategory.valueOf(s);
