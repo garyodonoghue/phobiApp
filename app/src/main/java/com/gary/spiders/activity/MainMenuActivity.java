@@ -17,7 +17,7 @@ import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
-import com.gary.spiders.user.User;
+import com.gary.spiders.model.User;
 import com.gary.spiders.util.AlertUtility;
 import com.gary.spiders.util.EpochUtil;
 

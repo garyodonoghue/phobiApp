@@ -1,4 +1,4 @@
-package com.gary.spiders.user;
+package com.gary.spiders.model;
 
 import android.content.SharedPreferences;
 

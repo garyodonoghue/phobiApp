@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.gary.spiders.R;
-import com.gary.spiders.user.User;
+import com.gary.spiders.model.User;
 
 public class UpdateUsernameActivity extends AppCompatActivity {
 

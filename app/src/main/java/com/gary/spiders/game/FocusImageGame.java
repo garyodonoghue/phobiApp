@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.activity.MainMenuActivity;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
@@ -43,7 +44,13 @@ public class FocusImageGame extends BaseGame {
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
 
         final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
-        final CountDownTimer timer = super.setupGameTimer(timerTextView, this, 30000);
+
+        long timerValue = 30000;
+        if(MainMenuActivity.user.getLevel() > 200){
+            timerValue = 15000;
+        }
+
+        final CountDownTimer timer = super.setupGameTimer(timerTextView, this, timerValue);
 
         super.presentGameInfoPopup(this, "Tap the 'Focus Image' button or on the image itself to increase " +
                 "its focus and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
