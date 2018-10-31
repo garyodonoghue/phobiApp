@@ -33,6 +33,9 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setupUserProfile();
+
+        // since this is called on create, we can determine how often the user is using the app since this will be created each time
+        // the user launches the application
         this.logUserProgress();
     }
 
@@ -40,6 +43,7 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         this.setupUserProfile();
+        this.logUserProgress();
     }
 
     private void setupUserProfile() {

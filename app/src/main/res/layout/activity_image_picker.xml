@@ -220,7 +220,7 @@
         android:layout_height="99dp"
         android:layout_below="@+id/tappyGrid"
         android:layout_centerHorizontal="true"
-        android:background="@mipmap/safety_icon"
+        android:background="@drawable/safety_icon"
         android:onClick="giveUp"
         android:layout_gravity="center"/>
 

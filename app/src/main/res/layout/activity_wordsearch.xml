@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gary.spiders.game.WordSearchActivity">
+    tools:context="com.gary.spiders.game.WordSearchGame">
 
     <GridView
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@mipmap/safety_icon"
+        android:background="@drawable/safety_icon"
         android:onClick="giveUp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

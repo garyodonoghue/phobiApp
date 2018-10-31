@@ -35,11 +35,11 @@ public class GameFactory {
     private static BaseGame getGameInstance(GameType gameType){
         switch(gameType){
             case FOCUS_IMAGE: return new FocusImageGame();
-            case ZOOM: return new ZoomTextActivity();
+            case ZOOM: return new ZoomTextGame();
             case JIGSAW: return new JigsawPuzzleGame();
             case IMAGE_PICKER: return new ImagePickerGame();
             case PLAY: return new PlayStopVideoGame();
-            case WORDSEARCH: return new WordSearchActivity();
+            case WORDSEARCH: return new WordSearchGame();
             case POPUP_IMAGES: return new PopupImageGame();
             case FOCUS_TEXT: return new SharpenTextGame();
 

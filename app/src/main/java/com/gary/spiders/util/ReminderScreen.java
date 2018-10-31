@@ -97,7 +97,7 @@ public class ReminderScreen extends AppCompatActivity {
         Notification.Builder builder = new Notification.Builder(this);
         builder.setContentTitle("PhobiApp Reminder!");
         builder.setContentText(content);
-        builder.setSmallIcon(R.mipmap.ic_launcher_round);
+        builder.setSmallIcon(R.drawable.ic_launcher_round);
         return builder.build();
     }
 }

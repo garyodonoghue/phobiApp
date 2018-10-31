@@ -162,7 +162,7 @@
         android:layout_above="@+id/jigsawCountdownTimer"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="28dp"
-        android:background="@mipmap/safety_icon"
+        android:background="@drawable/safety_icon"
         android:onClick="giveUp" />
 
     <TextView
