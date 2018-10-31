@@ -26,7 +26,6 @@ import java.util.Arrays;
 public class MainMenuActivity extends AppCompatActivity {
 
     int requestCode = 1;
-    public boolean initialAssessmentCompleted = false;
     public static User user;
 
     @Override
@@ -49,10 +48,13 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
 
+        Button playBtn = (Button) findViewById(R.id.playGame);
         if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
-            Button playBtn = (Button) findViewById(R.id.playGame);
             playBtn.setText("Continue Playing");
-            this.initialAssessmentCompleted = true;
+        }
+        else
+        {
+            playBtn.setText("Initial Assessment");
         }
 
         if(!user.getAvatarResource().isEmpty()){
@@ -70,7 +72,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public void playGame(View view) {
-        if(!this.initialAssessmentCompleted){
+        if(!user.isInitialAssessmentCompleted()){
             // LINGUISTIC_HIGH is the first HIGH category
             BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
             Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
@@ -133,6 +135,14 @@ public class MainMenuActivity extends AppCompatActivity {
                         AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Assessment Completed!",
                                 "Thank you for taking the initial assessment. We will now present you levels based on your results");
                         alert.show();
+                        alert.setOnDismissListener(new DialogInterface.OnDismissListener(){
+
+                            @Override
+                            public void onDismiss(DialogInterface dialog) {
+                                Intent questionnarire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+                                MainMenuActivity.this.startActivity(questionnarire);
+                            }
+                        });
                     }
                 }
                 else {
@@ -218,7 +228,6 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.user.setInitialAssessmentCompleted("true");
         Button playBtn = (Button) findViewById(R.id.playGame);
         playBtn.setText("Continue Playing");
-        this.initialAssessmentCompleted = true;
     }
 
     private void updateUserLevel(int newUserLevel) {
@@ -239,6 +248,7 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(user.getLevel()));
         editor.commit();
     }
+
     private void getNextInitialAssessmentGame(int requestCode, GameCategory[] categoriesArray, GameCategory category) {
         int nextCategoryIndex = Arrays.asList(categoriesArray).indexOf(category) + 1;
 

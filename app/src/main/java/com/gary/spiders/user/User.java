@@ -102,8 +102,8 @@ public class User {
         this.level = level;
     }
 
-    public String isInitialAssessmentCompleted() {
-        return initialAssessmentCompleted;
+    public boolean isInitialAssessmentCompleted() {
+        return Boolean.valueOf(initialAssessmentCompleted);
     }
 
     public void setInitialAssessmentCompleted(String initialAssessmentCompleted) {

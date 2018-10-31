@@ -1,6 +1,7 @@
 package com.gary.spiders.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -24,6 +25,16 @@ public class SettingsActivity extends AppCompatActivity {
     public void updateUsername(View v) {
         Intent myIntent = new Intent(SettingsActivity.this, UpdateUsernameActivity.class);
         SettingsActivity.this.startActivity(myIntent);
+    }
+
+    public void clearUserData(View v){
+        SharedPreferences userData = this.getSharedPreferences("UserDetails", 0);
+        SharedPreferences.Editor userDataEditor = userData.edit().clear();
+        userDataEditor.commit();
+
+        SharedPreferences fsqRatings = this.getSharedPreferences("Questionnaire", 0);
+        SharedPreferences.Editor ratingsEditor = fsqRatings.edit().clear();
+        ratingsEditor.commit();
     }
 
     public void setUserLevel(View v){
