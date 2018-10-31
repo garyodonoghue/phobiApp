@@ -1,5 +1,6 @@
 package com.gary.spiders.activity;
 
+import android.arch.lifecycle.ProcessLifecycleOwner;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,7 @@ import com.gary.spiders.game.GameFactory;
 import com.gary.spiders.model.User;
 import com.gary.spiders.util.AlertUtility;
 import com.gary.spiders.util.EpochUtil;
+import com.gary.spiders.util.LifecycleListener;
 
 import java.util.Arrays;
 
@@ -28,22 +30,26 @@ public class MainMenuActivity extends AppCompatActivity {
     int requestCode = 1;
     public static User user;
 
+    private LifecycleListener lifecycleListener = new LifecycleListener();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         setupUserProfile();
+        setupLifecycleListener();
+        logUserProgress();
+    }
 
-        // since this is called on create, we can determine how often the user is using the app since this will be created each time
-        // the user launches the application
-        this.logUserProgress();
+    private void setupLifecycleListener() {
+        ProcessLifecycleOwner.get().getLifecycle()
+                .addObserver(lifecycleListener);
     }
 
     @Override
     protected void onResume(){
         super.onResume();
         this.setupUserProfile();
-        this.logUserProgress();
     }
 
     private void setupUserProfile() {
