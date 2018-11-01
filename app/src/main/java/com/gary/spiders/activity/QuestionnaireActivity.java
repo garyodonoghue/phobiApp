@@ -1,5 +1,6 @@
 package com.gary.spiders.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -124,6 +125,33 @@ public class QuestionnaireActivity extends AppCompatActivity {
             editor.putString("question17" + "_" + EpochUtil.getEpochTime(), question17.getText().toString());
             editor.putString("question18" + "_" + EpochUtil.getEpochTime(), question18.getText().toString());
             editor.commit();
+
+
+
+            Intent data = new Intent();
+            boolean jumpedToNextCategory = getIntent().getBooleanExtra("initialAssessment", false);
+            data.putExtra("jumpedToNextCategory", jumpedToNextCategory);
+
+            String category = getIntent().getStringExtra("category");
+            data.putExtra("category", category);
+
+            boolean initialAssessment = getIntent().getBooleanExtra("initialAssessment", false);
+            data.putExtra("initialAssessment", initialAssessment);
+
+            // we show the FSQ at the start, half way through the game and at the end.
+            // here we know it is the midway point through the game cause the it is not the initial assessment
+            if(!initialAssessment){
+                SharedPreferences userData = getSharedPreferences("UserDetails", 0);
+                SharedPreferences.Editor userDataEditor = userData.edit();
+                editor.putString("hasMidwayFSQBeenPresented", "true");
+                editor.commit();
+
+                MainMenuActivity.user.setHasMidwayFSQBeenPresented("true");
+            }
+
+            Class gameClass = (Class) getIntent().getSerializableExtra("gameClass");
+            data.putExtra("gameClass", gameClass);
+            setResult(RESULT_OK, data);
 
             this.finish();
         }

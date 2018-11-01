@@ -1,6 +1,7 @@
 package com.gary.spiders.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -46,6 +47,35 @@ public class AlertUtility {
         alertDialog.setContentView(R.layout.review_alert);
         alertDialog.setTitle("Well done!");
         alertDialog.setCancelable(true);
+
+        return alertDialog;
+    }
+
+    /**
+     * Alert presented to the user when they finish the entire game
+     * @param context
+     * @return
+     */
+    public static AlertDialog createEntireGameFinishedAlert(final Context context) {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        alertDialogBuilder.setPositiveButton("Awesome!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Track progress
+                        dialog.dismiss();
+
+                    }
+                });
+
+        AlertDialog alertDialog = alertDialogBuilder.create();
+        alertDialog.setTitle("Well done, you've just overcome your fears!");
+        alertDialog.setCancelable(false);
+        alertDialog.getWindow().getAttributes().verticalMargin = 0.2f;
+
+        // TODO different behaviour for finishing the game? Confetti?
+        final MediaPlayer mp = MediaPlayer.create(context, R.raw.coinsuccess);
+        mp.start();
 
         return alertDialog;
     }

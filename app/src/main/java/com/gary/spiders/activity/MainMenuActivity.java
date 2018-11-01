@@ -27,8 +27,8 @@ import java.util.Arrays;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    public static final int NORMAL_LEVEL_FINISHED = 1;
     public static final int NEXT_LEVEL_CODE = 2;
-    int requestCode = 1;
     public static User user;
 
     private LifecycleListener lifecycleListener;
@@ -94,14 +94,14 @@ public class MainMenuActivity extends AppCompatActivity {
             intent1.putExtra("category", gameType.category.toString());
             intent1.putExtra("initialAssessment", gameType.initialAssessment);
 
-            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
         }
         else {
             BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
             Intent intent1 = new Intent(MainMenuActivity.this, newGameType.getClass());
             intent1.putExtra("category", newGameType.category.toString());
             intent1.putExtra("initialAssessment", newGameType.initialAssessment);
-            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
         }
     }
 
@@ -124,7 +124,7 @@ public class MainMenuActivity extends AppCompatActivity {
     public void onActivityResult(final int requestCode, int resultCode, Intent data) {
         GameCategory[] categoriesArray = GameCategory.getInitialAssessmentCategories();
 
-        if (this.requestCode == requestCode) {
+        if (this.NORMAL_LEVEL_FINISHED == requestCode) {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
                 boolean tryAgain = Boolean.valueOf(data.getStringExtra("tryAgain"));
@@ -152,8 +152,9 @@ public class MainMenuActivity extends AppCompatActivity {
 
                             @Override
                             public void onDismiss(DialogInterface dialog) {
-                                Intent questionnarire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
-                                MainMenuActivity.this.startActivity(questionnarire);
+                                Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+                                questionnaire.putExtra("initialAssessment", true);
+                                MainMenuActivity.this.startActivity(questionnaire);
                             }
                         });
                     }
@@ -171,9 +172,23 @@ public class MainMenuActivity extends AppCompatActivity {
                         GameCategory oldCategory = GameCategory.getCategory(oldLevel);
                         final GameCategory newCategory = GameCategory.getCategory(newLevel);
 
-                        final BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
-                        boolean jumpedToNextCategory = oldCategory != newCategory;
-                        checkShouldDisplayFSQ(jumpedToNextCategory, game.category.toString(), game.initialAssessment, game.getClass());
+                        if(newCategory == GameCategory.GAME_FINISHED){
+                            AlertDialog alertDialog = AlertUtility.createEntireGameFinishedAlert(this);
+                            alertDialog.setOnDismissListener(new DialogInterface.OnDismissListener(){
+
+                                @Override
+                                public void onDismiss(DialogInterface dialog) {
+                                    Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+                                    MainMenuActivity.this.startActivity(questionnaire);
+                                }
+                            });
+                            alertDialog.show();
+                        }
+                        else {
+                            final BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
+                            boolean jumpedToNextCategory = oldCategory != newCategory;
+                            checkShouldDisplayFSQ(jumpedToNextCategory, game.category.toString(), game.initialAssessment, game.getClass());
+                        }
                     }
                     else {
                         // User ran out of time, gave up etc, deduct them a point
@@ -238,7 +253,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         else{
             // User completed the level without levelling up to the next category
-            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+            MainMenuActivity.this.startActivityForResult(intent1, this.NORMAL_LEVEL_FINISHED);
         }
     }
 
@@ -272,14 +287,13 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         User user = new User(userData);
 
-
         if(!user.hasMidwayFSQBeenPresented() && MainMenuActivity.user.getLevel() > user.getMidwayThroughGameLevel()){
-            Intent questionnarire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
-            questionnarire.putExtra("jumpedToNextCategory", jumpedToNextCategory);
-            questionnarire.putExtra("category", category);
-            questionnarire.putExtra("initialAssessment", initialAssessment);
-            questionnarire.putExtra("gameClass", gameClass);
-            MainMenuActivity.this.startActivityForResult(questionnarire, NEXT_LEVEL_CODE);
+            Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+            questionnaire.putExtra("jumpedToNextCategory", jumpedToNextCategory);
+            questionnaire.putExtra("category", category);
+            questionnaire.putExtra("initialAssessment", initialAssessment);
+            questionnaire.putExtra("gameClass", gameClass);
+            MainMenuActivity.this.startActivityForResult(questionnaire, NEXT_LEVEL_CODE);
         }
     }
 

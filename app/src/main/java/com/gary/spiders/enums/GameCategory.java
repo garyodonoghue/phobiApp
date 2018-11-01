@@ -9,7 +9,7 @@ public enum GameCategory {
     LINGUISTIC_LOW, LINGUISTIC_MED, LINGUISTIC_HIGH, CARTOON_LOW, CARTOON_MED, CARTOON_HIGH,
     DRAWINGS_BW_LOW, DRAWINGS_BW_MED, DRAWINGS_BW_HIGH, DRAWING_COL_LOW, DRAWING_COL_MED, DRAWING_COL_HIGH,
     PHOTOS_BW_LOW, PHOTOS_BW_MED, PHOTOS_BW_HIGH, PHOTOS_COL_SMALL_LOW, PHOTOS_COL_SMALL_MED, PHOTOS_COL_SMALL_HIGH,
-    PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH;
+    PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH, GAME_FINISHED;
 
     public static final int LINGUISTIC_LOWEST_LEVEL = 1;
     public static final int LINGUISTIC_MID_LEVEL = 6;
@@ -143,6 +143,9 @@ public enum GameCategory {
         }
         else if(userLevel > VIDEOS_MEDIUM_LEVEL && userLevel <= VIDEOS_HIGHEST_LEVEL){
             gameCategory = GameCategory.VIDEOS_HIGH;
+        }
+        else if(userLevel > VIDEOS_HIGHEST_LEVEL){
+            gameCategory = GameCategory.GAME_FINISHED;
         }
 
         Log.d("GameCategory","Category="+gameCategory);
