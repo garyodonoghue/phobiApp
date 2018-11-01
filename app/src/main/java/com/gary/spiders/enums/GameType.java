@@ -8,7 +8,7 @@ import java.util.Random;
  * Created by Gary on 04/10/2017.
  */
 public enum GameType {
-    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS_IMAGE, PLAY, POPUP_IMAGES, FOCUS_TEXT;
+    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS_IMAGE, PLAY, POPUP_IMAGES, SHARPEN_TEXT;
 
 
     public static GameType retrieveGameMode(GameCategory category) {
@@ -19,7 +19,7 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.ZOOM);
             applicableGameTypes.add(GameType.WORDSEARCH);
-            applicableGameTypes.add(GameType.FOCUS_TEXT);
+            applicableGameTypes.add((GameType.SHARPEN_TEXT));
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -28,7 +28,7 @@ public enum GameType {
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
             applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // uses insects_col series of images for non-spider images
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -37,7 +37,7 @@ public enum GameType {
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
             applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // loads DRAWINGS_BW_ low/med/high and NON_SPIDER_DRAWINGS_BW_ ...
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -46,7 +46,7 @@ public enum GameType {
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
             applicableGameTypes.add(GameType.IMAGE_PICKER);
-            applicableGameTypes.add(GameType.POPUP_IMAGES); // uses insects_col series of images for non-spider images
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -54,9 +54,9 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
-            //applicableGameTypes.add(GameType.IMAGE_PICKER); // TODO Use photos black/white already in project
-            //applicableGameTypes.add(GameType.POPUP_IMAGES); // Right for these not to be included in image picker/popup??
 
+            // TODO get black/white and coloured photos of non-spiders of Santi and then can image picker
+            // and popup image game modes to this category, and the next two also
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
         else if(category.isPhotosColSmall()){

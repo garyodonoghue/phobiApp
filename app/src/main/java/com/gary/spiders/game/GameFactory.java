@@ -46,7 +46,7 @@ public class GameFactory {
             case PLAY: return new PlayStopVideoGame();
             case WORDSEARCH: return new WordSearchGame();
             case POPUP_IMAGES: return new PopupImageGame();
-            case FOCUS_TEXT: return new SharpenTextGame();
+            case SHARPEN_TEXT: return new SharpenTextGame();
 
             default: throw new IllegalArgumentException();
         }
