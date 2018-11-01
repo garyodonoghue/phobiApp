@@ -27,10 +27,11 @@ import java.util.Arrays;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+    public static final int NEXT_LEVEL_CODE = 2;
     int requestCode = 1;
     public static User user;
 
-    private LifecycleListener lifecycleListener = new LifecycleListener();
+    private LifecycleListener lifecycleListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     private void setupLifecycleListener() {
+        lifecycleListener = new LifecycleListener(this);
         ProcessLifecycleOwner.get().getLifecycle()
                 .addObserver(lifecycleListener);
     }
@@ -141,6 +143,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         int userLevel = category.getBeginnerLevelForCategory();
                         updateUserLevel(userLevel);
                         setInitialAssessmentCompletedFlag();
+                        setUpFSQPresentationLevel(GameFactory.getHalfwayLevel(userLevel));
 
                         AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Assessment Completed!",
                                 "Thank you for taking the initial assessment. We will now present you levels based on your results");
@@ -164,41 +167,13 @@ public class MainMenuActivity extends AppCompatActivity {
                         final int newLevel = oldLevel + 1 + bonusPoints;
                         updateUserLevel(newLevel);
 
+
                         GameCategory oldCategory = GameCategory.getCategory(oldLevel);
                         final GameCategory newCategory = GameCategory.getCategory(newLevel);
 
                         final BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
-                        final Intent intent1 = new Intent(MainMenuActivity.this, game.getClass());
-                        // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
-                        // which will in turn be used by the AlertUtility to set the onResult values.
-                        intent1.putExtra("category", game.category.toString());
-                        intent1.putExtra("initialAssessment", game.initialAssessment);
-
-                        // check if they upped a level, present a congrats dialog box
-                        if(oldCategory != newCategory){
-                            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
-
-                            alertDialogBuilder.setPositiveButton("Thanks!",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();
-                                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
-                                        }
-                                    });
-
-                            AlertDialog alertDialog = alertDialogBuilder.create();
-                            alertDialog.setTitle("Congratulations!");
-                            alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
-                            alertDialog.setCancelable(false);
-                            alertDialog.show();
-
-                            final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
-                            mp.start();
-                        }
-                        else{
-                            // User completed the level without levelling up to the next category
-                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
-                        }
+                        boolean jumpedToNextCategory = oldCategory != newCategory;
+                        checkShouldDisplayFSQ(jumpedToNextCategory, game.category.toString(), game.initialAssessment, game.getClass());
                     }
                     else {
                         // User ran out of time, gave up etc, deduct them a point
@@ -227,6 +202,44 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             }
         }
+        else if(NEXT_LEVEL_CODE == requestCode) {
+            boolean jumpedToNextCategory = data.getBooleanExtra("jumpedToNextCategory", false);
+            Class gameClass = (Class) data.getSerializableExtra("gameClass");
+            String category = data.getStringExtra("category");
+            boolean initialAssessment = data.getBooleanExtra("initialAssessment", false);
+
+            Intent nextLevelIntent = new Intent(MainMenuActivity.this, gameClass);
+
+            getNextLevelOnLevelCompletion(requestCode, jumpedToNextCategory, nextLevelIntent);
+        }
+    }
+
+    private void getNextLevelOnLevelCompletion(final int requestCode, final boolean jumpedToNextCategory, final Intent intent1) {
+        // check if they upped a level, present a congrats dialog box
+        if(jumpedToNextCategory){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
+
+            alertDialogBuilder.setPositiveButton("Thanks!",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+                        }
+                    });
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.setTitle("Congratulations!");
+            alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
+            alertDialog.setCancelable(false);
+            alertDialog.show();
+
+            final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
+            mp.start();
+        }
+        else{
+            // User completed the level without levelling up to the next category
+            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+        }
     }
 
     private void setInitialAssessmentCompletedFlag() {
@@ -249,6 +262,34 @@ public class MainMenuActivity extends AppCompatActivity {
         Log.d("UpdateUserLevel", "level="+newUserLevel);
 
         this.logUserProgress();
+    }
+
+    /**
+     * Check to see if we have displayed the midway point FSQ, if we haven't and we're passed the midway level, display
+     * the FSQ activity to the user
+     */
+    private void checkShouldDisplayFSQ(boolean jumpedToNextCategory, String category, boolean initialAssessment, Class gameClass){
+        SharedPreferences userData = getSharedPreferences("UserDetails", 0);
+        User user = new User(userData);
+
+
+        if(!user.hasMidwayFSQBeenPresented() && MainMenuActivity.user.getLevel() > user.getMidwayThroughGameLevel()){
+            Intent questionnarire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+            questionnarire.putExtra("jumpedToNextCategory", jumpedToNextCategory);
+            questionnarire.putExtra("category", category);
+            questionnarire.putExtra("initialAssessment", initialAssessment);
+            questionnarire.putExtra("gameClass", gameClass);
+            MainMenuActivity.this.startActivityForResult(questionnarire, NEXT_LEVEL_CODE);
+        }
+    }
+
+    private void setUpFSQPresentationLevel(int halfwayLevel){
+        SharedPreferences userData = getSharedPreferences("UserDetails", 0);
+        SharedPreferences.Editor editor = userData.edit();
+        editor.putString("midwayThroughGameLevel", Integer.toString(halfwayLevel));
+        editor.putString("hasMidwayFSQBeenPresented", "false");
+        editor.commit();
+        MainMenuActivity.user.setMidwayThroughGameLevel(halfwayLevel);
     }
 
     // Log the date with the user level, so it can be graphed later

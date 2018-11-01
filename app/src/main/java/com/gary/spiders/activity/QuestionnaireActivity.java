@@ -17,6 +17,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * FSQ Questionnaire activity presented to the user, asking them a number of questions (18 in total)
+ * which they give numeric answers to (1-7)
+ */
 public class QuestionnaireActivity extends AppCompatActivity {
 
     SharedPreferences questionnaire;

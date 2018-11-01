@@ -11,7 +11,7 @@ public enum GameCategory {
     PHOTOS_BW_LOW, PHOTOS_BW_MED, PHOTOS_BW_HIGH, PHOTOS_COL_SMALL_LOW, PHOTOS_COL_SMALL_MED, PHOTOS_COL_SMALL_HIGH,
     PHOTOS_COL_BIG_LOW, PHOTOS_COL_BIG_MED, PHOTOS_COL_BIG_HIGH, VIDEOS_LOW, VIDEOS_MED, VIDEOS_HIGH;
 
-    public static final int LINGUISTIC_LOWEST_LEVEL = 4;
+    public static final int LINGUISTIC_LOWEST_LEVEL = 1;
     public static final int LINGUISTIC_MID_LEVEL = 6;
     public static final int LINGUISTIC_HIGHEST_LEVEL = 8;
     public static final int CARTOON_LOWEST_LEVEL = 20;

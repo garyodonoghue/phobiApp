@@ -32,6 +32,11 @@ public class GameFactory {
         return game;
     }
 
+    public static int getHalfwayLevel(int startingLevel){
+        // ignore fractional part for odd numbers, we just need a rough value
+        return (GameCategory.VIDEOS_HIGHEST_LEVEL - startingLevel)/2;
+    }
+
     private static BaseGame getGameInstance(GameType gameType){
         switch(gameType){
             case FOCUS_IMAGE: return new FocusImageGame();

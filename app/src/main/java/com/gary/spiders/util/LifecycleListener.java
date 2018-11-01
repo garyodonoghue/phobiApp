@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
+import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.gary.spiders.activity.MainMenuActivity;
@@ -14,9 +15,15 @@ import com.gary.spiders.activity.MainMenuActivity;
 
 public class LifecycleListener extends Activity implements LifecycleObserver {
 
+    Context baseContext;
+
+    public LifecycleListener(Context context){
+        this.baseContext = context;
+    }
+
     @OnLifecycleEvent(Lifecycle.Event.ON_START)
     protected void onMoveToForeground() {
-        SharedPreferences userData = getSharedPreferences("Progress", 0);
+        SharedPreferences userData = this.baseContext.getSharedPreferences("Progress", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(MainMenuActivity.user.getLevel()));
         editor.commit();

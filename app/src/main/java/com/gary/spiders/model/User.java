@@ -17,8 +17,11 @@ public class User {
 
     private String initialAssessmentCompleted;
 
-    // There are 140 levels
+    // There are 600 levels
     private int level;
+
+    private int midwayThroughGameLevel;
+    private String hasMidwayFSQBeenPresented;
 
     private GameCategory category;
 
@@ -49,6 +52,14 @@ public class User {
 
                    case "level":
                        setLevel(Integer.parseInt(value));
+                       break;
+
+                   case "midwayThroughGameLevel":
+                       setMidwayThroughGameLevel(Integer.parseInt(value));
+                       break;
+
+                   case "hasMidwayFSQBeenPresented":
+                       setHasMidwayFSQBeenPresented(value);
                        break;
 
                    default:
@@ -98,15 +109,18 @@ public class User {
         return level;
     }
 
-    public void setLevel(int level) {
-        this.level = level;
-    }
+    public void setLevel(int level) { this.level = level; }
 
-    public boolean isInitialAssessmentCompleted() {
-        return Boolean.valueOf(initialAssessmentCompleted);
-    }
+    public void setMidwayThroughGameLevel(int midwayThroughGameLevel) { this.midwayThroughGameLevel = midwayThroughGameLevel; }
 
-    public void setInitialAssessmentCompleted(String initialAssessmentCompleted) {
-        this.initialAssessmentCompleted = initialAssessmentCompleted;
-    }
+    public int getMidwayThroughGameLevel(){ return this.midwayThroughGameLevel; }
+
+    public boolean isInitialAssessmentCompleted() { return Boolean.valueOf(initialAssessmentCompleted); }
+
+    public void setInitialAssessmentCompleted(String initialAssessmentCompleted) { this.initialAssessmentCompleted = initialAssessmentCompleted; }
+
+    public boolean hasMidwayFSQBeenPresented() { return Boolean.valueOf(hasMidwayFSQBeenPresented); }
+
+    public void setHasMidwayFSQBeenPresented(String hasMidwayFSQBeenPresented) { this.hasMidwayFSQBeenPresented = hasMidwayFSQBeenPresented; }
+
 }
