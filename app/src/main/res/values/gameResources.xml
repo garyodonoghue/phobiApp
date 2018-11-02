@@ -589,33 +589,47 @@
     </integer-array>
 
     <array name="VIDEOS_LOW">
-        <item>@raw/sp1</item>
-        <item>@raw/sp2</item>
-        <item>@raw/sp3</item>
-        <item>@raw/sp4</item>
-        <item>@raw/sp5</item>
-        <item>@raw/sp6</item>
-        <item>@raw/sp7</item>
+        <item>@raw/low_sp21</item>
+        <item>@raw/low_sp22</item>
+        <item>@raw/low_sp25</item>
+        <item>@raw/low_sp3</item>
+        <item>@raw/low_sp44</item>
+        <item>@raw/low_sp57</item>
+        <item>@raw/low_sp6</item>
+        <item>@raw/low_sp65</item>
+        <item>@raw/low_sp72</item>
     </array>
 
     <array name="VIDEOS_MED">
-        <item>@raw/sp1</item>
-        <item>@raw/sp2</item>
-        <item>@raw/sp3</item>
-        <item>@raw/sp4</item>
-        <item>@raw/sp5</item>
-        <item>@raw/sp6</item>
-        <item>@raw/sp7</item>
+        <item>@raw/mid_sp1</item>
+        <item>@raw/mid_sp12</item>
+        <item>@raw/mid_sp47</item>
+        <item>@raw/mid_sp53</item>
+        <item>@raw/mid_sp54</item>
+        <item>@raw/mid_sp7</item>
     </array>
 
     <array name="VIDEOS_HIGH">
-        <item>@raw/sp1</item>
-        <item>@raw/sp2</item>
-        <item>@raw/sp3</item>
-        <item>@raw/sp4</item>
-        <item>@raw/sp5</item>
-        <item>@raw/sp6</item>
-        <item>@raw/sp7</item>
+        <item>@raw/high_sp10</item>
+        <item>@raw/high_sp11</item>
+        <item>@raw/high_sp15</item>
+        <item>@raw/high_sp16</item>
+        <item>@raw/high_sp17</item>
+        <item>@raw/high_sp18</item>
+        <item>@raw/high_sp19</item>
+        <item>@raw/high_sp2</item>
+        <item>@raw/high_sp32</item>
+        <item>@raw/high_sp4</item>
+        <item>@raw/high_sp43</item>
+        <item>@raw/high_sp48</item>
+        <item>@raw/high_sp49</item>
+        <item>@raw/high_sp5</item>
+        <item>@raw/high_sp51</item>
+        <item>@raw/high_sp64</item>
+        <item>@raw/high_sp69</item>
+        <item>@raw/high_sp70</item>
+        <item>@raw/high_sp8</item>
+        <item>@raw/high_sp9</item>
     </array>
 
 </resources>
