@@ -458,6 +458,37 @@
         <item>@drawable/insect_col36</item>
     </integer-array>
 
+    <!-- TODO Add the non-spider Black/White assets for all 3 NON_SPIDER_PHOTOS_BW_.. categories below !-->
+    <integer-array name="NON_SPIDER_PHOTOS_BW_LOW">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_BW_MED">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_BW_HIGH">
+    </integer-array>
+
+    <!-- TODO Add the non-spider Colour assets for all 3 NON_SPIDER_PHOTOS_COL_.. categories below !-->
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_LOW">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_MED">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_HIGH">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_LOW">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_MED">
+    </integer-array>
+
+    <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_HIGH">
+    </integer-array>
+
+
     <integer-array name="PHOTOS_BW_LOW">
         <item>@drawable/photos_bw_low1</item>
         <item>@drawable/photos_bw_low2</item>
