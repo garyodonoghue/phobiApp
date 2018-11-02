@@ -460,32 +460,176 @@
 
     <!-- TODO Add the non-spider Black/White assets for all 3 NON_SPIDER_PHOTOS_BW_.. categories below !-->
     <integer-array name="NON_SPIDER_PHOTOS_BW_LOW">
+        <item>@drawable/ic_nosp_photo_bw1</item>
+        <item>@drawable/ic_nosp_photo_bw2</item>
+        <item>@drawable/ic_nosp_photo_bw3</item>
+        <item>@drawable/ic_nosp_photo_bw4</item>
+        <item>@drawable/ic_nosp_photo_bw5</item>
+        <item>@drawable/ic_nosp_photo_bw6</item>
+        <item>@drawable/ic_nosp_photo_bw7</item>
+        <item>@drawable/ic_nosp_photo_bw8</item>
+        <item>@drawable/ic_nosp_photo_bw9</item>
+        <item>@drawable/ic_nosp_photo_bw10</item>
+        <item>@drawable/ic_nosp_photo_bw11</item>
+        <item>@drawable/ic_nosp_photo_bw12</item>
+        <item>@drawable/ic_nosp_photo_bw13</item>
+        <item>@drawable/ic_nosp_photo_bw14</item>
+        <item>@drawable/ic_nosp_photo_bw15</item>
+        <item>@drawable/ic_nosp_photo_bw16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_BW_MED">
+        <item>@drawable/ic_nosp_photo_bw1</item>
+        <item>@drawable/ic_nosp_photo_bw2</item>
+        <item>@drawable/ic_nosp_photo_bw3</item>
+        <item>@drawable/ic_nosp_photo_bw4</item>
+        <item>@drawable/ic_nosp_photo_bw5</item>
+        <item>@drawable/ic_nosp_photo_bw6</item>
+        <item>@drawable/ic_nosp_photo_bw7</item>
+        <item>@drawable/ic_nosp_photo_bw8</item>
+        <item>@drawable/ic_nosp_photo_bw9</item>
+        <item>@drawable/ic_nosp_photo_bw10</item>
+        <item>@drawable/ic_nosp_photo_bw11</item>
+        <item>@drawable/ic_nosp_photo_bw12</item>
+        <item>@drawable/ic_nosp_photo_bw13</item>
+        <item>@drawable/ic_nosp_photo_bw14</item>
+        <item>@drawable/ic_nosp_photo_bw15</item>
+        <item>@drawable/ic_nosp_photo_bw16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_BW_HIGH">
+        <item>@drawable/ic_nosp_photo_bw1</item>
+        <item>@drawable/ic_nosp_photo_bw2</item>
+        <item>@drawable/ic_nosp_photo_bw3</item>
+        <item>@drawable/ic_nosp_photo_bw4</item>
+        <item>@drawable/ic_nosp_photo_bw5</item>
+        <item>@drawable/ic_nosp_photo_bw6</item>
+        <item>@drawable/ic_nosp_photo_bw7</item>
+        <item>@drawable/ic_nosp_photo_bw8</item>
+        <item>@drawable/ic_nosp_photo_bw9</item>
+        <item>@drawable/ic_nosp_photo_bw10</item>
+        <item>@drawable/ic_nosp_photo_bw11</item>
+        <item>@drawable/ic_nosp_photo_bw12</item>
+        <item>@drawable/ic_nosp_photo_bw13</item>
+        <item>@drawable/ic_nosp_photo_bw14</item>
+        <item>@drawable/ic_nosp_photo_bw15</item>
+        <item>@drawable/ic_nosp_photo_bw16</item>
     </integer-array>
 
     <!-- TODO Add the non-spider Colour assets for all 3 NON_SPIDER_PHOTOS_COL_.. categories below !-->
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_LOW">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_MED">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_SMALL_HIGH">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_LOW">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_MED">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
     <integer-array name="NON_SPIDER_PHOTOS_COL_BIG_HIGH">
+        <item>@drawable/ic_nosp_photo_col1</item>
+        <item>@drawable/ic_nosp_photo_col2</item>
+        <item>@drawable/ic_nosp_photo_col3</item>
+        <item>@drawable/ic_nosp_photo_col4</item>
+        <item>@drawable/ic_nosp_photo_col5</item>
+        <item>@drawable/ic_nosp_photo_col6</item>
+        <item>@drawable/ic_nosp_photo_col7</item>
+        <item>@drawable/ic_nosp_photo_col8</item>
+        <item>@drawable/ic_nosp_photo_col9</item>
+        <item>@drawable/ic_nosp_photo_col10</item>
+        <item>@drawable/ic_nosp_photo_col11</item>
+        <item>@drawable/ic_nosp_photo_col12</item>
+        <item>@drawable/ic_nosp_photo_col13</item>
+        <item>@drawable/ic_nosp_photo_col14</item>
+        <item>@drawable/ic_nosp_photo_col15</item>
+        <item>@drawable/ic_nosp_photo_col16</item>
     </integer-array>
 
 

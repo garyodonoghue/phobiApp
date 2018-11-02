@@ -54,15 +54,17 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
+            applicableGameTypes.add(GameType.IMAGE_PICKER);
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
-            // TODO get black/white and coloured photos of non-spiders of Santi and then can image picker
-            // and popup image game modes to this category, and the next two also
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
         else if(category.isPhotosColSmall()){
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
+            applicableGameTypes.add(GameType.IMAGE_PICKER);
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
@@ -70,6 +72,8 @@ public enum GameType {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.FOCUS_IMAGE);
             applicableGameTypes.add(GameType.JIGSAW);
+            applicableGameTypes.add(GameType.IMAGE_PICKER);
+            applicableGameTypes.add(GameType.POPUP_IMAGES);
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }
