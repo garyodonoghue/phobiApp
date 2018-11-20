@@ -2,6 +2,7 @@
 .settings/
 app/.classpath
 app/.settings/
+.idea/
 
 # Built application files
 *.apk
