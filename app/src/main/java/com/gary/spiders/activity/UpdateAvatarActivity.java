@@ -29,7 +29,7 @@ public class UpdateAvatarActivity extends AppCompatActivity {
 
         String avatarResId = MainMenuActivity.user.getAvatarResource();
         if(!avatarResId.isEmpty()){
-            int resId = getResources().getIdentifier(avatarResId, "mipmap", this.getPackageName());
+            int resId = getResources().getIdentifier(avatarResId, "drawable", this.getPackageName());
             selectedAvatar.setBackgroundResource(resId);
         }
     }
@@ -40,7 +40,7 @@ public class UpdateAvatarActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.selectedAvatar);
         imageView.setTag(imageTag);
 
-        int resId = getResources().getIdentifier(imageTag, "mipmap", this.getPackageName());
+        int resId = getResources().getIdentifier(imageTag, "drawable", this.getPackageName());
         imageView.setBackgroundResource(resId);
     }
 

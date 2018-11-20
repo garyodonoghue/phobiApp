@@ -72,7 +72,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
         if(!user.getAvatarResource().isEmpty()){
             ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
-            int resId = getResources().getIdentifier(user.getAvatarResource(), "mipmap", this.getPackageName());
+            int resId = getResources().getIdentifier(user.getAvatarResource(), "drawable", this.getPackageName());
             userAvatar.setImageResource(resId);
         }
 
