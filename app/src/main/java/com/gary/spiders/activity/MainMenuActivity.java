@@ -29,6 +29,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public static final int NORMAL_LEVEL_FINISHED = 1;
     public static final int NEXT_LEVEL_CODE = 2;
+    public static final int INITIAL_QUESTIONNAIRE_FINISHED = 3;
     public static User user;
 
     private LifecycleListener lifecycleListener;
@@ -85,16 +86,9 @@ public class MainMenuActivity extends AppCompatActivity {
 
     public void playGame(View view) {
         if(!user.isInitialAssessmentCompleted()){
-            // LINGUISTIC_HIGH is the first HIGH category
-            BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
-            Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
-
-            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
-            // which will in turn be used by the AlertUtility to set the onResult values.
-            intent1.putExtra("category", gameType.category.toString());
-            intent1.putExtra("initialAssessment", gameType.initialAssessment);
-
-            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+            Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
+            questionnaire.putExtra("initialAssessment", true);
+            MainMenuActivity.this.startActivityForResult(questionnaire, INITIAL_QUESTIONNAIRE_FINISHED);
         }
         else {
             BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
@@ -148,15 +142,6 @@ public class MainMenuActivity extends AppCompatActivity {
                         AlertDialog alert = AlertUtility.createInfoAlertDialog(this, "Assessment Completed!",
                                 "Thank you for taking the initial assessment. We will now present you levels based on your results");
                         alert.show();
-                        alert.setOnDismissListener(new DialogInterface.OnDismissListener(){
-
-                            @Override
-                            public void onDismiss(DialogInterface dialog) {
-                                Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
-                                questionnaire.putExtra("initialAssessment", true);
-                                MainMenuActivity.this.startActivity(questionnaire);
-                            }
-                        });
                     }
                 }
                 else {
@@ -226,6 +211,18 @@ public class MainMenuActivity extends AppCompatActivity {
             Intent nextLevelIntent = new Intent(MainMenuActivity.this, gameClass);
 
             getNextLevelOnLevelCompletion(requestCode, jumpedToNextCategory, nextLevelIntent);
+        }
+        else if(INITIAL_QUESTIONNAIRE_FINISHED == requestCode){
+            // LINGUISTIC_HIGH is the first HIGH category
+            BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
+            Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
+
+            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+            // which will in turn be used by the AlertUtility to set the onResult values.
+            intent1.putExtra("category", gameType.category.toString());
+            intent1.putExtra("initialAssessment", gameType.initialAssessment);
+
+            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
         }
     }
 
