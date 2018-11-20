@@ -45,7 +45,7 @@ public class WordSearchGame extends BaseGame {
         setContentView(R.layout.activity_wordsearch);
 
         final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
-        CountDownTimer timer = super.setupGameTimer(textView, this, 60000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 90000);
 
         super.presentGameInfoPopup(this, "Find all the remainingWords in the wordsearch within the allowed time to progress to the next level. " +
                 "Tapping a word in the list will reveal it for 3 seconds.", timer);

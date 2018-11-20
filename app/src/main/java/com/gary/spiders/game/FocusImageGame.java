@@ -33,6 +33,7 @@ public class FocusImageGame extends BaseGame {
     int progress;
     int bonusPoints = 0;
     ProgressBar progressBar;
+    int tapCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +73,10 @@ public class FocusImageGame extends BaseGame {
     }
 
     public void focusImage(View v){
-        mp.start();
+        tapCount++;
+        if(tapCount % 3 == 0) {
+            mp.start();
+        }
 
         progressBar.incrementProgressBy(1);
         progress = progress + 1;
