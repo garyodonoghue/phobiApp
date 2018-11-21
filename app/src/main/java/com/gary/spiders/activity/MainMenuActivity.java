@@ -28,8 +28,8 @@ import java.util.Arrays;
 public class MainMenuActivity extends AppCompatActivity {
 
     public static final int NORMAL_LEVEL_FINISHED = 1;
-    public static final int NEXT_LEVEL_CODE = 2;
-    public static final int INITIAL_QUESTIONNAIRE_FINISHED = 3;
+    public static final int FSQ_PRESENTED = 2;
+    public static final int FEAR_RATING_PRESENTED = 3;
     public static User user;
 
     private LifecycleListener lifecycleListener;
@@ -41,10 +41,6 @@ public class MainMenuActivity extends AppCompatActivity {
         setupUserProfile();
         setupLifecycleListener();
         logUserProgress();
-
-        // TODO Remove
-        Intent fearRatingActivity = new Intent(MainMenuActivity.this, FearRatingActivity.class);
-        MainMenuActivity.this.startActivity(fearRatingActivity);
     }
 
     private void setupLifecycleListener() {
@@ -92,7 +88,7 @@ public class MainMenuActivity extends AppCompatActivity {
         if(!user.isInitialAssessmentCompleted()){
             Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
             questionnaire.putExtra("initialAssessment", true);
-            MainMenuActivity.this.startActivityForResult(questionnaire, INITIAL_QUESTIONNAIRE_FINISHED);
+            MainMenuActivity.this.startActivityForResult(questionnaire, FSQ_PRESENTED);
         }
         else {
             BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
@@ -206,31 +202,41 @@ public class MainMenuActivity extends AppCompatActivity {
                 }
             }
         }
-        else if(NEXT_LEVEL_CODE == requestCode) {
-            boolean jumpedToNextCategory = data.getBooleanExtra("jumpedToNextCategory", false);
-            Class gameClass = (Class) data.getSerializableExtra("gameClass");
-            String category = data.getStringExtra("category");
+        else if(FSQ_PRESENTED == requestCode) {
+            Intent fearRatingActivity = new Intent(MainMenuActivity.this, FearRatingActivity.class);
+            boolean initialAssessment  = Boolean.valueOf(data.getBooleanExtra("initialAssessment", false));
+            fearRatingActivity.putExtra("initialAssessment", initialAssessment);
+            MainMenuActivity.this.startActivityForResult(fearRatingActivity, FEAR_RATING_PRESENTED);
+        }
+        else if(FEAR_RATING_PRESENTED == requestCode){
             boolean initialAssessment = data.getBooleanExtra("initialAssessment", false);
 
-            Intent nextLevelIntent = new Intent(MainMenuActivity.this, gameClass);
+            if(initialAssessment){
+                // LINGUISTIC_HIGH is the first HIGH category
+                BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
+                Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
 
-            getNextLevelOnLevelCompletion(requestCode, jumpedToNextCategory, nextLevelIntent);
-        }
-        else if(INITIAL_QUESTIONNAIRE_FINISHED == requestCode){
-            // LINGUISTIC_HIGH is the first HIGH category
-            BaseGame gameType = GameFactory.generateGameFromUserCategory(GameCategory.LINGUISTIC_HIGH, true);
-            Intent intent1 = new Intent(MainMenuActivity.this, gameType.getClass());
+                // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
+                // which will in turn be used by the AlertUtility to set the onResult values.
+                intent1.putExtra("category", gameType.category.toString());
+                intent1.putExtra("initialAssessment", gameType.initialAssessment);
 
-            // Note these will not be available in the onResult callback directly, these are used to set the flags in the BaseGame class,
-            // which will in turn be used by the AlertUtility to set the onResult values.
-            intent1.putExtra("category", gameType.category.toString());
-            intent1.putExtra("initialAssessment", gameType.initialAssessment);
+                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+            }
+            else{
+                // User has just had the mid-way FSQ and Fear assessment presented to them, carry
+                // on with a new level
+                BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
+                Intent nextLevelIntent = new Intent(MainMenuActivity.this, newGameType.getClass());
+                boolean jumpedToNextCategory = data.getBooleanExtra("jumpedToNextCategory", false);
+                String category = data.getStringExtra("category");
 
-            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                getNextLevelOnLevelCompletion(jumpedToNextCategory, nextLevelIntent);
+            }
         }
     }
 
-    private void getNextLevelOnLevelCompletion(final int requestCode, final boolean jumpedToNextCategory, final Intent intent1) {
+    private void getNextLevelOnLevelCompletion(final boolean jumpedToNextCategory, final Intent intent1) {
         // check if they upped a level, present a congrats dialog box
         if(jumpedToNextCategory){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
@@ -239,7 +245,7 @@ public class MainMenuActivity extends AppCompatActivity {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+                            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
                         }
                     });
 
@@ -282,7 +288,7 @@ public class MainMenuActivity extends AppCompatActivity {
 
     /**
      * Check to see if we have displayed the midway point FSQ, if we haven't and we're passed the midway level, display
-     * the FSQ activity to the user
+     * the FSQ activity to the user, otherwise just present the next level
      */
     private void checkShouldDisplayFSQ(boolean jumpedToNextCategory, String category, boolean initialAssessment, Class gameClass){
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
@@ -294,7 +300,34 @@ public class MainMenuActivity extends AppCompatActivity {
             questionnaire.putExtra("category", category);
             questionnaire.putExtra("initialAssessment", initialAssessment);
             questionnaire.putExtra("gameClass", gameClass);
-            MainMenuActivity.this.startActivityForResult(questionnaire, NEXT_LEVEL_CODE);
+            MainMenuActivity.this.startActivityForResult(questionnaire, FSQ_PRESENTED);
+        }
+        else {
+            final Intent intent1 = new Intent(MainMenuActivity.this, gameClass);
+            intent1.putExtra("category", category);
+            intent1.putExtra("initialAssessment", initialAssessment);
+
+            if(jumpedToNextCategory){
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
+                alertDialogBuilder.setPositiveButton("Thanks!",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.setTitle("Congratulations!");
+                alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
+                alertDialog.setCancelable(false);
+                alertDialog.show();
+                final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
+                mp.start();
+            }
+            else{
+                // User completed the level without levelling up to the next category
+                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+            }
         }
     }
 

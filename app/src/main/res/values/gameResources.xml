@@ -38,12 +38,19 @@
         <item>@drawable/cartoon_low2</item>
         <item>@drawable/cartoon_low3</item>
         <item>@drawable/cartoon_low4</item>
+
+        <!-- TODO Remove once we get more CARTOON_LOW resources - Filling this out to 5 entries for the moment to avoid crashes -->
+        <item>@drawable/cartoon_med1</item>
+        <item>@drawable/cartoon_med2</item>
     </integer-array>
 
     <integer-array name="CARTOON_MED">
         <item>@drawable/cartoon_med1</item>
         <item>@drawable/cartoon_med2</item>
         <item>@drawable/cartoon_med3</item>
+        <!-- TODO Remove once we get more CARTOON_MED resources - Filling this out to 5 entries for the moment to avoid crashes -->
+        <item>@drawable/cartoon_low3</item>
+        <item>@drawable/cartoon_low4</item>
     </integer-array>
 
     <integer-array name="CARTOON_HIGH">
