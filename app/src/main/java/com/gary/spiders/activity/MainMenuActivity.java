@@ -41,6 +41,10 @@ public class MainMenuActivity extends AppCompatActivity {
         setupUserProfile();
         setupLifecycleListener();
         logUserProgress();
+
+        // TODO Remove
+        Intent fearRatingActivity = new Intent(MainMenuActivity.this, FearRatingActivity.class);
+        MainMenuActivity.this.startActivity(fearRatingActivity);
     }
 
     private void setupLifecycleListener() {

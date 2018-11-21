@@ -16,16 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".game.JigsawPuzzleGame" />
         <activity android:name=".game.PlayStopVideoGame" />
         <activity android:name=".game.FocusImageGame" />
-        <activity android:name=".game.SharpenTextGame"/>
+        <activity android:name=".game.SharpenTextGame" />
         <activity android:name=".game.ImagePickerGame" />
         <activity android:name=".game.PopupImageGame" />
         <activity android:name=".game.WordSearchGame" />
         <activity android:name=".game.ZoomTextGame" />
-
         <activity android:name=".activity.ChooseGameActivity" />
         <activity android:name=".activity.MetricsActivity" />
         <activity android:name=".activity.QuestionnaireActivity" />
@@ -36,6 +34,8 @@
         <activity android:name=".activity.UpdateLevelActivity" />
 
         <receiver android:name=".util.NotificationPublisher" />
+
+        <activity android:name=".activity.FearRatingActivity"></activity>
     </application>
 
 </manifest>
