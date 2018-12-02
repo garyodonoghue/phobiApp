@@ -13,18 +13,24 @@ import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
+import butterknife.BindView;
+
 public class ZoomTextGame extends BaseGame {
 
+    @BindView(R.id.zoomTextTimer) TextView timerTextView;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.zoom_text) TextView textView;
+    @BindView(R.id.button) Button button;
+
     private float fontSize = 0.5f;
-    int textResourceId;
-    int progress;
+    private int textResourceId;
+    private int progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zoom_text);
 
-        final TextView timerTextView = (TextView) findViewById(R.id.zoomTextTimer);
         CountDownTimer timer = super.setupGameTimer(timerTextView, this, 15000);
 
         super.presentGameInfoPopup(this, "Click zoom button to zoom into the text. " +
@@ -35,16 +41,11 @@ public class ZoomTextGame extends BaseGame {
         if(super.category == null){
             super.category = GameCategory.LINGUISTIC_HIGH;
         }
+
         textResourceId = resourceLoader.getResource(super.category);
-
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(100);
-
-        final TextView textView = (TextView) findViewById(R.id.zoom_text);
         textView.setText(getResources().getString(textResourceId));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, fontSize);
-
-        final Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 incrementFontSize();

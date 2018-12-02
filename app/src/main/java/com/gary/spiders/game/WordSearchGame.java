@@ -31,27 +31,27 @@ import java.util.Random;
 import java.util.Set;
 import java.util.Timer;
 
+import butterknife.BindView;
+
 public class WordSearchGame extends BaseGame {
 
-    int numWordsFound = 0;
-    List<String> obfuscatedWords = new ArrayList<>();
-    List<String> allWords;
+    @BindView(R.id.wordsearch_grid) GridView gridView;
+    @BindView(R.id.wordsearch_words) ListView listView;
+    @BindView(R.id.wordsearchTimer) TextView textView;
 
-    int numWords;
+    private int numWordsFound = 0;
+    private List<String> obfuscatedWords = new ArrayList<>();
+    private List<String> allWords;
+    private int numWords;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wordsearch);
-
-        final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
         CountDownTimer timer = super.setupGameTimer(textView, this, 90000);
 
         super.presentGameInfoPopup(this, "Find all the remainingWords in the wordsearch within the allowed time to progress to the next level. " +
                 "Tapping a word in the list will reveal it for 3 seconds.", timer);
-
-        GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
-        final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 
         String[] args = new String[3];
         args[0] = WordSearchConfig.NORMAL_DIFFICULTY;

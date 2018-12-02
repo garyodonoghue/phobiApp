@@ -17,20 +17,26 @@ import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
+import butterknife.BindView;
+
 public class PlayStopVideoGame extends BaseGame {
+
+    @BindView(R.id.videoTimer) TextView textView;
+    @BindView(R.id.videoView) VideoView videoView;
+    @BindView(R.id.progressBar_playVideo) ProgressBar progressBar;
+    @BindView(R.id.playVideo) Button playButton;
 
     private boolean started = false;
     private Handler handler = new Handler();
-    ProgressBar progressBar = null;
-    int videoResourceId;
-    int progress = 0;
+    private int videoResourceId;
+    private int progress = 0;
 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if(started) {
-                start();
-            }
+        if(started) {
+            start();
+        }
         }
     };
 
@@ -38,8 +44,6 @@ public class PlayStopVideoGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
-
-        final TextView textView = (TextView) findViewById(R.id.videoTimer);
         CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
 
         super.presentGameInfoPopup(this, "For this game, " +
@@ -51,10 +55,6 @@ public class PlayStopVideoGame extends BaseGame {
             super.category = GameCategory.VIDEOS_HIGH;
         }
         videoResourceId = resourceLoader.getResource(super.category);
-
-        final VideoView videoView = (VideoView) findViewById(R.id.videoView);
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar_playVideo);
         progressBar.setMax(200);
 
         String path = "android.resource://" + getPackageName() + "/" + videoResourceId;
@@ -66,7 +66,6 @@ public class PlayStopVideoGame extends BaseGame {
             }
         });
 
-        Button playButton = (Button) findViewById(R.id.playVideo);
         playButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

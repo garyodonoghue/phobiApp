@@ -23,36 +23,34 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+
 
 public class JigsawPuzzleGame extends BaseGame {
+
+    @BindView(R.id.top_left) ImageButton topLeft;
+    @BindView(R.id.top_center) ImageButton topCenter;
+    @BindView(R.id.top_right) ImageButton topRight;
+    @BindView(R.id.center_left) ImageButton centerLeft;
+    @BindView(R.id.center_center) ImageButton centerCenter;
+    @BindView(R.id.center_right) ImageButton centerRight;
+    @BindView(R.id.bottom_left) ImageButton bottomLeft;
+    @BindView(R.id.bottom_center) ImageButton bottomCenter;
+    @BindView(R.id.bottom_right) ImageButton bottomRight;
+    @BindView(R.id.jigsawCountdownTimer) TextView textView;
 
     private int numSelectedTiles = 0;
     private ImageButton imageButton1;
     private Drawable buttonImage1;
     private Drawable buttonImage2;
-    int imageResourceId;
-    List<Bitmap> correctImageOrder;
-
-    int bonusPoints = 10;
-
-    ImageButton topLeft;
-    ImageButton topCenter;
-    ImageButton topRight;
-
-    ImageButton centerLeft;
-    ImageButton centerCenter;
-    ImageButton centerRight;
-
-    ImageButton bottomLeft;
-    ImageButton bottomCenter;
-    ImageButton bottomRight;
+    private int imageResourceId;
+    private List<Bitmap> correctImageOrder;
+    private int bonusPoints = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
-
-        final TextView textView = (TextView) findViewById(R.id.jigsawCountdownTimer);
         CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
 
         super.presentGameInfoPopup(this, "For this game, click a tile and then " +
@@ -64,18 +62,6 @@ public class JigsawPuzzleGame extends BaseGame {
             super.category = GameCategory.DRAWING_COL_HIGH;
         }
         imageResourceId = resourceLoader.getResource(super.category);
-
-        topLeft = (ImageButton) findViewById(R.id.top_left);
-        topCenter = (ImageButton) findViewById(R.id.top_center);
-        topRight = (ImageButton) findViewById(R.id.top_right);
-
-        centerLeft = (ImageButton) findViewById(R.id.center_left);
-        centerCenter = (ImageButton) findViewById(R.id.center_center);
-        centerRight = (ImageButton) findViewById(R.id.center_right);
-
-        bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
-        bottomCenter = (ImageButton) findViewById(R.id.bottom_center);
-        bottomRight = (ImageButton) findViewById(R.id.bottom_right);
 
         // Divide up image into 9 pieces and assign to imageButton segments
         ImageView imageView = new ImageView(this);

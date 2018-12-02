@@ -9,7 +9,11 @@ import android.widget.EditText;
 
 import com.gary.spiders.R;
 
+import butterknife.BindView;
+
 public class UpdateLevelActivity extends AppCompatActivity {
+
+    @BindView(R.id.userLevel) EditText userLvlText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,7 +22,6 @@ public class UpdateLevelActivity extends AppCompatActivity {
     }
 
     public void setUserLevel(View v){
-        EditText userLvlText = (EditText) findViewById(R.id.userLevel);
         String userLevel = userLvlText.getText().toString();
 
         SharedPreferences userData = this.getSharedPreferences("UserDetails", 0);

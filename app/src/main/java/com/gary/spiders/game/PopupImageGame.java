@@ -19,29 +19,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+
 public class PopupImageGame extends BaseGame {
+    @BindView(R.id.popupImageView) ImageButton popupImageButton;
+    @BindView(R.id.popupImageTimer) TextView textView;
 
     private boolean started = false;
     private Handler handler = new Handler();
-    List<Integer> allImageResourceIds;
-
-    List<Integer> spiderImageResourceIds = new ArrayList<>();
-    List<Integer> nonSpiderImageResourceIds = new ArrayList<>();
-
-    ImageButton popupImageButton;
-    Random rand = new Random();
-    MediaPlayer mp;
-
-    int incorrectSelections = 0;
-    int bonusPoints = 10;
-    int foundImages = 0;
+    private List<Integer> allImageResourceIds;
+    private List<Integer> spiderImageResourceIds = new ArrayList<>();
+    private List<Integer> nonSpiderImageResourceIds = new ArrayList<>();
+    private Random rand = new Random();
+    private MediaPlayer mp;
+    private int incorrectSelections = 0;
+    private int bonusPoints = 10;
+    private  int foundImages = 0;
 
     private Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            if(started) {
-                start();
-            }
+        if(started) {
+            start();
+        }
         }
     };
 
@@ -49,13 +49,9 @@ public class PopupImageGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_image_game);
-
-        popupImageButton = (ImageButton) findViewById(R.id.popupImageView);
         mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
         super.presentGameInfoPopup(this, "Tap all images which contain a spider", null);
-
-        final TextView textView = (TextView) findViewById(R.id.popupImageTimer);
         super.setupGameTimer(textView, this, 60000);
 
         GameResourceLoader resourceLoader = new GameResourceLoader(this);

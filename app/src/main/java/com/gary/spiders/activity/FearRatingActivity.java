@@ -8,9 +8,12 @@ import android.widget.EditText;
 
 import com.gary.spiders.R;
 
+import butterknife.BindView;
+
 public class FearRatingActivity extends AppCompatActivity {
 
-    boolean initialAssessment;
+    @BindView(R.id.fearRatingValue) EditText fearRatingValue;
+    private boolean initialAssessment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +25,6 @@ public class FearRatingActivity extends AppCompatActivity {
     }
 
     public void submitFearRating(View v){
-        EditText fearRatingValue = (EditText) findViewById(R.id.fearRatingValue);
         if(!fearRatingValue.getText().toString().isEmpty()){
             Intent data = getIntent();
             data.putExtra("initialAssessment", this.initialAssessment);
