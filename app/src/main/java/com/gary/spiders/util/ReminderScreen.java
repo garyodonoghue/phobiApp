@@ -55,7 +55,7 @@ public class ReminderScreen extends AppCompatActivity {
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
         int currentMin = calendar.get(Calendar.MINUTE);
 
-        int hourDiff = 0;
+        int hourDiff;
         if(alarmHoursVal < currentHour){
             hourDiff = 24 - currentHour;
             hourDiff = hourDiff + alarmHoursVal;
@@ -74,9 +74,6 @@ public class ReminderScreen extends AppCompatActivity {
         }
         else if(alarmMinsVal > currentMin){
             minDiff = alarmMinsVal - currentMin;
-        }
-        else {
-            minDiff = 0;
         }
 
         long dayInMillis = 86400000;

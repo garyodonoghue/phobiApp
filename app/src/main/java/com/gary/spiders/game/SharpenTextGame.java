@@ -14,6 +14,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class SharpenTextGame extends BaseGame {
 
@@ -44,19 +45,18 @@ public class SharpenTextGame extends BaseGame {
         progressBar.setMax(100);
         textView.setText(getResources().getString(textResourceId));
         sharpenText(textView);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                sharpenText(textView);
+    }
 
-                progressBar.incrementProgressBy(10);
-                progress = progress + 10;
-                if(progress > progressBar.getMax() + 1){
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(SharpenTextGame.this);
-                    alertDialog.show();
-                    stopTimer();
-                }
-            }
-        });
+    @OnClick(R.id.button) void sharpenText(View v) {
+        sharpenText(textView);
+
+        progressBar.incrementProgressBy(10);
+        progress = progress + 10;
+        if(progress > progressBar.getMax() + 1){
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(SharpenTextGame.this);
+            alertDialog.show();
+            stopTimer();
+        }
     }
 
     private void sharpenText(TextView textView){

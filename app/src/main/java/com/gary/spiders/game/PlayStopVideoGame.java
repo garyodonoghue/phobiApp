@@ -18,6 +18,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.OnTouch;
 
 public class PlayStopVideoGame extends BaseGame {
 
@@ -65,22 +66,17 @@ public class PlayStopVideoGame extends BaseGame {
                 mp.setLooping(true);
             }
         });
+    }
 
-        playButton.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                if(event.getAction() == MotionEvent.ACTION_DOWN) {
-                    videoView.start();
-                    start();
-                } else if (event.getAction() == MotionEvent.ACTION_UP) {
-                    videoView.pause();
-                    stop();
-                }
-                return true;
-            }
-        });
-
+    @OnTouch(R.id.playVideo) boolean onTouch(View v, MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN) {
+            videoView.start();
+            start();
+        } else if (event.getAction() == MotionEvent.ACTION_UP) {
+            videoView.pause();
+            stop();
+        }
+        return true;
     }
 
     public void stop() {

@@ -14,6 +14,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class ZoomTextGame extends BaseGame {
 
@@ -46,19 +47,19 @@ public class ZoomTextGame extends BaseGame {
         progressBar.setMax(100);
         textView.setText(getResources().getString(textResourceId));
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, fontSize);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                incrementFontSize();
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
-                progressBar.incrementProgressBy(10);
-                progress = progress + 10;
-                if(progress > progressBar.getMax() + 1){
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextGame.this);
-                    alertDialog.show();
-                    stopTimer();
-                }
-            }
-        });
+    }
+
+
+    @OnClick(R.id.button) void zoomText(View v) {
+        incrementFontSize();
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
+        progressBar.incrementProgressBy(10);
+        progress = progress + 10;
+        if(progress > progressBar.getMax() + 1){
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(ZoomTextGame.this);
+            alertDialog.show();
+            stopTimer();
+        }
     }
 
     public void stopTimer(){ super.stopTimer(); }
