@@ -16,17 +16,11 @@ import android.widget.TextView;
 import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 /**
  * Created by Gary on 01/10/2017.
  */
 
 public abstract class BaseGame extends AppCompatActivity {
-
-    private CheckBox checkBox;
-    @BindView(R.id.message) TextView textView;
 
     public GameCategory category;
     public Boolean initialAssessment;
@@ -50,7 +44,6 @@ public abstract class BaseGame extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ButterKnife.bind(this);
         String s = getIntent().getStringExtra("category");
         if(s != null) {
             this.category = GameCategory.valueOf(s);
@@ -78,6 +71,7 @@ public abstract class BaseGame extends AppCompatActivity {
     public void presentGameInfoPopup(final BaseGame game, String gameDescription, final CountDownTimer timer){
         if(BaseGame.showDescriptions) {
             View checkBoxView = View.inflate(this, R.layout.checkbox, null);
+            CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.disableDescriptionsCheckbox);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                 @Override
@@ -104,6 +98,7 @@ public abstract class BaseGame extends AppCompatActivity {
             alertDialog.setMessage(gameDescription);
             alertDialog.setCancelable(false);
             alertDialog.show();
+            TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
             textView.setTextSize(25);
         }
         else {

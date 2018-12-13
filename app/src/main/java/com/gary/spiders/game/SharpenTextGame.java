@@ -15,7 +15,6 @@ import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class SharpenTextGame extends BaseGame {
 
@@ -49,7 +48,9 @@ public class SharpenTextGame extends BaseGame {
         sharpenText(textView);
     }
 
-    @OnClick(R.id.button) void sharpenText(View v) {
+    // TODO ideally would use the OnClick provided by Butterknife here but was getting exceptions thrown for no obvious reason
+    // so just using this approach for now
+    public void sharpenText(View v) {
         sharpenText(textView);
 
         progressBar.incrementProgressBy(10);

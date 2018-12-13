@@ -15,7 +15,6 @@ import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class ZoomTextGame extends BaseGame {
 
@@ -51,8 +50,9 @@ public class ZoomTextGame extends BaseGame {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, fontSize);
     }
 
-
-    @OnClick(R.id.button) void zoomText(View v) {
+    // TODO ideally would use the OnClick provided by Butterknife here but was getting exceptions thrown for no obvious reason
+    // so just using this approach for now
+    public void zoomText(View v) {
         incrementFontSize();
         textView.setTextSize(TypedValue.COMPLEX_UNIT_MM, getSize());
         progressBar.incrementProgressBy(10);
