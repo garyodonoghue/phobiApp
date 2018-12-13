@@ -14,6 +14,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SharpenTextGame extends BaseGame {
@@ -31,6 +32,7 @@ public class SharpenTextGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharpen_text);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(timerTextView, this, 15000);
 
         super.presentGameInfoPopup(this, "Click focus button to focus the text. " +

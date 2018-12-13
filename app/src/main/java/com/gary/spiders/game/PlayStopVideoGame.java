@@ -18,6 +18,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnTouch;
 
 public class PlayStopVideoGame extends BaseGame {
@@ -45,6 +46,7 @@ public class PlayStopVideoGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_play_stop_video);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
 
         super.presentGameInfoPopup(this, "For this game, " +

@@ -17,6 +17,7 @@ import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Gary on 01/10/2017.
@@ -24,7 +25,7 @@ import butterknife.BindView;
 
 public abstract class BaseGame extends AppCompatActivity {
 
-    @BindView(R.id.disableDescriptionsCheckbox) CheckBox checkBox;
+    private CheckBox checkBox;
     @BindView(R.id.message) TextView textView;
 
     public GameCategory category;
@@ -49,7 +50,7 @@ public abstract class BaseGame extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        ButterKnife.bind(this);
         String s = getIntent().getStringExtra("category");
         if(s != null) {
             this.category = GameCategory.valueOf(s);

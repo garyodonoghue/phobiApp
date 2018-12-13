@@ -32,6 +32,7 @@ import java.util.Set;
 import java.util.Timer;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnItemClick;
 import butterknife.OnTouch;
 
@@ -54,6 +55,7 @@ public class WordSearchGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wordsearch);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(textView, this, 90000);
 
         super.presentGameInfoPopup(this, "Find all the remainingWords in the wordsearch within the allowed time to progress to the next level. " +

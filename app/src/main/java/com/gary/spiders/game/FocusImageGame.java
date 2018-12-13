@@ -19,6 +19,7 @@ import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by Gary on 18/09/2017.
@@ -42,6 +43,7 @@ public class FocusImageGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
+        ButterKnife.bind(this);
 
         mp = MediaPlayer.create(getBaseContext(), R.raw.focusing1);
         GameResourceLoader resourceLoader = new GameResourceLoader(this);

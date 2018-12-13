@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ImagePickerGame extends BaseGame {
 
@@ -48,6 +49,7 @@ public class ImagePickerGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_picker);
+        ButterKnife.bind(this);
 
         CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
 

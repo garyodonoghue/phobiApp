@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class JigsawPuzzleGame extends BaseGame {
@@ -51,6 +52,7 @@ public class JigsawPuzzleGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jigsaw_puzzle_game);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(textView, this, 30000);
 
         super.presentGameInfoPopup(this, "For this game, click a tile and then " +

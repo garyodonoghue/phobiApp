@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class PopupImageGame extends BaseGame {
     @BindView(R.id.popupImageView) ImageButton popupImageButton;
@@ -49,6 +50,7 @@ public class PopupImageGame extends BaseGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popup_image_game);
+        ButterKnife.bind(this);
         mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
         super.presentGameInfoPopup(this, "Tap all images which contain a spider", null);
