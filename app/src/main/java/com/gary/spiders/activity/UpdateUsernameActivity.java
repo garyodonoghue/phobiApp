@@ -9,23 +9,22 @@ import android.widget.EditText;
 import com.gary.spiders.R;
 import com.gary.spiders.model.User;
 
+import butterknife.BindView;
+
 public class UpdateUsernameActivity extends AppCompatActivity {
+
+    @BindView(R.id.usernameTxt) EditText usernameText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_username);
-
-        EditText usernameText = (EditText) findViewById(R.id.usernameTxt);
-
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
         usernameText.setText(MainMenuActivity.user.getName());
     }
 
     public void setUsername(View v){
-        EditText usernameText = (EditText) findViewById(R.id.usernameTxt);
-
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("name", usernameText.getText().toString());

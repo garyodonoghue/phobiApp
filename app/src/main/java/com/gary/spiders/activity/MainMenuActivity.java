@@ -25,19 +25,27 @@ import com.gary.spiders.util.LifecycleListener;
 
 import java.util.Arrays;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainMenuActivity extends AppCompatActivity {
+
+    @BindView(R.id.playGame) Button playBtn;
+    @BindView(R.id.user_avatar) ImageView userAvatar;
+    @BindView(R.id.username) TextView usernameTextView;
+    @BindView(R.id.userLevel) TextView userLevel;
 
     public static final int NORMAL_LEVEL_FINISHED = 1;
     public static final int FSQ_PRESENTED = 2;
     public static final int FEAR_RATING_PRESENTED = 3;
     public static User user;
-
     private LifecycleListener lifecycleListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        ButterKnife.bind(this);
         setupUserProfile();
         setupLifecycleListener();
         logUserProgress();
@@ -60,8 +68,6 @@ public class MainMenuActivity extends AppCompatActivity {
         // name / avatar resource id / level / num points, see User object for fields available
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
-
-        Button playBtn = (Button) findViewById(R.id.playGame);
         if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
             playBtn.setText("Continue Playing");
         }
@@ -71,16 +77,12 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
         if(!user.getAvatarResource().isEmpty()){
-            ImageView userAvatar = (ImageView) findViewById(R.id.user_avatar);
             int resId = getResources().getIdentifier(user.getAvatarResource(), "drawable", this.getPackageName());
             userAvatar.setImageResource(resId);
         }
 
         // no need to validate the username input, as it will default to username anyway
-        TextView usernameTextView = (TextView) findViewById(R.id.username);
         usernameTextView.setText(user.getName());
-
-        TextView userLevel = (TextView) findViewById(R.id.userLevel);
         userLevel.setText(String.valueOf(user.getLevel()));
     }
 
@@ -271,7 +273,6 @@ public class MainMenuActivity extends AppCompatActivity {
         editor.commit();
 
         MainMenuActivity.user.setInitialAssessmentCompleted("true");
-        Button playBtn = (Button) findViewById(R.id.playGame);
         playBtn.setText("Continue Playing");
     }
 

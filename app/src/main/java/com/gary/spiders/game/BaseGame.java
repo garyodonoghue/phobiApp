@@ -26,9 +26,8 @@ public abstract class BaseGame extends AppCompatActivity {
     public Boolean initialAssessment;
     public int bonusPoints;
     public CountDownTimer countDownTimer;
-    MediaPlayer mp;
-
-    static boolean showDescriptions = true;
+    public MediaPlayer mp;
+    public static boolean showDescriptions = true;
 
     @Override
     protected  void onDestroy(){
@@ -45,7 +44,6 @@ public abstract class BaseGame extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         String s = getIntent().getStringExtra("category");
         if(s != null) {
             this.category = GameCategory.valueOf(s);
@@ -73,7 +71,6 @@ public abstract class BaseGame extends AppCompatActivity {
     public void presentGameInfoPopup(final BaseGame game, String gameDescription, final CountDownTimer timer){
         if(BaseGame.showDescriptions) {
             View checkBoxView = View.inflate(this, R.layout.checkbox, null);
-
             CheckBox checkBox = (CheckBox) checkBoxView.findViewById(R.id.disableDescriptionsCheckbox);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
@@ -84,9 +81,7 @@ public abstract class BaseGame extends AppCompatActivity {
             });
             checkBox.setText("Don't show again");
 
-
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(game);
-
             alertDialogBuilder.setPositiveButton("Got it!",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
@@ -102,9 +97,7 @@ public abstract class BaseGame extends AppCompatActivity {
             AlertDialog alertDialog = alertDialogBuilder.create();
             alertDialog.setMessage(gameDescription);
             alertDialog.setCancelable(false);
-
             alertDialog.show();
-
             TextView textView = (TextView) alertDialog.findViewById(android.R.id.message);
             textView.setTextSize(25);
         }

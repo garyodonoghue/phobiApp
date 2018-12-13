@@ -12,16 +12,18 @@ import com.gary.spiders.enums.GameType;
 import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
 
+import butterknife.BindView;
+
 public class ChooseGameActivity extends AppCompatActivity {
 
-    private ToggleButton wordsearchGameSelected;
-    private ToggleButton jigsawGameSelected;
-    private ToggleButton imagePickerGameSelected;
-    private ToggleButton zoomGameSelected;
-    private ToggleButton focusGameSelected;
-    private ToggleButton playVideoGameSelected;
-    private ToggleButton popupImagesGameSelected;
-    private ToggleButton sharpenTextGameSelected;
+    @BindView(R.id.wordsearchGameSelected) ToggleButton wordsearchGameSelected;
+    @BindView(R.id.jigsawGameSelected) ToggleButton jigsawGameSelected;
+    @BindView(R.id.imagePickerGameSelected) ToggleButton imagePickerGameSelected;
+    @BindView(R.id.zoomGameSelected) ToggleButton zoomGameSelected;
+    @BindView(R.id.focusGameSelected) ToggleButton focusGameSelected;
+    @BindView(R.id.playVideoGameSelected) ToggleButton playVideoGameSelected;
+    @BindView(R.id.popupImagesGameSelected) ToggleButton popupImagesGameSelected;
+    @BindView(R.id.sharpenTextGameSelected) ToggleButton sharpenTextGameSelected;
 
     private String selectedGameMode;
 
@@ -29,15 +31,6 @@ public class ChooseGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_game);
-
-        wordsearchGameSelected = (ToggleButton) findViewById(R.id.wordsearchGameSelected);
-        jigsawGameSelected = (ToggleButton) findViewById(R.id.jigsawGameSelected);
-        imagePickerGameSelected = (ToggleButton) findViewById(R.id.imagePickerGameSelected);
-        zoomGameSelected = (ToggleButton) findViewById(R.id.zoomGameSelected);
-        focusGameSelected = (ToggleButton) findViewById(R.id.focusGameSelected);
-        playVideoGameSelected = (ToggleButton) findViewById(R.id.playVideoGameSelected);
-        popupImagesGameSelected = (ToggleButton) findViewById(R.id.popupImagesGameSelected);
-        sharpenTextGameSelected = (ToggleButton) findViewById(R.id.sharpenTextGameSelected);
 
         CompoundButton.OnCheckedChangeListener onToggleListener = new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

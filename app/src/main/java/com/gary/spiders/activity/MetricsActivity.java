@@ -27,18 +27,22 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+
 /**
  * Class used to display charts displaying the user levels over time,
  * as well as the difficulty ratings a user gave each game type over time
  */
 public class MetricsActivity extends AppCompatActivity {
 
+    @BindView(R.id.myOverallProgress) ProgressBar progressBar;
+    @BindView(R.id.userProgressChart) BarChart userProgressChart;
+    @BindView(R.id.ratingsChart) LineChart userRatingsChart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metrics);
-
-        ProgressBar progressBar = (ProgressBar) findViewById(R.id.myOverallProgress);
         progressBar.setMax(600);
         progressBar.setProgress(MainMenuActivity.user.getLevel());
 
@@ -47,8 +51,7 @@ public class MetricsActivity extends AppCompatActivity {
     }
 
     private void setupUserProgressChart() {
-        BarChart chart = (BarChart) findViewById(R.id.userProgressChart);
-        XAxis xAxis = chart.getXAxis();
+        XAxis xAxis = userProgressChart.getXAxis();
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -93,18 +96,17 @@ public class MetricsActivity extends AppCompatActivity {
 
             BarData data = new BarData(barDataSet);
             data.setBarWidth(0.4f);
-            chart.setData(data);
-            chart.setFitBars(true);
-            chart.setDragEnabled(false);
-            chart.getAxisLeft().setDrawGridLines(false);
-            chart.getXAxis().setDrawGridLines(false);
-            chart.invalidate(); // refresh
+            userProgressChart.setData(data);
+            userProgressChart.setFitBars(true);
+            userProgressChart.setDragEnabled(false);
+            userProgressChart.getAxisLeft().setDrawGridLines(false);
+            userProgressChart.getXAxis().setDrawGridLines(false);
+            userProgressChart.invalidate(); // refresh
         }
     }
 
     private void setupRatingsChart() {
-        LineChart chart = (LineChart) findViewById(R.id.ratingsChart);
-        XAxis xAxis = chart.getXAxis();
+        XAxis xAxis = userRatingsChart.getXAxis();
 
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
@@ -154,10 +156,9 @@ public class MetricsActivity extends AppCompatActivity {
             LineData lineData = new LineData(dataSet);
             lineData.setDrawValues(false);
 
-            chart.setData(lineData);
-            chart.setDragEnabled(false);
-
-            chart.invalidate();
+            userRatingsChart.setData(lineData);
+            userRatingsChart.setDragEnabled(false);
+            userRatingsChart.invalidate();
         }
     }
 }

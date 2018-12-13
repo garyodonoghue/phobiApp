@@ -13,18 +13,25 @@ import com.gary.spiders.R;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class SharpenTextGame extends BaseGame {
 
-    int textResourceId;
-    int progress;
-    float blurFactor = 2f;
+    @BindView(R.id.sharpenTextTimer) TextView timerTextView;
+    @BindView(R.id.sharpenText) Button button;
+    @BindView(R.id.progressBar) ProgressBar progressBar;
+    @BindView(R.id.sharpen_text) TextView textView;
+
+    private int textResourceId;
+    private int progress;
+    private float blurFactor = 2f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharpen_text);
-
-        final TextView timerTextView = (TextView) findViewById(R.id.sharpenTextTimer);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(timerTextView, this, 15000);
 
         super.presentGameInfoPopup(this, "Click focus button to focus the text. " +
@@ -36,29 +43,23 @@ public class SharpenTextGame extends BaseGame {
             super.category = GameCategory.LINGUISTIC_HIGH;
         }
         textResourceId = resourceLoader.getResource(super.category);
-
-        final ProgressBar progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setMax(100);
-
-        final TextView textView = (TextView) findViewById(R.id.sharpen_text);
         textView.setText(getResources().getString(textResourceId));
+        sharpenText(textView);
+    }
 
+    // TODO ideally would use the OnClick provided by Butterknife here but was getting exceptions thrown for no obvious reason
+    // so just using this approach for now
+    public void sharpenText(View v) {
         sharpenText(textView);
 
-        final Button button = (Button) findViewById(R.id.sharpenText);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                sharpenText(textView);
-
-                progressBar.incrementProgressBy(10);
-                progress = progress + 10;
-                if(progress > progressBar.getMax() + 1){
-                    AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(SharpenTextGame.this);
-                    alertDialog.show();
-                    stopTimer();
-                }
-            }
-        });
+        progressBar.incrementProgressBy(10);
+        progress = progress + 10;
+        if(progress > progressBar.getMax() + 1){
+            AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(SharpenTextGame.this);
+            alertDialog.show();
+            stopTimer();
+        }
     }
 
     private void sharpenText(TextView textView){

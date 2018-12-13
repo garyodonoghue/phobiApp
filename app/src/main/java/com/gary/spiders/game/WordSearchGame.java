@@ -31,27 +31,35 @@ import java.util.Random;
 import java.util.Set;
 import java.util.Timer;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnItemClick;
+import butterknife.OnTouch;
+
 public class WordSearchGame extends BaseGame {
 
-    int numWordsFound = 0;
-    List<String> obfuscatedWords = new ArrayList<>();
-    List<String> allWords;
+    @BindView(R.id.wordsearch_grid) GridView gridView;
+    @BindView(R.id.wordsearch_words) ListView listView;
+    @BindView(R.id.wordsearchTimer) TextView textView;
 
-    int numWords;
+    private int numWordsFound = 0;
+    private List<String> obfuscatedWords = new ArrayList<>();
+    private List<String> allWords;
+    private int numWords;
+    private Set<TextView> selectedTiles = new HashSet<>();
+    private ColorStateList[] oldColors = {null};
+    private List<String> remainingWords = new ArrayList<>();
+    private ArrayAdapter<String> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wordsearch);
-
-        final TextView textView = (TextView) findViewById(R.id.wordsearchTimer);
+        ButterKnife.bind(this);
         CountDownTimer timer = super.setupGameTimer(textView, this, 90000);
 
         super.presentGameInfoPopup(this, "Find all the remainingWords in the wordsearch within the allowed time to progress to the next level. " +
                 "Tapping a word in the list will reveal it for 3 seconds.", timer);
-
-        GridView gridView = (GridView) findViewById(R.id.wordsearch_grid);
-        final ListView listView = (ListView) findViewById(R.id.wordsearch_words);
 
         String[] args = new String[3];
         args[0] = WordSearchConfig.NORMAL_DIFFICULTY;
@@ -70,7 +78,6 @@ public class WordSearchGame extends BaseGame {
         Random rand = new Random();
 
         // choose 'numWords' remainingWords from the list at random
-        final List<String> remainingWords = new ArrayList<>();
         while(remainingWords.size() < numWords){
             int randomIndex = rand.nextInt(numWords);
             String word = wordsArray[randomIndex];
@@ -83,96 +90,85 @@ public class WordSearchGame extends BaseGame {
         allWords = new ArrayList<>();
         allWords.addAll(remainingWords);
 
-        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+        arrayAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_list_item_1, obfuscatedWords);
 
         listView.setAdapter(arrayAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, final View view, final int position, long id) {
-                final AppCompatTextView clickedTextView = (AppCompatTextView) view;
-
-                // check if its hidden, if so, reveal the word for 3 seconds and then hide it again
-                if(clickedTextView.getText().toString().contains("*")) {
-                    revealWord((AppCompatTextView) view, position);
-
-                    final Timer t = new java.util.Timer();
-                    t.schedule(
-                            new java.util.TimerTask() {
-                                @Override
-                                public void run() {
-                                    runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            hideWord((AppCompatTextView) view, position);
-                                            t.cancel();
-                                        }
-                                    });
-                                }
-                            },
-                            2000
-                    );
-                }
-            }
-        });
-
         Grid grid = WordSearch.generateWordSearch(args, remainingWords);
         WordSearchGridAdapter booksAdapter = new WordSearchGridAdapter(this, grid.getGridArray());
         gridView.setAdapter(booksAdapter);
-
-        final Set<TextView> selectedTiles = new HashSet<>();
-        final Set<TextView> correctTiles = new HashSet<>();
-
-        TextView lastSelectedTextView = null;
-        final ColorStateList[] oldColors = {null};
-
-        gridView.setOnTouchListener(new View.OnTouchListener() {
-            public boolean onTouch(View v, MotionEvent me) {
-                final GridView view = (GridView) v;
-                float currentXPosition = me.getX();
-                float currentYPosition = me.getY();
-                int position = view.pointToPosition((int) currentXPosition, (int) currentYPosition);
-
-                // Change the color of the key pressed
-                TextView tv = (TextView) view.getChildAt(position);
-
-                if(tv != null){
-                    oldColors[0] = oldColors[0] == null ? tv.getTextColors() : oldColors[0];
-                    tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-                    tv.setTextColor(Color.BLUE);
-                    selectedTiles.add(tv);
-                }
-
-                if(me.getAction() == MotionEvent.ACTION_UP){
-                    StringBuilder sb = new StringBuilder();
-                    for(TextView textV : selectedTiles){
-                        sb.append(textV.getText());
-                    }
-                    for(String word : remainingWords){
-                        if(containsAllChars(word, sb.toString())){
-                            // this will avoid being able to progress by selecting the same word 'numWords' times
-                            remainingWords.remove(word);
-                            correctTiles.addAll(selectedTiles);
-                            selectedTiles.clear();
-                            updateNumWordsFound();
-                            obfuscatedWords.set(allWords.indexOf(word), word);
-                            arrayAdapter.notifyDataSetChanged();
-                            return true;
-                        }
-                    }
-
-                    // didnt pick a word correctly
-                    for(TextView selectedTextView : selectedTiles){
-                        selectedTextView.setPaintFlags( selectedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
-                        selectedTextView.setTextColor(oldColors[0]);
-                    }
-
-                    selectedTiles.clear();
-                }
-                return true;
-            }
-        });
     }
+
+    @OnTouch(R.id.wordsearch_grid) boolean onTouch(View v, MotionEvent me) {
+        final GridView view = (GridView) v;
+        float currentXPosition = me.getX();
+        float currentYPosition = me.getY();
+        int position = view.pointToPosition((int) currentXPosition, (int) currentYPosition);
+
+        // Change the color of the key pressed
+        TextView tv = (TextView) view.getChildAt(position);
+
+        if(tv != null){
+            oldColors[0] = oldColors[0] == null ? tv.getTextColors() : oldColors[0];
+            tv.setPaintFlags(tv.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            tv.setTextColor(Color.BLUE);
+            selectedTiles.add(tv);
+        }
+
+        if(me.getAction() == MotionEvent.ACTION_UP){
+            StringBuilder sb = new StringBuilder();
+            for(TextView textV : selectedTiles){
+                sb.append(textV.getText());
+            }
+            for(String word : remainingWords){
+                if(containsAllChars(word, sb.toString())){
+                    // this will avoid being able to progress by selecting the same word 'numWords' times
+                    remainingWords.remove(word);
+                    selectedTiles.clear();
+                    updateNumWordsFound();
+                    obfuscatedWords.set(allWords.indexOf(word), word);
+                    arrayAdapter.notifyDataSetChanged();
+                    return true;
+                }
+            }
+
+            // didnt pick a word correctly
+            for(TextView selectedTextView : selectedTiles){
+                selectedTextView.setPaintFlags( selectedTextView.getPaintFlags() & (~ Paint.STRIKE_THRU_TEXT_FLAG));
+                selectedTextView.setTextColor(oldColors[0]);
+            }
+
+            selectedTiles.clear();
+        }
+        return true;
+    }
+
+    @OnItemClick(R.id.wordsearch_words) void click(AdapterView<?> parent, final View view, final int position, long id){
+            final AppCompatTextView clickedTextView = (AppCompatTextView) view;
+
+            // check if its hidden, if so, reveal the word for 3 seconds and then hide it again
+            if(clickedTextView.getText().toString().contains("*")) {
+                revealWord((AppCompatTextView) view, position);
+
+                final Timer t = new java.util.Timer();
+                t.schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        hideWord((AppCompatTextView) view, position);
+                                        t.cancel();
+                                    }
+                                });
+                            }
+                        },
+                        2000
+                );
+            }
+        }
+
 
     private void setNumWordsToBeFound() {
         if(super.category == GameCategory.LINGUISTIC_LOW){

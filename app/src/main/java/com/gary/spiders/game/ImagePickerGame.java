@@ -19,41 +19,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class ImagePickerGame extends BaseGame {
 
-    ImageButton topLeft;
-    ImageButton topCenter;
-    ImageButton topRight;
+    @BindView(R.id.countdownImagePicker) TextView textView;
+    @BindView(R.id.top_left) ImageButton topLeft;
+    @BindView(R.id.top_center) ImageButton topCenter;
+    @BindView(R.id.top_right) ImageButton topRight;
+    @BindView(R.id.center_left) ImageButton centerLeft;
+    @BindView(R.id.center_center) ImageButton centerCenter;
+    @BindView(R.id.center_right) ImageButton centerRight;
+    @BindView(R.id.bottom_left) ImageButton bottomLeft;
+    @BindView(R.id.bottom_center) ImageButton bottomCenter;
+    @BindView(R.id.bottom_right) ImageButton bottomRight;
+    @BindView(R.id.bottommost_left) ImageButton bottommostLeft;
+    @BindView(R.id.bottommost_center) ImageButton bottommostCenter;
+    @BindView(R.id.bottommost_right) ImageButton bottommostRight;
 
-    ImageButton centerLeft;
-    ImageButton centerCenter;
-    ImageButton centerRight;
-
-    ImageButton bottomLeft;
-    ImageButton bottomCenter;
-    ImageButton bottomRight;
-
-    ImageButton bottommostLeft;
-    ImageButton bottommostCenter;
-    ImageButton bottommostRight;
-
-    int spiderImgsArrayId;
-    int nonSpiderImgsArrayId;
-
-    List<ImageButton> spiderButtons = new ArrayList<>();
-
-    int correctSelections;
-    int incorrectSelections;
-
-    MediaPlayer mp;
+    private int spiderImgsArrayId;
+    private int nonSpiderImgsArrayId;
+    private List<ImageButton> spiderButtons = new ArrayList<>();
+    private int correctSelections;
+    private int incorrectSelections;
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_picker);
+        ButterKnife.bind(this);
 
-        final TextView textView = (TextView) findViewById(R.id.countdownImagePicker);
-        final CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
+        CountDownTimer timer = super.setupGameTimer(textView, this, 15000);
 
         mp = MediaPlayer.create(getBaseContext(), R.raw.fail2);
 
@@ -70,22 +68,6 @@ public class ImagePickerGame extends BaseGame {
 
         TypedArray spiderImages = getResources().obtainTypedArray(spiderImgsArrayId);
         TypedArray nonSpiderImages = getResources().obtainTypedArray(nonSpiderImgsArrayId);
-
-        topLeft = (ImageButton) findViewById(R.id.top_left);
-        topCenter = (ImageButton) findViewById(R.id.top_center);
-        topRight = (ImageButton) findViewById(R.id.top_right);
-
-        centerLeft = (ImageButton) findViewById(R.id.center_left);
-        centerCenter = (ImageButton) findViewById(R.id.center_center);
-        centerRight = (ImageButton) findViewById(R.id.center_right);
-
-        bottomLeft = (ImageButton) findViewById(R.id.bottom_left);
-        bottomCenter = (ImageButton) findViewById(R.id.bottom_center);
-        bottomRight = (ImageButton) findViewById(R.id.bottom_right);
-
-        bottommostLeft = (ImageButton) findViewById(R.id.bottommost_left);
-        bottommostCenter = (ImageButton) findViewById(R.id.bottommost_center);
-        bottommostRight = (ImageButton) findViewById(R.id.bottommost_right);
 
         // Pick a random selection of 4 image buttons which will contain images of spiders
         List<ImageButton> imageButtonsList = new ArrayList<>();

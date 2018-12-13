@@ -18,58 +18,40 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import butterknife.BindView;
+
 /**
  * FSQ Questionnaire activity presented to the user, asking them a number of questions (18 in total)
  * which they give numeric answers to (1-7)
  */
 public class QuestionnaireActivity extends AppCompatActivity {
 
-    SharedPreferences questionnaire;
-
-    private TextView question1;
-    private TextView question2;
-    private TextView question3;
-    private TextView question4;
-    private TextView question5;
-    private TextView question6;
-    private TextView question7;
-    private TextView question8;
-    private TextView question9;
-    private TextView question10;
-    private TextView question11;
-    private TextView question12;
-    private TextView question13;
-    private TextView question14;
-    private TextView question15;
-    private TextView question16;
-    private TextView question17;
-    private TextView question18;
+    @BindView(R.id.question_1) TextView question1;
+    @BindView(R.id.question_2) TextView question2;
+    @BindView(R.id.question_3) TextView question3;
+    @BindView(R.id.question_4) TextView question4;
+    @BindView(R.id.question_5) TextView question5;
+    @BindView(R.id.question_6) TextView question6;
+    @BindView(R.id.question_7) TextView question7;
+    @BindView(R.id.question_8) TextView question8;
+    @BindView(R.id.question_9) TextView question9;
+    @BindView(R.id.question_10) TextView question10;
+    @BindView(R.id.question_11) TextView question11;
+    @BindView(R.id.question_12) TextView question12;
+    @BindView(R.id.question_13) TextView question13;
+    @BindView(R.id.question_14) TextView question14;
+    @BindView(R.id.question_15) TextView question15;
+    @BindView(R.id.question_16) TextView question16;
+    @BindView(R.id.question_17) TextView question17;
+    @BindView(R.id.question_18) TextView question18;
 
     private List<TextView> textViews = new ArrayList<>();
+    private SharedPreferences questionnaire;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
-
-        question1 = (TextView) findViewById(R.id.question_1);
-        question2 = (TextView) findViewById(R.id.question_2);
-        question3 = (TextView) findViewById(R.id.question_3);
-        question4 = (TextView) findViewById(R.id.question_4);
-        question5 = (TextView) findViewById(R.id.question_5);
-        question6 = (TextView) findViewById(R.id.question_6);
-        question7 = (TextView) findViewById(R.id.question_7);
-        question8 = (TextView) findViewById(R.id.question_8);
-        question9 = (TextView) findViewById(R.id.question_9);
-        question10 = (TextView) findViewById(R.id.question_10);
-        question11 = (TextView) findViewById(R.id.question_11);
-        question12 = (TextView) findViewById(R.id.question_12);
-        question13 = (TextView) findViewById(R.id.question_13);
-        question14 = (TextView) findViewById(R.id.question_14);
-        question15 = (TextView) findViewById(R.id.question_15);
-        question16 = (TextView) findViewById(R.id.question_16);
-        question17 = (TextView) findViewById(R.id.question_17);
-        question18 = (TextView) findViewById(R.id.question_18);
 
         textViews.addAll(new ArrayList<TextView>(Arrays.asList(new TextView[]{question1, question2, question3, question4,
                 question5, question6, question7, question8, question9, question10,

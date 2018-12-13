@@ -15,25 +15,22 @@ import com.gary.spiders.R;
 
 import java.util.Calendar;
 
+import butterknife.BindView;
+
 public class ReminderScreen extends AppCompatActivity {
 
-    private NumberPicker hours;
-    private NumberPicker mins;
+    @BindView(R.id.hours) NumberPicker hours;
+    @BindView(R.id.mins) NumberPicker mins;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_screen);
 
-        hours = (NumberPicker) findViewById(R.id.hours);
-        mins = (NumberPicker) findViewById(R.id.hours);
-
         hours.setMinValue(0);
         hours.setMaxValue(24);
-
         mins.setMinValue(0);
         mins.setMaxValue(60);
-
     }
 
     public void setReminder(View v){
@@ -58,7 +55,7 @@ public class ReminderScreen extends AppCompatActivity {
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
         int currentMin = calendar.get(Calendar.MINUTE);
 
-        int hourDiff = 0;
+        int hourDiff;
         if(alarmHoursVal < currentHour){
             hourDiff = 24 - currentHour;
             hourDiff = hourDiff + alarmHoursVal;
@@ -77,9 +74,6 @@ public class ReminderScreen extends AppCompatActivity {
         }
         else if(alarmMinsVal > currentMin){
             minDiff = alarmMinsVal - currentMin;
-        }
-        else {
-            minDiff = 0;
         }
 
         long dayInMillis = 86400000;

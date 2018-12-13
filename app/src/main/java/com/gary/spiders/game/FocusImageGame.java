@@ -18,33 +18,35 @@ import com.gary.spiders.activity.MainMenuActivity;
 import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Gary on 18/09/2017.
  */
 
 public class FocusImageGame extends BaseGame {
 
+    @BindView(R.id.countdownImageFocus) TextView timerTextView;
+    @BindView(R.id.focus_image) ImageView imageView;
+    @BindView(R.id.progressBar_focus) ProgressBar progressBar;
+
     private float focusFactor = 0.1f;
-    ImageView imageView = null;
-    Bitmap spiderImageBitmap = null;
+    private Bitmap spiderImageBitmap = null;
     private static volatile Matrix sScaleMatrix;
-    private static volatile int sDefaultDensity = -1;
-    int imageResourceId;
-    int progress;
-    int bonusPoints = 0;
-    ProgressBar progressBar;
-    int tapCount = 0;
+    private int imageResourceId;
+    private int progress;
+    private int bonusPoints = 0;
+    private int tapCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_focus);
+        ButterKnife.bind(this);
 
         mp = MediaPlayer.create(getBaseContext(), R.raw.focusing1);
-
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
-
-        final TextView timerTextView = (TextView) findViewById(R.id.countdownImageFocus);
 
         long timerValue = 30000;
         if(MainMenuActivity.user.getLevel() > 200){
@@ -52,7 +54,6 @@ public class FocusImageGame extends BaseGame {
         }
 
         final CountDownTimer timer = super.setupGameTimer(timerTextView, this, timerValue);
-
         super.presentGameInfoPopup(this, "Tap the 'Focus Image' button or on the image itself to increase " +
                 "its focus and bring the progress bar to the end within the allowed time to proceed to the next level", timer);
 
@@ -60,13 +61,10 @@ public class FocusImageGame extends BaseGame {
         if(super.category == null){
             super.category = GameCategory.PHOTOS_COL_BIG_HIGH;
         }
-        imageResourceId = resourceLoader.getResource(super.category);
 
-        imageView = (ImageView) findViewById(R.id.focus_image);
+        imageResourceId = resourceLoader.getResource(super.category);
         imageView.setImageResource(imageResourceId);
         spiderImageBitmap = ((BitmapDrawable) imageView.getDrawable()).getBitmap();
-
-        progressBar = (ProgressBar) findViewById(R.id.progressBar_focus);
         progressBar.setMax(19);
 
         updateImageFocus(focusFactor);
