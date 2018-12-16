@@ -47,6 +47,7 @@ public class GameFactory {
             case WORDSEARCH: return new WordSearchGame();
             case POPUP_IMAGES: return new PopupImageGame();
             case SHARPEN_TEXT: return new SharpenTextGame();
+            case UNSCRAMBLE_WORD: return new UnscrambleGame();
 
             default: throw new IllegalArgumentException();
         }
