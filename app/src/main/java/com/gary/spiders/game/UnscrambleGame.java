@@ -57,12 +57,13 @@ public class UnscrambleGame extends BaseGame {
             alertDialog.show();
             stopTimer();
         }
+        else {
+            // disable guessing the word for the last 2 turns
+            if (index >= unscrambleWordsArray.length() - 2) {
+                this.guessScrambledWord.setEnabled(false);
+            }
 
-        // disable guessing the word for the last 2 turns
-        else if(index >= unscrambleWordsArray.length()-2){
-            this.guessScrambledWord.setEnabled(false);
+            this.unscrambleTextImage.setImageResource(unscrambleWordsArray.getResourceId(index, 1));
         }
-
-        this.unscrambleTextImage.setImageResource(unscrambleWordsArray.getResourceId(index, 1));
     }
 }
