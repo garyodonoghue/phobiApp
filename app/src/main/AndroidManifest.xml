@@ -35,7 +35,8 @@
 
         <receiver android:name=".util.NotificationPublisher" />
 
-        <activity android:name=".activity.FearRatingActivity"></activity>
+        <activity android:name=".activity.FearRatingActivity" />
+        <activity android:name=".game.UnscrambleGame"></activity>
     </application>
 
 </manifest>

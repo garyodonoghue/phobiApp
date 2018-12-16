@@ -15,8 +15,13 @@ public class GameResourceLoader {
 
     private Context context;
 
+    TypedArray unscrambleWords;
+    static int unscambleImageCounter = 1;
+
     public GameResourceLoader(Context context){
         this.context = context;
+        int categoryResourceArray = this.context.getResources().getIdentifier("UNSCRAMBLE_WORDS", "array", this.context.getPackageName());
+        unscrambleWords = this.context.getResources().obtainTypedArray(categoryResourceArray);
     }
 
     public int getResource(GameCategory category){
@@ -39,5 +44,12 @@ public class GameResourceLoader {
         // this will retrieve an array of images within a specific category (e.g. CARTOON_LOW)
         int categoryResourceArray = this.context.getResources().getIdentifier("NON_SPIDER_"+category.toString(), "array", this.context.getPackageName());
         return categoryResourceArray;
+    }
+
+    public int getUnscrambleGameWord(){
+        int resourceId = unscrambleWords.getResources().getIdentifier("UNSCRAMBLE_"+unscambleImageCounter, "array", this.context.getPackageName());
+        unscambleImageCounter++;
+
+        return resourceId;
     }
 }

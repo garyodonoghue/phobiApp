@@ -11,6 +11,7 @@
         <item>@string/linguisticLow_7</item>
         <item>@string/linguisticLow_8</item>
     </array>
+
     <array name="LINGUISTIC_MED">
         <item>@string/linguisticMed_1</item>
         <item>@string/linguisticMed_2</item>
@@ -811,6 +812,89 @@
         <item>@raw/high_sp70</item>
         <item>@raw/high_sp8</item>
         <item>@raw/high_sp9</item>
+    </array>
+
+    <array name="UNSCRAMBLE_WORDS">
+        <item>@array/UNSCRAMBLE_1</item>
+        <item>@array/UNSCRAMBLE_2</item>
+        <item>@array/UNSCRAMBLE_3</item>
+        <item>@array/UNSCRAMBLE_4</item>
+        <item>@array/UNSCRAMBLE_5</item>
+        <item>@array/UNSCRAMBLE_6</item>
+        <item>@array/UNSCRAMBLE_7</item>
+        <item>@array/UNSCRAMBLE_8</item>
+    </array>
+
+    <array name="UNSCRAMBLE_1">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_2">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_3">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_4">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_5">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_6">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_7">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_8">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
     </array>
 
 </resources>

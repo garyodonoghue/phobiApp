@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 
 public class SharpenTextGame extends BaseGame {
 
-    @BindView(R.id.sharpenTextTimer) TextView timerTextView;
+    @BindView(R.id.unscrambleTextTimer) TextView unscrambleTextTimer;
     @BindView(R.id.sharpenText) Button button;
     @BindView(R.id.progressBar) ProgressBar progressBar;
     @BindView(R.id.sharpen_text) TextView textView;
@@ -32,7 +32,7 @@ public class SharpenTextGame extends BaseGame {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sharpen_text);
         ButterKnife.bind(this);
-        CountDownTimer timer = super.setupGameTimer(timerTextView, this, 15000);
+        CountDownTimer timer = super.setupGameTimer(unscrambleTextTimer, this, 15000);
 
         super.presentGameInfoPopup(this, "Click focus button to focus the text. " +
                 "If the progresss bar reaches the end before the time runs out you successfully complete the level", timer);

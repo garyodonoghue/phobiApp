@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".game.UnscrambleGame">
+
+    <ImageView
+        android:id="@+id/unscrambleTextImage"
+        android:layout_width="600dp"
+        android:layout_height="434dp"
+        android:layout_marginTop="16dp"
+        android:onClick="unscrambleWord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/unscrambleTextButton"
+        android:layout_width="188dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="36dp"
+        android:onClick="unscrambleWord"
+        android:text="Unscramble Image"
+        app:layout_constraintBottom_toTopOf="@+id/giveUpVideo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/giveUpUnscramble"
+        android:layout_width="101dp"
+        android:layout_height="99dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/safety_icon"
+        android:onClick="giveUp"
+        app:layout_constraintBottom_toTopOf="@+id/unscrambleTextTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/unscrambleTextTimer"
+        android:layout_width="202dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="36dp"
+        android:text="hello"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/guessScrambledWord"
+        android:layout_width="186dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:hint="Guess Word..."
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/unscrambleTextButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/unscrableTextImage"
+        app:layout_constraintVertical_bias="0.125" />
+
+</android.support.constraint.ConstraintLayout>
