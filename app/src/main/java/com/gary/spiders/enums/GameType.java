@@ -8,18 +8,22 @@ import java.util.Random;
  * Created by Gary on 04/10/2017.
  */
 public enum GameType {
-    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS_IMAGE, PLAY, POPUP_IMAGES, SHARPEN_TEXT;
+    WORDSEARCH, JIGSAW, IMAGE_PICKER, ZOOM, FOCUS_IMAGE, PLAY, POPUP_IMAGES, SHARPEN_TEXT, UNSCRAMBLE_WORD;
 
 
     public static GameType retrieveGameMode(GameCategory category) {
         GameType gameType = null;
 
         Random randomiser = new Random();
-        if(category.isLinguistic()){
+        if(category.isLinguistic()) {
             List<GameType> applicableGameTypes = new ArrayList<>();
             applicableGameTypes.add(GameType.ZOOM);
             applicableGameTypes.add(GameType.WORDSEARCH);
             applicableGameTypes.add((GameType.SHARPEN_TEXT));
+
+            if (category.isLinguisticMedOrHigh()){
+                applicableGameTypes.add((GameType.UNSCRAMBLE_WORD));
+            }
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }

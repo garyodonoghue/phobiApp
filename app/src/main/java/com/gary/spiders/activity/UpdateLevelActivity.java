@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.gary.spiders.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class UpdateLevelActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class UpdateLevelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_level);
+
+        ButterKnife.bind(this);
     }
 
     public void setUserLevel(View v){

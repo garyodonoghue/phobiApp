@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * FSQ Questionnaire activity presented to the user, asking them a number of questions (18 in total)
@@ -52,6 +53,8 @@ public class QuestionnaireActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
+
+        ButterKnife.bind(this);
 
         textViews.addAll(new ArrayList<TextView>(Arrays.asList(new TextView[]{question1, question2, question3, question4,
                 question5, question6, question7, question8, question9, question10,

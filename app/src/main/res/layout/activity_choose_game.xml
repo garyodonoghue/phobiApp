@@ -4,130 +4,141 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_gravity="center"
     tools:context="com.gary.spiders.activity.ChooseGameActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="235dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:paddingLeft="35dp"
-        android:text="Choose Game"
-        android:textAlignment="textStart"
-        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132dp"
-        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:gravity="center_horizontal"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ToggleButton
-            android:id="@+id/wordsearchGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="WORDSEARCH"
-            android:textOff="Wordsearch"
-            android:textOn="Wordsearch" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:paddingLeft="35dp"
+            android:text="Choose Game"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.501"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <ToggleButton
-            android:id="@+id/jigsawGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="JIGSAW"
-            android:textOff="Jigsaw"
-            android:textOn="Jigsaw" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ToggleButton
+                    android:id="@+id/wordsearchGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="WORDSEARCH"
+                    android:textOff="Wordsearch"
+                    android:textOn="Wordsearch" />
+
+                <ToggleButton
+                    android:id="@+id/jigsawGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="JIGSAW"
+                    android:textOff="Jigsaw"
+                    android:textOn="Jigsaw" />
 
 
-        <ToggleButton
-            android:id="@+id/imagePickerGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="IMAGE_PICKER"
-            android:textOff="Image Picker"
-            android:textOn="Image Picker" />
+                <ToggleButton
+                    android:id="@+id/imagePickerGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="IMAGE_PICKER"
+                    android:textOff="Image Picker"
+                    android:textOn="Image Picker" />
 
-        <ToggleButton
-            android:id="@+id/zoomGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="ZOOM"
-            android:textOff="Enlarge Text"
-            android:textOn="Enlarge Text" />
+                <ToggleButton
+                    android:id="@+id/zoomGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="ZOOM"
+                    android:textOff="Enlarge Text"
+                    android:textOn="Enlarge Text" />
 
-        <ToggleButton
-            android:id="@+id/focusGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="FOCUS_IMAGE"
-            android:textOff="Focus Image"
-            android:textOn="Focus Image" />
+                <ToggleButton
+                    android:id="@+id/focusGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="FOCUS_IMAGE"
+                    android:textOff="Focus Image"
+                    android:textOn="Focus Image" />
 
-        <ToggleButton
-            android:id="@+id/playVideoGameSelected"
-            android:layout_width="233dp"
-            android:layout_height="63dp"
-            android:tag="PLAY"
-            android:textOff="Play Video"
-            android:textOn="Play Video" />
+                <ToggleButton
+                    android:id="@+id/playVideoGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="PLAY"
+                    android:textOff="Play Video"
+                    android:textOn="Play Video" />
 
-        <ToggleButton
-            android:id="@+id/popupImagesGameSelected"
-            android:layout_width="233dp"
-            android:tag="POPUP_IMAGES"
-            android:layout_height="63dp"
-            android:textOff="Popup Images"
-            android:textOn="Popup Images" />
+                <ToggleButton
+                    android:id="@+id/popupImagesGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="POPUP_IMAGES"
+                    android:textOff="Popup Images"
+                    android:textOn="Popup Images" />
 
-        <ToggleButton
-            android:id="@+id/sharpenTextGameSelected"
-            android:layout_width="233dp"
-            android:tag="SHARPEN_TEXT"
-            android:layout_height="63dp"
-            android:textOff="Sharpen Text"
-            android:textOn="Sharpen Text" />
+                <ToggleButton
+                    android:id="@+id/sharpenTextGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="SHARPEN_TEXT"
+                    android:textOff="Sharpen Text"
+                    android:textOn="Sharpen Text" />
 
+                <ToggleButton
+                    android:id="@+id/unscrambleWordGameSelected"
+                    android:layout_width="233dp"
+                    android:layout_height="63dp"
+                    android:tag="UNSCRAMBLE_WORD"
+                    android:textOff="Unscramble Word"
+                    android:textOn="Unscramble Word" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="211dp"
+                android:layout_height="75dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:onClick="generateGame"
+                android:layout_marginTop="40dp"
+                android:text="Create Game"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        </LinearLayout>
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView10"
-        android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Choose Category"
-        android:textAlignment="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.655"
-        tools:layout_editor_absoluteX="195dp" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="211dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="generateGame"
-        android:text="Create Game"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 </android.support.constraint.ConstraintLayout>

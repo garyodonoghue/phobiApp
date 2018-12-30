@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Class used to display charts displaying the user levels over time,
@@ -43,6 +44,9 @@ public class MetricsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_metrics);
+
+        ButterKnife.bind(this);
+
         progressBar.setMax(600);
         progressBar.setProgress(MainMenuActivity.user.getLevel());
 

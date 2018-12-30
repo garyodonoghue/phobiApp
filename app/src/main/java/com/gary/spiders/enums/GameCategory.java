@@ -40,6 +40,10 @@ public enum GameCategory {
         return this.toString().contains("LINGUISTIC");
     }
 
+    public boolean isLinguisticMedOrHigh(){
+        return this.toString().equals("LINGUISTIC_MED") || this.toString().equals("LINGUISTIC_HIGH");
+    }
+
     public boolean isCartoon(){
         return this.toString().contains("CARTOON");
     }

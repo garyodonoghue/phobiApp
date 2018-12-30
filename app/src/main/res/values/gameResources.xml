@@ -11,6 +11,7 @@
         <item>@string/linguisticLow_7</item>
         <item>@string/linguisticLow_8</item>
     </array>
+
     <array name="LINGUISTIC_MED">
         <item>@string/linguisticMed_1</item>
         <item>@string/linguisticMed_2</item>
@@ -811,6 +812,82 @@
         <item>@raw/high_sp70</item>
         <item>@raw/high_sp8</item>
         <item>@raw/high_sp9</item>
+    </array>
+
+    <array name="UNSCRAMBLE_WORDS">
+        <item>@array/UNSCRAMBLE_1</item>
+        <item>@array/UNSCRAMBLE_2</item>
+        <item>@array/UNSCRAMBLE_3</item>
+        <item>@array/UNSCRAMBLE_4</item>
+        <item>@array/UNSCRAMBLE_5</item>
+        <item>@array/UNSCRAMBLE_6</item>
+        <item>@array/UNSCRAMBLE_7</item>
+        <item>@array/UNSCRAMBLE_8</item>
+    </array>
+
+    <array name="UNSCRAMBLE_1">
+        <item>@drawable/arach_1</item>
+        <item>@drawable/arach_2</item>
+        <item>@drawable/arach_3</item>
+        <item>@drawable/arach_4</item>
+        <item>@drawable/arach_5</item>
+        <item>@drawable/arach_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_2">
+        <item>@drawable/craw_1</item>
+        <item>@drawable/craw_2</item>
+        <item>@drawable/craw_3</item>
+        <item>@drawable/craw_4</item>
+        <item>@drawable/craw_5</item>
+        <item>@drawable/craw_6</item>
+    </array>
+
+    <array name="UNSCRAMBLE_3">
+        <item>@drawable/hair_1</item>
+        <item>@drawable/hair_2</item>
+        <item>@drawable/hair_3</item>
+        <item>@drawable/hair_4</item>
+        <item>@drawable/hair_5</item>
+    </array>
+
+    <array name="UNSCRAMBLE_4">
+        <item>@drawable/molt_1</item>
+        <item>@drawable/molt_2</item>
+        <item>@drawable/molt_3</item>
+        <item>@drawable/molt_4</item>
+    </array>
+
+    <array name="UNSCRAMBLE_5">
+        <item>@drawable/phob_1</item>
+        <item>@drawable/phob_2</item>
+        <item>@drawable/phob_3</item>
+        <item>@drawable/phob_4</item>
+        <item>@drawable/phob_5</item>
+    </array>
+
+    <array name="UNSCRAMBLE_6">
+        <item>@drawable/spdr_1</item>
+        <item>@drawable/spdr_2</item>
+        <item>@drawable/spdr_3</item>
+        <item>@drawable/spdr_4</item>
+        <item>@drawable/spdr_5</item>
+    </array>
+
+    <array name="UNSCRAMBLE_7">
+        <item>@drawable/tarnt_1</item>
+        <item>@drawable/tarnt_2</item>
+        <item>@drawable/tarnt_3</item>
+        <item>@drawable/tarnt_4</item>
+    </array>
+
+    <array name="UNSCRAMBLE_8">
+        <item>@drawable/venom_1</item>
+        <item>@drawable/venom_2</item>
+        <item>@drawable/venom_3</item>
+        <item>@drawable/venom_4</item>
+        <item>@drawable/venom_5</item>
+        <item>@drawable/venom_6</item>
     </array>
 
 </resources>

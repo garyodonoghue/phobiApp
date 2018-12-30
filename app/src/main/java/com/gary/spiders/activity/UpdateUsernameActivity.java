@@ -10,6 +10,7 @@ import com.gary.spiders.R;
 import com.gary.spiders.model.User;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class UpdateUsernameActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class UpdateUsernameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_username);
+        ButterKnife.bind(this);
+
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
         usernameText.setText(MainMenuActivity.user.getName());

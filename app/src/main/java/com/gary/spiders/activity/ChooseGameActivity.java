@@ -13,6 +13,7 @@ import com.gary.spiders.game.BaseGame;
 import com.gary.spiders.game.GameFactory;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ChooseGameActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     @BindView(R.id.playVideoGameSelected) ToggleButton playVideoGameSelected;
     @BindView(R.id.popupImagesGameSelected) ToggleButton popupImagesGameSelected;
     @BindView(R.id.sharpenTextGameSelected) ToggleButton sharpenTextGameSelected;
+    @BindView(R.id.unscrambleWordGameSelected) ToggleButton unscrambleWordGameSelected;
 
     private String selectedGameMode;
 
@@ -31,6 +33,7 @@ public class ChooseGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_game);
+        ButterKnife.bind(this);
 
         CompoundButton.OnCheckedChangeListener onToggleListener = new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -48,6 +51,7 @@ public class ChooseGameActivity extends AppCompatActivity {
         playVideoGameSelected.setOnCheckedChangeListener(onToggleListener);
         popupImagesGameSelected.setOnCheckedChangeListener(onToggleListener);
         sharpenTextGameSelected.setOnCheckedChangeListener(onToggleListener);
+        unscrambleWordGameSelected.setOnCheckedChangeListener(onToggleListener);
     }
 
     public void generateGame(View v){
@@ -68,5 +72,6 @@ public class ChooseGameActivity extends AppCompatActivity {
         playVideoGameSelected.setChecked(false);
         popupImagesGameSelected.setChecked(false);
         sharpenTextGameSelected.setChecked(false);
+        unscrambleWordGameSelected.setChecked(false);
     }
 }
