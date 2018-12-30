@@ -36,7 +36,7 @@ public class UnscrambleGame extends BaseGame {
         setContentView(R.layout.activity_unscramble_game);
 
         ButterKnife.bind(this);
-        CountDownTimer timer = super.setupGameTimer(unscrambleTextTimer, this, 15000);
+        CountDownTimer timer = super.setupGameTimer(unscrambleTextTimer, this, 30000);
 
         super.presentGameInfoPopup(this, "Click 'Unscramble Image' button to unscramble the word. " +
                 "You can also guess the word. Your guess will be 'locked in' for the last two times you click the button and this will be taken as your final answer. " +
