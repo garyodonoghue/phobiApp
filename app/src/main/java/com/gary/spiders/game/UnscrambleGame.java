@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gary.spiders.R;
+import com.gary.spiders.enums.GameCategory;
 import com.gary.spiders.util.AlertUtility;
 
 import butterknife.BindView;
@@ -42,6 +43,10 @@ public class UnscrambleGame extends BaseGame {
                 "If you click through enough times to completely unscramble the word, you successfully complete the level" +
                 "If you have also guessed the correct word as well you get bonus points!", timer);
 
+        if(super.category == null){
+            super.category = GameCategory.LINGUISTIC_HIGH;
+        }
+
         GameResourceLoader resourceLoader = new GameResourceLoader(this);
         int unscrambleWordImages = resourceLoader.getUnscrambleGameWord();
         unscrambleWordsArray = getResources().obtainTypedArray(unscrambleWordImages);
@@ -52,7 +57,7 @@ public class UnscrambleGame extends BaseGame {
     public void unscrambleWord(View v){
         index++;
 
-        if(index >= unscrambleWordsArray.length()){
+        if(index >= unscrambleWordsArray.length() - 1){
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(UnscrambleGame.this);
             alertDialog.show();
             stopTimer();

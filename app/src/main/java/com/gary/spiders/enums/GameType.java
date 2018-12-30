@@ -17,15 +17,13 @@ public enum GameType {
         Random randomiser = new Random();
         if(category.isLinguistic()) {
             List<GameType> applicableGameTypes = new ArrayList<>();
-//            applicableGameTypes.add(GameType.ZOOM);
-//            applicableGameTypes.add(GameType.WORDSEARCH);
-//            applicableGameTypes.add((GameType.SHARPEN_TEXT));
+            applicableGameTypes.add(GameType.ZOOM);
+            applicableGameTypes.add(GameType.WORDSEARCH);
+            applicableGameTypes.add((GameType.SHARPEN_TEXT));
 
-            applicableGameTypes.add((GameType.UNSCRAMBLE_WORD));
-
-//            if (category.toString().equals("LINGUISTIC_MED") || category.toString().equals("LINGUISTIC_HIGH")){
-//                applicableGameTypes.add((GameType.UNSCRAMBLE_WORD));
-//            }
+            if (category.isLinguisticMedOrHigh()){
+                applicableGameTypes.add((GameType.UNSCRAMBLE_WORD));
+            }
 
             gameType = applicableGameTypes.get(randomiser.nextInt(applicableGameTypes.size()));
         }

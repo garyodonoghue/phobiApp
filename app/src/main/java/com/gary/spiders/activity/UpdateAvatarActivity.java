@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.gary.spiders.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class UpdateAvatarActivity extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class UpdateAvatarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_avatar);
+        ButterKnife.bind(this);
+
         gv.setBackgroundColor(Color.WHITE);
         gv.setPadding(2, 2, 2,    2);
 

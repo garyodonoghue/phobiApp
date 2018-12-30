@@ -9,6 +9,7 @@ import android.widget.EditText;
 import com.gary.spiders.R;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class FearRatingActivity extends AppCompatActivity {
 
@@ -19,6 +20,8 @@ public class FearRatingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fear_rating);
+
+        ButterKnife.bind(this);
 
         boolean initialAssess = getIntent().getBooleanExtra("initialAssessment", false);
         this.initialAssessment = Boolean.valueOf(initialAssess);
