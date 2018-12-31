@@ -57,7 +57,9 @@ public class UnscrambleGame extends BaseGame {
     public void unscrambleWord(View v){
         index++;
 
-        if(index >= unscrambleWordsArray.length() - 1){
+        // TODO Add bonus points if the guessed word was correct
+
+        if(index >= unscrambleWordsArray.length()){
             AlertDialog alertDialog = AlertUtility.createGameCompletedAlert(UnscrambleGame.this);
             alertDialog.show();
             stopTimer();
