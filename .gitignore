@@ -3,7 +3,7 @@
 app/.classpath
 app/.settings/
 .idea/
-
+app/src/main/assets/config.properties
 # Built application files
 *.apk
 *.ap_

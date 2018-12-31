@@ -22,6 +22,10 @@ import com.gary.spiders.model.User;
 import com.gary.spiders.util.AlertUtility;
 import com.gary.spiders.util.EpochUtil;
 import com.gary.spiders.util.LifecycleListener;
+import com.gary.spiders.util.PropertyConfigurer;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 import java.util.Arrays;
 
@@ -46,6 +50,10 @@ public class MainMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         ButterKnife.bind(this);
+
+        String appSecret = PropertyConfigurer.getProperty("appSecret",getApplicationContext());
+        AppCenter.start(getApplication(), appSecret, Analytics.class, Crashes.class);
+
         setupUserProfile();
         setupLifecycleListener();
         logUserProgress();
