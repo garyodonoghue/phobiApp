@@ -16,21 +16,24 @@ import com.gary.spiders.R;
 import java.util.Calendar;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ReminderScreen extends AppCompatActivity {
 
     @BindView(R.id.hours) NumberPicker hours;
-    @BindView(R.id.mins) NumberPicker mins;
+    @BindView(R.id.mins)
+    NumberPicker minutes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reminder_screen);
+        ButterKnife.bind(this);
 
         hours.setMinValue(0);
         hours.setMaxValue(24);
-        mins.setMinValue(0);
-        mins.setMaxValue(60);
+        minutes.setMinValue(0);
+        minutes.setMaxValue(60);
     }
 
     public void setReminder(View v){
@@ -50,7 +53,7 @@ public class ReminderScreen extends AppCompatActivity {
         // Get the difference in time between the scheduled alarm from the number picker and the current time
         Calendar calendar = Calendar.getInstance();
         int alarmHoursVal = hours.getValue();
-        int alarmMinsVal = mins.getValue();
+        int alarmMinsVal = minutes.getValue();
 
         int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
         int currentMin = calendar.get(Calendar.MINUTE);

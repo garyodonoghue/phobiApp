@@ -68,7 +68,7 @@ public class MainMenuActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        this.setupUserProfile();
+        setupUserProfile();
     }
 
     private void setupUserProfile() {
@@ -85,7 +85,7 @@ public class MainMenuActivity extends AppCompatActivity {
         }
 
         if(!user.getAvatarResource().isEmpty()){
-            int resId = getResources().getIdentifier(user.getAvatarResource(), "drawable", this.getPackageName());
+            int resId = getResources().getIdentifier(user.getAvatarResource(), "drawable", getPackageName());
             userAvatar.setImageResource(resId);
         }
 
@@ -98,37 +98,38 @@ public class MainMenuActivity extends AppCompatActivity {
         if(!user.isInitialAssessmentCompleted()){
             Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
             questionnaire.putExtra("initialAssessment", true);
-            MainMenuActivity.this.startActivityForResult(questionnaire, FSQ_PRESENTED);
+            startActivityForResult(questionnaire, FSQ_PRESENTED);
         }
         else {
             BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
             Intent intent1 = new Intent(MainMenuActivity.this, newGameType.getClass());
             intent1.putExtra("category", newGameType.category.toString());
             intent1.putExtra("initialAssessment", newGameType.initialAssessment);
-            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+            startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
         }
     }
 
     public void showProgress(View view) {
         Intent myIntent = new Intent(MainMenuActivity.this, MetricsActivity.class);
-        MainMenuActivity.this.startActivity(myIntent);
+        startActivity(myIntent);
     }
 
     public void settingsClicked(View view) {
         Intent myIntent = new Intent(MainMenuActivity.this, SettingsActivity.class);
-        MainMenuActivity.this.startActivity(myIntent);
+        startActivity(myIntent);
     }
 
     public void chooseGame(View v){
         Intent myIntent = new Intent(MainMenuActivity.this, ChooseGameActivity.class);
-        MainMenuActivity.this.startActivity(myIntent);
+        startActivity(myIntent);
     }
 
 
-    public void onActivityResult(final int requestCode, int resultCode, Intent data) {
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         GameCategory[] categoriesArray = GameCategory.getInitialAssessmentCategories();
 
-        if (this.NORMAL_LEVEL_FINISHED == requestCode) {
+        if (NORMAL_LEVEL_FINISHED == requestCode) {
             if (resultCode == RESULT_OK) {
                 boolean levelCompleted = Boolean.valueOf(data.getStringExtra("completed"));
                 boolean tryAgain = Boolean.valueOf(data.getStringExtra("tryAgain"));
@@ -159,13 +160,13 @@ public class MainMenuActivity extends AppCompatActivity {
                         // User completed the level and it is not an initial assessment
                         // Need to bump their level by 1
                         // generating a new game based on that new level value
-                        final int oldLevel = user.getLevel();
-                        final int newLevel = oldLevel + 1 + bonusPoints;
+                        int oldLevel = user.getLevel();
+                        int newLevel = oldLevel + 1 + bonusPoints;
                         updateUserLevel(newLevel);
 
 
                         GameCategory oldCategory = GameCategory.getCategory(oldLevel);
-                        final GameCategory newCategory = GameCategory.getCategory(newLevel);
+                        GameCategory newCategory = GameCategory.getCategory(newLevel);
 
                         if(newCategory == GameCategory.GAME_FINISHED){
                             AlertDialog alertDialog = AlertUtility.createEntireGameFinishedAlert(this);
@@ -174,13 +175,13 @@ public class MainMenuActivity extends AppCompatActivity {
                                 @Override
                                 public void onDismiss(DialogInterface dialog) {
                                     Intent questionnaire = new Intent(MainMenuActivity.this, QuestionnaireActivity.class);
-                                    MainMenuActivity.this.startActivity(questionnaire);
+                                    startActivity(questionnaire);
                                 }
                             });
                             alertDialog.show();
                         }
                         else {
-                            final BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
+                            BaseGame game = GameFactory.generateGameFromUserCategory(newCategory, false);
                             boolean jumpedToNextCategory = oldCategory != newCategory;
                             checkShouldDisplayFSQ(jumpedToNextCategory, game.category.toString(), game.initialAssessment, game.getClass());
                         }
@@ -202,7 +203,7 @@ public class MainMenuActivity extends AppCompatActivity {
                             intent1.putExtra("category", game.category.toString());
                             intent1.putExtra("initialAssessment", game.initialAssessment);
 
-                            MainMenuActivity.this.startActivityForResult(intent1, requestCode);
+                            startActivityForResult(intent1, requestCode);
                         }
                         else {
                             // User gave up - levelCompleted is false,
@@ -214,12 +215,14 @@ public class MainMenuActivity extends AppCompatActivity {
         }
         else if(FSQ_PRESENTED == requestCode) {
             Intent fearRatingActivity = new Intent(MainMenuActivity.this, FearRatingActivity.class);
-            boolean initialAssessment  = Boolean.valueOf(data.getBooleanExtra("initialAssessment", false));
+            // TODO data can be null here, need to investigate if that's ok
+            boolean initialAssessment = data != null && data.getBooleanExtra("initialAssessment", false);
             fearRatingActivity.putExtra("initialAssessment", initialAssessment);
-            MainMenuActivity.this.startActivityForResult(fearRatingActivity, FEAR_RATING_PRESENTED);
+            startActivityForResult(fearRatingActivity, FEAR_RATING_PRESENTED);
         }
         else if(FEAR_RATING_PRESENTED == requestCode){
-            boolean initialAssessment = data.getBooleanExtra("initialAssessment", false);
+            // TODO data can be null here, need to investigate if that's ok
+            boolean initialAssessment = data != null && data.getBooleanExtra("initialAssessment", false);
 
             if(initialAssessment){
                 // LINGUISTIC_HIGH is the first HIGH category
@@ -231,7 +234,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 intent1.putExtra("category", gameType.category.toString());
                 intent1.putExtra("initialAssessment", gameType.initialAssessment);
 
-                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
             }
             else{
                 // User has just had the mid-way FSQ and Fear assessment presented to them, carry
@@ -246,16 +249,17 @@ public class MainMenuActivity extends AppCompatActivity {
         }
     }
 
-    private void getNextLevelOnLevelCompletion(final boolean jumpedToNextCategory, final Intent intent1) {
+    private void getNextLevelOnLevelCompletion(boolean jumpedToNextCategory, final Intent intent1) {
         // check if they upped a level, present a congrats dialog box
         if(jumpedToNextCategory){
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
 
             alertDialogBuilder.setPositiveButton("Thanks!",
                     new DialogInterface.OnClickListener() {
+                        @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
-                            MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                            startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
                         }
                     });
 
@@ -265,12 +269,12 @@ public class MainMenuActivity extends AppCompatActivity {
             alertDialog.setCancelable(false);
             alertDialog.show();
 
-            final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
+            MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
             mp.start();
         }
         else{
             // User completed the level without levelling up to the next category
-            MainMenuActivity.this.startActivityForResult(intent1, this.NORMAL_LEVEL_FINISHED);
+            startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
         }
     }
 
@@ -292,7 +296,7 @@ public class MainMenuActivity extends AppCompatActivity {
         MainMenuActivity.user.setLevel(newUserLevel);
         Log.d("UpdateUserLevel", "level="+newUserLevel);
 
-        this.logUserProgress();
+        logUserProgress();
     }
 
     /**
@@ -309,7 +313,7 @@ public class MainMenuActivity extends AppCompatActivity {
             questionnaire.putExtra("category", category);
             questionnaire.putExtra("initialAssessment", initialAssessment);
             questionnaire.putExtra("gameClass", gameClass);
-            MainMenuActivity.this.startActivityForResult(questionnaire, FSQ_PRESENTED);
+            startActivityForResult(questionnaire, FSQ_PRESENTED);
         }
         else {
             final Intent intent1 = new Intent(MainMenuActivity.this, gameClass);
@@ -320,9 +324,10 @@ public class MainMenuActivity extends AppCompatActivity {
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainMenuActivity.this);
                 alertDialogBuilder.setPositiveButton("Thanks!",
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dialog.dismiss();
-                                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                                startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
                             }
                         });
                 AlertDialog alertDialog = alertDialogBuilder.create();
@@ -330,12 +335,12 @@ public class MainMenuActivity extends AppCompatActivity {
                 alertDialog.setMessage("You've just levelled up to a new category of games! Well done!");
                 alertDialog.setCancelable(false);
                 alertDialog.show();
-                final MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
+                MediaPlayer mp = MediaPlayer.create(this, R.raw.next_level_success);
                 mp.start();
             }
             else{
                 // User completed the level without levelling up to the next category
-                MainMenuActivity.this.startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
+                startActivityForResult(intent1, NORMAL_LEVEL_FINISHED);
             }
         }
     }
@@ -369,7 +374,7 @@ public class MainMenuActivity extends AppCompatActivity {
             intent.putExtra("category", game.category.toString());
             intent.putExtra("initialAssessment", game.initialAssessment);
 
-            MainMenuActivity.this.startActivityForResult(intent, requestCode);
+            startActivityForResult(intent, requestCode);
         }
         else{
             setInitialAssessmentCompletedFlag();
