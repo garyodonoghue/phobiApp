@@ -76,7 +76,7 @@ public class MainMenuActivity extends AppCompatActivity {
         // name / avatar resource id / level / num points, see User object for fields available
         SharedPreferences preferences = getSharedPreferences("UserDetails", 0);
         MainMenuActivity.user = new User(preferences);
-        if(Boolean.valueOf(user.isInitialAssessmentCompleted())){
+        if (user.isInitialAssessmentCompleted()) {
             playBtn.setText("Continue Playing");
         }
         else
@@ -241,9 +241,7 @@ public class MainMenuActivity extends AppCompatActivity {
                 // on with a new level
                 BaseGame newGameType = GameFactory.generateGameFromUserLevel(user.getLevel(), false);
                 Intent nextLevelIntent = new Intent(MainMenuActivity.this, newGameType.getClass());
-                boolean jumpedToNextCategory = data.getBooleanExtra("jumpedToNextCategory", false);
-                String category = data.getStringExtra("category");
-
+                boolean jumpedToNextCategory = data != null && data.getBooleanExtra("jumpedToNextCategory", false);
                 getNextLevelOnLevelCompletion(jumpedToNextCategory, nextLevelIntent);
             }
         }
@@ -282,7 +280,7 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("initialAssessmentCompleted", "true");
-        editor.commit();
+        editor.apply();
 
         MainMenuActivity.user.setInitialAssessmentCompleted("true");
         playBtn.setText("Continue Playing");
@@ -292,7 +290,7 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("UserDetails", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("level", Integer.toString(newUserLevel));
-        editor.commit();
+        editor.apply();
         MainMenuActivity.user.setLevel(newUserLevel);
         Log.d("UpdateUserLevel", "level="+newUserLevel);
 
@@ -350,7 +348,7 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = userData.edit();
         editor.putString("midwayThroughGameLevel", Integer.toString(halfwayLevel));
         editor.putString("hasMidwayFSQBeenPresented", "false");
-        editor.commit();
+        editor.apply();
         MainMenuActivity.user.setMidwayThroughGameLevel(halfwayLevel);
     }
 
@@ -359,7 +357,7 @@ public class MainMenuActivity extends AppCompatActivity {
         SharedPreferences userData = getSharedPreferences("Progress", 0);
         SharedPreferences.Editor editor = userData.edit();
         editor.putString(""+EpochUtil.getEpochTime(), Integer.toString(user.getLevel()));
-        editor.commit();
+        editor.apply();
     }
 
     private void getNextInitialAssessmentGame(int requestCode, GameCategory[] categoriesArray, GameCategory category) {
